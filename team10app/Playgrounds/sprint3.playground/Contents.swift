@@ -73,13 +73,36 @@ class UserController{
     
     
     func create(){
-        let newUser = User(firstName: "examplefirstname3",
-                        lastName: "example",
+        let newUser = User(firstName: "Tom",
+                        lastName: "Tomson",
                         email:"example",
                         username:  "example",
                         profilePicURL: "example" ,
                         passwordHash: "example" )
-        self.usersReference.child("exampleName3").setValue(newUser.toAnyObject())
+        self.usersReference.child("Tom").setValue(newUser.toAnyObject())
+        
+        let newUser1 = User(firstName: "John",
+                        lastName: "Johnson",
+                        email:"example",
+                        username:  "example",
+                        profilePicURL: "example" ,
+                        passwordHash: "example" )
+        self.usersReference.child("John").setValue(newUser1.toAnyObject())
+        let newUser2 = User(firstName: "Dick",
+                        lastName: "Dickson",
+                        email:"example",
+                        username:  "example",
+                        profilePicURL: "example" ,
+                        passwordHash: "example" )
+        self.usersReference.child("Dick").setValue(newUser2.toAnyObject())
+        let newUser3 = User(firstName: "Sam",
+                        lastName: "Samson",
+                        email:"example",
+                        username:  "example",
+                        profilePicURL: "example" ,
+                        passwordHash: "example" )
+        self.usersReference.child("Sam").setValue(newUser3.toAnyObject())
+        
     }
     
     var Users: [User] = []
@@ -96,7 +119,6 @@ class UserController{
             }
             self.Users = newUsers
         })
-        self.Users
     }
     
     func update(index:Int = 0){
@@ -193,20 +215,29 @@ class EventController {
     let eventsReference = Database.database().reference(withPath: "events")
     
     func create(){
-        let newEvent = Event(name: "exampleEvent",
-                        startTime: "example",
-                        endTime:"example",
-                        street1:  "example",
-                        street2: "example" ,
-                        city: "example",
-                        state:  "example",
-                        zip: "example" ,
-                        description: "example")
+        let newEvent = Event(name: "Tom's party",
+                        startTime: "2030 8/20",
+                        endTime:"2330 8/20",
+                        street1:  "Tom's street",
+                        
+                        city: "Pittsburgh",
+                        state:  "PA",
+                        zip: "15123" ,
+                        description: "Fire Party")
 
+        self.eventsReference.child("TomParty").setValue(newEvent.toAnyObject())
+        
+        let newEvent1 = Event(name: "John's party",
+                        startTime: "2030 8/28",
+                        endTime:"2330 8/28",
+                        street1:  "John's street",
+                        street2: "#13-45",
+                        city: "Pittsburgh",
+                        state:  "PA",
+                        zip: "15123" ,
+                        description: "Lame Party")
 
-
-
-        self.eventsReference.child("example1").setValue(newEvent.toAnyObject())
+        self.eventsReference.child("JohnParty").setValue(newEvent1.toAnyObject())
 
     }
     
@@ -298,16 +329,29 @@ class InviteController{
     
     func create(){
         //create
-        let newInvite = Invite(userKey: "exampleUserKey",
-                        eventKey:  "example",
-                        checkinTime:  "example",
+        let newInvite = Invite(userKey: "Sam",
+                        eventKey:  "TomParty",
                         inviteStatus: true,
-                        checkinStatus: true
+                        checkinStatus: false
                         )
 
+        self.invitesReference.child("TomPartySam").setValue(newInvite.toAnyObject())
+        
+        let newInvite1 = Invite(userKey: "Dick",
+                        eventKey:  "JohnParty",
+                        inviteStatus: true,
+                        checkinStatus: false
+                        )
 
+        self.invitesReference.child("JohnPartyDick").setValue(newInvite1.toAnyObject())
+        
+        let newInvite2 = Invite(userKey: "Dick",
+                        eventKey:  "TomParty",
+                        inviteStatus: true,
+                        checkinStatus: false
+                        )
 
-        self.invitesReference.child("inviteExample").setValue(newInvite.toAnyObject())
+        self.invitesReference.child("TomPartyDick").setValue(newInvite2.toAnyObject())
     }
     
     func read(){
@@ -391,10 +435,15 @@ class HostController{
     
     func create(){
         //create
-        let newHost = Host(userKey: "exampleUserkey",
-                        eventKey:  "example"
+        let newHost = Host(userKey: "TomParty",
+                        eventKey:  "Tom"
                        )
-        self.hostsReference.child("exampleHost").setValue(newHost.toAnyObject())
+        self.hostsReference.child("TomPartyTom").setValue(newHost.toAnyObject())
+        
+        let newHost1 = Host(userKey: "JohnParty",
+                        eventKey:  "John"
+                       )
+        self.hostsReference.child("JohnPartyJohn").setValue(newHost1.toAnyObject())
     }
     
     func read (){
@@ -479,12 +528,30 @@ class FriendController{
     let friendsReference = Database.database().reference(withPath: "friends")
     
     func create(){
-        let newFriend = Friend(userKey1: "exampleUserKey1",
-                        userKey2:  "example",
+        let newFriend = Friend(userKey1: "Sam",
+                        userKey2:  "Dick",
                         active: true)
 
 
-        self.friendsReference.child("exampleFriend").setValue(newFriend.toAnyObject())
+        self.friendsReference.child("SamDick").setValue(newFriend.toAnyObject())
+        let newFriend1 = Friend(userKey1: "Dick",
+                        userKey2:  "Sam",
+                        active: true)
+
+
+        self.friendsReference.child("DickSam").setValue(newFriend1.toAnyObject())
+        let newFriend2 = Friend(userKey1: "Sam",
+                        userKey2:  "John",
+                        active: true)
+
+
+        self.friendsReference.child("SamJohn").setValue(newFriend2.toAnyObject())
+        let newFriend3 = Friend(userKey1: "John",
+                        userKey2:  "Sam",
+                        active: true)
+
+
+        self.friendsReference.child("JohnSam").setValue(newFriend3.toAnyObject())
     }
     
     func read(){
