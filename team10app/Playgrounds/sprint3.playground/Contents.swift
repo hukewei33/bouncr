@@ -143,8 +143,11 @@ struct Event {
     let ref: DatabaseReference?
     let key: String
     let name: String
+    //start time of event in Date type casted as double
     let startTime: Double
+    //end time of event in Date type casted as double
     let endTime: Double?
+    //Address info
     let street1: String
     let street2: String?
     let city: String
@@ -279,10 +282,15 @@ struct Invite {
 
     let ref: DatabaseReference?
     let key: String
+    //key of user invited
     let userKey: String
+    //key to event that the user is invited to
     let eventKey: String
+    //time that user checked in, nil of user has not checked in
     let checkinTime: String?
+    //flag to indicate if user accepted invite
     let inviteStatus: Bool
+    //flag to indicate if user checked into event
     var checkinStatus: Bool
 
     init(userKey: String,eventKey: String,checkinTime: String = "", inviteStatus: Bool, checkinStatus: Bool, key: String = "") {
@@ -327,7 +335,6 @@ struct Invite {
 }
 
 class InviteController{
-    //Invites
     var Invites: [Invite] = []
     let invitesReference = Database.database().reference(withPath: "invites")
     
@@ -393,7 +400,9 @@ struct Host {
 
     let ref: DatabaseReference?
     let key: String
+    //user key of host
     let userKey: String
+    //userkey of event
     let eventKey: String
 
 
@@ -486,6 +495,7 @@ struct Friend {
     let key: String
     let userKey1: String
     let userKey2: String
+    //flag to indicate if the users have accpedted the friend request
     var active: Bool
 
 
@@ -527,7 +537,6 @@ struct Friend {
 }
 
 class FriendController{
-    //Friend
     var Friends: [Friend] = []
     let friendsReference = Database.database().reference(withPath: "friends")
     
