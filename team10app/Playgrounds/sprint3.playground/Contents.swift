@@ -33,9 +33,7 @@ struct User {
             let value = snapshot.value as? [String: AnyObject],
             let firstName = value["firstName"] as? String,
             let lastName = value["lastName"] as? String,
-            //let key = value["key"] as? String,
             let email = value["email"] as? String,
-            //how do I let this be optinal, do I only attenpt to unwrap later, what happens if it is null?
             let username = value["username"] as? String,
             let passwordHash = value["passwordHash"] as? String
         
@@ -102,6 +100,8 @@ class UserController{
                         profilePicURL: "example" ,
                         passwordHash: "example" )
         self.usersReference.child("Sam").setValue(newUser3.toAnyObject())
+
+        self.usersReference.child("ToDel").setValue(newUser3.toAnyObject())
         
     }
     
@@ -116,24 +116,28 @@ class UserController{
                     print(user.firstName)
                     newUsers.append(user)
                 }
+                
             }
             self.Users = newUsers
         })
     }
     
-    func update(index:Int = 0){
-        self.Users[index].ref?.updateChildValues([
-            "firstName": "changed"
-           ])
+    func update(key:String, updateVals:[String : Any]){
+        self.usersReference.child(key).updateChildValues(updateVals)
     }
     
-    func delete(index:Int = 0){
-        self.Users[index].ref?.removeValue()
+    func delete(key:String ){
+        self.usersReference.child(key).removeValue()
     }
     
     
 }
 
+let userController = UserController()
+userController.create()
+userController.update(key: "Sam",updateVals: ["firstName": "Samchanged"] )
+userController.delete(key: "ToDel")
+userController.read()
 
 struct Event {
 
@@ -238,6 +242,7 @@ class EventController {
                         description: "Lame Party")
 
         self.eventsReference.child("JohnParty").setValue(newEvent1.toAnyObject())
+        self.eventsReference.child("ToDel").setValue(newEvent1.toAnyObject())
 
     }
     
@@ -255,18 +260,31 @@ class EventController {
         })
     }
     
-    func update(index:Int = 0){
-        self.Events[index].ref?.updateChildValues([
-            "name": "changed"
-           ])
+//    func update(key:String = "" ){
+//        self.eventsReference.child("JohnParty").updateChildValues(["name": "John's party changed"])
+//    }
+//
+//    func delete(key:String = "" ){
+//        self.eventsReference.child("toDel").removeValue()
+//    }
+    func update(key:String, updateVals:[String : Any]){
+        self.eventsReference.child(key).updateChildValues(updateVals)
     }
     
-    func delete(index:Int = 0){
-        self.Events[index].ref?.removeValue()
+    func delete(key:String ){
+        self.eventsReference.child(key).removeValue()
     }
-    
     
 }
+
+
+let eventController = EventController()
+eventController.create()
+eventController.update(key: "JohnParty",updateVals: ["name": "John's party changed"] )
+eventController.delete(key: "ToDel")
+eventController.read()
+
+
 
 
 struct Invite {
@@ -292,10 +310,8 @@ struct Invite {
     init?(snapshot: DataSnapshot) {
         guard
             let value = snapshot.value as? [String: AnyObject],
-            //let key = value["key"]as? String,
             let eventKey = value["eventKey"] as? String,
             let userKey = value["userKey"] as? String,
-            //let checkinTime = value["checkinTime"] as? String,
             let inviteStatus = value["inviteStatus"] as? Bool,
             let checkinStatus = value["checkinStatus"] as? Bool
         else {
@@ -352,6 +368,7 @@ class InviteController{
                         )
 
         self.invitesReference.child("TomPartyDick").setValue(newInvite2.toAnyObject())
+        self.invitesReference.child("ToDel").setValue(newInvite2.toAnyObject())
     }
     
     func read(){
@@ -368,24 +385,28 @@ class InviteController{
         })
     }
     
-    func update(index:Int = 0){
-        self.Invites[index].ref?.updateChildValues([
-            "checkinTime": "changed"
-           ])
+//    func update(key:String = "" ){
+//        self.invitesReference.child("TomPartyDick").updateChildValues(["eventKey": "TomPartychanged"])
+//    }
+//
+//    func delete(key:String = "" ){
+//        self.invitesReference.child("ToDel").removeValue()
+//    }
+    func update(key:String, updateVals:[String : Any]){
+        self.invitesReference.child(key).updateChildValues(updateVals)
     }
     
-    func delete(index:Int = 0){
-        self.Invites[index].ref?.removeValue()
+    func delete(key:String ){
+        self.invitesReference.child(key).removeValue()
     }
-    
-    
+  
 }
 
-
-
-
-
-
+let inviteController = InviteController()
+inviteController.create()
+inviteController.update(key: "TomPartyDick",updateVals: ["eventKey": "TomPartychanged"])
+inviteController.delete(key: "ToDel")
+inviteController.read()
 
 
 struct Host {
@@ -435,15 +456,16 @@ class HostController{
     
     func create(){
         //create
-        let newHost = Host(userKey: "TomParty",
-                        eventKey:  "Tom"
+        let newHost = Host(userKey: "Tom" ,
+                        eventKey:"TomParty"
                        )
         self.hostsReference.child("TomPartyTom").setValue(newHost.toAnyObject())
         
-        let newHost1 = Host(userKey: "JohnParty",
-                        eventKey:  "John"
+        let newHost1 = Host(userKey: "John" ,
+                        eventKey: "JohnParty"
                        )
         self.hostsReference.child("JohnPartyJohn").setValue(newHost1.toAnyObject())
+        self.hostsReference.child("ToDel").setValue(newHost1.toAnyObject())
     }
     
     func read (){
@@ -461,18 +483,22 @@ class HostController{
         })
     }
     
-    func update(index:Int = 0){
-        self.Hosts[index].ref?.updateChildValues([
-            "userKey": "changed"
-           ])
+    func update(key:String, updateVals:[String : Any]){
+        self.hostsReference.child(key).updateChildValues(updateVals)
     }
     
-    func delete(index:Int = 0){
-        self.Hosts[index].ref?.removeValue()
+    func delete(key:String ){
+        self.hostsReference.child(key).removeValue()
     }
     
 }
+let hostController = HostController()
 
+
+hostController.create()
+hostController.update(key: "JohnPartyJohn",updateVals: ["userKey":"JohnChanged"] )
+hostController.delete(key: "ToDel")
+hostController.read()
 
 
 
@@ -552,6 +578,7 @@ class FriendController{
 
 
         self.friendsReference.child("JohnSam").setValue(newFriend3.toAnyObject())
+        self.friendsReference.child("ToDel").setValue(newFriend3.toAnyObject())
     }
     
     func read(){
@@ -570,44 +597,24 @@ class FriendController{
     }
     
     
-    func update(index:Int = 0){
-        self.Friends[index].ref?.updateChildValues([
-            "userKey1": "changed"
-           ])
+    func update(key:String, updateVals:[String : Any]){
+        self.friendsReference.child(key).updateChildValues(updateVals)
     }
     
-    func delete(index:Int = 0){
-        self.Friends[index].ref?.removeValue()
+    func delete(key:String ){
+        self.friendsReference.child(key).removeValue()
     }
 }
 
 
-let userController = UserController()
-let eventController = EventController()
-let inviteController = InviteController()
-let hostController = HostController()
+
+
 let friendController = FriendController()
 
-userController.create()
-DispatchQueue.global().sync {userController.read()}
-userController.Users
-
-eventController.create()
-DispatchQueue.global().sync {eventController.read()}
-eventController.Events
-
-inviteController.create()
-DispatchQueue.global().sync {inviteController.read()}
-inviteController.Invites
-
-hostController.create()
-DispatchQueue.global().sync {hostController.read()}
-hostController.Hosts
-
 friendController.create()
-DispatchQueue.global().sync {friendController.read()}
-friendController.Friends
-
+friendController.update(key: "JohnSam", updateVals: ["userKey1" : "JohnChanged"])
+friendController.delete(key: "ToDel")
+friendController.read()
 
 
 
