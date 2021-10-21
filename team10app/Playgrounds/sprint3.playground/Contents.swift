@@ -1,7 +1,6 @@
 import UIKit
 import Firebase
 
-var greeting = "Hello, playground"
 FirebaseApp.configure()
 Database.database().isPersistenceEnabled = true
 
@@ -144,7 +143,6 @@ struct Event {
     let ref: DatabaseReference?
     let key: String
     let name: String
-    //timetype? what is the best and most convenient type that can be used for swift firebase
     let startTime: Double
     let endTime: Double?
     let street1: String
@@ -186,12 +184,6 @@ struct Event {
         self.key = snapshot.key
         self.name = name
         self.startTime = startTime
-//        if let endTime = value["endTime"]as? Double{
-//            self.endTime = Date(timeIntervalSinceReferenceDate:endTime)
-//        }
-//        else {
-//            self.endTime = nil
-//        }
         self.endTime = value["endTime"]as? Double
         self.street1 = street1
         self.street2 = value["street2"]as? String
@@ -219,7 +211,6 @@ struct Event {
 }
 
 class EventController {
-    //Event
     var Events: [Event] = []
     let eventsReference = Database.database().reference(withPath: "events")
     
@@ -341,7 +332,6 @@ class InviteController{
     let invitesReference = Database.database().reference(withPath: "invites")
     
     func create(){
-        //create
         let newInvite = Invite(userKey: "Sam",
                         eventKey:  "TomParty",
                         inviteStatus: true,
@@ -382,13 +372,6 @@ class InviteController{
         })
     }
     
-//    func update(key:String = "" ){
-//        self.invitesReference.child("TomPartyDick").updateChildValues(["eventKey": "TomPartychanged"])
-//    }
-//
-//    func delete(key:String = "" ){
-//        self.invitesReference.child("ToDel").removeValue()
-//    }
     func update(key:String, updateVals:[String : Any]){
         self.invitesReference.child(key).updateChildValues(updateVals)
     }
@@ -452,7 +435,6 @@ class HostController{
     let hostsReference = Database.database().reference(withPath: "hosts")
     
     func create(){
-        //create
         let newHost = Host(userKey: "Tom" ,
                         eventKey:"TomParty"
                        )
@@ -466,8 +448,7 @@ class HostController{
     }
     
     func read (){
-        //read
-        self.hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
+            self.hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
             var newHosts: [Host] = []
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
@@ -579,7 +560,6 @@ class FriendController{
     }
     
     func read(){
-        //read
         self.friendsReference.queryOrdered(byChild: "userKey1").observe(.value, with: { snapshot in
             var newFriends: [Friend] = []
             for child in snapshot.children {
