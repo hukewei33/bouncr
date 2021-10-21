@@ -145,8 +145,8 @@ struct Event {
     let key: String
     let name: String
     //timetype? what is the best and most convenient type that can be used for swift firebase
-    let startTime: String
-    let endTime: String?
+    let startTime: Double
+    let endTime: Double?
     let street1: String
     let street2: String?
     let city: String
@@ -155,12 +155,12 @@ struct Event {
     let description: String?
 
 
-    init(name: String, startTime: String, endTime: String = "", street1: String, street2 : String = "", city: String, state: String, zip: String, description: String = "", key: String = "") {
+    init(name: String, startTime: Date, street1: String, street2 : String = "", city: String, state: String, zip: String, description: String = "", key: String = "") {
         self.ref = nil
         self.key = key
         self.name = name
-        self.startTime = startTime
-        self.endTime = endTime
+        self.startTime = startTime.timeIntervalSinceReferenceDate
+        self.endTime = nil
         self.street1 = street1
         self.street2 = street2
         self.city = city
@@ -173,8 +173,7 @@ struct Event {
         guard
             let value = snapshot.value as? [String: AnyObject],
             let name = value["name"]as? String,
-            //timetype? what is the best and most convenient type that can be used for swift firebase
-            let startTime = value["startTime"]as? String,
+            let startTime = value["startTime"]as? Double,
             let street1 = value["street1"]as? String,
             let city = value["city"]as? String,
             let state = value["state"]as? String,
@@ -187,7 +186,13 @@ struct Event {
         self.key = snapshot.key
         self.name = name
         self.startTime = startTime
-        self.endTime = value["endTime"]as? String
+//        if let endTime = value["endTime"]as? Double{
+//            self.endTime = Date(timeIntervalSinceReferenceDate:endTime)
+//        }
+//        else {
+//            self.endTime = nil
+//        }
+        self.endTime = value["endTime"]as? Double
         self.street1 = street1
         self.street2 = value["street2"]as? String
         self.city = city
@@ -220,8 +225,7 @@ class EventController {
     
     func create(){
         let newEvent = Event(name: "Tom's party",
-                        startTime: "2030 8/20",
-                        endTime:"2330 8/20",
+                        startTime: Date(),
                         street1:  "Tom's street",
                         
                         city: "Pittsburgh",
@@ -232,8 +236,7 @@ class EventController {
         self.eventsReference.child("TomParty").setValue(newEvent.toAnyObject())
         
         let newEvent1 = Event(name: "John's party",
-                        startTime: "2030 8/28",
-                        endTime:"2330 8/28",
+                        startTime: Date(),
                         street1:  "John's street",
                         street2: "#13-45",
                         city: "Pittsburgh",
@@ -260,13 +263,7 @@ class EventController {
         })
     }
     
-//    func update(key:String = "" ){
-//        self.eventsReference.child("JohnParty").updateChildValues(["name": "John's party changed"])
-//    }
-//
-//    func delete(key:String = "" ){
-//        self.eventsReference.child("toDel").removeValue()
-//    }
+
     func update(key:String, updateVals:[String : Any]){
         self.eventsReference.child(key).updateChildValues(updateVals)
     }
