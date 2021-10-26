@@ -1,7 +1,6 @@
 import UIKit
 import Firebase
 
-var greeting = "Hello, playground"
 FirebaseApp.configure()
 Database.database().isPersistenceEnabled = true
 
@@ -33,9 +32,7 @@ struct User {
             let value = snapshot.value as? [String: AnyObject],
             let firstName = value["firstName"] as? String,
             let lastName = value["lastName"] as? String,
-            //let key = value["key"] as? String,
             let email = value["email"] as? String,
-            //how do I let this be optinal, do I only attenpt to unwrap later, what happens if it is null?
             let username = value["username"] as? String,
             let passwordHash = value["passwordHash"] as? String
         
@@ -45,7 +42,7 @@ struct User {
         }
         
         self.ref = snapshot.ref
-        self.key = "1"
+        self.key = snapshot.key
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -70,20 +67,47 @@ struct User {
 
 class UserController{
     let usersReference = Database.database().reference(withPath: "users")
-    var Users: [User] = []
+    
     
     func create(){
-        let newUser = User(firstName: "examplefirstname2",
-                        lastName: "example",
+        let newUser = User(firstName: "Tom",
+                        lastName: "Tomson",
                         email:"example",
                         username:  "example",
                         profilePicURL: "example" ,
                         passwordHash: "example" )
-        usersReference.child("exampleName2").setValue(newUser.toAnyObject())
+        self.usersReference.child("Tom").setValue(newUser.toAnyObject())
+        
+        let newUser1 = User(firstName: "John",
+                        lastName: "Johnson",
+                        email:"example",
+                        username:  "example",
+                        profilePicURL: "example" ,
+                        passwordHash: "example" )
+        self.usersReference.child("John").setValue(newUser1.toAnyObject())
+        let newUser2 = User(firstName: "Dick",
+                        lastName: "Dickson",
+                        email:"example",
+                        username:  "example",
+                        profilePicURL: "example" ,
+                        passwordHash: "example" )
+        self.usersReference.child("Dick").setValue(newUser2.toAnyObject())
+        let newUser3 = User(firstName: "Sam",
+                        lastName: "Samson",
+                        email:"example",
+                        username:  "example",
+                        profilePicURL: "example" ,
+                        passwordHash: "example" )
+        self.usersReference.child("Sam").setValue(newUser3.toAnyObject())
+
+        self.usersReference.child("ToDel").setValue(newUser3.toAnyObject())
+        
     }
     
+    var Users: [User] = []
+    
     func read(){
-        usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
+        self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
             var newUsers: [User] = []
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
@@ -91,50 +115,39 @@ class UserController{
                     print(user.firstName)
                     newUsers.append(user)
                 }
+                
             }
             self.Users = newUsers
         })
-        self.Users
     }
     
-    func update(){
-        self.Users[0].ref?.updateChildValues([
-            "firstName": "changed"
-           ])
+    func update(key:String, updateVals:[String : Any]){
+        self.usersReference.child(key).updateChildValues(updateVals)
+    }
+    
+    func delete(key:String ){
+        self.usersReference.child(key).removeValue()
     }
     
     
 }
+
 let userController = UserController()
 userController.create()
+userController.update(key: "Sam",updateVals: ["firstName": "Samchanged"] )
+userController.delete(key: "ToDel")
 userController.read()
-userController.Users
-
-
-
-
-//create
-
-//update
-//
-//read
-
-
-
-
-
-
-
-////delete
 
 struct Event {
 
     let ref: DatabaseReference?
     let key: String
     let name: String
-    //timetype? what is the best and most convenient type that can be used for swift firebase
-    let startTime: String
-    let endTime: String?
+    //start time of event in Date type casted as double
+    let startTime: Double
+    //end time of event in Date type casted as double
+    let endTime: Double?
+    //Address info
     let street1: String
     let street2: String?
     let city: String
@@ -143,12 +156,12 @@ struct Event {
     let description: String?
 
 
-    init(name: String, startTime: String, endTime: String = "", street1: String, street2 : String = "", city: String, state: String, zip: String, description: String = "", key: String = "") {
+    init(name: String, startTime: Date, street1: String, street2 : String = "", city: String, state: String, zip: String, description: String = "", key: String = "") {
         self.ref = nil
         self.key = key
         self.name = name
-        self.startTime = startTime
-        self.endTime = endTime
+        self.startTime = startTime.timeIntervalSinceReferenceDate
+        self.endTime = nil
         self.street1 = street1
         self.street2 = street2
         self.city = city
@@ -160,17 +173,12 @@ struct Event {
     init?(snapshot: DataSnapshot) {
         guard
             let value = snapshot.value as? [String: AnyObject],
-            //let key = value["key"]as? String,
             let name = value["name"]as? String,
-            //timetype? what is the best and most convenient type that can be used for swift firebase
-            let startTime = value["startTime"]as? String,
-            //let endTime = value["endTime"]as? String,
+            let startTime = value["startTime"]as? Double,
             let street1 = value["street1"]as? String,
-            //let street2 = value["street2"]as? String,
             let city = value["city"]as? String,
             let state = value["state"]as? String,
             let zip = value["zip"]as? String
-            //let description = value["description"]as? String
         else {
             return nil
         }
@@ -179,7 +187,7 @@ struct Event {
         self.key = snapshot.key
         self.name = name
         self.startTime = startTime
-        self.endTime = value["endTime"]as? String
+        self.endTime = value["endTime"]as? Double
         self.street1 = street1
         self.street2 = value["street2"]as? String
         self.city = city
@@ -205,60 +213,84 @@ struct Event {
     }
 }
 
-//Event
-var Events: [Event] = []
-let eventsReference = Database.database().reference(withPath: "events")
+class EventController {
+    var Events: [Event] = []
+    let eventsReference = Database.database().reference(withPath: "events")
+    
+    func create(){
+        let newEvent = Event(name: "Tom's party",
+                        startTime: Date(),
+                        street1:  "Tom's street",
+                        
+                        city: "Pittsburgh",
+                        state:  "PA",
+                        zip: "15123" ,
+                        description: "Fire Party")
 
-//create
-let newEvent = Event(name: "example",
-                startTime: "example",
-                endTime:"example",
-                street1:  "example",
-                street2: "example" ,
-                city: "example",
-                state:  "example",
-                zip: "example" ,
-                description: "example")
+        self.eventsReference.child("TomParty").setValue(newEvent.toAnyObject())
+        
+        let newEvent1 = Event(name: "John's party",
+                        startTime: Date(),
+                        street1:  "John's street",
+                        street2: "#13-45",
+                        city: "Pittsburgh",
+                        state:  "PA",
+                        zip: "15123" ,
+                        description: "Lame Party")
 
+        self.eventsReference.child("JohnParty").setValue(newEvent1.toAnyObject())
+        self.eventsReference.child("ToDel").setValue(newEvent1.toAnyObject())
 
-
-
-eventsReference.child("example1").setValue(newEvent.toAnyObject())
-
-
-//read
-eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
-    var newEvents: [Event] = []
-    for child in snapshot.children {
-        if let snapshot = child as? DataSnapshot,
-           let event = Event(snapshot: snapshot) {
-            print(event.name)
-            Events.append(event)
-        }
     }
+    
+    func read(){
+        self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
+            var newEvents: [Event] = []
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let event = Event(snapshot: snapshot) {
+                    print(event.name)
+                    self.Events.append(event)
+                }
+            }
 
-})
-Events
+        })
+    }
+    
 
-//update
-//Events[0].ref?.updateChildValues([
-//    "name": "changed"
-//    ])
-//
-////delete
-//Events[0].ref?.removeValue()
+    func update(key:String, updateVals:[String : Any]){
+        self.eventsReference.child(key).updateChildValues(updateVals)
+    }
+    
+    func delete(key:String ){
+        self.eventsReference.child(key).removeValue()
+    }
+    
+}
 
 
-print("fin")
+let eventController = EventController()
+eventController.create()
+eventController.update(key: "JohnParty",updateVals: ["name": "John's party changed"] )
+eventController.delete(key: "ToDel")
+eventController.read()
+
+
+
 
 struct Invite {
 
     let ref: DatabaseReference?
     let key: String
+    //key of user invited
     let userKey: String
+    //key to event that the user is invited to
     let eventKey: String
+    //time that user checked in, nil of user has not checked in
     let checkinTime: String?
+    //flag to indicate if user accepted invite
     let inviteStatus: Bool
+    //flag to indicate if user checked into event
     var checkinStatus: Bool
 
     init(userKey: String,eventKey: String,checkinTime: String = "", inviteStatus: Bool, checkinStatus: Bool, key: String = "") {
@@ -274,10 +306,8 @@ struct Invite {
     init?(snapshot: DataSnapshot) {
         guard
             let value = snapshot.value as? [String: AnyObject],
-            //let key = value["key"]as? String,
             let eventKey = value["eventKey"] as? String,
             let userKey = value["userKey"] as? String,
-            //let checkinTime = value["checkinTime"] as? String,
             let inviteStatus = value["inviteStatus"] as? Bool,
             let checkinStatus = value["checkinStatus"] as? Bool
         else {
@@ -304,41 +334,75 @@ struct Invite {
     }
 }
 
-//Invites
-var Invites: [Invite] = []
-let invitesReference = Database.database().reference(withPath: "invites")
+class InviteController{
+    var Invites: [Invite] = []
+    let invitesReference = Database.database().reference(withPath: "invites")
+    
+    func create(){
+        let newInvite = Invite(userKey: "Sam",
+                        eventKey:  "TomParty",
+                        inviteStatus: true,
+                        checkinStatus: false
+                        )
 
-//create
-let newInvite = Invite(userKey: "example",
-                eventKey:  "example",
-                checkinTime:  "example",
-                inviteStatus: true,
-                checkinStatus: true
-                )
+        self.invitesReference.child("TomPartySam").setValue(newInvite.toAnyObject())
+        
+        let newInvite1 = Invite(userKey: "Dick",
+                        eventKey:  "JohnParty",
+                        inviteStatus: true,
+                        checkinStatus: false
+                        )
 
+        self.invitesReference.child("JohnPartyDick").setValue(newInvite1.toAnyObject())
+        
+        let newInvite2 = Invite(userKey: "Dick",
+                        eventKey:  "TomParty",
+                        inviteStatus: true,
+                        checkinStatus: false
+                        )
 
-
-invitesReference.child("inviteExample").setValue(newInvite.toAnyObject())
-
-
-//read
-invitesReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
-    var newInvites: [Invite] = []
-    for child in snapshot.children {
-        if let snapshot = child as? DataSnapshot,
-           let invite = Invite(snapshot: snapshot) {
-            newInvites.append(invite)
-            print(invite.userKey)
-        }
+        self.invitesReference.child("TomPartyDick").setValue(newInvite2.toAnyObject())
+        self.invitesReference.child("ToDel").setValue(newInvite2.toAnyObject())
     }
-    Invites = newInvites
-})
+    
+    func read(){
+        self.invitesReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
+            var newInvites: [Invite] = []
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let invite = Invite(snapshot: snapshot) {
+                    newInvites.append(invite)
+                    print(invite.userKey)
+                }
+            }
+            self.Invites = newInvites
+        })
+    }
+    
+    func update(key:String, updateVals:[String : Any]){
+        self.invitesReference.child(key).updateChildValues(updateVals)
+    }
+    
+    func delete(key:String ){
+        self.invitesReference.child(key).removeValue()
+    }
+  
+}
+
+let inviteController = InviteController()
+inviteController.create()
+inviteController.update(key: "TomPartyDick",updateVals: ["eventKey": "TomPartychanged"])
+inviteController.delete(key: "ToDel")
+inviteController.read()
+
 
 struct Host {
 
     let ref: DatabaseReference?
     let key: String
+    //user key of host
     let userKey: String
+    //userkey of event
     let eventKey: String
 
 
@@ -375,30 +439,55 @@ struct Host {
     }
 }
 
-var Hosts: [Host] = []
-let hostsReference = Database.database().reference(withPath: "hosts")
-
-//create
-let newHost = Host(userKey: "example",
-                eventKey:  "example"
-               )
-
-
-hostsReference.child("exampleHost").setValue(newHost.toAnyObject())
-
-
-//read
-hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
-    var newHosts: [Host] = []
-    for child in snapshot.children {
-        if let snapshot = child as? DataSnapshot,
-           let host = Host(snapshot: snapshot) {
-            newHosts.append(host)
-            print(host.userKey)
-        }
+class HostController{
+    var Hosts: [Host] = []
+    let hostsReference = Database.database().reference(withPath: "hosts")
+    
+    func create(){
+        let newHost = Host(userKey: "Tom" ,
+                        eventKey:"TomParty"
+                       )
+        self.hostsReference.child("TomPartyTom").setValue(newHost.toAnyObject())
+        
+        let newHost1 = Host(userKey: "John" ,
+                        eventKey: "JohnParty"
+                       )
+        self.hostsReference.child("JohnPartyJohn").setValue(newHost1.toAnyObject())
+        self.hostsReference.child("ToDel").setValue(newHost1.toAnyObject())
     }
-    Hosts = newHosts
-})
+    
+    func read (){
+            self.hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
+            var newHosts: [Host] = []
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let host = Host(snapshot: snapshot) {
+                    newHosts.append(host)
+                    print(host.userKey)
+                }
+            }
+            self.Hosts = newHosts
+        })
+    }
+    
+    func update(key:String, updateVals:[String : Any]){
+        self.hostsReference.child(key).updateChildValues(updateVals)
+    }
+    
+    func delete(key:String ){
+        self.hostsReference.child(key).removeValue()
+    }
+    
+}
+let hostController = HostController()
+
+
+hostController.create()
+hostController.update(key: "JohnPartyJohn",updateVals: ["userKey":"JohnChanged"] )
+hostController.delete(key: "ToDel")
+hostController.read()
+
+
 
 struct Friend {
 
@@ -406,6 +495,7 @@ struct Friend {
     let key: String
     let userKey1: String
     let userKey2: String
+    //flag to indicate if the users have accpedted the friend request
     var active: Bool
 
 
@@ -446,28 +536,72 @@ struct Friend {
     }
 }
 
-//Friend
-var Friends: [Friend] = []
-let friendsReference = Database.database().reference(withPath: "friends")
-
-//create
-let newFriend = Friend(userKey1: "example",
-                userKey2:  "example",
-                active: true)
-
-
-friendsReference.child("exampleFriend").setValue(newFriend.toAnyObject())
+class FriendController{
+    var Friends: [Friend] = []
+    let friendsReference = Database.database().reference(withPath: "friends")
+    
+    func create(){
+        let newFriend = Friend(userKey1: "Sam",
+                        userKey2:  "Dick",
+                        active: true)
 
 
-//read
-friendsReference.queryOrdered(byChild: "userKey1").observe(.value, with: { snapshot in
-    var newFriends: [Friend] = []
-    for child in snapshot.children {
-        if let snapshot = child as? DataSnapshot,
-           let friend = Friend(snapshot: snapshot) {
-            newFriends.append(friend)
-            print(friend.userKey1)
-        }
+        self.friendsReference.child("SamDick").setValue(newFriend.toAnyObject())
+        let newFriend1 = Friend(userKey1: "Dick",
+                        userKey2:  "Sam",
+                        active: true)
+
+
+        self.friendsReference.child("DickSam").setValue(newFriend1.toAnyObject())
+        let newFriend2 = Friend(userKey1: "Sam",
+                        userKey2:  "John",
+                        active: true)
+
+
+        self.friendsReference.child("SamJohn").setValue(newFriend2.toAnyObject())
+        let newFriend3 = Friend(userKey1: "John",
+                        userKey2:  "Sam",
+                        active: true)
+
+
+        self.friendsReference.child("JohnSam").setValue(newFriend3.toAnyObject())
+        self.friendsReference.child("ToDel").setValue(newFriend3.toAnyObject())
     }
-    Friends = newFriends
-})
+    
+    func read(){
+        self.friendsReference.queryOrdered(byChild: "userKey1").observe(.value, with: { snapshot in
+            var newFriends: [Friend] = []
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let friend = Friend(snapshot: snapshot) {
+                    newFriends.append(friend)
+                    print(friend.userKey1)
+                }
+            }
+            self.Friends = newFriends
+        })
+    }
+    
+    
+    func update(key:String, updateVals:[String : Any]){
+        self.friendsReference.child(key).updateChildValues(updateVals)
+    }
+    
+    func delete(key:String ){
+        self.friendsReference.child(key).removeValue()
+    }
+}
+
+
+
+
+let friendController = FriendController()
+
+friendController.create()
+friendController.update(key: "JohnSam", updateVals: ["userKey1" : "JohnChanged"])
+friendController.delete(key: "ToDel")
+friendController.read()
+
+
+
+
