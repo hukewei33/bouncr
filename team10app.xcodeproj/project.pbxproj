@@ -16,6 +16,15 @@
 		B20E9ED4271FA2BE002BA590 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED3271FA2BE002BA590 /* Preview Assets.xcassets */; };
 		B20E9ED7271FA2BE002BA590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED5271FA2BE002BA590 /* LaunchScreen.storyboard */; };
 		B20E9EDF271FA388002BA590 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B20E9EDE271FA388002BA590 /* GoogleService-Info.plist */; };
+		B250866227278E5000FD9D9C /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866127278E5000FD9D9C /* Controller.swift */; };
+		B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2508663272797B200FD9D9C /* InviteInterface.swift */; };
+		B2BB3CAF272729A000C6DB94 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CAE272729A000C6DB94 /* User.swift */; };
+		B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CB027272A7800C6DB94 /* Event.swift */; };
+		B2BB3CB327272BAC00C6DB94 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CB227272BAC00C6DB94 /* Invite.swift */; };
+		B2BB3CB527272C4B00C6DB94 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CB427272C4B00C6DB94 /* Host.swift */; };
+		B2BB3CB727272DF100C6DB94 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CB627272DF100C6DB94 /* UserInterface.swift */; };
+		B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CB82727369D00C6DB94 /* EventInterface.swift */; };
+		B2BB3CBB27273BDC00C6DB94 /* HostInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +40,16 @@
 		B20E9ED6271FA2BE002BA590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B20E9ED8271FA2BE002BA590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B20E9EDE271FA388002BA590 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B250866127278E5000FD9D9C /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		B2508663272797B200FD9D9C /* InviteInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteInterface.swift; sourceTree = "<group>"; };
 		B28FB1B0271FA64A008D25ED /* sprint3.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = sprint3.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B2BB3CAE272729A000C6DB94 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B2BB3CB027272A7800C6DB94 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		B2BB3CB227272BAC00C6DB94 /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
+		B2BB3CB427272C4B00C6DB94 /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
+		B2BB3CB627272DF100C6DB94 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterface.swift; sourceTree = "<group>"; };
+		B2BB3CB82727369D00C6DB94 /* EventInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInterface.swift; sourceTree = "<group>"; };
+		B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostInterface.swift; sourceTree = "<group>"; };
 		EAFC50A41E178446D88F6DCC /* Pods-team10app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10app.debug.xcconfig"; path = "Target Support Files/Pods-team10app/Pods-team10app.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +94,7 @@
 		B20E9EC6271FA2BC002BA590 /* team10app */ = {
 			isa = PBXGroup;
 			children = (
+				B2BB3CAD2727298A00C6DB94 /* Models */,
 				B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */,
 				B28FB1AF271FA5F3008D25ED /* Playgrounds */,
 				B20E9EC9271FA2BC002BA590 /* SceneDelegate.swift */,
@@ -86,6 +105,7 @@
 				B20E9ECD271FA2BC002BA590 /* team10app.xcdatamodeld */,
 				B20E9EDE271FA388002BA590 /* GoogleService-Info.plist */,
 				B20E9ED2271FA2BE002BA590 /* Preview Content */,
+				B250866127278E5000FD9D9C /* Controller.swift */,
 			);
 			path = team10app;
 			sourceTree = "<group>";
@@ -104,6 +124,21 @@
 				B28FB1B0271FA64A008D25ED /* sprint3.playground */,
 			);
 			path = Playgrounds;
+			sourceTree = "<group>";
+		};
+		B2BB3CAD2727298A00C6DB94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B2BB3CAE272729A000C6DB94 /* User.swift */,
+				B2BB3CB027272A7800C6DB94 /* Event.swift */,
+				B2BB3CB227272BAC00C6DB94 /* Invite.swift */,
+				B2508663272797B200FD9D9C /* InviteInterface.swift */,
+				B2BB3CB427272C4B00C6DB94 /* Host.swift */,
+				B2BB3CB627272DF100C6DB94 /* UserInterface.swift */,
+				B2BB3CB82727369D00C6DB94 /* EventInterface.swift */,
+				B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DBACACAA5C12F5DAA3F92D74 /* Pods */ = {
@@ -230,9 +265,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2BB3CB727272DF100C6DB94 /* UserInterface.swift in Sources */,
 				B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */,
+				B2BB3CB327272BAC00C6DB94 /* Invite.swift in Sources */,
+				B250866227278E5000FD9D9C /* Controller.swift in Sources */,
 				B20E9ECA271FA2BC002BA590 /* SceneDelegate.swift in Sources */,
+				B2BB3CBB27273BDC00C6DB94 /* HostInterface.swift in Sources */,
+				B2BB3CB527272C4B00C6DB94 /* Host.swift in Sources */,
+				B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */,
 				B20E9ECC271FA2BC002BA590 /* ContentView.swift in Sources */,
+				B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */,
+				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
+				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
