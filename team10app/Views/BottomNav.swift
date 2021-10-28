@@ -11,9 +11,10 @@ struct BottomNav: View {
   @ObservedObject var viewModel: ViewModel
   
   var body: some View {
+    
     HStack {
       Spacer()
-      
+
       Button(action: {} ) {
         VStack {
           Image(systemName: "calendar")
@@ -22,11 +23,11 @@ struct BottomNav: View {
             .frame(width: 30, height: 30)
           Text("Your Events")
         }
-        //.foregroundColor(Color(red: 0.4627, green: 0.8392, blue: 1.0))
+        //.foregroundColor(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
       }
-      
+
       Spacer()
-      
+
       Button(action: {} ) {
         VStack{
           Image(systemName: "envelope")
@@ -36,9 +37,9 @@ struct BottomNav: View {
           Text("Invitations")
         }
       }
-        
+
       Spacer()
-      
+
       Button(action: {} ) {
         VStack {
           Image(systemName: "person.crop.circle")
@@ -48,7 +49,7 @@ struct BottomNav: View {
           Text("Profile")
         }
       }
-      
+
       Spacer()
     }
     .padding()
