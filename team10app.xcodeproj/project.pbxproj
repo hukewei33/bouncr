@@ -10,7 +10,6 @@
 		18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF455272A6B680008B4A3 /* ViewModel.swift */; };
 		18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF458272B1F9D0008B4A3 /* AppView.swift */; };
 		18F98528272900D00077B7FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F98527272900D00077B7FE /* GoogleService-Info.plist */; };
-		18F9852A27290BF40077B7FE /* BottomNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9852927290BF40077B7FE /* BottomNav.swift */; };
 		881A946FFA6EC6C367F51BE2 /* Pods_team10app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */; };
 		B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */; };
 		B20E9ECA271FA2BC002BA590 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9EC9271FA2BC002BA590 /* SceneDelegate.swift */; };
@@ -35,7 +34,6 @@
 		18DAF455272A6B680008B4A3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		18DAF458272B1F9D0008B4A3 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		18F98527272900D00077B7FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		18F9852927290BF40077B7FE /* BottomNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNav.swift; sourceTree = "<group>"; };
 		7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20E9EC4271FA2BC002BA590 /* team10app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = team10app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 		18DAF457272B1D980008B4A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				18F9852927290BF40077B7FE /* BottomNav.swift */,
 				18DAF458272B1F9D0008B4A3 /* AppView.swift */,
 			);
 			path = Views;
@@ -296,7 +293,6 @@
 				18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */,
 				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
-				18F9852A27290BF40077B7FE /* BottomNav.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
