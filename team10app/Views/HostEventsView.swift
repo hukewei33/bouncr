@@ -27,7 +27,7 @@ struct HostEventsView: View {
   
   var body: some View {
     NavigationView {
-      Text("Cards here")
+      HostEventCard()
         .navigationTitle("Your Events")
     }
   }
