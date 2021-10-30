@@ -11,7 +11,7 @@ struct AppView: View {
     var body: some View {
       TabView {
         //My Events page
-        Text("Replace this Text() w/ host page")
+        HostEventsView()
         .tabItem {
           Image(systemName: "calendar")
           Text("Your Events")
@@ -33,8 +33,8 @@ struct AppView: View {
       .padding(.top)
       .onAppear() {
           UITabBar.appearance().barTintColor = .white
-        
       }
+      .edgesIgnoringSafeArea(.top) //Makes top nav bar stretch all the way to top of device
     }
 }
 

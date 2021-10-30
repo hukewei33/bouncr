@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF455272A6B680008B4A3 /* ViewModel.swift */; };
 		18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF458272B1F9D0008B4A3 /* AppView.swift */; };
+		18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF45A272B71890008B4A3 /* HostEventsView.swift */; };
 		18F98528272900D00077B7FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F98527272900D00077B7FE /* GoogleService-Info.plist */; };
 		881A946FFA6EC6C367F51BE2 /* Pods_team10app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */; };
 		B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 		0C2769A3E92908E5F7EF0E7A /* Pods-team10app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10app.release.xcconfig"; path = "Target Support Files/Pods-team10app/Pods-team10app.release.xcconfig"; sourceTree = "<group>"; };
 		18DAF455272A6B680008B4A3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		18DAF458272B1F9D0008B4A3 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		18DAF45A272B71890008B4A3 /* HostEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventsView.swift; sourceTree = "<group>"; };
 		18F98527272900D00077B7FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20E9EC4271FA2BC002BA590 /* team10app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = team10app.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				18DAF458272B1F9D0008B4A3 /* AppView.swift */,
+				18DAF45A272B71890008B4A3 /* HostEventsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */,
 				18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */,
 				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
+				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
 			);
