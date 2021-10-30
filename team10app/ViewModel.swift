@@ -10,24 +10,9 @@ import Combine
 
 class ViewModel: ObservableObject {
   
-//  func goBack() {
-//    webViewOptionsPublisher.send(.back)
-//  }
-//
-//  func goForward() {
-//    webViewOptionsPublisher.send(.forward)
-//  }
-//
-//  func share() {
-//    webViewOptionsPublisher.send(.share)
-//  }
+  @Published var events = [Event]()
+  
+  
 
   
-}
-
-
-enum NavBarOptions {
-  case myEvents
-  case invitations
-  case profile
 }

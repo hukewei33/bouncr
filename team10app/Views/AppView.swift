@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct AppView: View {
+  
+  var viewModel: ViewModel
+  
     var body: some View {
       TabView {
         //My Events page
-        HostEventsView()
+        HostEventsView(viewModel: viewModel)
         .tabItem {
           Image(systemName: "calendar")
           Text("Your Events")
@@ -38,8 +41,3 @@ struct AppView: View {
     }
 }
 
-struct AppView_Previews: PreviewProvider {
-    static var previews: some View {
-        AppView()
-    }
-}
