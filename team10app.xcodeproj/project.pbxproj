@@ -11,6 +11,11 @@
 		18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF458272B1F9D0008B4A3 /* AppView.swift */; };
 		18F98528272900D00077B7FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F98527272900D00077B7FE /* GoogleService-Info.plist */; };
 		881A946FFA6EC6C367F51BE2 /* Pods_team10app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */; };
+		9D93695D272BBEF800A7D9B3 /* InvitationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D93695C272BBEF700A7D9B3 /* InvitationsView.swift */; };
+		9DED3991272C6B6000D1A391 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DED3990272C6B6000D1A391 /* ProfileView.swift */; };
+		9DED3993272CCA7000D1A391 /* InvitationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DED3992272CCA7000D1A391 /* InvitationDetailView.swift */; };
+		9DED3995272CCBA300D1A391 /* InvitationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DED3994272CCBA300D1A391 /* InvitationCard.swift */; };
+		9DED3997272D8FE500D1A391 /* InvitationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DED3996272D8FE500D1A391 /* InvitationStack.swift */; };
 		B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */; };
 		B20E9ECA271FA2BC002BA590 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9EC9271FA2BC002BA590 /* SceneDelegate.swift */; };
 		B20E9ECC271FA2BC002BA590 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9ECB271FA2BC002BA590 /* ContentView.swift */; };
@@ -35,6 +40,11 @@
 		18DAF458272B1F9D0008B4A3 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		18F98527272900D00077B7FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D93695C272BBEF700A7D9B3 /* InvitationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationsView.swift; sourceTree = "<group>"; };
+		9DED3990272C6B6000D1A391 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9DED3992272CCA7000D1A391 /* InvitationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationDetailView.swift; sourceTree = "<group>"; };
+		9DED3994272CCBA300D1A391 /* InvitationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCard.swift; sourceTree = "<group>"; };
+		9DED3996272D8FE500D1A391 /* InvitationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationStack.swift; sourceTree = "<group>"; };
 		B20E9EC4271FA2BC002BA590 /* team10app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = team10app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B20E9EC9271FA2BC002BA590 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +83,11 @@
 			isa = PBXGroup;
 			children = (
 				18DAF458272B1F9D0008B4A3 /* AppView.swift */,
+				9D93695C272BBEF700A7D9B3 /* InvitationsView.swift */,
+				9DED3994272CCBA300D1A391 /* InvitationCard.swift */,
+				9DED3996272D8FE500D1A391 /* InvitationStack.swift */,
+				9DED3992272CCA7000D1A391 /* InvitationDetailView.swift */,
+				9DED3990272C6B6000D1A391 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,14 +297,19 @@
 				B2BB3CB727272DF100C6DB94 /* UserInterface.swift in Sources */,
 				B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */,
 				B2BB3CB327272BAC00C6DB94 /* Invite.swift in Sources */,
+				9DED3995272CCBA300D1A391 /* InvitationCard.swift in Sources */,
+				9D93695D272BBEF800A7D9B3 /* InvitationsView.swift in Sources */,
 				B250866227278E5000FD9D9C /* Controller.swift in Sources */,
 				18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */,
 				B20E9ECA271FA2BC002BA590 /* SceneDelegate.swift in Sources */,
 				B2BB3CBB27273BDC00C6DB94 /* HostInterface.swift in Sources */,
 				B2BB3CB527272C4B00C6DB94 /* Host.swift in Sources */,
+				9DED3991272C6B6000D1A391 /* ProfileView.swift in Sources */,
+				9DED3993272CCA7000D1A391 /* InvitationDetailView.swift in Sources */,
 				B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */,
 				B20E9ECC271FA2BC002BA590 /* ContentView.swift in Sources */,
 				B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */,
+				9DED3997272D8FE500D1A391 /* InvitationStack.swift in Sources */,
 				18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */,
 				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
@@ -435,14 +455,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"team10app/Preview Content\"";
-				DEVELOPMENT_TEAM = V9LGP2662T;
+				DEVELOPMENT_TEAM = R38454R9TK;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = team10app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = team10appSara.67443;
+				PRODUCT_BUNDLE_IDENTIFIER = team10appGraceJoseph.67443;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -457,14 +477,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"team10app/Preview Content\"";
-				DEVELOPMENT_TEAM = V9LGP2662T;
+				DEVELOPMENT_TEAM = R38454R9TK;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = team10app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = team10appSara.67443;
+				PRODUCT_BUNDLE_IDENTIFIER = team10appGraceJoseph.67443;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

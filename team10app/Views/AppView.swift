@@ -8,23 +8,33 @@
 import SwiftUI
 
 struct AppView: View {
+  
+    @ObservedObject var viewModel = ViewModel()
+  
     var body: some View {
       TabView {
+        
         //My Events page
+        
         Text("Replace this Text() w/ host page")
         .tabItem {
           Image(systemName: "calendar")
           Text("Your Events")
         }
         
+        
         //Invitations Page
-        Text("Replace this Text() w/ attendee page")
+        
+        InvitationsView()
         .tabItem {
           Image(systemName: "envelope")
           Text("Invitations")
         }
         
-        Text("Replace this Text() w/ profile page")
+        
+        // Profile Page
+        
+        ProfileView(user: viewModel.mainUser)
         .tabItem {
           Image(systemName: "person.crop.circle")
           Text("Profile")
@@ -40,6 +50,6 @@ struct AppView: View {
 
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView()
+      AppView()
     }
 }
