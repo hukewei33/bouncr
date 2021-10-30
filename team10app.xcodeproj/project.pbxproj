@@ -18,6 +18,8 @@
 		B20E9EDF271FA388002BA590 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B20E9EDE271FA388002BA590 /* GoogleService-Info.plist */; };
 		B250866227278E5000FD9D9C /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866127278E5000FD9D9C /* Controller.swift */; };
 		B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2508663272797B200FD9D9C /* InviteInterface.swift */; };
+		B250866C272B236B00FD9D9C /* team10appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866B272B236B00FD9D9C /* team10appTests.swift */; };
+		B2508674272DC77100FD9D9C /* InterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2508673272DC77100FD9D9C /* InterfaceTest.swift */; };
 		B2BB3CAF272729A000C6DB94 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CAE272729A000C6DB94 /* User.swift */; };
 		B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CB027272A7800C6DB94 /* Event.swift */; };
 		B2BB3CB327272BAC00C6DB94 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CB227272BAC00C6DB94 /* Invite.swift */; };
@@ -26,6 +28,16 @@
 		B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CB82727369D00C6DB94 /* EventInterface.swift */; };
 		B2BB3CBB27273BDC00C6DB94 /* HostInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B250866E272B236B00FD9D9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B20E9EBC271FA2BC002BA590 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B20E9EC3271FA2BC002BA590;
+			remoteInfo = team10app;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0C2769A3E92908E5F7EF0E7A /* Pods-team10app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10app.release.xcconfig"; path = "Target Support Files/Pods-team10app/Pods-team10app.release.xcconfig"; sourceTree = "<group>"; };
@@ -42,6 +54,10 @@
 		B20E9EDE271FA388002BA590 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B250866127278E5000FD9D9C /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		B2508663272797B200FD9D9C /* InviteInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteInterface.swift; sourceTree = "<group>"; };
+		B2508669272B236B00FD9D9C /* team10appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = team10appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B250866B272B236B00FD9D9C /* team10appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = team10appTests.swift; sourceTree = "<group>"; };
+		B250866D272B236B00FD9D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2508673272DC77100FD9D9C /* InterfaceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceTest.swift; sourceTree = "<group>"; };
 		B28FB1B0271FA64A008D25ED /* sprint3.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = sprint3.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B2BB3CAE272729A000C6DB94 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B2BB3CB027272A7800C6DB94 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -62,6 +78,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B2508666272B236B00FD9D9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				B20E9EC6271FA2BC002BA590 /* team10app */,
+				B250866A272B236B00FD9D9C /* team10appTests */,
 				B20E9EC5271FA2BC002BA590 /* Products */,
 				DBACACAA5C12F5DAA3F92D74 /* Pods */,
 				9CAF919EA2216ACF69973C79 /* Frameworks */,
@@ -87,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				B20E9EC4271FA2BC002BA590 /* team10app.app */,
+				B2508669272B236B00FD9D9C /* team10appTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +143,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		B250866A272B236B00FD9D9C /* team10appTests */ = {
+			isa = PBXGroup;
+			children = (
+				B250866B272B236B00FD9D9C /* team10appTests.swift */,
+				B250866D272B236B00FD9D9C /* Info.plist */,
+				B2508673272DC77100FD9D9C /* InterfaceTest.swift */,
+			);
+			path = team10appTests;
+			sourceTree = "<group>";
+		};
 		B28FB1AF271FA5F3008D25ED /* Playgrounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,8 +167,8 @@
 				B2BB3CAE272729A000C6DB94 /* User.swift */,
 				B2BB3CB027272A7800C6DB94 /* Event.swift */,
 				B2BB3CB227272BAC00C6DB94 /* Invite.swift */,
-				B2508663272797B200FD9D9C /* InviteInterface.swift */,
 				B2BB3CB427272C4B00C6DB94 /* Host.swift */,
+				B2508663272797B200FD9D9C /* InviteInterface.swift */,
 				B2BB3CB627272DF100C6DB94 /* UserInterface.swift */,
 				B2BB3CB82727369D00C6DB94 /* EventInterface.swift */,
 				B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */,
@@ -172,6 +207,24 @@
 			productReference = B20E9EC4271FA2BC002BA590 /* team10app.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B2508668272B236B00FD9D9C /* team10appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2508672272B236B00FD9D9C /* Build configuration list for PBXNativeTarget "team10appTests" */;
+			buildPhases = (
+				B2508665272B236B00FD9D9C /* Sources */,
+				B2508666272B236B00FD9D9C /* Frameworks */,
+				B2508667272B236B00FD9D9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B250866F272B236B00FD9D9C /* PBXTargetDependency */,
+			);
+			name = team10appTests;
+			productName = team10appTests;
+			productReference = B2508669272B236B00FD9D9C /* team10appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -183,6 +236,10 @@
 				TargetAttributes = {
 					B20E9EC3271FA2BC002BA590 = {
 						CreatedOnToolsVersion = 12.5.1;
+					};
+					B2508668272B236B00FD9D9C = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = B20E9EC3271FA2BC002BA590;
 					};
 				};
 			};
@@ -200,6 +257,7 @@
 			projectRoot = "";
 			targets = (
 				B20E9EC3271FA2BC002BA590 /* team10app */,
+				B2508668272B236B00FD9D9C /* team10appTests */,
 			);
 		};
 /* End PBXProject section */
@@ -213,6 +271,13 @@
 				B20E9EDF271FA388002BA590 /* GoogleService-Info.plist in Resources */,
 				B20E9ED4271FA2BE002BA590 /* Preview Assets.xcassets in Resources */,
 				B20E9ED1271FA2BE002BA590 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2508667272B236B00FD9D9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +346,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B2508665272B236B00FD9D9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B250866C272B236B00FD9D9C /* team10appTests.swift in Sources */,
+				B2508674272DC77100FD9D9C /* InterfaceTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B250866F272B236B00FD9D9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B20E9EC3271FA2BC002BA590 /* team10app */;
+			targetProxy = B250866E272B236B00FD9D9C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B20E9ED5271FA2BE002BA590 /* LaunchScreen.storyboard */ = {
@@ -455,6 +537,44 @@
 			};
 			name = Release;
 		};
+		B2508670272B236B00FD9D9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = team10appTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "-7443.team10appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/team10app.app/team10app";
+			};
+			name = Debug;
+		};
+		B2508671272B236B00FD9D9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = team10appTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "-7443.team10appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/team10app.app/team10app";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -472,6 +592,15 @@
 			buildConfigurations = (
 				B20E9EDC271FA2BE002BA590 /* Debug */,
 				B20E9EDD271FA2BE002BA590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2508672272B236B00FD9D9C /* Build configuration list for PBXNativeTarget "team10appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2508670272B236B00FD9D9C /* Debug */,
+				B2508671272B236B00FD9D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

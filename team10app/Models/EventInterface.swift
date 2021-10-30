@@ -13,7 +13,7 @@ class EventInterface {
     var Events: [Event] = []
     
     init(){
-        self.populate()
+        self.fetch(){events in return}
     }
     
     let eventsReference = Database.database().reference(withPath: "events")
@@ -39,7 +39,7 @@ class EventInterface {
         }        
     }
     
-    func populate(){
+    func fetch(completionHandler: @escaping ([Event]) -> Void){
         self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
             var newEvents: [Event] = []
             for child in snapshot.children {
@@ -50,6 +50,7 @@ class EventInterface {
                 }
             }
             self.Events = newEvents
+            completionHandler(self.Events)
         })
     }
     

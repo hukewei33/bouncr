@@ -12,12 +12,16 @@ class InviteInterface{
     var Invites: [Invite] = []
     let invitesReference = Database.database().reference(withPath: "invites")
     
+    init(){
+        self.fetch(){invites in return}
+    }
+    
     
     func create(userKey: String, eventKey: String)-> String?{
         let keyResult :String? = self.invitesReference.childByAutoId().key
         if let userId = keyResult{
-            let newInvite = Invite(userKey: "Sam",
-                            eventKey:  "TomParty")
+            let newInvite = Invite(userKey: userKey,
+                            eventKey:  eventKey)
             self.invitesReference.child(userId).setValue(newInvite.toAnyObject())
             return userId
         }
@@ -27,7 +31,7 @@ class InviteInterface{
         }
     }
     
-    func read(){
+    func fetch(completionHandler: @escaping ([Invite]) -> Void){
         self.invitesReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
             var newInvites: [Invite] = []
             for child in snapshot.children {
@@ -38,6 +42,7 @@ class InviteInterface{
                 }
             }
             self.Invites = newInvites
+            completionHandler(self.Invites)
         })
     }
     
