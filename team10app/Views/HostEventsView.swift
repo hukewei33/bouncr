@@ -9,10 +9,12 @@ import SwiftUI
 
 struct HostEventsView: View {
   
+  //CITATION: The following code for changing top nav bar color comes from here:
+  //https://levelup.gitconnected.com/cracking-the-navigation-bar-secrets-with-swiftui-30e9b019502c
   init() {
     let coloredAppearance = UINavigationBarAppearance()
     coloredAppearance.configureWithOpaqueBackground()
-    coloredAppearance.backgroundColor = .systemBlue
+    coloredAppearance.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)
     coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
     coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
     
