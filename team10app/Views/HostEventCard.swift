@@ -9,12 +9,14 @@ import SwiftUI
 
 struct HostEventCard: View {
   
-  var viewModel: ViewModel
+  //var viewModel: ViewModel
+  //var event: Event
   
   var body: some View {
     VStack {
       HStack {
         Text("Date, Time")
+        //Text(String(event.startTime))
           .bold()
           .font(.system(size: 12))
           .foregroundColor(Color(#colorLiteral(red: 0.4470588235, green: 0.4470588235, blue: 0.4470588235, alpha: 1)))
@@ -34,7 +36,6 @@ struct HostEventCard: View {
           Text("Address")
             .font(.system(size: 12))
             .foregroundColor(Color(#colorLiteral(red: 0.4470588235, green: 0.4470588235, blue: 0.4470588235, alpha: 1)))
-          
         }
         
         Spacer()
@@ -48,7 +49,7 @@ struct HostEventCard: View {
             .font(.system(size: 12))
         }
       }
-      .padding()
+      .padding(EdgeInsets(top: 2, leading: 15, bottom: 20, trailing: 15))
     }
     .cornerRadius(10)
     .overlay(

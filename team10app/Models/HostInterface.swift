@@ -8,12 +8,12 @@
 import Foundation
 import Firebase
 
-class HostInterface{
+class HostInterface {
     var Hosts: [Host] = []
     let hostsReference = Database.database().reference(withPath: "hosts")
     
     init(userKey:String){
-        self.populate(userKey:userKey)
+      self.populate(userKey:userKey)
     }
     
     func create(userKey: String, eventKey: String)-> String?{
@@ -31,20 +31,20 @@ class HostInterface{
         }
     }
     
-    func populate (userKey:String){
-            self.hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
-            var newHosts: [Host] = []
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let host = Host(snapshot: snapshot) {
-                    if host.userKey == userKey{
-                        newHosts.append(host)
-                        //print(host.userKey)
-                    }
+    func populate(userKey:String) {
+      self.hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
+        var newHosts: [Host] = []
+        for child in snapshot.children {
+            if let snapshot = child as? DataSnapshot,
+               let host = Host(snapshot: snapshot) {
+                if host.userKey == userKey{
+                  newHosts.append(host)
+                  //print(host.userKey)
                 }
             }
-            self.Hosts = newHosts
-        })
+        }
+        self.Hosts = newHosts
+      })
     }
     
     func update(key:String, updateVals:[String : Any]){
