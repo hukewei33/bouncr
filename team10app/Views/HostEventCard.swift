@@ -14,6 +14,7 @@ struct HostEventCard: View {
   
   var body: some View {
     VStack {
+      //Date & Time of upcoming event
       HStack {
         Text("Date, Time")
         //Text(String(event.startTime))
@@ -25,7 +26,7 @@ struct HostEventCard: View {
       }
       .padding([.top, .horizontal])
       
-      
+      //Event name, address, and num guests all in one row
       HStack {
         VStack(alignment: .leading) {
           Text("EventName")
@@ -49,14 +50,29 @@ struct HostEventCard: View {
             .font(.system(size: 12))
         }
       }
-      .padding(EdgeInsets(top: 2, leading: 15, bottom: 20, trailing: 15))
+      .padding(EdgeInsets(top: 2, leading: 15, bottom: 15, trailing: 15))
+      
+      //"More details" button
+      Button(action: {print("Pressed More Details")}, label: {
+        Text("More details")
+          .font(.system(size: 15))
+          .padding(10)
+      })
+      .frame(width: 300)
+      .cornerRadius(10)
+      .overlay(
+          RoundedRectangle(cornerRadius: 10)
+              .stroke(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)), lineWidth: 1)
+      )
+      
     }
     .cornerRadius(10)
+    .padding(.bottom)
     .overlay(
         RoundedRectangle(cornerRadius: 10)
             .stroke(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)), lineWidth: 1)
     )
-    .padding([.top, .horizontal])
+    .padding([.bottom, .horizontal])
   }
 }
 

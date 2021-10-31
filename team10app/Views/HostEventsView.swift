@@ -36,7 +36,7 @@ struct HostEventsView: View {
           Text("Upcoming Events")
             .bold()
             .font(.system(size: 22))
-            .padding([.top, .horizontal])
+            .padding()
           //Use loop here to create a card for each item in Events list
   //        ForEach(0..<viewModel.hostEvents.count, id: \.self) { index in
   //          HostEventCard(event: viewModel.hostEvents[index])
