@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-struct Event {
+struct Event : Hashable {
 
     let ref: DatabaseReference?
     let key: String

@@ -45,6 +45,7 @@ struct AppView: View {
           UITabBar.appearance().barTintColor = .white
         
       }
+      .edgesIgnoringSafeArea(.top) //Makes top nav bar stretch all the way to top of device
     }
 }
 

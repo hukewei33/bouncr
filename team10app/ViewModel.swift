@@ -13,7 +13,13 @@ import Firebase
 
 class ViewModel: ObservableObject {
   
+  let userInterface = UserInterface(userKey: "Dick")
+  let eventInterface = EventInterface()
+  let hostInterface = HostInterface(userKey: "Dick")
+  let inviteInterface = InviteInterface()
+  
   @Published var eventInvitations = [Event]()
+  @Published var allEvents = [Event]()
   @Published var mainUser = User(firstName: "Dwight", lastName: "Schrute", email: "beets@gmail.com", username: "battlestarForever", profilePicURL: "")
   
   let appDelegate: AppDelegate = AppDelegate()
@@ -21,43 +27,47 @@ class ViewModel: ObservableObject {
   let eventsReference = Database.database().reference(withPath: "events")
 
   func getEvents() {
-    
+
     eventsReference.queryOrdered(byChild: "name").observe(.value, with: {
       snapshot in
-      
-      var newEventInvitations: [Event] = []
+
       for child in snapshot.children {
-        
+
         if let snapshot = child as? DataSnapshot,
-           
+
            let event = Event(snapshot: snapshot) {
+
+          self.allEvents.append(event)
           
-          newEventInvitations.append(event)
-          print(event)
-          print(snapshot)
         }
-        
+
       }
-      
-      self.eventInvitations = newEventInvitations
-      
+
     })
 
   }
-    
   
-//  func goBack() {
-//    webViewOptionsPublisher.send(.back)
-//  }
-//
-//  func goForward() {
-//    webViewOptionsPublisher.send(.forward)
-//  }
-//
-//  func share() {
-//    webViewOptionsPublisher.send(.share)
-//  }
-
+  
+  func indexGuestEvents() -> [Event]{
+      let eventIDs = self.inviteInterface.Invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
+      let myEvents = self.eventInterface.Events.filter {eventIDs.contains($0.key)}
+      print("eventIDS", eventIDs)
+      self.eventInvitations = myEvents
+      return myEvents
+  }
+  
+  init() {
+    
+  indexGuestEvents()
+  getEvents()
+  eventInterface.populate()
+    print("helllllo")
+    print(self.allEvents)
+    
+  }
+  
+  
+    
   
 }
 

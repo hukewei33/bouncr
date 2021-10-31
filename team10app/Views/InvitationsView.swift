@@ -16,17 +16,25 @@ struct InvitationsView: View {
       
       NavigationView {
         
-        ZStack {
-            
-//          ForEach(viewModel.eventInvitations) { event in
-            
-            
-            
-          //}
-            
-        }.navigationBarTitle("Invitations")
+        ScrollView {
+          
+          // invitations stack
+          ZStack {
+              
+            ForEach(0..<viewModel.allEvents.count, id: \.self) { index in
+              
+              InviteCard(event: viewModel.allEvents[index])
+                .offset(y: CGFloat(index*80))
+              
+            }
+              
+          }
+          
+        }
+        .padding(50)
+        .navigationBarTitle("Invitations")
         
-      }
+      }.edgesIgnoringSafeArea(.top)
       
     }
       

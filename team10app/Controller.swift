@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-class Controller{
+class Controller {
     let userInterface = UserInterface(userKey: "userKey")
     let eventInterface = EventInterface()
     let hostInterface = HostInterface(userKey: "userKey")

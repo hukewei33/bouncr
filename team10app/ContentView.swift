@@ -19,6 +19,7 @@ struct ContentView: View {
     UINavigationBar.appearance().largeTitleTextAttributes =
       [ .foregroundColor: UIColor.white ]
     
+    
   }
   
   
