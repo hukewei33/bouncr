@@ -25,14 +25,21 @@ struct HostOngoingEventCard: View {
         //Event name, address, and scan QR button all in one row
         HStack {
           VStack(alignment: .leading) {
-            Text("EventName")
-              .font(.system(size: 28))
-              .foregroundColor(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
-              .padding(.bottom, 1)
+            HStack {
+              Text("EventName")
+                .font(.system(size: 28))
+                .foregroundColor(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
+                .padding(.bottom, 1)
+                .lineLimit(1)
+              Circle()
+                .fill(Color(#colorLiteral(red: 0.262745098, green: 0.8784313725, blue: 0, alpha: 1)))
+                .frame(width: 12, height: 12)
+            }
             
             Text("Address")
               .font(.system(size: 17))
               .foregroundColor(Color(#colorLiteral(red: 0.4470588235, green: 0.4470588235, blue: 0.4470588235, alpha: 1)))
+              .lineLimit(1)
           }
           
           Spacer()

@@ -33,10 +33,12 @@ struct HostUpcomingEventCard: View {
             .font(.system(size: 22))
             .foregroundColor(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
             .padding(.bottom, 1)
+            .lineLimit(1)
           
           Text("Address")
             .font(.system(size: 12))
             .foregroundColor(Color(#colorLiteral(red: 0.4470588235, green: 0.4470588235, blue: 0.4470588235, alpha: 1)))
+            .lineLimit(1)
         }
         
         Spacer()
