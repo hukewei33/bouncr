@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HostEventCard: View {
+struct HostUpcomingEventCard: View {
   
   //var viewModel: ViewModel
   //var event: Event
@@ -53,17 +53,7 @@ struct HostEventCard: View {
       .padding(EdgeInsets(top: 2, leading: 15, bottom: 15, trailing: 15))
       
       //"More details" button
-      Button(action: {print("Pressed More Details")}, label: {
-        Text("More details")
-          .font(.system(size: 15))
-          .padding(10)
-      })
-      .frame(width: 300)
-      .cornerRadius(10)
-      .overlay(
-          RoundedRectangle(cornerRadius: 10)
-              .stroke(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)), lineWidth: 1)
-      )
+      MoreDetailsButton()
       
     }
     .cornerRadius(10)

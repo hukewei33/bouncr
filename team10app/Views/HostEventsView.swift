@@ -33,6 +33,19 @@ struct HostEventsView: View {
     NavigationView {
       ScrollView {
         VStack(alignment: .leading) {
+          //Ongoing events
+          Text("Ongoing Events")
+            .bold()
+            .font(.system(size: 22))
+            .padding()
+          //Use loop here to create a card for each item in Events list
+  //        ForEach(0..<viewModel.hostEvents.count, id: \.self) { index in
+  //          HostEventCard(event: viewModel.hostEvents[index])
+  //        }
+          HostOngoingEventCard()
+          HostOngoingEventCard()
+          
+          //Upcoming events
           Text("Upcoming Events")
             .bold()
             .font(.system(size: 22))
@@ -41,14 +54,13 @@ struct HostEventsView: View {
   //        ForEach(0..<viewModel.hostEvents.count, id: \.self) { index in
   //          HostEventCard(event: viewModel.hostEvents[index])
   //        }
-          HostEventCard()
-          HostEventCard()
-          HostEventCard()
-          HostEventCard()
-          HostEventCard()
-          HostEventCard()
+          HostUpcomingEventCard()
+          HostUpcomingEventCard()
+          HostUpcomingEventCard()
+          HostUpcomingEventCard()
+          HostUpcomingEventCard()
+          HostUpcomingEventCard()
           
-          Spacer()
         }
       }
         .navigationTitle("Your Events")
