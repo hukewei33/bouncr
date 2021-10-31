@@ -11,10 +11,10 @@ import Firebase
 
 class ViewModel: ObservableObject {
   
-  let userInterface = UserInterface(userKey: "Tom")
-  let eventInterface = EventInterface()
-  let hostInterface = HostInterface(userKey: "Tom")
-  let inviteInterface = InviteInterface()
+  let userInterface: UserInterface
+  let eventInterface: EventInterface
+  //let hostInterface: HostInterface
+  let inviteInterface: InviteInterface
   
   let hostsReference = Database.database().reference(withPath: "hosts")
   let appDelegate: AppDelegate = AppDelegate()
@@ -22,27 +22,24 @@ class ViewModel: ObservableObject {
   @Published var hosts: [Host] = [Host]()
   @Published var hostEvents: [Event] = [Event]()
   
-  func createEvent(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
-      if let newEventID = self.eventInterface.create(name: name, startTime: startTime,street1:  street1, street2: street2,city: city,zip:zip,state: state, description: description ),
-         let userID = self.userInterface.CurrentUser?.key {
-          return self.hostInterface.create(userKey: userID, eventKey: newEventID)
-      }
-      else{
-          print("failed create new event hosting")
-          return nil
-      }
-  }
+//  func createEvent(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
+//      if let newEventID = self.eventInterface.create(name: name, startTime: startTime,street1:  street1, street2: street2,city: city,zip:zip,state: state, description: description ),
+//         let userID = self.userInterface.CurrentUser?.key {
+//          return self.hostInterface.create(userKey: userID, eventKey: newEventID)
+//      }
+//      else{
+//          print("failed create new event hosting")
+//          return nil
+//      }
+//  }
   
-  func indexHostEvents() {
+  func indexHostEvents() -> [Event] {
     print("indexHostEvents!!!")
-    getHosts(userKey: "Tom")
+    //getHosts(userKey: "Tom")
     let eventIDs: [String] = self.hosts.map {$0.eventKey}
-    print("eventIDs.count: ", eventIDs.count)
-    print("hosts: ", self.hosts)
     let myEvents = self.eventInterface.Events.filter {eventIDs.contains($0.key)}
-    print("myEvents.count: ", myEvents.count)
     self.hostEvents = myEvents
-    //return myEvents
+    return myEvents
   }
   
   //For some reason, this is only called after everything else
@@ -79,7 +76,11 @@ class ViewModel: ObservableObject {
   }
   
   init() {
-    indexHostEvents()
+    userInterface = UserInterface(userKey: "userKey")
+    eventInterface = EventInterface()
+    //hostInterface = HostInterface(userKey: "userKey")
+    inviteInterface = InviteInterface()
+    getHosts(userKey: "Tom")
   }
   
 }

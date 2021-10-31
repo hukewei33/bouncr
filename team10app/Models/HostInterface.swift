@@ -43,6 +43,7 @@ class HostInterface {
                 }
             }
         }
+        print("newHosts.count", newHosts.count)
         self.Hosts = newHosts
       })
     }

@@ -10,14 +10,14 @@ import SwiftUI
 struct HostUpcomingEventCard: View {
   
   //var viewModel: ViewModel
-  //var event: Event
+  var event: Event
   
   var body: some View {
     VStack {
       //Date & Time of upcoming event
       HStack {
-        Text("Date, Time")
-        //Text(String(event.startTime))
+        //Text("Date, Time")
+        Text(String(event.startTime))
           .bold()
           .font(.system(size: 12))
           .foregroundColor(Color(#colorLiteral(red: 0.4470588235, green: 0.4470588235, blue: 0.4470588235, alpha: 1)))
