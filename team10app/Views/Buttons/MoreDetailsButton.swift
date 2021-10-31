@@ -18,10 +18,12 @@ struct MoreDetailsButton: View {
         .padding(10)
     })
     .frame(width: 300)
+    .background(Color.white)
     .cornerRadius(10)
     .overlay(
         RoundedRectangle(cornerRadius: 10)
             .stroke(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)), lineWidth: 1)
     )
+    .padding(.bottom)
   }
 }

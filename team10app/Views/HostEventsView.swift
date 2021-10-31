@@ -43,7 +43,6 @@ struct HostEventsView: View {
   //          HostEventCard(event: viewModel.hostEvents[index])
   //        }
           HostOngoingEventCard()
-          HostOngoingEventCard()
           
           //Upcoming events
           Text("Upcoming Events")

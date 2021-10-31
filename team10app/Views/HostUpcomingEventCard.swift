@@ -57,7 +57,6 @@ struct HostUpcomingEventCard: View {
       
     }
     .cornerRadius(10)
-    .padding(.bottom)
     .overlay(
         RoundedRectangle(cornerRadius: 10)
             .stroke(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)), lineWidth: 1)
