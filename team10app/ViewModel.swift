@@ -156,5 +156,25 @@ class ViewModel: ObservableObject {
         }
     }
     
+    func checkin(inviteKey:String)->Bool{
+        //use invitekey to get invite
+        let thisInvite = self.invites.filter{$0.key == inviteKey}.map{$0.eventKey}
+        //use eventid of invite to get hosts
+        let hostIDs = self.hosts.filter{thisInvite.contains($0.eventKey)}.map{$0.key}
+        //check myid is one of the hosts
+        if hostIDs.contains("hostID"){
+            //update
+            self.inviteInterface.update(key: inviteKey, updateVals: ["checkinStatus" : true,"checkinTime":Date().timeIntervalSinceReferenceDate])
+            return true
+        }
+        else{
+            return false
+        }
+        
+        
+    }
+    
+
+    
 }
 
