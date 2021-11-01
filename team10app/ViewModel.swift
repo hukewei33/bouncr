@@ -127,7 +127,7 @@ class ViewModel: ObservableObject {
     }
     
     func viewEvent(key:String) -> Event?{
-        let myEvents = self.eventInterface.Events.filter {$0.key == key}
+        let myEvents = self.events.filter {$0.key == key}
         if myEvents.count == 1{
             return myEvents[0]
         }
@@ -138,9 +138,23 @@ class ViewModel: ObservableObject {
     }
     
     func indexGuestEvents()->[Event]{
-        let eventIDs = self.inviteInterface.Invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
-        let myEvents = self.eventInterface.Events.filter {eventIDs.contains($0.key)}
+        let eventIDs = self.invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
+        let myEvents = self.events.filter {eventIDs.contains($0.key)}
         return myEvents
     }
+    
+    //creates an event and host relationship, returns key of host (intermediate table)
+    func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
+        if let newEventID = self.eventInterface.create(name: name, startTime: startTime,endTime:endTime,street1:  street1, street2: street2,city: city,zip:zip,state: state, description: description ),
+           //we need a way to get login and store the user info of this user
+           let userID = self.userInterface.CurrentUser?.key {
+            return self.hostInterface.create(userKey: userID, eventKey: newEventID)
+        }
+        else{
+            print("failed create new event hosting")
+            return nil
+        }
+    }
+    
 }
 

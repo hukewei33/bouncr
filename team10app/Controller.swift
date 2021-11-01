@@ -21,8 +21,8 @@ class Controller{
     
     
     //creates an event and host relationship, returns key of host (intermediate table)
-    func createEvent(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
-        if let newEventID = self.eventInterface.create(name: name, startTime: startTime,street1:  street1, street2: street2,city: city,zip:zip,state: state, description: description ),
+    func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
+        if let newEventID = self.eventInterface.create(name: name, startTime: startTime,endTime:endTime,street1:  street1, street2: street2,city: city,zip:zip,state: state, description: description ),
            let userID = self.userInterface.CurrentUser?.key {
             return self.hostInterface.create(userKey: userID, eventKey: newEventID)
         }
@@ -30,7 +30,6 @@ class Controller{
             print("failed create new event hosting")
             return nil
         }
-        
     }
     
     //index the events a user is hosting
