@@ -9,12 +9,12 @@ import SwiftUI
 
 struct HostEventsView: View {
   
-  var viewModel: ViewModel
+  @ObservedObject var viewModel: ViewModel
   var events: [Event]
   
   //CITATION: The following code for changing top nav bar color comes from here:
   //https://levelup.gitconnected.com/cracking-the-navigation-bar-secrets-with-swiftui-30e9b019502c
-  init(viewModel: ViewModel) {
+  init(viewModel: ViewModel, events: [Event]) {
     let coloredAppearance = UINavigationBarAppearance()
     coloredAppearance.configureWithOpaqueBackground()
     coloredAppearance.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)
@@ -28,7 +28,7 @@ struct HostEventsView: View {
     UINavigationBar.appearance().tintColor = .white
     
     self.viewModel = viewModel
-    self.events = viewModel.indexHostEvents()
+    self.events = events
   }
   
   var body: some View {
@@ -52,7 +52,6 @@ struct HostEventsView: View {
               .bold()
               .font(.system(size: 22))
               .padding()
-           // Use loop here to create a card for each item in Events list
             ForEach(0..<self.events.count, id: \.self) { index in
               HostUpcomingEventCard(event: self.events[index])
             }
