@@ -8,7 +8,8 @@
 import Foundation
 import Firebase
 
-class UserInterface{
+class UserInterface {
+  
     var Users: [User] = []
     var CurrentUser : User? = nil
     

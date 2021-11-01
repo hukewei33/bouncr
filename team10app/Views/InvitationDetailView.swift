@@ -11,13 +11,30 @@ import SwiftUI
 struct InvitationDetailView: View {
   
   @ObservedObject var viewModel = ViewModel()
-  var event: Event
   
-    var body: some View {
+  var position: CGFloat
+  
+  var body: some View {
+  
       
-      VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-        /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-      })
+      ScrollView(.horizontal, showsIndicators: false) {
+        
+        // invitations stack
+        HStack {
+            
+          ForEach(0..<viewModel.allEvents.count, id: \.self) { index in
+            
+           
+              InviteCard(event: viewModel.allEvents[index])
+                .offset(y: position)
+              
+            
+          }
+            
+        }
+        
+      }
+      
       
     }
   

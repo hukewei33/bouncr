@@ -13,10 +13,10 @@ import Firebase
 
 class ViewModel: ObservableObject {
   
-  let userInterface = UserInterface(userKey: "Dick")
-  let eventInterface = EventInterface()
-  let hostInterface = HostInterface(userKey: "Dick")
-  let inviteInterface = InviteInterface()
+  var userInterface = UserInterface(userKey: "Dick")
+  var eventInterface = EventInterface()
+  var hostInterface = HostInterface(userKey: "Dick")
+  var inviteInterface = InviteInterface()
   
   @Published var eventInvitations = [Event]()
   @Published var allEvents = [Event]()
@@ -49,20 +49,21 @@ class ViewModel: ObservableObject {
   
   
   func indexGuestEvents() -> [Event]{
-      let eventIDs = self.inviteInterface.Invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
-      let myEvents = self.eventInterface.Events.filter {eventIDs.contains($0.key)}
+      let eventIDs = inviteInterface.Invites.filter{$0.userKey == userInterface.CurrentUser?.key}.map {$0.eventKey}
+      let myEvents = eventInterface.Events.filter {eventIDs.contains($0.key)}
       print("eventIDS", eventIDs)
-      self.eventInvitations = myEvents
+      eventInvitations = myEvents
       return myEvents
   }
   
   init() {
-    
-  indexGuestEvents()
-  getEvents()
-  eventInterface.populate()
-    print("helllllo")
-    print(self.allEvents)
+  
+    getEvents()
+    self.eventInterface.populate()
+    print("pls workkkk", self.eventInterface.Events)
+  print("helllllo")
+//  print(indexGuestEvents())
+ 
     
   }
   

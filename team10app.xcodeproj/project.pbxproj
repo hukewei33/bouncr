@@ -13,6 +13,10 @@
 		881A946FFA6EC6C367F51BE2 /* Pods_team10app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */; };
 		9D8CC244272DC98800687207 /* InviteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8CC243272DC98800687207 /* InviteCard.swift */; };
 		9D8CC246272E171600687207 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8CC245272E171600687207 /* EventDetailsView.swift */; };
+		9D8CC249272F354400687207 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8CC248272F354400687207 /* QRViewController.swift */; };
+		9D8CC24B272F369E00687207 /* AttendeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8CC24A272F369D00687207 /* AttendeeViewController.swift */; };
+		9D8CC24D272F36A900687207 /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8CC24C272F36A900687207 /* HostViewController.swift */; };
+		9D8CC251272F514300687207 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8CC250272F514200687207 /* URLImage.swift */; };
 		9D93695D272BBEF800A7D9B3 /* InvitationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D93695C272BBEF700A7D9B3 /* InvitationsView.swift */; };
 		9DED3991272C6B6000D1A391 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DED3990272C6B6000D1A391 /* ProfileView.swift */; };
 		9DED3993272CCA7000D1A391 /* InvitationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DED3992272CCA7000D1A391 /* InvitationDetailView.swift */; };
@@ -44,6 +48,10 @@
 		7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8CC243272DC98800687207 /* InviteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCard.swift; sourceTree = "<group>"; };
 		9D8CC245272E171600687207 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
+		9D8CC248272F354400687207 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
+		9D8CC24A272F369D00687207 /* AttendeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeViewController.swift; sourceTree = "<group>"; };
+		9D8CC24C272F36A900687207 /* HostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
+		9D8CC250272F514200687207 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		9D93695C272BBEF700A7D9B3 /* InvitationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationsView.swift; sourceTree = "<group>"; };
 		9DED3990272C6B6000D1A391 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		9DED3992272CCA7000D1A391 /* InvitationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationDetailView.swift; sourceTree = "<group>"; };
@@ -92,6 +100,7 @@
 				9D8CC245272E171600687207 /* EventDetailsView.swift */,
 				9DED3992272CCA7000D1A391 /* InvitationDetailView.swift */,
 				9DED3990272C6B6000D1A391 /* ProfileView.swift */,
+				9D8CC250272F514200687207 /* URLImage.swift */,
 				9DCB4CED272DC64C007D85A6 /* Other */,
 			);
 			path = Views;
@@ -103,6 +112,16 @@
 				7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D8CC247272F351B00687207 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9D8CC248272F354400687207 /* QRViewController.swift */,
+				9D8CC24A272F369D00687207 /* AttendeeViewController.swift */,
+				9D8CC24C272F36A900687207 /* HostViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		9DCB4CED272DC64C007D85A6 /* Other */ = {
@@ -141,6 +160,7 @@
 				B20E9EC9271FA2BC002BA590 /* SceneDelegate.swift */,
 				B20E9ECB271FA2BC002BA590 /* ContentView.swift */,
 				B20E9ED0271FA2BE002BA590 /* Assets.xcassets */,
+				9D8CC247272F351B00687207 /* Controllers */,
 				18DAF457272B1D980008B4A3 /* Views */,
 				B20E9ED5271FA2BE002BA590 /* LaunchScreen.storyboard */,
 				B20E9ED8271FA2BE002BA590 /* Info.plist */,
@@ -308,10 +328,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D8CC24B272F369E00687207 /* AttendeeViewController.swift in Sources */,
 				B2BB3CB727272DF100C6DB94 /* UserInterface.swift in Sources */,
 				B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */,
 				B2BB3CB327272BAC00C6DB94 /* Invite.swift in Sources */,
 				9DED3995272CCBA300D1A391 /* InvitationCard.swift in Sources */,
+				9D8CC251272F514300687207 /* URLImage.swift in Sources */,
 				9D93695D272BBEF800A7D9B3 /* InvitationsView.swift in Sources */,
 				B250866227278E5000FD9D9C /* Controller.swift in Sources */,
 				18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */,
@@ -324,9 +346,11 @@
 				B20E9ECC271FA2BC002BA590 /* ContentView.swift in Sources */,
 				B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */,
 				9D8CC244272DC98800687207 /* InviteCard.swift in Sources */,
+				9D8CC249272F354400687207 /* QRViewController.swift in Sources */,
 				9DED3997272D8FE500D1A391 /* InvitationStack.swift in Sources */,
 				18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */,
 				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
+				9D8CC24D272F36A900687207 /* HostViewController.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
 				9D8CC246272E171600687207 /* EventDetailsView.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,

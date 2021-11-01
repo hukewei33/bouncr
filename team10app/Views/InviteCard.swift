@@ -7,10 +7,16 @@
 
 import Foundation
 import SwiftUI
+import CoreImage.CIFilterBuiltins
 
 struct InviteCard: View {
   
+  // controller responsible for generating the qr code
+  var qrViewController = QRViewController()
+  
+  // event associated with the invite
   var event: Event
+
   
   var body: some View {
     
@@ -24,15 +30,16 @@ struct InviteCard: View {
       // address
       Text(event.street1)
         .font(.system(size: 16))
-        .padding(.bottom)
+        .padding(.bottom, 10)
       
       // description
       if (event.description != nil){
         
         Text((event.description)!)
           .font(.system(size: 12))
-          .padding(.bottom)
-        
+          .padding(.bottom, 10)
+          .frame(height: 40)
+          .truncationMode(.tail)
       }
       
       
@@ -43,10 +50,12 @@ struct InviteCard: View {
       }
       
       
-      // QR CODE SHOULD GO HERE
-      
-      
-      
+      // qr code (i assumed the user id to be 1)
+      Image(uiImage: qrViewController.generateQRCode(from: "\(event.key)\n1"))
+          .interpolation(.none)
+          .resizable()
+          .scaledToFit()
+        .frame(width: 250, height: 250, alignment: .center)
       
       Spacer()
       
@@ -54,14 +63,18 @@ struct InviteCard: View {
     }
     .padding()
     .accentColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-    .frame(minWidth: 280, minHeight: 400, alignment: .leading)
     .background(Color.white)
+    .frame(height: 450, alignment: .leading)
     .cornerRadius(16)
     .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0), lineWidth: 1)
               
+
     )
+    .clipped()
+    .shadow(radius: 5)
+    .padding()
     
   }
   

@@ -45,11 +45,12 @@ class EventInterface {
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let event = Event(snapshot: snapshot) {
-                    //print(event.name)
+                    print(event.name)
                     newEvents.append(event)
                 }
             }
             self.Events = newEvents
+            print("self", self.Events)
         })
     }
     

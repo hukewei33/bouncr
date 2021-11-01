@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 
 class InviteInterface {
+
     var Invites: [Invite] = []
     let invitesReference = Database.database().reference(withPath: "invites")
     
