@@ -9,10 +9,16 @@ import Foundation
 import Firebase
 
 class Controller{
+    
+    
+    
+    
     let userInterface = UserInterface(userKey: "userKey")
     let eventInterface = EventInterface()
     let hostInterface = HostInterface(userKey: "userKey")
     let inviteInterface = InviteInterface()
+    
+    
     
     //creates an event and host relationship, returns key of host (intermediate table)
     func createEvent(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{

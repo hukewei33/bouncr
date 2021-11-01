@@ -18,7 +18,7 @@ class EventInterface {
     
     let eventsReference = Database.database().reference(withPath: "events")
     
-    func create(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
+    func create(name: String, startTime: Date, street1: String, street2: String? = "", city : String, zip: String , state:String, description : String? = "")->String?{
         let keyResult :String? = self.eventsReference.childByAutoId().key
         if let userId = keyResult{
             let newEvent = Event(name: name,

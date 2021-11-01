@@ -14,7 +14,7 @@ class UserInterface{
     
     init(userKey:String){
         //populate the array and use a callback to set the current user
-        self.fetch {(users) in
+         self.fetch {(users) in
             for user in users{
                 if user.key == userKey{
                     self.CurrentUser = user
