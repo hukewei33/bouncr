@@ -13,3 +13,16 @@ target 'team10app' do
   pod 'Firebase/Analytics', :inhibit_warnings => true
 
 end
+
+target 'team10appTests' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+
+  # Pods for team10app
+  pod 'Firebase/Core', :inhibit_warnings => true
+  pod 'Firebase/Database', :inhibit_warnings => true
+  pod 'Firebase/Auth', :inhibit_warnings => true
+  pod 'Firebase/Analytics', :inhibit_warnings => true
+
+end

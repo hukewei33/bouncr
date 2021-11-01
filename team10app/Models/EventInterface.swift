@@ -13,12 +13,12 @@ class EventInterface {
     var Events: [Event] = []
     
     init(){
-        self.populate()
+        self.fetch(){events in return}
     }
     
     let eventsReference = Database.database().reference(withPath: "events")
     
-    func create(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
+    func create(name: String, startTime: Date, street1: String, street2: String? = "", city : String, zip: String , state:String, description : String? = "")->String?{
         let keyResult :String? = self.eventsReference.childByAutoId().key
         if let userId = keyResult{
             let newEvent = Event(name: name,
@@ -39,7 +39,7 @@ class EventInterface {
         }        
     }
     
-    func populate(){
+    func fetch(completionHandler: @escaping ([Event]) -> Void){
         self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
             var newEvents: [Event] = []
             for child in snapshot.children {
@@ -50,6 +50,7 @@ class EventInterface {
                 }
             }
             self.Events = newEvents
+            completionHandler(self.Events)
         })
     }
     

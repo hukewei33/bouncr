@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct AppView: View {
+  
+    @ObservedObject var viewModel: ViewModel = ViewModel()
+  
     var body: some View {
       TabView {
         //My Events page
-        Text("Replace this Text() w/ host page")
+          HostEventsView(viewModel: viewModel, events: viewModel.eventsForHosts())
         .tabItem {
           Image(systemName: "calendar")
           Text("Your Events")
@@ -33,13 +36,8 @@ struct AppView: View {
       .padding(.top)
       .onAppear() {
           UITabBar.appearance().barTintColor = .white
-        
       }
+      .edgesIgnoringSafeArea(.top) //Makes top nav bar stretch all the way to top of device
     }
 }
 
-struct AppView_Previews: PreviewProvider {
-    static var previews: some View {
-        AppView()
-    }
-}
