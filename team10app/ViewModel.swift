@@ -17,10 +17,11 @@ class ViewModel: ObservableObject {
   let inviteInterface: InviteInterface
   
   let hostsReference = Database.database().reference(withPath: "hosts")
-  let appDelegate: AppDelegate = AppDelegate()
+  let eventsReference = Database.database().reference(withPath: "events")
+//  let appDelegate: AppDelegate = AppDelegate()
   
   @Published var hosts: [Host] = [Host]()
-  @Published var hostEvents: [Event] = [Event]()
+  @Published var events: [Event] = [Event]()
   
 //  func createEvent(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
 //      if let newEventID = self.eventInterface.create(name: name, startTime: startTime,street1:  street1, street2: street2,city: city,zip:zip,state: state, description: description ),
@@ -32,13 +33,22 @@ class ViewModel: ObservableObject {
 //          return nil
 //      }
 //  }
+    
+  init() {
+    userInterface = UserInterface(userKey: "userKey")
+    eventInterface = EventInterface()
+    //hostInterface = HostInterface(userKey: "userKey")
+    inviteInterface = InviteInterface()
+    getHosts(userKey: "Tom")
+    getEvents()
+  }
   
   func indexHostEvents() -> [Event] {
     print("indexHostEvents!!!")
     //getHosts(userKey: "Tom")
     let eventIDs: [String] = self.hosts.map {$0.eventKey}
-    let myEvents = self.eventInterface.Events.filter {eventIDs.contains($0.key)}
-    self.hostEvents = myEvents
+    let myEvents = self.events.filter {eventIDs.contains($0.key)}
+//    self.events = myEvents
     return myEvents
   }
   
@@ -51,12 +61,31 @@ class ViewModel: ObservableObject {
               if host.userKey == userKey{
                 self.hosts.append(host)
                 print(host.userKey)
-                print("newHosts ", self.hosts)
               }
           }
       }
+      print("newHosts ", self.hosts)
+      print("COUNT", self.hosts.count)
     })
+    
   }
+    
+    func getEvents() {
+      self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let event = Event(snapshot: snapshot) {
+                    //print(event.name)
+                    self.events.append(event)
+                }
+            }
+        })
+    }
+    func eventsForHosts() -> [Event] {
+        let eventIDs: [String] = self.hosts.map {$0.eventKey}
+        let myEvents = self.events.filter {eventIDs.contains($0.key)}
+        return myEvents
+    }
   
   func viewEvent(key:String) -> Event?{
       let myEvents = self.eventInterface.Events.filter {$0.key == key}
@@ -74,14 +103,5 @@ class ViewModel: ObservableObject {
       let myEvents = self.eventInterface.Events.filter {eventIDs.contains($0.key)}
       return myEvents
   }
-  
-  init() {
-    userInterface = UserInterface(userKey: "userKey")
-    eventInterface = EventInterface()
-    //hostInterface = HostInterface(userKey: "userKey")
-    inviteInterface = InviteInterface()
-    getHosts(userKey: "Tom")
-  }
-  
 }
 

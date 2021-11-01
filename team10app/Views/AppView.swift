@@ -9,12 +9,12 @@ import SwiftUI
 
 struct AppView: View {
   
-  var viewModel: ViewModel
+    @ObservedObject var viewModel: ViewModel = ViewModel()
   
     var body: some View {
       TabView {
         //My Events page
-        HostEventsView(viewModel: viewModel)
+          HostEventsView(viewModel: viewModel, events: viewModel.eventsForHosts())
         .tabItem {
           Image(systemName: "calendar")
           Text("Your Events")
