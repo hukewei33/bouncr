@@ -8,12 +8,14 @@
 import Foundation
 import Firebase
 
-class HostInterface{
+class HostInterface {
     var Hosts: [Host] = []
     let hostsReference = Database.database().reference(withPath: "hosts")
     
     init(userKey:String){
+
         self.fetch (userKey:userKey){hosts in return }
+
     }
     
     func create(userKey: String, eventKey: String)-> String?{
@@ -31,6 +33,7 @@ class HostInterface{
         }
     }
     
+
     func fetch(userKey:String, completionHandler: @escaping ([Host]) -> Void) {
             self.hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
             var newHosts: [Host] = []
@@ -46,6 +49,7 @@ class HostInterface{
             self.Hosts = newHosts
             completionHandler(self.Hosts)
         })
+
     }
     
     func update(key:String, updateVals:[String : Any]){
