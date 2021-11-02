@@ -52,7 +52,6 @@ struct HostEventsView: View {
               .bold()
               .font(.system(size: 22))
               .padding()
-           // Use loop here to create a card for each item in Events list
             ForEach(0..<self.events.count, id: \.self) { index in
               HostUpcomingEventCard(event: self.events[index])
             }

@@ -16,7 +16,6 @@ struct HostUpcomingEventCard: View {
     VStack {
       //Date & Time of upcoming event
       HStack {
-        //Text("Date, Time")
         Text(String(event.startTime))
           .bold()
           .font(.system(size: 12))
@@ -29,13 +28,13 @@ struct HostUpcomingEventCard: View {
       //Event name, address, and num guests all in one row
       HStack {
         VStack(alignment: .leading) {
-          Text("EventName")
+          Text(event.name)
             .font(.system(size: 22))
             .foregroundColor(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
             .padding(.bottom, 1)
             .lineLimit(1)
           
-          Text("Address")
+          Text(event.street1)
             .font(.system(size: 12))
             .foregroundColor(Color(#colorLiteral(red: 0.4470588235, green: 0.4470588235, blue: 0.4470588235, alpha: 1)))
             .lineLimit(1)
