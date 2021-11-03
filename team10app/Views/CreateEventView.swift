@@ -83,7 +83,6 @@ struct CreateEventView: View {
         )
         .padding(.bottom, 30)
         
-        
         Spacer()
         
         HStack {

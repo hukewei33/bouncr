@@ -11,12 +11,24 @@ struct HostUpcomingEventCard: View {
   
   //var viewModel: ViewModel
   var event: Event
+  let date: Date
+  let dateStr: String
+  
+  init(event: Event) {
+    self.event = event
+    let timeInterval = TimeInterval(event.startTime)
+    date = Date(timeIntervalSince1970: timeInterval)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM. d, hh:mm"
+    dateStr = dateFormatter.string(from: date)
+  }
+  
   
   var body: some View {
     VStack {
       //Date & Time of upcoming event
       HStack {
-        Text(String(event.startTime))
+        Text(dateStr)
           .bold()
           .font(.system(size: 12))
           .foregroundColor(Color(#colorLiteral(red: 0.4470588235, green: 0.4470588235, blue: 0.4470588235, alpha: 1)))

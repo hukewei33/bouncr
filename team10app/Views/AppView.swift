@@ -14,7 +14,7 @@ struct AppView: View {
     var body: some View {
       TabView {
         //My Events page
-          HostEventsView(viewModel: viewModel, events: viewModel.eventsForHosts())
+        HostEventsView(viewModel: viewModel, events: viewModel.eventsForHosts())
         .tabItem {
           Image(systemName: "calendar")
           Text("Your Events")
