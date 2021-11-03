@@ -9,9 +9,10 @@ import SwiftUI
 
 struct AppView: View {
   
-    @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel = ViewModel()
   
     var body: some View {
+      
       TabView {
         
         //My Events page
@@ -46,11 +47,5 @@ struct AppView: View {
         
       }
       .edgesIgnoringSafeArea(.top) //Makes top nav bar stretch all the way to top of device
-    }
-}
-
-struct AppView_Previews: PreviewProvider {
-    static var previews: some View {
-      AppView()
     }
 }
