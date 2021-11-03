@@ -83,6 +83,13 @@ struct CreateEventView: View {
         )
         .padding(.bottom, 30)
         
+        
+        Spacer()
+        
+        HStack {
+          Spacer()
+          CreateEventFormSubmitButton()
+        }
       }
       .padding(30)
       .textFieldStyle(RoundedBorderTextFieldStyle())
