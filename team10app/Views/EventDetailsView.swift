@@ -11,8 +11,8 @@ import SwiftUI
 struct EventDetailsView: View {
   
   var event: Event;
-//  let dayTimePeriodFormatter = NSDateFormatter();
-//  dayTimePeriodFormatter = "MMM dd YYYY hh:mm a";
+//  let dayTimePeriodFormatter = DateFormatter();
+//  dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a";
   
   var body: some View {
     
@@ -108,6 +108,7 @@ struct EventDetailsView: View {
           Spacer(minLength: 20)
           
           Text(String(event.startTime) + " - " + String(event.endTime))
+//          Text(dateFormatter.string(from: (Date(timeIntervalSinceReferenceDate: TimeInterval(Int(event.startTime))))
           
         }
         

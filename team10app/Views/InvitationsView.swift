@@ -63,7 +63,7 @@ struct InvitationsView: View {
             
             
             }.animation(.spring())
-            .padding(.top, 50)
+            .padding(.top, 40)
           
           }
           else {
