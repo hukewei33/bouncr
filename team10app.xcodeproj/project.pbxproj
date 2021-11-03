@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1880341A27323B2900D91408 /* CreateEventFormSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880341927323B2900D91408 /* CreateEventFormSubmitButton.swift */; };
 		18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF455272A6B680008B4A3 /* ViewModel.swift */; };
 		18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF458272B1F9D0008B4A3 /* AppView.swift */; };
 		18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF45A272B71890008B4A3 /* HostEventsView.swift */; };
@@ -15,6 +16,7 @@
 		18DAF464272E6FF90008B4A3 /* HostOngoingEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF463272E6FF90008B4A3 /* HostOngoingEventCard.swift */; };
 		18DAF466272E93BF0008B4A3 /* SquareScanQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF465272E93BF0008B4A3 /* SquareScanQR.swift */; };
 		18DAF468272EA3600008B4A3 /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF467272EA3600008B4A3 /* AddEventButton.swift */; };
+		18EE5BB42732029D00115EA1 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE5BB32732029D00115EA1 /* CreateEventView.swift */; };
 		18F98528272900D00077B7FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F98527272900D00077B7FE /* GoogleService-Info.plist */; };
 		881A946FFA6EC6C367F51BE2 /* Pods_team10app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */; };
 		B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */; };
@@ -37,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		0C2769A3E92908E5F7EF0E7A /* Pods-team10app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10app.release.xcconfig"; path = "Target Support Files/Pods-team10app/Pods-team10app.release.xcconfig"; sourceTree = "<group>"; };
+		1880341927323B2900D91408 /* CreateEventFormSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventFormSubmitButton.swift; sourceTree = "<group>"; };
 		18DAF455272A6B680008B4A3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		18DAF458272B1F9D0008B4A3 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		18DAF45A272B71890008B4A3 /* HostEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventsView.swift; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 		18DAF463272E6FF90008B4A3 /* HostOngoingEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostOngoingEventCard.swift; sourceTree = "<group>"; };
 		18DAF465272E93BF0008B4A3 /* SquareScanQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareScanQR.swift; sourceTree = "<group>"; };
 		18DAF467272EA3600008B4A3 /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
+		18EE5BB32732029D00115EA1 /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		18F98527272900D00077B7FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20E9EC4271FA2BC002BA590 /* team10app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = team10app.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +93,7 @@
 				18DAF45A272B71890008B4A3 /* HostEventsView.swift */,
 				18DAF45E272D39CD0008B4A3 /* HostUpcomingEventCard.swift */,
 				18DAF463272E6FF90008B4A3 /* HostOngoingEventCard.swift */,
+				18EE5BB32732029D00115EA1 /* CreateEventView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 				18DAF461272E6F370008B4A3 /* MoreDetailsButton.swift */,
 				18DAF465272E93BF0008B4A3 /* SquareScanQR.swift */,
 				18DAF467272EA3600008B4A3 /* AddEventButton.swift */,
+				1880341927323B2900D91408 /* CreateEventFormSubmitButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -315,12 +321,14 @@
 				B2BB3CBB27273BDC00C6DB94 /* HostInterface.swift in Sources */,
 				B2BB3CB527272C4B00C6DB94 /* Host.swift in Sources */,
 				B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */,
+				1880341A27323B2900D91408 /* CreateEventFormSubmitButton.swift in Sources */,
 				B20E9ECC271FA2BC002BA590 /* ContentView.swift in Sources */,
 				B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */,
 				18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */,
 				18DAF45F272D39CD0008B4A3 /* HostUpcomingEventCard.swift in Sources */,
 				18DAF468272EA3600008B4A3 /* AddEventButton.swift in Sources */,
 				18DAF466272E93BF0008B4A3 /* SquareScanQR.swift in Sources */,
+				18EE5BB42732029D00115EA1 /* CreateEventView.swift in Sources */,
 				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
 				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
