@@ -65,7 +65,10 @@ struct HostEventsView: View {
         }
         
         //Circular button in bottom right to add event
-        AddEventButton()
+        NavigationLink(destination: CreateEventView(viewModel: viewModel)) {
+          AddEventButton()
+        }
+        
       }
       .navigationTitle("Your Events")
     }
