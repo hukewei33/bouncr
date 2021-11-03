@@ -13,7 +13,9 @@ class HostInterface {
     let hostsReference = Database.database().reference(withPath: "hosts")
     
     init(userKey:String){
-      self.populate(userKey:userKey)
+
+        self.fetch (userKey:userKey){hosts in return }
+
     }
     
     func create(userKey: String, eventKey: String)-> String?{
@@ -31,21 +33,23 @@ class HostInterface {
         }
     }
     
-    func populate(userKey:String) {
-      self.hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
-        var newHosts: [Host] = []
-        for child in snapshot.children {
-            if let snapshot = child as? DataSnapshot,
-               let host = Host(snapshot: snapshot) {
-                if host.userKey == userKey{
-                  newHosts.append(host)
-                  //print(host.userKey)
+
+    func fetch(userKey:String, completionHandler: @escaping ([Host]) -> Void) {
+            self.hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
+            var newHosts: [Host] = []
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let host = Host(snapshot: snapshot) {
+                    if host.userKey == userKey{
+                        newHosts.append(host)
+                        //print(host.userKey)
+                    }
                 }
             }
-        }
-        print("newHosts.count", newHosts.count)
-        self.Hosts = newHosts
-      })
+            self.Hosts = newHosts
+            completionHandler(self.Hosts)
+        })
+
     }
     
     func update(key:String, updateVals:[String : Any]){

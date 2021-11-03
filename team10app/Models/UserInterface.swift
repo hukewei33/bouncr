@@ -13,7 +13,14 @@ class UserInterface{
     var CurrentUser : User? = nil
     
     init(userKey:String){
-        self.populate(key:userKey)
+        //populate the array and use a callback to set the current user
+         self.fetch {(users) in
+            for user in users{
+                if user.key == userKey{
+                    self.CurrentUser = user
+                }
+            }
+        }
     }
     
     let usersReference = Database.database().reference(withPath: "users")
@@ -39,21 +46,36 @@ class UserInterface{
     }
     
 
-    func populate(key:String){
-        self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
-            var newUsers: [User] = []
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let user = User(snapshot: snapshot) {
-                    //print(user.firstName)
-                    newUsers.append(user)
-                    if user.key == key{
-                        self.CurrentUser = user
+//    func populate(key:String){
+//        self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
+//            var newUsers: [User] = []
+//            for child in snapshot.children {
+//                if let snapshot = child as? DataSnapshot,
+//                   let user = User(snapshot: snapshot) {
+//                    //print(user.firstName)
+//                    newUsers.append(user)
+//                    if user.key == key{
+//                        self.CurrentUser = user
+//                    }
+//                }
+//            }
+//            self.Users = newUsers
+//        })
+//    }
+    
+    func fetch(completionHandler: @escaping ([User]) -> Void){
+                self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
+                    var newUsers: [User] = []
+                    for child in snapshot.children {
+                        if let snapshot = child as? DataSnapshot,
+                           let user = User(snapshot: snapshot) {
+                            //print(user.firstName)
+                            newUsers.append(user)
+                        }
                     }
-                }
-            }
-            self.Users = newUsers
-        })
+                    self.Users = newUsers
+                    completionHandler(self.Users)
+                })
     }
     
     
