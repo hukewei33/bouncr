@@ -22,10 +22,10 @@ struct InvitationDetailView: View {
         // invitations stack
         HStack {
             
-          ForEach(0..<viewModel.allEvents.count, id: \.self) { index in
+          ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
             
            
-              InviteCard(event: viewModel.allEvents[index])
+              InviteCard(event: viewModel.indexGuestEvents()[index])
                 .offset(y: position)
               
             

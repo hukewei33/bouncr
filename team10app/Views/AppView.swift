@@ -35,7 +35,7 @@ struct AppView: View {
         
         // Profile Page
         
-        ProfileView(user: viewModel.mainUser)
+        ProfileView(user: User(firstName: "Dwight", lastName: "Schrute", email: "beetsbears@battlestargalatica.com", username: "assistantregionalmanager", profilePicURL: "", passwordHash: "identitytheftisnojoke"))
         .tabItem {
           Image(systemName: "person.crop.circle")
           Text("Profile")
@@ -44,7 +44,6 @@ struct AppView: View {
       .padding(.top)
       .onAppear() {
           UITabBar.appearance().barTintColor = .white
-        
       }
       .edgesIgnoringSafeArea(.top) //Makes top nav bar stretch all the way to top of device
     }

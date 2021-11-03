@@ -49,9 +49,9 @@ struct InvitationsView: View {
             
             ZStack {
             
-              ForEach(0..<viewModel.allEvents.count, id: \.self) { index in
+              ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
                 
-                InviteCard(event: viewModel.allEvents[index])
+                InviteCard(event: viewModel.indexGuestEvents()[index])
                   .offset(y: CGFloat(index*80))
                   .onTapGesture {
                     self.move.toggle()
@@ -71,16 +71,15 @@ struct InvitationsView: View {
               
               HStack {
               
-                ForEach(0..<viewModel.allEvents.count, id: \.self) { index in
+                ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
                   
-                  InviteCard(event: viewModel.allEvents[index])
+                  InviteCard(event: viewModel.indexGuestEvents()[index])
                     .onTapGesture {
                       self.move.toggle()
                       self.scroll.toggle()
                     }
                   
                   // for V2 add code so that it automatically scrolls to the right card clicked
-                    
                 
                 }
               
