@@ -52,7 +52,7 @@ struct InvitationsView: View {
               ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
                 
                 InviteCard(event: viewModel.indexGuestEvents()[index])
-                  .offset(y: CGFloat(index*80))
+                  .offset(y: CGFloat(index*100))
                   .onTapGesture {
                     self.move.toggle()
                     self.scroll.toggle()

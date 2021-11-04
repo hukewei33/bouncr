@@ -17,10 +17,33 @@ struct InviteCard: View {
   // event associated with the invite
   var event: Event
 
+  let date: Date
+  let dateStr: String
+  
+  init(event: Event) {
+    self.event = event
+    let timeInterval = TimeInterval(event.startTime)
+    date = Date(timeIntervalSince1970: timeInterval)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM. d, hh:mm a"
+    dateStr = dateFormatter.string(from: date)
+  }
   
   var body: some View {
     
     VStack(alignment: .leading) {
+      
+      HStack(alignment: .top) {
+        
+        Text(dateStr)
+          .font(.system(size: 14))
+          .foregroundColor(.gray)
+        
+        Text("@host")
+          .font(.system(size: 14))
+          .foregroundColor(.gray)
+        
+      }.padding([.top, .bottom], 2.5)
       
       // event name
       Text(event.name)
@@ -48,7 +71,6 @@ struct InviteCard: View {
         Text("See Event Details")
           .underline()
       }
-      
       
       // qr code (i assumed the user id to be 1)
       Image(uiImage: qrViewController.generateQRCode(from: "\(event.key)\n1"))
