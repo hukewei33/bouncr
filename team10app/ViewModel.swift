@@ -167,7 +167,8 @@ class ViewModel: ObservableObject {
             self.inviteInterface.update(key: inviteKey, updateVals: ["checkinStatus" : true,"checkinTime":Date().timeIntervalSinceReferenceDate])
             return true
         }
-        else{
+        else {
+
             return false
         }
         
@@ -177,4 +178,3 @@ class ViewModel: ObservableObject {
 
     
 }
-

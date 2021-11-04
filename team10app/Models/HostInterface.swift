@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 
 class HostInterface {
+  
     var Hosts: [Host] = []
     let hostsReference = Database.database().reference(withPath: "hosts")
     

@@ -9,10 +9,13 @@ import SwiftUI
 
 struct AppView: View {
   
+
     @ObservedObject var viewModel: ViewModel = ViewModel()
   
     var body: some View {
+      
       TabView {
+        
         //My Events page
         HostEventsView(viewModel: viewModel, events: viewModel.eventsForHosts())
         .tabItem {
@@ -20,14 +23,19 @@ struct AppView: View {
           Text("Your Events")
         }
         
+        
         //Invitations Page
-        Text("Replace this Text() w/ attendee page")
+        
+        InvitationsView()
         .tabItem {
           Image(systemName: "envelope")
           Text("Invitations")
         }
         
-        Text("Replace this Text() w/ profile page")
+        
+        // Profile Page
+        
+        ProfileView(user: User(firstName: "Dwight", lastName: "Schrute", email: "beetsbears@battlestargalatica.com", username: "assistantregionalmanager", profilePicURL: "", passwordHash: "identitytheftisnojoke"))
         .tabItem {
           Image(systemName: "person.crop.circle")
           Text("Profile")
@@ -40,4 +48,3 @@ struct AppView: View {
       .edgesIgnoringSafeArea(.top) //Makes top nav bar stretch all the way to top of device
     }
 }
-

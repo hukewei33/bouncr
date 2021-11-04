@@ -8,7 +8,8 @@
 import Foundation
 import Firebase
 
-class UserInterface{
+class UserInterface {
+  
     var Users: [User] = []
     var CurrentUser : User? = nil
     
@@ -27,7 +28,7 @@ class UserInterface{
     
     func create(firstName: String, lastName : String, email: String, passwordHash: String , username: String)-> String?{
         let keyResult :String? = self.usersReference.childByAutoId().key
-        if let userId = keyResult{
+        if let userId = keyResult {
             let newUser = User(firstName: firstName,
                             lastName: lastName,
                             email:email,

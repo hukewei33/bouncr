@@ -29,7 +29,7 @@ class EventInterface {
         else{
             print("failed to add event")
             return nil
-        }        
+        }
     }
     
     func fetch(completionHandler: @escaping ([Event]) -> Void){

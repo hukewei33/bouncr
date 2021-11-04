@@ -8,7 +8,8 @@
 import Foundation
 import Firebase
 
-class InviteInterface{
+class InviteInterface {
+
     var Invites: [Invite] = []
     let invitesReference = Database.database().reference(withPath: "invites")
     
@@ -19,13 +20,13 @@ class InviteInterface{
     
     func create(userKey: String, eventKey: String)-> String?{
         let keyResult :String? = self.invitesReference.childByAutoId().key
-        if let userId = keyResult{
+        if let userId = keyResult {
             let newInvite = Invite(userKey: userKey,
                             eventKey:  eventKey)
             self.invitesReference.child(userId).setValue(newInvite.toAnyObject())
             return userId
         }
-        else{
+        else {
             print("failed to add invite")
             return nil
         }
@@ -53,5 +54,6 @@ class InviteInterface{
     func delete(key:String ){
         self.invitesReference.child(key).removeValue()
     }
-  
 }
+    
+
