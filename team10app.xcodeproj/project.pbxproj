@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1880341A27323B2900D91408 /* CreateEventFormSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880341927323B2900D91408 /* CreateEventFormSubmitButton.swift */; };
 		18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF455272A6B680008B4A3 /* ViewModel.swift */; };
 		18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF458272B1F9D0008B4A3 /* AppView.swift */; };
 		18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF45A272B71890008B4A3 /* HostEventsView.swift */; };
@@ -59,7 +58,6 @@
 
 /* Begin PBXFileReference section */
 		0C2769A3E92908E5F7EF0E7A /* Pods-team10app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10app.release.xcconfig"; path = "Target Support Files/Pods-team10app/Pods-team10app.release.xcconfig"; sourceTree = "<group>"; };
-		1880341927323B2900D91408 /* CreateEventFormSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventFormSubmitButton.swift; sourceTree = "<group>"; };
 		18DAF455272A6B680008B4A3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		18DAF458272B1F9D0008B4A3 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		18DAF45A272B71890008B4A3 /* HostEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventsView.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 				18DAF461272E6F370008B4A3 /* MoreDetailsButton.swift */,
 				18DAF465272E93BF0008B4A3 /* SquareScanQR.swift */,
 				18DAF467272EA3600008B4A3 /* AddEventButton.swift */,
-				1880341927323B2900D91408 /* CreateEventFormSubmitButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -491,7 +488,6 @@
 				B2BB3CBB27273BDC00C6DB94 /* HostInterface.swift in Sources */,
 				B2BB3CB527272C4B00C6DB94 /* Host.swift in Sources */,
 				B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */,
-				1880341A27323B2900D91408 /* CreateEventFormSubmitButton.swift in Sources */,
 				B20E9ECC271FA2BC002BA590 /* ContentView.swift in Sources */,
 				B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */,
 				9D8CC249272F354400687207 /* QRViewController.swift in Sources */,

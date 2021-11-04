@@ -11,7 +11,6 @@ struct CreateEventView: View {
   
   @ObservedObject var viewModel: ViewModel
   @State private var name: String = ""
-  @State private var date = Date()
   @State private var startTime = Date()
   @State private var endTime = Date()
   @State private var descr: String = ""
@@ -30,47 +29,27 @@ struct CreateEventView: View {
         .padding(.bottom, 30)
         
         //Event Date field
-        Text("Event Date *")
+        Text("Start Date and Time *")
           .bold()
           .font(.system(size: 17))
         DatePicker(
           "",
-          selection: $date,
-          displayedComponents: [.date]
+          selection: $startTime,
+          displayedComponents: [.date, .hourAndMinute]
         )
         .labelsHidden()
         .padding(.bottom, 30)
-        
-        //Start Time & End Time field
-        HStack {
-          //Start Time
-          VStack(alignment: .leading) {
-            Text("Start Time *")
-              .bold()
-              .font(.system(size: 17))
-            DatePicker(
-              "",
-              selection: $startTime,
-              displayedComponents: [.hourAndMinute]
-            )
-            .labelsHidden()
-          }
           
-          Spacer()
-          
-          //End Time
-          VStack(alignment: .leading) {
-            Text("End Time *")
-              .bold()
-              .font(.system(size: 17))
-            DatePicker(
-              "",
-              selection: $endTime,
-              displayedComponents: [.hourAndMinute]
-            )
-            .labelsHidden()
-          }
-        }
+        //End Time Field
+        Text("End Time *")
+          .bold()
+          .font(.system(size: 17))
+        DatePicker(
+          "",
+          selection: $endTime,
+          displayedComponents: [.hourAndMinute]
+        )
+        .labelsHidden()
         .padding(.bottom, 30)
         
         //Event Description field
@@ -87,7 +66,15 @@ struct CreateEventView: View {
         
         HStack {
           Spacer()
-          CreateEventFormSubmitButton()
+          Button(action: {print($name, $startTime, $endTime, $descr)}, label: {
+            Text("Create event")
+              .bold()
+              .foregroundColor(Color.white)
+              .font(.system(size: 15))
+              .padding(10)
+          })
+            .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
+            .cornerRadius(10)
         }
       }
       .padding(30)

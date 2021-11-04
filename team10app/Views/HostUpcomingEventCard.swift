@@ -19,7 +19,7 @@ struct HostUpcomingEventCard: View {
     let timeInterval = TimeInterval(event.startTime)
     date = Date(timeIntervalSince1970: timeInterval)
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMM. d, hh:mm"
+    dateFormatter.dateFormat = "MMM. d, hh:mm a"
     dateStr = dateFormatter.string(from: date)
   }
   
