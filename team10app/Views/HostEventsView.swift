@@ -48,8 +48,8 @@ struct HostEventsView: View {
               .bold()
               .font(.system(size: 22))
               .padding()
-            ForEach(0..<self.events.count, id: \.self) { index in
-              HostUpcomingEventCard(event: self.events[index])
+            ForEach(0..<self.viewModel.events.count, id: \.self) { index in
+              HostUpcomingEventCard(event: self.viewModel.events[index])
             }
           }
         }

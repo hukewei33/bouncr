@@ -66,13 +66,15 @@ class ViewModel: ObservableObject {
     
     //For some reason, this is only called after everything else
     func getHosts(userKey: String) {
+//      self.hosts.removeAll()
+//      print("SELF.HOSTS SIZE AFTER EMPTYING: ", self.hosts.count)
         hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
+            self.hosts.removeAll()
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let host = Host(snapshot: snapshot) {
                     if host.userKey == userKey{
                         self.hosts.append(host)
-                        print(host.userKey)
                     }
                 }
             }
@@ -83,8 +85,9 @@ class ViewModel: ObservableObject {
     }
     
     func getEvents() {
-        self.events=[]
+//      self.events.removeAll()
         self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
+            self.events.removeAll()
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let event = Event(snapshot: snapshot) {
@@ -96,28 +99,32 @@ class ViewModel: ObservableObject {
     }
     
     func getUsers(userKey: String){
+//      self.users.removeAll()
         self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let user = User(snapshot: snapshot) {
-                    self.users.append(user)
+          self.users.removeAll()
+          for child in snapshot.children {
+            if let snapshot = child as? DataSnapshot,
+               let user = User(snapshot: snapshot) {
+                  self.users.append(user)
 //                    if user.key == userKey{
 //                        self.thisUser = user
 //                    }
-                }
-            }
+              }
+          }
         })
     }
     
     func getInvites(){
+//      self.invites.removeAll()
         self.invitesReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let invite = Invite(snapshot: snapshot) {
-                    self.invites.append(invite)
-                    //print(invite.userKey)
-                }
-            }
+          self.invites.removeAll()
+          for child in snapshot.children {
+              if let snapshot = child as? DataSnapshot,
+                 let invite = Invite(snapshot: snapshot) {
+                  self.invites.append(invite)
+                  //print(invite.userKey)
+              }
+          }
         })
     }
     
@@ -145,14 +152,14 @@ class ViewModel: ObservableObject {
     }
     
     //creates an event and host relationship, returns key of host (intermediate table)
-    func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
+    func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String? {
         if let newEventID = self.eventInterface.create(name: name, startTime: startTime, endTime:endTime, street1: street1, street2: street2, city: city, zip: zip, state: state, description: description),
            //we need a way to get login and store the user info of this user
            let userID = self.userInterface.CurrentUser?.key {
            return self.hostInterface.create(userKey: userID, eventKey: newEventID)
         }
         else{
-            print("failed create new event hosting")
+            print("failed to create new event hosting")
             return nil
         }
     }
@@ -172,8 +179,14 @@ class ViewModel: ObservableObject {
 
             return false
         }
-        
-        
+    }
+  
+    func cascadeEventDelete(eventKey:String) {
+        let relatedHostIDs = self.hosts.filter {$0.eventKey == eventKey} .map {$0.key }
+        relatedHostIDs.forEach {self.hostInterface.delete(key: $0)}
+        let relatedInviteIDs = self.invites.filter {$0.eventKey == eventKey} .map {$0.key }
+        relatedInviteIDs.forEach {self.inviteInterface.delete(key: $0)}
+        self.eventInterface.delete(key: eventKey)
     }
     
 

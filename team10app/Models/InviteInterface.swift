@@ -39,7 +39,7 @@ class InviteInterface {
                 if let snapshot = child as? DataSnapshot,
                    let invite = Invite(snapshot: snapshot) {
                     newInvites.append(invite)
-                    print(invite.userKey)
+                    //print(invite.userKey)
                 }
             }
             self.Invites = newInvites

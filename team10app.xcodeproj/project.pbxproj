@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1862DADB27346EA50055E2F0 /* InviteGuestsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */; };
 		18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF455272A6B680008B4A3 /* ViewModel.swift */; };
 		18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF458272B1F9D0008B4A3 /* AppView.swift */; };
 		18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF45A272B71890008B4A3 /* HostEventsView.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		0C2769A3E92908E5F7EF0E7A /* Pods-team10app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10app.release.xcconfig"; path = "Target Support Files/Pods-team10app/Pods-team10app.release.xcconfig"; sourceTree = "<group>"; };
+		1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModal.swift; sourceTree = "<group>"; };
 		18DAF455272A6B680008B4A3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		18DAF458272B1F9D0008B4A3 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		18DAF45A272B71890008B4A3 /* HostEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventsView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				18DAF45E272D39CD0008B4A3 /* HostUpcomingEventCard.swift */,
 				18DAF463272E6FF90008B4A3 /* HostOngoingEventCard.swift */,
 				18EE5BB32732029D00115EA1 /* CreateEventView.swift */,
+				1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				9D79D512273351C300A771D9 /* InvitationsView.swift in Sources */,
 				18EE5BB42732029D00115EA1 /* CreateEventView.swift in Sources */,
 				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
+				1862DADB27346EA50055E2F0 /* InviteGuestsModal.swift in Sources */,
 				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
