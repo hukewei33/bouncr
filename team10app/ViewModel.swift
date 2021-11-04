@@ -83,6 +83,7 @@ class ViewModel: ObservableObject {
     }
     
     func getEvents() {
+        self.events=[]
         self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
