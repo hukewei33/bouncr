@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 
+//NOT IN USE ANYMORE, DELETE?
 class Controller{
     
     
