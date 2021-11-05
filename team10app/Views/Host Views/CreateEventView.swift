@@ -11,7 +11,6 @@ struct CreateEventView: View {
   
   @ObservedObject var viewModel: ViewModel
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-  @State private var showPopUp: Bool = false
   
   @State private var name: String = ""
   @State private var startTime = Date()
