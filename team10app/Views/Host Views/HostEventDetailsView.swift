@@ -59,7 +59,6 @@ struct HostEventDetailsView: View {
               .fontWeight(.bold)
               .padding(.bottom, 4)
             Text ("checked in")
-
           }.foregroundColor(.white)
 
           Spacer()
@@ -84,49 +83,45 @@ struct HostEventDetailsView: View {
       .padding(.leading, 20)
       .background(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
       
-
+      VStack(alignment: .leading) {
     
-    VStack(alignment: .leading) {
-    
-      LazyVGrid(columns: columns, alignment: .leading, spacing: 25) {
+        LazyVGrid(columns: columns, alignment: .leading, spacing: 25) {
         
 //        Text("Host(s): ")
 //          .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
 //
 //        Text("")
         
-        Text("Location: ")
-          .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+          Text("Location: ")
+            .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
         
-        Text("\(event.street1), \n\(event.city), \(event.state), \(event.zip)")
-        
-        if (event.description != nil){
+          Text("\(event.street1), \n\(event.city), \(event.state), \(event.zip)")
+          
+          if (event.description != nil){
+              
+            Text("About: ")
+              .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
             
-          Text("About: ")
+            Text(event.description!)
+            
+          }
+        
+          Text("Guest List: ")
             .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
           
-          Text(event.description!)
-          
-        }
-        
-        Text("Guest List: ")
-          .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-        
-        LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
-          
-          // CHANGE DESTINATION TO BE THE ADD GUEST MODAL
-          NavigationLink(destination: InvitationsView()) {
+          LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
             
-            VStack {
-              
-              //Below is code for the actual button
-              ZStack {
-                //The image of the 'plus' sign is on top
+            // CHANGE DESTINATION TO BE THE ADD GUEST MODAL
+            NavigationLink(destination: InvitationsView()) {
+            
+              VStack {
                 
-                Image(systemName: "plus")
-                  .foregroundColor(Color.white)
-                  .font(.subheadline)
-                  
+                //Below is code for the actual button
+                ZStack {
+                  //The image of the 'plus' sign is on top
+                  Image(systemName: "plus")
+                    .foregroundColor(Color.white)
+                    .font(.subheadline)
                 }
                 .frame(width: 25, height: 25)
                 //Button is circular w/ blue-violet background
@@ -136,86 +131,81 @@ struct HostEventDetailsView: View {
                       .fill(Color("Primary - Indigo"))
                   }
                 )
-                //Shadow under button
+                  //Shadow under button
                 .shadow(color: Color.black.opacity(0.3),
                         radius: 3,
                         x: 3,
                         y: 3)
-              .padding(.bottom, 1)
+                .padding(.bottom, 1)
+            
+                Text("Add Guests")
+                  .font(.system(size: 10))
               
-              Text("Add Guests")
-                .font(.system(size: 10))
-              
-            }
-            .frame(width: 60, height: 30, alignment: .center)
+              }
+              .frame(width: 60, height: 30, alignment: .center)
             
            
-          }
-          
-          // for each guest invited should show a small circle with the first name under it
-          // for v2 make it just the first 6 guests
-          
-          ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
-            
-            VStack {
-              
-              ZStack {
-                Circle()
-                  .fill(Color("Primary - Indigo"))
-              }
-              
-              Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
-                .font(.system(size: 10))
             }
-          }
           
-        
-        }.padding(.top, 30)
+            // for each guest invited should show a small circle with the first name under it
+            // for v2 make it just the first 6 guests
+            
+            ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
+              
+              VStack {
+              
+                ZStack {
+                  Circle()
+                    .fill(Color("Primary - Indigo"))
+                }
+              
+                Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
+                  .font(.system(size: 10))
+              }
+            }
+          
+          }.padding(.top, 30)
 
-    }.padding(40)
+        }.padding(40)
       
-      HStack (alignment: .center){
+        HStack (alignment: .center){
         
-        
-        Spacer()
-        
-        // CHANGE DESTINATION TO BE THE EDIT EVENT PAGE
-        NavigationLink(destination: EditEventView(viewModel: self.viewModel, event: self.event)){
-          Text("Edit")
-            .frame(width: 100, height: 30)
-            .background(Color.white)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)), lineWidth: 1)
-            )
-            .padding(.bottom)
-        }
-        
-        // OKAY THE DELETE ACTUALLY WORKS BUT ONLY WHEN YOU REPLACE THE BUILD BC IT NEEDS TO RELOAD
-        NavigationLink(destination: InvitationsView()){ // isnt redirecting *cries* -g
-          Button(action: {self.viewModel.eventInterface.delete(key: event.key)}, label: {
-            Text("Delete")
+          Spacer()
+          
+          NavigationLink(destination: EditEventView(viewModel: self.viewModel, event: self.event)){
+            Text("Edit")
               .frame(width: 100, height: 30)
-              .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
-              .foregroundColor(Color.white)
+              .background(Color.white)
               .cornerRadius(10)
+              .overlay(
+                  RoundedRectangle(cornerRadius: 10)
+                      .stroke(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)), lineWidth: 1)
+              )
               .padding(.bottom)
-          })
+          }
+        
+          // OKAY THE DELETE ACTUALLY WORKS BUT ONLY WHEN YOU REPLACE THE BUILD BC IT NEEDS TO RELOAD
+          NavigationLink(destination: InvitationsView()){ // isnt redirecting *cries* -g
+            Button(action: {self.viewModel.eventInterface.delete(key: event.key)}, label: {
+              Text("Delete")
+                .frame(width: 100, height: 30)
+                .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .padding(.bottom)
+            })
+          }
+        
+          Spacer()
+        
         }
-        
-        
-        Spacer()
-        
-      }
         
     
-      Spacer()
+        Spacer()
       
       
-      .navigationBarTitle(title)
-    }
-  
+        .navigationBarTitle(title)
+      }
+    }//end of big VStack
   }
-}
 }
