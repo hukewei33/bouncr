@@ -133,9 +133,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1862DAE02734FC9D0055E2F0 /* Host Views */ = {
+			isa = PBXGroup;
+			children = (
+				18DAF463272E6FF90008B4A3 /* HostOngoingEventCard.swift */,
+				18DAF45E272D39CD0008B4A3 /* HostUpcomingEventCard.swift */,
+				18DAF45A272B71890008B4A3 /* HostEventsView.swift */,
+				1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */,
+				1862DADC27349F290055E2F0 /* InviteGuestsModalRow.swift */,
+				18EE5BB32732029D00115EA1 /* CreateEventView.swift */,
+			);
+			path = "Host Views";
+			sourceTree = "<group>";
+		};
 		18DAF457272B1D980008B4A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1862DAE02734FC9D0055E2F0 /* Host Views */,
 				9D79D5172733521100A771D9 /* Other */,
 				18DAF460272E6F1D0008B4A3 /* Buttons */,
 				18DAF458272B1F9D0008B4A3 /* AppView.swift */,
@@ -144,13 +158,7 @@
 				9D79D515273351F300A771D9 /* URLImage.swift */,
 				9D79D50F273351C300A771D9 /* InvitationsView.swift */,
 				9D79D510273351C300A771D9 /* InviteCard.swift */,
-				18DAF45A272B71890008B4A3 /* HostEventsView.swift */,
 				9D79D50B273351B200A771D9 /* ProfileView.swift */,
-				18DAF45E272D39CD0008B4A3 /* HostUpcomingEventCard.swift */,
-				18DAF463272E6FF90008B4A3 /* HostOngoingEventCard.swift */,
-				18EE5BB32732029D00115EA1 /* CreateEventView.swift */,
-				1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */,
-				1862DADC27349F290055E2F0 /* InviteGuestsModalRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

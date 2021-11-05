@@ -24,7 +24,7 @@ struct InviteGuestsModal: View {
           HStack {
             //Close popup button
             Button(action: {
-               self.viewModel.toBeInvited.removeAll()
+               self.viewModel.clearToBeInvited()
                // Dismiss the PopUp
                withAnimation(.linear(duration: 0.3)) {
                    show = false

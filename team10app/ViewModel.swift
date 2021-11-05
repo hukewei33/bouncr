@@ -28,6 +28,7 @@ class ViewModel: ObservableObject {
     @Published var users: [User] = [User]()
     @Published var invites: [Invite] = [Invite]()
   
+    //For use in the inviteGuestsModal; build a list of users to send an invite to an event
     @Published var toBeInvited: [User] = [User]()
   
     //@Published var thisUser: User = nil
@@ -57,15 +58,18 @@ class ViewModel: ObservableObject {
         getUsers(userKey:"Tom")
         getInvites()
     }
-  
+    
+    //For use in the inviteGuestsModal; add someone to the potential list
     func addPotentialInvite(user: User) {
       self.toBeInvited.append(user)
     }
   
+    //For use in the inviteGuestsModal; remove someone from the potential list
     func removePotentialInvite(user: User) {
       self.toBeInvited = self.toBeInvited.filter {$0.key != user.key}
     }
   
+    //For use in the inviteGuestsModal; use the toBeInvited list to send invites to ppl
     func sendInvites(event: Event) {
       for user in self.toBeInvited {
         self.inviteInterface.create(userKey: user.key, eventKey: event.key)
