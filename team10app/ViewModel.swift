@@ -153,7 +153,7 @@ class ViewModel: ObservableObject {
             if let snapshot = child as? DataSnapshot,
                let user = User(snapshot: snapshot) {
                   self.users.append(user)
-                  print("SELF.USERS: ", self.users)
+//                  print("SELF.USERS: ", self.users)
 //                    if user.key == userKey{
 //                        self.thisUser = user
 //                    }

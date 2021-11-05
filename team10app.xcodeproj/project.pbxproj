@@ -147,6 +147,7 @@
 				1862DADC27349F290055E2F0 /* InviteGuestsModalRow.swift */,
 				18EE5BB32732029D00115EA1 /* CreateEventView.swift */,
 				1862DAE12734FE140055E2F0 /* EditEventView.swift */,
+				9D50390B2734C174001DF338 /* HostEventDetailsView.swift */,
 			);
 			path = "Host Views";
 			sourceTree = "<group>";
@@ -160,7 +161,6 @@
 				18DAF458272B1F9D0008B4A3 /* AppView.swift */,
 				9D79D50D273351BA00A771D9 /* EventDetailsView.swift */,
 				9D79D513273351CB00A771D9 /* InvitationDetailView.swift */,
-				9D50390B2734C174001DF338 /* HostEventDetailsView.swift */,
 				9D79D515273351F300A771D9 /* URLImage.swift */,
 				9D79D50F273351C300A771D9 /* InvitationsView.swift */,
 				9D79D510273351C300A771D9 /* InviteCard.swift */,

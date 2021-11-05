@@ -164,13 +164,13 @@ struct EditEventView: View {
         //Submit button; Creates new event using viewModel
         HStack {
           Spacer()
-          Button(action: {viewModel.eventInterface.update(key: self.event.key, updateVals: ["name": name, "startTime": startTime,
-                                                                                            "endTime": endTime, "street1": street1,
+          Button(action: {viewModel.eventInterface.update(key: self.event.key, updateVals: ["name": name, "startTime": startTime.timeIntervalSinceReferenceDate,
+                                                                                            "endTime": endTime.timeIntervalSinceReferenceDate, "street1": street1,
                                                                                             "street2": street2, "city": city,
                                                                                             "zip": zip, "state": state, "description": descr])
                           self.mode.wrappedValue.dismiss()
           }, label: {
-            Text("Create event")
+            Text("Save event")
               .bold()
               .foregroundColor(Color.white)
               .font(.system(size: 15))
@@ -183,7 +183,7 @@ struct EditEventView: View {
       .padding(30)
       .textFieldStyle(RoundedBorderTextFieldStyle())
     }
-    .navigationTitle("New Event")
+    .navigationTitle("Edit Event")
     
 
   }

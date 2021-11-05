@@ -180,7 +180,7 @@ struct HostEventDetailsView: View {
         Spacer()
         
         // CHANGE DESTINATION TO BE THE EDIT EVENT PAGE
-        NavigationLink(destination: InvitationsView()){
+        NavigationLink(destination: EditEventView(viewModel: self.viewModel, event: self.event)){
           Text("Edit")
             .frame(width: 100, height: 30)
             .background(Color.white)
