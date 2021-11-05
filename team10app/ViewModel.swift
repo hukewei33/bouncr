@@ -171,6 +171,14 @@ class ViewModel: ObservableObject {
             return false
         }
         
+    }
+    
+    func cascadeEventDelete(eventKey:String){
+        let relatedHostIDs = self.hosts.filter {$0.eventKey == eventKey} .map {$0.key }
+        relatedHostIDs.forEach {self.hostInterface.delete(key: $0)}
+        let relatedInviteIDs = self.invites.filter {$0.eventKey == eventKey} .map {$0.key }
+        relatedInviteIDs.forEach {self.inviteInterface.delete(key: $0)}
+        self.eventInterface.delete(key: eventKey)
         
     }
     
