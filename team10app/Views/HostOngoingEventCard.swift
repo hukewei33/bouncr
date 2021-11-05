@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HostOngoingEventCard: View {
+  
+  var event: Event
+  
     var body: some View {
       VStack {
         //Date & Time of upcoming event
@@ -55,7 +58,7 @@ struct HostOngoingEventCard: View {
           .padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
         
         //"More details" button
-        MoreDetailsButton()
+        MoreDetailsButton(event: event, ongoing: true)
         
       }
       .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 0.05)))

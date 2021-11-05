@@ -10,13 +10,19 @@ import SwiftUI
 struct MoreDetailsButton: View {
   
   //Add some fields here for event id, will determine action of button
+  var event: Event
+  var ongoing: Bool
   
   var body: some View {
-    Button(action: {print("Pressed More Details")}, label: {
-      Text("More details")
-        .font(.system(size: 15))
-        .padding(10)
-    })
+    
+    NavigationLink("More Details", destination: HostEventDetailsView(event: event, ongoing: ongoing))
+      .font(.system(size: 15))
+      .padding(10)
+    
+//    Button(action: {print("Pressed More Details")}, label: {
+//      Text("More details")
+//
+//    })
     .frame(width: 300)
     .background(Color.white)
     .cornerRadius(10)
