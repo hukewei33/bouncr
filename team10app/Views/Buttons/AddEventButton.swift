@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct AddEventButton: View {
+  
+  
+  @ObservedObject var viewModel = ViewModel()
+  
     var body: some View {
       
       //Use VStack & HStack to keep button in bottom right of screen
@@ -16,13 +20,16 @@ struct AddEventButton: View {
         HStack {
           Spacer()
           
+        NavigationLink(destination: CreateEventView(viewModel: viewModel)) {
           //Below is code for the actual button
           ZStack {
             //The image of the 'plus' sign is on top
+            
             Image(systemName: "plus")
               .foregroundColor(Color.white)
               .font(.largeTitle)
-          }
+              
+            }
           .frame(width: 65, height: 65)
           //Button is circular w/ blue-violet background
           .background(
@@ -37,6 +44,7 @@ struct AddEventButton: View {
                   x: 3,
                   y: 3)
           .padding()
+          }
         }
       }
     }

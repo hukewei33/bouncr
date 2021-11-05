@@ -11,11 +11,15 @@ import CoreImage.CIFilterBuiltins
 
 struct InviteCard: View {
   
+  @ObservedObject var viewModel = ViewModel()
+  
   // controller responsible for generating the qr code
   var qrViewController = QRViewController()
   
   // event associated with the invite
   var event: Event
+  
+//  var hosts = viewModel.indexEventHosts(eventKey: event.key)
 
   let date: Date
   let dateStr: String
@@ -36,30 +40,33 @@ struct InviteCard: View {
       HStack(alignment: .top) {
         
         Text(dateStr)
-          .font(.system(size: 14))
+          .font(.system(size: 16))
           .foregroundColor(.gray)
         
-        Text("@host")
-          .font(.system(size: 14))
-          .foregroundColor(.gray)
+          //Text("@host")
+            
+//        Text("@" + viewModel.indexEventHosts(eventKey: event.key)[0].username)
+//          .font(.system(size: 14))
+//          .foregroundColor(.gray)
         
-      }.padding([.top, .bottom], 2.5)
+      }
+      .padding(.top, 5)
       
       // event name
       Text(event.name)
-        .font(.system(size: 24))
+        .font(.system(size: 28))
         .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
       
       // address
       Text(event.street1)
-        .font(.system(size: 16))
+        .font(.system(size: 18))
         .padding(.bottom, 10)
       
       // description
       if (event.description != nil){
         
         Text((event.description)!)
-          .font(.system(size: 12))
+          .font(.system(size: 14))
           .padding(.bottom, 10)
           .frame(height: 40)
           .truncationMode(.tail)
