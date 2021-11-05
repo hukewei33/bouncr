@@ -66,7 +66,7 @@ struct HostUpcomingEventCard: View {
       .padding(EdgeInsets(top: 2, leading: 15, bottom: 15, trailing: 15))
       
       //"More details" button
-      MoreDetailsButton()
+      MoreDetailsButton(event: event, ongoing: false)
       
     }
     .cornerRadius(10)

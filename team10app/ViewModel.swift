@@ -53,10 +53,22 @@ class ViewModel: ObservableObject {
         eventInterface = EventInterface()
         hostInterface = HostInterface(userKey: "Tom")
         inviteInterface = InviteInterface()
+        indexEventHosts(eventKey: "JohnParty")
         getHosts(userKey: "Tom")
         getEvents()
         getUsers(userKey:"Tom")
         getInvites()
+        
+    }
+  
+    func indexEventGuests(eventKey: String) -> [User] {
+      let guestIDList = self.invites.filter {$0.eventKey == eventKey}.map{$0.userKey}
+      return self.users.filter {guestIDList.contains($0.key)}
+    }
+  
+    func indexEventHosts(eventKey:String) -> [User] {
+      let hostIDList = self.hosts.filter {$0.eventKey == eventKey}.map{$0.userKey}
+      return self.users.filter {hostIDList.contains($0.key)}
     }
     
     //For use in the inviteGuestsModal; add someone to the potential list
@@ -88,6 +100,20 @@ class ViewModel: ObservableObject {
         let myEvents = self.events.filter {eventIDs.contains($0.key)}
         //    self.events = myEvents
         return myEvents
+    }
+  
+  func getAllHosts() {
+    hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
+        for child in snapshot.children {
+            if let snapshot = child as? DataSnapshot,
+               let host = Host(snapshot: snapshot) {
+                    self.hosts.append(host)
+                    print(host.userKey)
+          }
+        }
+      print("newAllHosts ", self.hosts)
+      print("COUNT", self.hosts.count)
+      })
     }
     
     func getHosts(userKey: String) {

@@ -41,7 +41,7 @@ struct HostEventsView: View {
             //  .bold()
             //  .font(.system(size: 22))
             //  .padding()
-            //HostOngoingEventCard()
+            //HostOngoingEventCard(event: event)
             
             //Upcoming events
             Text("Upcoming Events")
