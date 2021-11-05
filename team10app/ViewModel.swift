@@ -111,8 +111,8 @@ class ViewModel: ObservableObject {
                     print(host.userKey)
           }
         }
-      print("newAllHosts ", self.hosts)
-      print("COUNT", self.hosts.count)
+//      print("newAllHosts ", self.hosts)
+//      print("COUNT", self.hosts.count)
       })
     }
     
@@ -127,8 +127,8 @@ class ViewModel: ObservableObject {
                     }
                 }
             }
-            print("newHosts ", self.hosts)
-            print("COUNT", self.hosts.count)
+//            print("newHosts ", self.hosts)
+//            print("COUNT", self.hosts.count)
         })
         
     }
