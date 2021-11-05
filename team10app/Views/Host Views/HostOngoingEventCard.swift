@@ -10,12 +10,23 @@ import SwiftUI
 struct HostOngoingEventCard: View {
   
   var event: Event
+  let date: Date
+  let dateStr: String
+  
+  init(event: Event) {
+    self.event = event
+    let timeInterval = TimeInterval(event.startTime)
+    date = Date(timeIntervalSince1970: timeInterval)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM. d, hh:mm a"
+    dateStr = dateFormatter.string(from: date)
+  }
   
     var body: some View {
       VStack {
         //Date & Time of upcoming event
         HStack {
-          Text("Date, Time")
+          Text(dateStr)
           //Text(String(event.startTime))
             .bold()
             .font(.system(size: 12))
@@ -48,7 +59,10 @@ struct HostOngoingEventCard: View {
           Spacer()
       
           //Button to scan QR Codes
-          SquareScanQR()
+          //CHANGE TO NAVIGATE TO QR CAMERA SCANNER VIEW!!
+          NavigationLink(destination: InvitationsView()) {
+            SquareScanQR()
+          }
           
         }
         .padding(EdgeInsets(top: 2, leading: 15, bottom: 15, trailing: 15))
