@@ -11,16 +11,13 @@ struct AppView: View {
   
 
     @ObservedObject var viewModel: ViewModel = ViewModel()
-    //REMOVE NEXT LINE LATER
-    @State private var showPopUp: Bool = true
   
     var body: some View {
       
       TabView {
         
         //My Events page
-        //HostEventsView(viewModel: viewModel, events: viewModel.eventsForHosts())
-        InviteGuestsModal(show: $showPopUp)
+        HostEventsView(viewModel: viewModel, events: viewModel.eventsForHosts())
         .tabItem {
           Image(systemName: "calendar")
           Text("Your Events")

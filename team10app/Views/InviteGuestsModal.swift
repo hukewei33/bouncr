@@ -9,12 +9,11 @@ import SwiftUI
 
 struct InviteGuestsModal: View {
   
-  //Fields to pass into Modal:
-  //  - Event (to create invites from)
-  //  - List of all Users
-  
   @Binding var show: Bool
-  
+  @ObservedObject var viewModel: ViewModel
+  var event: Event
+
+
   var body: some View {
     ZStack {
       if show {
@@ -25,6 +24,7 @@ struct InviteGuestsModal: View {
           HStack {
             //Close popup button
             Button(action: {
+               self.viewModel.toBeInvited.removeAll()
                // Dismiss the PopUp
                withAnimation(.linear(duration: 0.3)) {
                    show = false
@@ -47,26 +47,36 @@ struct InviteGuestsModal: View {
           //Search bar
           
           
+          
           //List of users
-          ScrollView {
-            VStack(alignment: .leading) {
-              
+          HStack {
+            Spacer()
+            
+            ScrollView {
+                VStack(alignment: .leading) {
+                  ForEach(0..<self.viewModel.users.count, id: \.self) { index in
+                    InviteGuestsModalRow(viewModel: self.viewModel, user: self.viewModel.users[index])
+                      .padding(10)
+                  }
+                }
+                .padding()
             }
-            .padding()
+            .cornerRadius(10)
             .frame(width: 250)
+            .border(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)))
+            
+            Spacer()
           }
-          .cornerRadius(10)
-          .border(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)))
           
           
-          
+          //Button to send invites
           HStack {
             Spacer()
             Button(action: {
-               // Dismiss the PopUp
-               withAnimation(.linear(duration: 0.3)) {
-                   show = false
-               }
+              self.viewModel.sendInvites(event: self.event)
+              withAnimation(.linear(duration: 0.3)) {
+                  show = false
+              }
             }, label: {
                Text("Send Invites")
                 .bold()

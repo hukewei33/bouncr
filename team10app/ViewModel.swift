@@ -27,6 +27,9 @@ class ViewModel: ObservableObject {
     @Published var events: [Event] = [Event]()
     @Published var users: [User] = [User]()
     @Published var invites: [Invite] = [Invite]()
+  
+    @Published var toBeInvited: [User] = [User]()
+  
     //@Published var thisUser: User = nil
     
     //  func createEvent(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
@@ -54,6 +57,25 @@ class ViewModel: ObservableObject {
         getUsers(userKey:"Tom")
         getInvites()
     }
+  
+    func addPotentialInvite(user: User) {
+      self.toBeInvited.append(user)
+    }
+  
+    func removePotentialInvite(user: User) {
+      self.toBeInvited = self.toBeInvited.filter {$0.key != user.key}
+    }
+  
+    func sendInvites(event: Event) {
+      for user in self.toBeInvited {
+        self.inviteInterface.create(userKey: user.key, eventKey: event.key)
+      }
+      self.clearToBeInvited()
+    }
+  
+    func clearToBeInvited() {
+      toBeInvited.removeAll()
+    }
     
     func indexHostEvents() -> [Event] {
         print("indexHostEvents!!!")
@@ -64,10 +86,7 @@ class ViewModel: ObservableObject {
         return myEvents
     }
     
-    //For some reason, this is only called after everything else
     func getHosts(userKey: String) {
-//      self.hosts.removeAll()
-//      print("SELF.HOSTS SIZE AFTER EMPTYING: ", self.hosts.count)
         hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
             self.hosts.removeAll()
             for child in snapshot.children {
@@ -85,7 +104,6 @@ class ViewModel: ObservableObject {
     }
     
     func getEvents() {
-//      self.events.removeAll()
         self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
             self.events.removeAll()
             for child in snapshot.children {
@@ -99,13 +117,13 @@ class ViewModel: ObservableObject {
     }
     
     func getUsers(userKey: String){
-//      self.users.removeAll()
         self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
           self.users.removeAll()
           for child in snapshot.children {
             if let snapshot = child as? DataSnapshot,
                let user = User(snapshot: snapshot) {
                   self.users.append(user)
+                  print("SELF.USERS: ", self.users)
 //                    if user.key == userKey{
 //                        self.thisUser = user
 //                    }
@@ -115,7 +133,6 @@ class ViewModel: ObservableObject {
     }
     
     func getInvites(){
-//      self.invites.removeAll()
         self.invitesReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
           self.invites.removeAll()
           for child in snapshot.children {

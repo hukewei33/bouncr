@@ -11,6 +11,7 @@ struct CreateEventView: View {
   
   @ObservedObject var viewModel: ViewModel
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+  @State private var showPopUp: Bool = false
   
   @State private var name: String = ""
   @State private var startTime = Date()
@@ -49,10 +50,8 @@ struct CreateEventView: View {
           )
           .labelsHidden()
           .padding(.bottom, 30)
-        }
           
-        //End Time Field
-        Group {
+          //End Time Field
           Text("End Time *")
             .bold()
             .font(.system(size: 17))
@@ -75,10 +74,8 @@ struct CreateEventView: View {
             text: $street1
           )
           .padding(.bottom, 30)
-        }
         
         //Street2 field
-        Group {
           Text("Street 2 (optional)")
             .bold()
             .font(.system(size: 17))
@@ -162,7 +159,6 @@ struct CreateEventView: View {
       }
       .padding(30)
       .textFieldStyle(RoundedBorderTextFieldStyle())
-      
     }
     .navigationTitle("New Event")
     
