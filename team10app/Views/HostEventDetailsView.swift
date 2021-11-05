@@ -174,40 +174,48 @@ struct HostEventDetailsView: View {
 
     }.padding(40)
       
-      HStack (alignment: .center){
+      VStack {
         
-        
-        Spacer()
-        
-        // CHANGE DESTINATION TO BE THE EDIT EVENT PAGE
-        NavigationLink(destination: InvitationsView()){
-          Text("Edit")
-            .frame(width: 100, height: 30)
-            .background(Color.white)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)), lineWidth: 1)
-            )
-            .padding(.bottom)
-        }
-        
-        // OKAY THE DELETE ACTUALLY WORKS BUT ONLY WHEN YOU REPLACE THE BUILD BC IT NEEDS TO RELOAD
-        NavigationLink(destination: InvitationsView()){ // isnt redirecting *cries* -g
-          Button(action: {self.viewModel.eventInterface.delete(key: event.key)}, label: {
-            Text("Delete")
+        HStack (alignment: .center){
+          
+          
+          Spacer()
+          
+          // CHANGE DESTINATION TO BE THE EDIT EVENT PAGE
+          NavigationLink(destination: InvitationsView()){
+            Text("Edit")
               .frame(width: 100, height: 30)
-              .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
-              .foregroundColor(Color.white)
+              .background(Color.white)
               .cornerRadius(10)
+              .overlay(
+                  RoundedRectangle(cornerRadius: 10)
+                      .stroke(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)), lineWidth: 1)
+              )
               .padding(.bottom)
-          })
+          }
+          
+          // OKAY THE DELETE ACTUALLY WORKS BUT ONLY WHEN YOU REPLACE THE BUILD BC IT NEEDS TO RELOAD
+          NavigationLink(destination: InvitationsView()){ // isnt redirecting *cries* -g
+            Button(action: {self.viewModel.eventInterface.delete(key: event.key)}, label: {
+              Text("Delete")
+                .frame(width: 100, height: 30)
+                .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .padding(.bottom)
+            })
+          }
+          
+          
+          Spacer()
+          
         }
-        
-        
-        Spacer()
+
+        SquareScanQR()
         
       }
+      
+      
         
     
       Spacer()

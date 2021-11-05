@@ -9,12 +9,13 @@ import SwiftUI
 
 struct SquareScanQR: View {
     var body: some View {
-      Button(action: {print("Tapped Scan QR Code Button")}, label: {
+      
+      NavigationLink(destination: QRCodeScannerView()){
         Image(systemName: "qrcode.viewfinder")
           .foregroundColor(Color.white)
           .font(.largeTitle)
           .frame(width: 60, height: 60)
-      })
+      }
       .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
       .cornerRadius(10)
       .padding()
