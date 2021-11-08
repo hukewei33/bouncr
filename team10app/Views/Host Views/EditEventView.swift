@@ -23,14 +23,11 @@ struct EditEventView: View {
   @State private var zip: String = ""
   @State private var descr: String = "" //optional
   
-  init(viewModel: ViewModel, event: Event) {
-    self.viewModel = viewModel
-    self.event = event
-    
+  // Had to use a function to init vars because @State vars can't be changes outside the body
+  func initView() {
     let startTimeInterval = TimeInterval(event.startTime)
     let endTimeInterval = TimeInterval(event.startTime)
-    
-    name = event.name
+    self.name = event.name
     startTime = Date(timeIntervalSince1970: startTimeInterval)
     endTime = Date(timeIntervalSince1970: endTimeInterval)
     street1 = event.street1
@@ -43,7 +40,6 @@ struct EditEventView: View {
     if let eDescr = event.description {
       descr = eDescr //optional
     }
-    
   }
   
   var body: some View {
@@ -182,6 +178,7 @@ struct EditEventView: View {
       }
       .padding(30)
       .textFieldStyle(RoundedBorderTextFieldStyle())
+      .onAppear{ initView() }
     }
     .navigationTitle("Edit Event")
     
