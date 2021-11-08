@@ -8,26 +8,33 @@
 import SwiftUI
 
 struct AddEventButton: View {
-    var body: some View {
-      VStack {
-        Spacer()
-        HStack {
-          Spacer()
-          //Add Event button
-          Button(action: {print("Tapped Add Event Button")}, label: {
-            Image(systemName: "plus")
-              .foregroundColor(Color.white)
-              .font(.largeTitle)
-              .frame(width: 65, height: 65)
-          })
-          .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
-          .cornerRadius(38.5)
-          .padding()
-          .shadow(color: Color.black.opacity(0.3),
-                  radius: 3,
-                  x: 3,
-                  y: 3)
-        }
-      }
+  
+  
+  @ObservedObject var viewModel = ViewModel()
+  
+  var body: some View {
+  
+    //Below is code for the actual button
+    ZStack {
+      //The image of the 'plus' sign is on top
+      Image(systemName: "plus")
+        .foregroundColor(Color.white)
+        .font(.largeTitle)
     }
+    .frame(width: 65, height: 65)
+    //Button is circular w/ blue-violet background
+    .background(
+      ZStack {
+        Circle()
+          .fill(Color("Primary - Indigo"))
+      }
+    )
+    //Shadow under button
+    .shadow(color: Color.black.opacity(0.3),
+            radius: 3,
+            x: 3,
+            y: 3)
+    .padding()
+  }
+
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1862DADB27346EA50055E2F0 /* InviteGuestsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */; };
+		1862DADD27349F290055E2F0 /* InviteGuestsModalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862DADC27349F290055E2F0 /* InviteGuestsModalRow.swift */; };
+		1862DAE22734FE140055E2F0 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862DAE12734FE140055E2F0 /* EditEventView.swift */; };
 		18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF455272A6B680008B4A3 /* ViewModel.swift */; };
 		18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF458272B1F9D0008B4A3 /* AppView.swift */; };
 		18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF45A272B71890008B4A3 /* HostEventsView.swift */; };
@@ -15,8 +18,17 @@
 		18DAF464272E6FF90008B4A3 /* HostOngoingEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF463272E6FF90008B4A3 /* HostOngoingEventCard.swift */; };
 		18DAF466272E93BF0008B4A3 /* SquareScanQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF465272E93BF0008B4A3 /* SquareScanQR.swift */; };
 		18DAF468272EA3600008B4A3 /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF467272EA3600008B4A3 /* AddEventButton.swift */; };
+		18EE5BB42732029D00115EA1 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE5BB32732029D00115EA1 /* CreateEventView.swift */; };
 		18F98528272900D00077B7FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F98527272900D00077B7FE /* GoogleService-Info.plist */; };
 		881A946FFA6EC6C367F51BE2 /* Pods_team10app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */; };
+		9D50390C2734C174001DF338 /* HostEventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D50390B2734C174001DF338 /* HostEventDetailsView.swift */; };
+		9D79D50C273351B200A771D9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D50B273351B200A771D9 /* ProfileView.swift */; };
+		9D79D50E273351BA00A771D9 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D50D273351BA00A771D9 /* EventDetailsView.swift */; };
+		9D79D511273351C300A771D9 /* InviteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D510273351C300A771D9 /* InviteCard.swift */; };
+		9D79D512273351C300A771D9 /* InvitationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D50F273351C300A771D9 /* InvitationsView.swift */; };
+		9D79D514273351CB00A771D9 /* InvitationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D513273351CB00A771D9 /* InvitationDetailView.swift */; };
+		9D79D516273351F300A771D9 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D515273351F300A771D9 /* URLImage.swift */; };
+		9D8CC249272F354400687207 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8CC248272F354400687207 /* QRViewController.swift */; };
 		B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */; };
 		B20E9ECA271FA2BC002BA590 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9EC9271FA2BC002BA590 /* SceneDelegate.swift */; };
 		B20E9ECC271FA2BC002BA590 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9ECB271FA2BC002BA590 /* ContentView.swift */; };
@@ -24,6 +36,8 @@
 		B20E9ED1271FA2BE002BA590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED0271FA2BE002BA590 /* Assets.xcassets */; };
 		B20E9ED4271FA2BE002BA590 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED3271FA2BE002BA590 /* Preview Assets.xcassets */; };
 		B20E9ED7271FA2BE002BA590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED5271FA2BE002BA590 /* LaunchScreen.storyboard */; };
+		B247892D2739BD85006B7362 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247892C2739BD85006B7362 /* Friend.swift */; };
+		B247892F2739BE57006B7362 /* FriendInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247892E2739BE57006B7362 /* FriendInterface.swift */; };
 		B250866227278E5000FD9D9C /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866127278E5000FD9D9C /* Controller.swift */; };
 		B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2508663272797B200FD9D9C /* InviteInterface.swift */; };
 		B250866C272B236B00FD9D9C /* team10appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866B272B236B00FD9D9C /* team10appTests.swift */; };
@@ -50,8 +64,9 @@
 
 /* Begin PBXFileReference section */
 		0C2769A3E92908E5F7EF0E7A /* Pods-team10app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10app.release.xcconfig"; path = "Target Support Files/Pods-team10app/Pods-team10app.release.xcconfig"; sourceTree = "<group>"; };
-		36C4B4DE11EE047B19FC3257 /* Pods_team10appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EBE37DE8038C2389909058F /* Pods-team10appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10appTests.release.xcconfig"; path = "Target Support Files/Pods-team10appTests/Pods-team10appTests.release.xcconfig"; sourceTree = "<group>"; };
+		1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModal.swift; sourceTree = "<group>"; };
+		1862DADC27349F290055E2F0 /* InviteGuestsModalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModalRow.swift; sourceTree = "<group>"; };
+		1862DAE12734FE140055E2F0 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		18DAF455272A6B680008B4A3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		18DAF458272B1F9D0008B4A3 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		18DAF45A272B71890008B4A3 /* HostEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventsView.swift; sourceTree = "<group>"; };
@@ -60,8 +75,23 @@
 		18DAF463272E6FF90008B4A3 /* HostOngoingEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostOngoingEventCard.swift; sourceTree = "<group>"; };
 		18DAF465272E93BF0008B4A3 /* SquareScanQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareScanQR.swift; sourceTree = "<group>"; };
 		18DAF467272EA3600008B4A3 /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
+		18EE5BB32732029D00115EA1 /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		18F98527272900D00077B7FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		36C4B4DE11EE047B19FC3257 /* Pods_team10appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EBE37DE8038C2389909058F /* Pods-team10appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10appTests.release.xcconfig"; path = "Target Support Files/Pods-team10appTests/Pods-team10appTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D50390B2734C174001DF338 /* HostEventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventDetailsView.swift; sourceTree = "<group>"; };
+		9D79D50B273351B200A771D9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9D79D50D273351BA00A771D9 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
+		9D79D50F273351C300A771D9 /* InvitationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationsView.swift; sourceTree = "<group>"; };
+		9D79D510273351C300A771D9 /* InviteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCard.swift; sourceTree = "<group>"; };
+		9D79D513273351CB00A771D9 /* InvitationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationDetailView.swift; sourceTree = "<group>"; };
+		9D79D515273351F300A771D9 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
+		9D79D5182733521100A771D9 /* InvitationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCard.swift; sourceTree = "<group>"; };
+		9D79D5192733521100A771D9 /* InvitationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationStack.swift; sourceTree = "<group>"; };
+		9D8CC248272F354400687207 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
+		9D8CC24A272F369D00687207 /* AttendeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeViewController.swift; sourceTree = "<group>"; };
+		9D8CC24C272F36A900687207 /* HostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
 		B20E9EC4271FA2BC002BA590 /* team10app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = team10app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B20E9EC9271FA2BC002BA590 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +101,8 @@
 		B20E9ED3271FA2BE002BA590 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B20E9ED6271FA2BE002BA590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B20E9ED8271FA2BE002BA590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B247892C2739BD85006B7362 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		B247892E2739BE57006B7362 /* FriendInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInterface.swift; sourceTree = "<group>"; };
 		B250866127278E5000FD9D9C /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		B2508663272797B200FD9D9C /* InviteInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteInterface.swift; sourceTree = "<group>"; };
 		B2508669272B236B00FD9D9C /* team10appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = team10appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,14 +141,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1862DAE02734FC9D0055E2F0 /* Host Views */ = {
+			isa = PBXGroup;
+			children = (
+				18DAF463272E6FF90008B4A3 /* HostOngoingEventCard.swift */,
+				18DAF45E272D39CD0008B4A3 /* HostUpcomingEventCard.swift */,
+				18DAF45A272B71890008B4A3 /* HostEventsView.swift */,
+				1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */,
+				1862DADC27349F290055E2F0 /* InviteGuestsModalRow.swift */,
+				18EE5BB32732029D00115EA1 /* CreateEventView.swift */,
+				1862DAE12734FE140055E2F0 /* EditEventView.swift */,
+				9D50390B2734C174001DF338 /* HostEventDetailsView.swift */,
+			);
+			path = "Host Views";
+			sourceTree = "<group>";
+		};
 		18DAF457272B1D980008B4A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1862DAE02734FC9D0055E2F0 /* Host Views */,
+				9D79D5172733521100A771D9 /* Other */,
 				18DAF460272E6F1D0008B4A3 /* Buttons */,
 				18DAF458272B1F9D0008B4A3 /* AppView.swift */,
-				18DAF45A272B71890008B4A3 /* HostEventsView.swift */,
-				18DAF45E272D39CD0008B4A3 /* HostUpcomingEventCard.swift */,
-				18DAF463272E6FF90008B4A3 /* HostOngoingEventCard.swift */,
+				9D79D50D273351BA00A771D9 /* EventDetailsView.swift */,
+				9D79D513273351CB00A771D9 /* InvitationDetailView.swift */,
+				9D79D515273351F300A771D9 /* URLImage.swift */,
+				9D79D50F273351C300A771D9 /* InvitationsView.swift */,
+				9D79D510273351C300A771D9 /* InviteCard.swift */,
+				9D79D50B273351B200A771D9 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -140,6 +192,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9D79D50827334C6A00A771D9 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		9D79D5172733521100A771D9 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				9D79D5182733521100A771D9 /* InvitationCard.swift */,
+				9D79D5192733521100A771D9 /* InvitationStack.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		9D8CC247272F351B00687207 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9D8CC248272F354400687207 /* QRViewController.swift */,
+				9D8CC24A272F369D00687207 /* AttendeeViewController.swift */,
+				9D8CC24C272F36A900687207 /* HostViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		B20E9EBB271FA2BC002BA590 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +226,7 @@
 				B20E9EC5271FA2BC002BA590 /* Products */,
 				DBACACAA5C12F5DAA3F92D74 /* Pods */,
 				9CAF919EA2216ACF69973C79 /* Frameworks */,
+				9D79D50827334C6A00A771D9 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +248,7 @@
 				B20E9EC9271FA2BC002BA590 /* SceneDelegate.swift */,
 				B20E9ECB271FA2BC002BA590 /* ContentView.swift */,
 				B20E9ED0271FA2BE002BA590 /* Assets.xcassets */,
+				9D8CC247272F351B00687207 /* Controllers */,
 				18DAF457272B1D980008B4A3 /* Views */,
 				B20E9ED5271FA2BE002BA590 /* LaunchScreen.storyboard */,
 				B20E9ED8271FA2BE002BA590 /* Info.plist */,
@@ -218,6 +298,8 @@
 				B2BB3CB627272DF100C6DB94 /* UserInterface.swift */,
 				B2BB3CB82727369D00C6DB94 /* EventInterface.swift */,
 				B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */,
+				B247892E2739BE57006B7362 /* FriendInterface.swift */,
+				B247892C2739BD85006B7362 /* Friend.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -420,7 +502,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				18DAF464272E6FF90008B4A3 /* HostOngoingEventCard.swift in Sources */,
+				9D79D511273351C300A771D9 /* InviteCard.swift in Sources */,
+				9D79D514273351CB00A771D9 /* InvitationDetailView.swift in Sources */,
 				B2BB3CB727272DF100C6DB94 /* UserInterface.swift in Sources */,
+				9D79D50E273351BA00A771D9 /* EventDetailsView.swift in Sources */,
 				B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */,
 				B2BB3CB327272BAC00C6DB94 /* Invite.swift in Sources */,
 				B250866227278E5000FD9D9C /* Controller.swift in Sources */,
@@ -431,15 +516,26 @@
 				B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */,
 				B20E9ECC271FA2BC002BA590 /* ContentView.swift in Sources */,
 				B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */,
+				9D8CC249272F354400687207 /* QRViewController.swift in Sources */,
 				18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */,
+				1862DAE22734FE140055E2F0 /* EditEventView.swift in Sources */,
 				18DAF45F272D39CD0008B4A3 /* HostUpcomingEventCard.swift in Sources */,
 				18DAF468272EA3600008B4A3 /* AddEventButton.swift in Sources */,
 				18DAF466272E93BF0008B4A3 /* SquareScanQR.swift in Sources */,
+				9D50390C2734C174001DF338 /* HostEventDetailsView.swift in Sources */,
+				9D79D512273351C300A771D9 /* InvitationsView.swift in Sources */,
+				18EE5BB42732029D00115EA1 /* CreateEventView.swift in Sources */,
 				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
+				1862DADB27346EA50055E2F0 /* InviteGuestsModal.swift in Sources */,
+				1862DADD27349F290055E2F0 /* InviteGuestsModalRow.swift in Sources */,
 				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
+				B247892F2739BE57006B7362 /* FriendInterface.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
+				9D79D50C273351B200A771D9 /* ProfileView.swift in Sources */,
+				B247892D2739BD85006B7362 /* Friend.swift in Sources */,
 				18DAF462272E6F370008B4A3 /* MoreDetailsButton.swift in Sources */,
+				9D79D516273351F300A771D9 /* URLImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,7 +701,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = team10app.67443;
+				PRODUCT_BUNDLE_IDENTIFIER = team10appSara.67443;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -627,7 +723,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = team10app.67443;
+				PRODUCT_BUNDLE_IDENTIFIER = team10appSara.67443;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -79,7 +79,7 @@ struct Event {
             "city":city,
             "state":state,
             "zip":zip,
-            "description":description 
+            "description":description
         ]
     }
 }
