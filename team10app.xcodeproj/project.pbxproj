@@ -36,6 +36,8 @@
 		B20E9ED1271FA2BE002BA590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED0271FA2BE002BA590 /* Assets.xcassets */; };
 		B20E9ED4271FA2BE002BA590 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED3271FA2BE002BA590 /* Preview Assets.xcassets */; };
 		B20E9ED7271FA2BE002BA590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED5271FA2BE002BA590 /* LaunchScreen.storyboard */; };
+		B247892D2739BD85006B7362 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247892C2739BD85006B7362 /* Friend.swift */; };
+		B247892F2739BE57006B7362 /* FriendInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247892E2739BE57006B7362 /* FriendInterface.swift */; };
 		B250866227278E5000FD9D9C /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866127278E5000FD9D9C /* Controller.swift */; };
 		B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2508663272797B200FD9D9C /* InviteInterface.swift */; };
 		B250866C272B236B00FD9D9C /* team10appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866B272B236B00FD9D9C /* team10appTests.swift */; };
@@ -99,6 +101,8 @@
 		B20E9ED3271FA2BE002BA590 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B20E9ED6271FA2BE002BA590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B20E9ED8271FA2BE002BA590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B247892C2739BD85006B7362 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		B247892E2739BE57006B7362 /* FriendInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInterface.swift; sourceTree = "<group>"; };
 		B250866127278E5000FD9D9C /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		B2508663272797B200FD9D9C /* InviteInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteInterface.swift; sourceTree = "<group>"; };
 		B2508669272B236B00FD9D9C /* team10appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = team10appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +298,8 @@
 				B2BB3CB627272DF100C6DB94 /* UserInterface.swift */,
 				B2BB3CB82727369D00C6DB94 /* EventInterface.swift */,
 				B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */,
+				B247892E2739BE57006B7362 /* FriendInterface.swift */,
+				B247892C2739BD85006B7362 /* Friend.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -523,9 +529,11 @@
 				1862DADB27346EA50055E2F0 /* InviteGuestsModal.swift in Sources */,
 				1862DADD27349F290055E2F0 /* InviteGuestsModalRow.swift in Sources */,
 				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
+				B247892F2739BE57006B7362 /* FriendInterface.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
 				9D79D50C273351B200A771D9 /* ProfileView.swift in Sources */,
+				B247892D2739BD85006B7362 /* Friend.swift in Sources */,
 				18DAF462272E6F370008B4A3 /* MoreDetailsButton.swift in Sources */,
 				9D79D516273351F300A771D9 /* URLImage.swift in Sources */,
 			);
