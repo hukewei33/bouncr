@@ -27,6 +27,8 @@ class ViewModel: ObservableObject {
     
     @Published var hosts: [Host] = [Host]()
     @Published var events: [Event] = [Event]()
+    @Published var pastEvents: [Event] = [Event]()
+    @Published var currentEvents: [Event] = [Event]()
     @Published var users: [User] = [User]()
     @Published var invites: [Invite] = [Invite]()
     @Published var pendingInvites: [Invite] = [Invite]()
@@ -169,13 +171,17 @@ class ViewModel: ObservableObject {
     }
     
     func getEvents() {
-        self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
+        let curTime = Date().timeIntervalSinceReferenceDate
+        self.eventsReference.queryOrdered(byChild: "endTime").observe(.value, with: { snapshot in
             self.events.removeAll()
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let event = Event(snapshot: snapshot) {
-                    //print(event.name)
-                    self.events.append(event)
+                    //past event
+                    if event.endTime < curTime {self.pastEvents.append(event)}
+                    //future event
+                    else if event.startTime > curTime {self.events.append(event)}
+                    else {self.currentEvents.append(event)}
                 }
             }
         })
