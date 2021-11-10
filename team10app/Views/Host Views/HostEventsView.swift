@@ -13,7 +13,7 @@ struct HostEventsView: View {
   var events: [Event]
   
   //CITATION: The following code for changing top nav bar color comes from here:
-  //https://levelup.gitconnected.com/cracking-the-navigation-bar-secrets-with-swiftui-30e9b019502c
+//  https://levelup.gitconnected.com/cracking-the-navigation-bar-secrets-with-swiftui-30e9b019502c
   init(viewModel: ViewModel, events: [Event]) {
     let coloredAppearance = UINavigationBarAppearance()
     coloredAppearance.configureWithOpaqueBackground()
