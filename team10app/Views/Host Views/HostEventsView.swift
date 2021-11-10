@@ -37,26 +37,33 @@ struct HostEventsView: View {
         ScrollView {
           VStack(alignment: .leading) {
             //Ongoing events (TO BE IMPLEMENTED IN V2)
-            //Text("Ongoing Events")
-            //  .bold()
-            //  .font(.system(size: 22))
-            //  .padding()
-            //HostOngoingEventCard(event: event)
+//            Text("Ongoing Events")
+//              .bold()
+//              .font(.system(size: 22))
+//              .padding()
+//            HostOngoingEventCard(event: self.viewModel.events[0])
             
             //Upcoming events
             Text("Upcoming Events")
               .bold()
               .font(.system(size: 22))
               .padding()
-            ForEach(0..<self.events.count, id: \.self) { index in
-              HostUpcomingEventCard(event: self.events[index])
+            ForEach(0..<self.viewModel.events.count, id: \.self) { index in
+              HostUpcomingEventCard(event: self.viewModel.events[index])
             }
           }
         }
         
         //Circular button in bottom right to add event
-        
-        AddEventButton()
+        VStack {
+          Spacer()
+          HStack {
+            Spacer()
+            NavigationLink(destination: CreateEventView(viewModel: viewModel)) {
+              AddEventButton()
+            }
+          }
+        }
         
       }
       .navigationTitle("Your Events")
