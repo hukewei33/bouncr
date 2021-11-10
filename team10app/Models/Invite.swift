@@ -30,7 +30,7 @@ struct Invite {
         self.userKey = userKey
         self.eventKey = eventKey
         self.checkinTime = nil
-        self.inviteStatus = true
+        self.inviteStatus = false
         self.checkinStatus = false
     }
 
