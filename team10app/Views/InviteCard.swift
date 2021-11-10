@@ -66,12 +66,14 @@ struct InviteCard: View {
       if (event.description != nil){
         
         Text((event.description)!)
+          .lineLimit(2)
           .font(.system(size: 14))
           .padding(.bottom, 10)
-          .frame(height: 40)
-          .truncationMode(.tail)
+          .frame(width: 200, height: 40)
+          
       }
       
+      Spacer()
       
       // link to event
       NavigationLink(destination: EventDetailsView(event: event)){
@@ -85,8 +87,6 @@ struct InviteCard: View {
           .resizable()
           .scaledToFit()
         .frame(width: 250, height: 250, alignment: .center)
-      
-      Spacer()
       
       
     }

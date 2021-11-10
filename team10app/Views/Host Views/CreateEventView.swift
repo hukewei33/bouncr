@@ -161,6 +161,6 @@ struct CreateEventView: View {
     }
     .navigationTitle("New Event")
     
-
+    .navigationViewStyle(StackNavigationViewStyle())
   }
 }

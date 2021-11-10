@@ -111,7 +111,7 @@ struct EventDetailsView: View {
     Spacer()
       .navigationBarTitle(event.name, displayMode: .large)
     }
-
+    .navigationViewStyle(StackNavigationViewStyle())
         
 //        Text(event.name)
 //          .foregroundColor(.white)

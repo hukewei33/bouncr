@@ -95,7 +95,7 @@ struct InvitationsView: View {
         
         .navigationBarTitle("Invitations")
       }.edgesIgnoringSafeArea([.top])
-      
+        .navigationViewStyle(StackNavigationViewStyle())
     }
       
 }

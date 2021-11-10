@@ -218,7 +218,7 @@ struct HostEventDetailsView: View {
       
       .navigationBarTitle(title)
       }
-    
+    .navigationViewStyle(StackNavigationViewStyle())
     }
         
       InviteGuestsModal(show: $showPopUp, viewModel: self.viewModel, event: self.event)

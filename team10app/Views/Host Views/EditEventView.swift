@@ -182,7 +182,7 @@ struct EditEventView: View {
     }
     .navigationTitle("Edit Event")
     
-
+    .navigationViewStyle(StackNavigationViewStyle())
   }
 }
 

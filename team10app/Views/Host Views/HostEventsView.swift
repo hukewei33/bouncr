@@ -67,6 +67,7 @@ struct HostEventsView: View {
         
       }
       .navigationTitle("Your Events")
+      .navigationViewStyle(StackNavigationViewStyle())
     }
   }
 }

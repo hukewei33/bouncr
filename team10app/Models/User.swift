@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-struct User :Hashable {
+struct User {
     
     let ref: DatabaseReference?
     let key: String
@@ -18,14 +18,6 @@ struct User :Hashable {
     let username: String
     let profilePicURL: String?
     let passwordHash: String
-    
-    static func == (lhs: User, rhs: User) -> Bool {
-        return lhs.key == rhs.key
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(key)
-    }
     
     
     init(firstName: String, lastName: String, email: String, username: String, profilePicURL : String?, passwordHash: String = "", key: String = "") {
