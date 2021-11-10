@@ -10,7 +10,7 @@ import SwiftUI
 struct SquareScanQR: View {
     var body: some View {
       
-      NavigationLink(destination: QRCodeScannerView()){
+      NavigationLink(destination: InvitationsView()){
         Image(systemName: "qrcode.viewfinder")
           .foregroundColor(Color.white)
           .font(.largeTitle)

@@ -8,10 +8,12 @@
 import Foundation
 import SwiftUI
 import UIKit
+import CodeScanner
 
 struct HostEventDetailsView: View {
   
   @ObservedObject var viewModel = ViewModel()
+  @State private var isShowingScanner = false
   var event: Event
   var ongoing: Bool
   
@@ -211,8 +213,14 @@ struct HostEventDetailsView: View {
           
         }
 
-        SquareScanQR()
-        
+        // SquareScanQR()
+        Button(action: {self.isShowingScanner = true}, label: {
+          Image(systemName: "qrcode.viewfinder")
+          Text("Scan Invites")
+        })
+          .sheet(isPresented: $isShowingScanner) {
+            CodeScannerView(codeTypes: [.qr], completion: self.handleScan)
+          }
       }
       
       
@@ -226,4 +234,21 @@ struct HostEventDetailsView: View {
   
   }
 }
+  func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+     self.isShowingScanner = false
+     
+    switch result {
+    case .success(let code):
+      let details = code.components(separatedBy: "\n")
+      print(details)
+      guard details.count == 2 else { return }
+      
+      
+      
+      print("success" + code)
+    case .failure(let error):
+      print("failure")
+    }
+  }
+  
 }

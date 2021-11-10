@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,11 +27,7 @@
 		9D79D514273351CB00A771D9 /* InvitationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D513273351CB00A771D9 /* InvitationDetailView.swift */; };
 		9D79D516273351F300A771D9 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D515273351F300A771D9 /* URLImage.swift */; };
 		9D8CC249272F354400687207 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8CC248272F354400687207 /* QRViewController.swift */; };
-		9DA7554727357F7300104E9C /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA7554627357F7300104E9C /* QRCodeScanner.swift */; };
-		9DA7554927357FA500104E9C /* QRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA7554827357FA500104E9C /* QRCodeViewModel.swift */; };
-		9DA7554B273580A900104E9C /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA7554A273580A900104E9C /* ScannerView.swift */; };
-		9DA7554D273580C900104E9C /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA7554C273580C900104E9C /* ScannerViewController.swift */; };
-		9DA7554F2735823500104E9C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA7554E2735823500104E9C /* Alert.swift */; };
+		9D9920F9273B3F60009E6FB8 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 9D9920F8273B3F60009E6FB8 /* CodeScanner */; };
 		B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */; };
 		B20E9ECA271FA2BC002BA590 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9EC9271FA2BC002BA590 /* SceneDelegate.swift */; };
 		B20E9ECC271FA2BC002BA590 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20E9ECB271FA2BC002BA590 /* ContentView.swift */; };
@@ -91,11 +87,6 @@
 		9D8CC248272F354400687207 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		9D8CC24A272F369D00687207 /* AttendeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeViewController.swift; sourceTree = "<group>"; };
 		9D8CC24C272F36A900687207 /* HostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
-		9DA7554627357F7300104E9C /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
-		9DA7554827357FA500104E9C /* QRCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewModel.swift; sourceTree = "<group>"; };
-		9DA7554A273580A900104E9C /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
-		9DA7554C273580C900104E9C /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
-		9DA7554E2735823500104E9C /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B20E9EC4271FA2BC002BA590 /* team10app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = team10app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20E9EC7271FA2BC002BA590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B20E9EC9271FA2BC002BA590 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D9920F9273B3F60009E6FB8 /* CodeScanner in Frameworks */,
 				881A946FFA6EC6C367F51BE2 /* Pods_team10app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,10 +144,6 @@
 				9D79D50D273351BA00A771D9 /* EventDetailsView.swift */,
 				9D79D513273351CB00A771D9 /* InvitationDetailView.swift */,
 				9D50390B2734C174001DF338 /* HostEventDetailsView.swift */,
-				9DA7554627357F7300104E9C /* QRCodeScanner.swift */,
-				9DA7554C273580C900104E9C /* ScannerViewController.swift */,
-				9DA7554A273580A900104E9C /* ScannerView.swift */,
-				9DA7554E2735823500104E9C /* Alert.swift */,
 				9D79D515273351F300A771D9 /* URLImage.swift */,
 				9D79D50F273351C300A771D9 /* InvitationsView.swift */,
 				9D79D510273351C300A771D9 /* InviteCard.swift */,
@@ -253,7 +241,6 @@
 				B250866127278E5000FD9D9C /* Controller.swift */,
 				18F98527272900D00077B7FE /* GoogleService-Info.plist */,
 				18DAF455272A6B680008B4A3 /* ViewModel.swift */,
-				9DA7554827357FA500104E9C /* QRCodeViewModel.swift */,
 			);
 			path = team10app;
 			sourceTree = "<group>";
@@ -328,6 +315,9 @@
 			dependencies = (
 			);
 			name = team10app;
+			packageProductDependencies = (
+				9D9920F8273B3F60009E6FB8 /* CodeScanner */,
+			);
 			productName = team10app;
 			productReference = B20E9EC4271FA2BC002BA590 /* team10app.app */;
 			productType = "com.apple.product-type.application";
@@ -379,6 +369,9 @@
 				Base,
 			);
 			mainGroup = B20E9EBB271FA2BC002BA590;
+			packageReferences = (
+				9D9920F7273B3F60009E6FB8 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = B20E9EC5271FA2BC002BA590 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -499,7 +492,6 @@
 				18DAF464272E6FF90008B4A3 /* HostOngoingEventCard.swift in Sources */,
 				9D79D511273351C300A771D9 /* InviteCard.swift in Sources */,
 				9D79D514273351CB00A771D9 /* InvitationDetailView.swift in Sources */,
-				9DA7554B273580A900104E9C /* ScannerView.swift in Sources */,
 				B2BB3CB727272DF100C6DB94 /* UserInterface.swift in Sources */,
 				9D79D50E273351BA00A771D9 /* EventDetailsView.swift in Sources */,
 				B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */,
@@ -508,24 +500,20 @@
 				18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */,
 				B20E9ECA271FA2BC002BA590 /* SceneDelegate.swift in Sources */,
 				B2BB3CBB27273BDC00C6DB94 /* HostInterface.swift in Sources */,
-				9DA7554927357FA500104E9C /* QRCodeViewModel.swift in Sources */,
 				B2BB3CB527272C4B00C6DB94 /* Host.swift in Sources */,
 				B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */,
 				1880341A27323B2900D91408 /* CreateEventFormSubmitButton.swift in Sources */,
 				B20E9ECC271FA2BC002BA590 /* ContentView.swift in Sources */,
 				B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */,
-				9DA7554F2735823500104E9C /* Alert.swift in Sources */,
 				9D8CC249272F354400687207 /* QRViewController.swift in Sources */,
 				18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */,
 				18DAF45F272D39CD0008B4A3 /* HostUpcomingEventCard.swift in Sources */,
 				18DAF468272EA3600008B4A3 /* AddEventButton.swift in Sources */,
 				18DAF466272E93BF0008B4A3 /* SquareScanQR.swift in Sources */,
 				9D50390C2734C174001DF338 /* HostEventDetailsView.swift in Sources */,
-				9DA7554727357F7300104E9C /* QRCodeScanner.swift in Sources */,
 				9D79D512273351C300A771D9 /* InvitationsView.swift in Sources */,
 				18EE5BB42732029D00115EA1 /* CreateEventView.swift in Sources */,
 				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
-				9DA7554D273580C900104E9C /* ScannerViewController.swift in Sources */,
 				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
@@ -797,6 +785,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9D9920F7273B3F60009E6FB8 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9D9920F8273B3F60009E6FB8 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D9920F7273B3F60009E6FB8 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B20E9ECD271FA2BC002BA590 /* team10app.xcdatamodeld */ = {

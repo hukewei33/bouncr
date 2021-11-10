@@ -21,12 +21,12 @@ struct QRCodeScannerView: View {
                 
                 Spacer().frame(height: 60)
                 
-                Label("Scanned Barcode: ", systemImage: "barcode.viewfinder")
+                Label("Scanned QR Code: ", systemImage: "qrcode.viewfinder")
                     .font(.title)
                 
                 StatusText(QRviewModel: QRviewModel)
             }
-            .navigationTitle("Barcode Scanner")
+            .navigationTitle("QR Code Scanner")
             .alert(item: $QRviewModel.alertItem) { alertItem in
                 Alert(title: alertItem.title,
                       message: alertItem.message,
