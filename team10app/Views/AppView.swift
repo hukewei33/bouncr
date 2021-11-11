@@ -43,6 +43,11 @@ struct AppView: View {
       }
       .padding(.top)
       .onAppear() {
+          //Fixes bug where tab bar was turning transparent on InvitationsView
+          if #available(iOS 15.0, *) {
+              let appearance = UITabBarAppearance()
+              UITabBar.appearance().scrollEdgeAppearance = appearance
+          }
           UITabBar.appearance().barTintColor = .white
       }
       .edgesIgnoringSafeArea(.top) //Makes top nav bar stretch all the way to top of device
