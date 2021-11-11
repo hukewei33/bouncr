@@ -54,15 +54,15 @@ struct InviteGuestsModal: View {
             
             ScrollView {
                 VStack(alignment: .leading) {
-                  ForEach(0..<self.viewModel.users.count, id: \.self) { index in
-                    InviteGuestsModalRow(viewModel: self.viewModel, user: self.viewModel.users[index])
+                  ForEach(0..<self.viewModel.getNotInvitedUsers(eventKey: event.key).count, id: \.self) { index in
+                    InviteGuestsModalRow(viewModel: self.viewModel, user: self.viewModel.getNotInvitedUsers(eventKey: event.key)[index])
                       .padding(10)
                   }
                 }
                 .padding()
             }
             .cornerRadius(10)
-            .frame(width: 250)
+            .frame(width: 250, height: 400)
             .border(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)))
             
             Spacer()

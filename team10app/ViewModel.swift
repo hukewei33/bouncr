@@ -65,6 +65,12 @@ class ViewModel: ObservableObject {
       let guestIDList = self.invites.filter {$0.eventKey == eventKey}.map{$0.userKey}
       return self.users.filter {guestIDList.contains($0.key)}
     }
+    
+    //Get all the users who are not invited to an event, display in InviteGuestsModal
+    func getNotInvitedUsers(eventKey: String) -> [User] {
+      let guestIDList = self.invites.filter {$0.eventKey == eventKey}.map{$0.userKey}
+      return self.users.filter {!guestIDList.contains($0.key)}
+    }
   
     func indexEventHosts(eventKey:String) -> [User] {
       let hostIDList = self.hosts.filter {$0.eventKey == eventKey}.map{$0.userKey}
