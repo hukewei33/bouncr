@@ -13,11 +13,11 @@ class HostInterface {
     var Hosts: [Host] = []
     let hostsReference = Database.database().reference(withPath: "hosts")
     
-    init(userKey:String){
-
-        self.fetch (userKey:userKey){hosts in return }
-
-    }
+//    init(userKey:String){
+//
+//        self.fetch (userKey:userKey){hosts in return }
+//
+//    }
     
     func create(userKey: String, eventKey: String)-> String?{
         let keyResult :String? = self.hostsReference.childByAutoId().key

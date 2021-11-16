@@ -12,9 +12,9 @@ class EventInterface {
     
     var Events: [Event] = []
     
-    init(){
-        self.fetch(){events in return}
-    }
+//    init(){
+//        self.fetch(){events in return}
+//    }
     
     let eventsReference = Database.database().reference(withPath: "events")
     

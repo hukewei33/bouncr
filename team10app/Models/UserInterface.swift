@@ -11,22 +11,26 @@ import Firebase
 class UserInterface {
   
     var Users: [User] = []
-    var CurrentUser : User? = nil
     
-    init(userKey:String){
-        //populate the array and use a callback to set the current user
-         self.fetch {(users) in
-            for user in users{
-                if user.key == userKey{
-                    self.CurrentUser = user
-                }
-            }
-        }
-    }
+//    var CurrentUser : User? = nil
+//
+//    init(userKey:String){
+//        //populate the array and use a callback to set the current user
+//         self.fetch {(users) in
+//            for user in users{
+//                if user.key == userKey{
+//                    self.CurrentUser = user
+//                }
+//            }
+//        }
+//    }
     
     let usersReference = Database.database().reference(withPath: "users")
     
-    func create(firstName: String, lastName : String, email: String, passwordHash: String , username: String)-> String?{
+    func create(firstName: String, lastName : String, email: String, password: String , username: String)-> String?{
+        var hasher = Hasher()
+        hasher.combine(password)
+       let passwordHash = hasher.finalize()
         let keyResult :String? = self.usersReference.childByAutoId().key
         if let userId = keyResult {
             let newUser = User(firstName: firstName,

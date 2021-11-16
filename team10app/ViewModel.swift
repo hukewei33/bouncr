@@ -41,7 +41,7 @@ class ViewModel: ObservableObject {
     
     @Published var searchResults: [User] = [User]()
     
-    //@Published var thisUser: User = nil
+    @Published var thisUser: User? = nil
     
     //  func createEvent(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
     //      if let newEventID = self.eventInterface.create(name: name, startTime: startTime,street1:  street1, street2: street2,city: city,zip:zip,state: state, description: description ),
@@ -59,21 +59,47 @@ class ViewModel: ObservableObject {
         
         //we also need to think about a login process for v2
         
-        userInterface = UserInterface(userKey: "Tom")
+        userInterface = UserInterface()
         eventInterface = EventInterface()
-        hostInterface = HostInterface(userKey: "Tom")
+        hostInterface = HostInterface()
         inviteInterface = InviteInterface()
-        friendInterface = FriendInterface(userKey: "Tom")
+        friendInterface = FriendInterface()
         
         //why is this here??
-        indexEventHosts(eventKey: "JohnParty")
+        //indexEventHosts(eventKey: "JohnParty")
         
-        getHosts(userKey: "Tom")
+        getHosts()
         getEvents()
-        getUsers(userKey:"Tom")
+        getUsers()
         getInvites()
-        getFriends(userKey: "Tom")
         
+        
+    }
+    
+    func login(username: String, pword: String) -> Bool {
+        var hasher = Hasher()
+        hasher.combine(pword)
+        let passwordHash = hasher.finalize()
+        
+        for user in self.users {
+            if (user.username == username && user.passwordHash == passwordHash) {
+                self.thisUser = user
+                getFriends(userKey:user.key)
+                return true // login was successful
+            }
+        }
+        return false // login failed
+    }
+    
+    func logout() {
+        self.thisUser = nil;
+    }
+    
+    func loggedin()->String?{
+        if let user = self.thisUser{
+            return user.key
+        }
+        return nil
     }
     
     func indexEventGuests(eventKey: String) -> [User] {
@@ -120,7 +146,7 @@ class ViewModel: ObservableObject {
     //For use in the inviteGuestsModal; use the toBeInvited list to send invites to ppl
     func sendInvites(event: Event) {
         for user in self.toBeInvited {
-            self.inviteInterface.create(userKey: user.key, eventKey: event.key)
+            if self.inviteInterface.create(userKey: user.key, eventKey: event.key) == nil{print("error in invite creation")}
         }
         self.clearToBeInvited()
     }
@@ -130,41 +156,28 @@ class ViewModel: ObservableObject {
     }
     
     func indexHostEvents() -> [Event] {
-        print("indexHostEvents!!!")
-        //getHosts(userKey: "Tom")
-        let eventIDs: [String] = self.hosts.map {$0.eventKey}
-        let myEvents = self.events.filter {eventIDs.contains($0.key)}
-        //    self.events = myEvents
-        return myEvents
+        if let userKey = loggedin(){
+            let eventIDs: [String] = self.hosts.filter{$0.userKey == userKey }.map {$0.eventKey}
+            let myEvents = self.events.filter {eventIDs.contains($0.key)}
+            return myEvents
+        }
+        else{
+            print("not logged in")
+            return []
+        }
     }
     
-    func getAllHosts() {
-        hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let host = Host(snapshot: snapshot) {
-                    self.hosts.append(host)
-                    print(host.userKey)
-                }
-            }
-            //      print("newAllHosts ", self.hosts)
-            //      print("COUNT", self.hosts.count)
-        })
-    }
+
     
-    func getHosts(userKey: String) {
+    func getHosts() {
         hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
             self.hosts.removeAll()
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let host = Host(snapshot: snapshot) {
-                    if host.userKey == userKey{
-                        self.hosts.append(host)
-                    }
+                    self.hosts.append(host)
                 }
             }
-            //            print("newHosts ", self.hosts)
-            //            print("COUNT", self.hosts.count)
         })
         
     }
@@ -186,17 +199,13 @@ class ViewModel: ObservableObject {
         })
     }
     
-    func getUsers(userKey: String){
+    func getUsers(){
         self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
             self.users.removeAll()
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let user = User(snapshot: snapshot) {
                     self.users.append(user)
-                    //                  print("SELF.USERS: ", self.users)
-                    //                    if user.key == userKey{
-                    //                        self.thisUser = user
-                    //                    }
                 }
             }
         })
@@ -219,11 +228,7 @@ class ViewModel: ObservableObject {
         })
     }
     
-    func eventsForHosts() -> [Event] {
-        let eventIDs: [String] = self.hosts.map {$0.eventKey}
-        let myEvents = self.events.filter {eventIDs.contains($0.key)}
-        return myEvents
-    }
+
     
     func viewEvent(key:String) -> Event?{
         let myEvents = self.events.filter {$0.key == key}
@@ -237,16 +242,23 @@ class ViewModel: ObservableObject {
     }
     
     func indexGuestEvents()->[Event]{
-        let eventIDs = self.invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
+        if let userId = loggedin(){
+        let eventIDs = self.invites.filter{$0.userKey == userId}.map {$0.eventKey}
         let myEvents = self.events.filter {eventIDs.contains($0.key)}
         return myEvents
+        }
+        else{
+            print("not logged in")
+            return []
+        }
+        
     }
     
     //creates an event and host relationship, returns key of host (intermediate table)
     func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?,attendenceVisible:Bool, friendsAttendingVisible:Bool)->String? {
         if let newEventID = self.eventInterface.create(name: name, startTime: startTime, endTime:endTime, street1: street1, street2: street2, city: city, zip: zip, state: state, description: description,attendenceVisible:attendenceVisible, friendsAttendingVisible:friendsAttendingVisible),
            //we need a way to get login and store the user info of this user
-           let userID = self.userInterface.CurrentUser?.key {
+           let userID = loggedin(){
             return self.hostInterface.create(userKey: userID, eventKey: newEventID)
         }
         else{
@@ -260,8 +272,9 @@ class ViewModel: ObservableObject {
         let thisInvite = self.invites.filter{$0.key == inviteKey}.map{$0.eventKey}
         //use eventid of invite to get hosts
         let hostIDs = self.hosts.filter{thisInvite.contains($0.eventKey)}.map{$0.key}
-        //check myid is one of the hosts
-        if hostIDs.contains("hostID"){
+        //check the person scanning the id is one of the hosts
+        if let scannerID = loggedin(),
+           hostIDs.contains(scannerID){
             //update
             self.inviteInterface.update(key: inviteKey, updateVals: ["checkinStatus" : true,"checkinTime":Date().timeIntervalSinceReferenceDate])
             return true
@@ -317,7 +330,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-
+    
     
     
     func acceptFriendInvite(acceptedInvite:Friend){
@@ -326,7 +339,7 @@ class ViewModel: ObservableObject {
         
     }
     
-
+    
     
     //can be used to remove friend or turn down invite
     func rejectFriend(rejectedInvite:Friend){
@@ -335,7 +348,7 @@ class ViewModel: ObservableObject {
         
     }
     
-
+    
     
     func searchUsers(query: String) {
         if query == "" {
