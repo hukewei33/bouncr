@@ -24,9 +24,13 @@ struct Event {
     let state: String
     let zip: String
     let description: String?
+    //setting options
+    let attendenceVisible: Bool
+    let friendsAttendingVisible: Bool
+    
 
 
-    init(name: String, startTime: Date, endTime: Date, street1: String, street2 : String? , city: String, state: String, zip: String, description: String?, key: String = "") {
+    init(name: String, startTime: Date, endTime: Date, street1: String, street2 : String? , city: String, state: String, zip: String, description: String?, key: String = "",attendenceVisible: Bool, friendsAttendingVisible: Bool) {
         self.ref = nil
         self.key = key
         self.name = name
@@ -38,6 +42,8 @@ struct Event {
         self.state = state
         self.zip = zip
         self.description = description
+        self.attendenceVisible = attendenceVisible
+        self.friendsAttendingVisible = friendsAttendingVisible
     }
 
     init?(snapshot: DataSnapshot) {
@@ -49,7 +55,10 @@ struct Event {
             let street1 = value["street1"]as? String,
             let city = value["city"]as? String,
             let state = value["state"]as? String,
-            let zip = value["zip"]as? String
+            let zip = value["zip"]as? String,
+            let attendenceVisible = value["attendenceVisible"] as? Bool,
+            let friendsAttendingVisible = value["friendsAttendingVisible"] as? Bool
+            
         else {
             return nil
         }
@@ -65,6 +74,8 @@ struct Event {
         self.state = state
         self.zip = zip
         self.description = value["description"]as? String
+        self.friendsAttendingVisible = friendsAttendingVisible
+        self.attendenceVisible = attendenceVisible
     }
 
 
@@ -79,7 +90,10 @@ struct Event {
             "city":city,
             "state":state,
             "zip":zip,
-            "description":description
+            "description":description,
+            "attendenceVisible":attendenceVisible,
+            "friendsAttendingVisible":friendsAttendingVisible
+            ,
         ]
     }
 }

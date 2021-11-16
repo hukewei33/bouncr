@@ -39,7 +39,6 @@ class ViewModel: ObservableObject {
     //For use in the inviteGuestsModal; build a list of users to send an invite to an event
     @Published var toBeInvited: [User] = [User]()
     
-    
     @Published var searchResults: [User] = [User]()
     
     //@Published var thisUser: User = nil
@@ -244,8 +243,8 @@ class ViewModel: ObservableObject {
     }
     
     //creates an event and host relationship, returns key of host (intermediate table)
-    func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String? {
-        if let newEventID = self.eventInterface.create(name: name, startTime: startTime, endTime:endTime, street1: street1, street2: street2, city: city, zip: zip, state: state, description: description),
+    func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?,attendenceVisible:Bool, friendsAttendingVisible:Bool)->String? {
+        if let newEventID = self.eventInterface.create(name: name, startTime: startTime, endTime:endTime, street1: street1, street2: street2, city: city, zip: zip, state: state, description: description,attendenceVisible:attendenceVisible, friendsAttendingVisible:friendsAttendingVisible),
            //we need a way to get login and store the user info of this user
            let userID = self.userInterface.CurrentUser?.key {
             return self.hostInterface.create(userKey: userID, eventKey: newEventID)
