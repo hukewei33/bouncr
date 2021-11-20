@@ -15,6 +15,7 @@ struct HostEventDetailsView: View {
   @ObservedObject var viewModel = ViewModel()
   @State private var isShowingScanner = false
   @State private var showPopUp: Bool = false
+  @State private var showAlert = false
   var event: Event
   var ongoing: Bool
   
@@ -91,99 +92,108 @@ struct HostEventDetailsView: View {
         .background(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
         
 
-      
-      VStack(alignment: .leading) {
-      
-        LazyVGrid(columns: columns, alignment: .leading, spacing: 25) {
-          
-          Text("Location: ")
-            .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-          
-          Text("\(event.street1), \n\(event.city), \(event.state), \(event.zip)")
-          
-          if (event.description != nil){
-              
-            Text("About: ")
+        VStack(alignment: .leading) {
+        
+          LazyVGrid(columns: columns, alignment: .leading, spacing: 25) {
+            
+            Text("Location: ")
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
             
-            Text(event.description!)
+            Text("\(event.street1), \n\(event.city), \(event.state), \(event.zip)")
             
-          }
-          
-          Text("Guest List: ")
-            .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-          
-          LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
-            
-            VStack {
-
-               //Below is code for the actual button
-               Button(action: {
-                 withAnimation(.linear(duration: 0.3)) {showPopUp.toggle()}
-               }, label: {
-                 Image(systemName: "plus")
-                   .foregroundColor(Color.white)
-                   .frame(width: 30, height: 30)
-               })
-               .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
-               .cornerRadius(38.5)
-               .padding()
-               .shadow(color: Color.black.opacity(0.3),
-                       radius: 3,
-                       x: 3,
-                       y: 3)
-
-               Text("Add Guests")
-                 .font(.system(size: 10))
-
-             }
-             .frame(width: 60, height: 30, alignment: .center)
-
-             // for each guest invited should show a small circle with the first name under it
-             // for v2 make it just the first 6 guests
-
-             ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
-
-               VStack {
-
-                 ZStack {
-                   Circle()
-                     .fill(Color("Primary - Indigo"))
-                 }
-
-                 Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
-                   .font(.system(size: 10))
-               }
-             }
-          
-          }
-          .padding(.top, 30)
-
-        }
-        .padding(40)
-        
-        VStack {
-          
-          HStack (alignment: .center){
-            
-            
-            Spacer()
-            
-            NavigationLink(destination: EditEventView(viewModel: self.viewModel, event: self.event)){
-              Text("Edit")
-                .frame(width: 100, height: 30)
-                .background(Color.white)
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)), lineWidth: 1)
-                )
-                .padding(.bottom)
+            if (event.description != nil){
+                
+              Text("About: ")
+                .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+              
+              Text(event.description!)
+              
             }
+            
+            Text("Guest List: ")
+              .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+            
+            LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
+              
+              VStack {
 
-            // OKAY THE DELETE ACTUALLY WORKS BUT ONLY WHEN YOU REPLACE THE BUILD BC IT NEEDS TO RELOAD
-            NavigationLink(destination: InvitationsView()){ // isnt redirecting *cries* -g
-              Button(action: {self.viewModel.eventInterface.delete(key: event.key)}, label: {
+                 //Below is code for the actual button
+                 Button(action: {
+                   withAnimation(.linear(duration: 0.3)) {showPopUp.toggle()}
+                 }, label: {
+                   Image(systemName: "plus")
+                     .foregroundColor(Color.white)
+                     .frame(width: 30, height: 30)
+                 })
+                 .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
+                 .cornerRadius(38.5)
+                 .padding()
+                 .shadow(color: Color.black.opacity(0.3),
+                         radius: 3,
+                         x: 3,
+                         y: 3)
+
+                 Text("Add Guests")
+                   .font(.system(size: 10))
+
+               }
+               .frame(width: 60, height: 30, alignment: .center)
+
+               // for each guest invited should show a small circle with the first name under it
+               // for v2 make it just the first 6 guests
+               ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
+
+                 VStack {
+
+                   ZStack {
+                     Circle()
+                       .fill(Color("Primary - Indigo"))
+                   }
+
+                   Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
+                     .font(.system(size: 10))
+                 }
+               }
+            
+            }
+            .padding(.top, 30)
+
+          }
+          .padding(40)
+          
+          VStack {
+            
+            HStack (alignment: .center){
+              
+              
+              Spacer()
+              
+              NavigationLink(destination: EditEventView(viewModel: self.viewModel, event: self.event)){
+                Text("Edit")
+                  .frame(width: 100, height: 30)
+                  .background(Color.white)
+                  .cornerRadius(10)
+                  .overlay(
+                      RoundedRectangle(cornerRadius: 10)
+                          .stroke(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)), lineWidth: 1)
+                  )
+                  .padding(.bottom)
+              }
+
+              // OKAY THE DELETE ACTUALLY WORKS BUT ONLY WHEN YOU REPLACE THE BUILD BC IT NEEDS TO RELOAD
+//              NavigationLink(destination: InvitationsView()){ // isnt redirecting *cries* -g
+//                Button(action: {self.viewModel.eventInterface.delete(key: event.key)}, label: {
+//                  Text("Delete")
+//                    .frame(width: 100, height: 30)
+//                    .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
+//                    .foregroundColor(Color.white)
+//                    .cornerRadius(10)
+//                    .padding(.bottom)
+//                })
+//              }
+              
+              //New delete button, shows alert for confirmation before deleting an event
+              Button(action: {showAlert = true}, label: {
                 Text("Delete")
                   .frame(width: 100, height: 30)
                   .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
@@ -191,27 +201,40 @@ struct HostEventDetailsView: View {
                   .cornerRadius(10)
                   .padding(.bottom)
               })
+                .alert(isPresented: $showAlert) {
+                  Alert(
+                    title: Text("Delete " + title + "?"),
+                    message: Text("You won't be able to undo this"),
+                    primaryButton: .default(
+                      Text("Cancel")
+                    ),
+                    secondaryButton: .destructive(
+                      Text("Delete"),
+                      //Should prob replace this delete w/ Kenny's cascadeDelete at some point?
+                      action: {self.viewModel.eventInterface.delete(key: event.key)}
+                    )
+                  )
+                }
+              
+              Spacer()
+              
             }
-            
-            Spacer()
-            
+
+            // SquareScanQR()
+            Button(action: {self.isShowingScanner = true}, label: {
+              Image(systemName: "qrcode.viewfinder")
+              Text("Scan Invites")
+            })
+            .sheet(isPresented: $isShowingScanner) {
+              CodeScannerView(codeTypes: [.qr], completion: self.handleScan)
+            }
           }
 
-          // SquareScanQR()
-          Button(action: {self.isShowingScanner = true}, label: {
-            Image(systemName: "qrcode.viewfinder")
-            Text("Scan Invites")
-          })
-          .sheet(isPresented: $isShowingScanner) {
-            CodeScannerView(codeTypes: [.qr], completion: self.handleScan)
-          }
-        }
+          Spacer()
 
-        Spacer()
-
-        .navigationBarTitle(title)
+          .navigationBarTitle(title)
         }
-      .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(StackNavigationViewStyle())
       }//end vstack
         
       InviteGuestsModal(show: $showPopUp, viewModel: self.viewModel, event: self.event)
