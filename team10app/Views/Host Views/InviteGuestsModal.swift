@@ -16,6 +16,7 @@ struct InviteGuestsModal: View {
   @State private var searchText: String = ""
   @State private var searchResults = [User]()
   
+  //Copied & edited from SwiftRepos lab, for searh functionality
   func displayResults() {
     if searchText == "" {
       searchResults = viewModel.getNotInvitedUsers(eventKey: event.key)
@@ -27,11 +28,11 @@ struct InviteGuestsModal: View {
 
   var body: some View {
     
+    //Copied & edited from SwiftRepos lab, for searh functionality
     let binding = Binding<String>(get: {
       self.searchText
     }, set: {
       self.searchText = $0
-      self.viewModel.getNotInvitedUsers(eventKey: event.key)
       self.displayResults()
     })
     
@@ -82,16 +83,24 @@ struct InviteGuestsModal: View {
               //List of users
               ScrollView {
                   VStack(alignment: .leading) {
-                    ForEach(0..<self.searchResults.count, id: \.self) { index in
-                      InviteGuestsModalRow(viewModel: self.viewModel, user: self.searchResults[index])
-                        .padding(10)
+                    //Can only show users if they exist in search results
+                    if (searchResults.count>0) {
+                      ForEach(0..<self.searchResults.count, id: \.self) { index in
+                        InviteGuestsModalRow(viewModel: self.viewModel, user: self.searchResults[index])
+                          .padding(10)
+                      }
+                    }
+                    //Display appropriate message if there are no relevant search results
+                    else {
+                      Text("No search results")
+                        .foregroundColor(Color("Gray - 400"))
                     }
                   }
                   .padding()
               }
               .cornerRadius(10)
               .frame(width: 250, height: 375)
-              .border(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)))
+              .border(Color("Gray - 100"))
               
             }
             
