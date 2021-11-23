@@ -12,6 +12,7 @@ struct InviteGuestsModal: View {
   @Binding var show: Bool
   @ObservedObject var viewModel: ViewModel
   var event: Event
+  @State private var search: String = ""
 
 
   var body: some View {
@@ -44,26 +45,48 @@ struct InviteGuestsModal: View {
           }
           .padding(.bottom)
           
-          //Search bar
           
-          
-          
-          //List of users
           HStack {
             Spacer()
             
-            ScrollView {
-                VStack(alignment: .leading) {
-                  ForEach(0..<self.viewModel.getNotInvitedUsers(eventKey: event.key).count, id: \.self) { index in
-                    InviteGuestsModalRow(viewModel: self.viewModel, user: self.viewModel.getNotInvitedUsers(eventKey: event.key)[index])
-                      .padding(10)
+            VStack {
+              
+              //Search bar
+              TextField(
+                "Search for users",
+                text: $search
+              )
+              .padding(.bottom, 30)
+              .textFieldStyle(RoundedBorderTextFieldStyle())
+              
+              //List of users
+              ScrollView {
+                  VStack(alignment: .leading) {
+                    ForEach(0..<self.viewModel.getNotInvitedUsers(eventKey: event.key).count, id: \.self) { index in
+                      InviteGuestsModalRow(viewModel: self.viewModel, user: self.viewModel.getNotInvitedUsers(eventKey: event.key)[index])
+                        .padding(10)
+                    }
                   }
-                }
-                .padding()
+                  .padding()
+              }
+              .cornerRadius(10)
+              .frame(width: 250, height: 375)
+              .border(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)))
+              
             }
-            .cornerRadius(10)
-            .frame(width: 250, height: 400)
-            .border(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)))
+            
+//            ScrollView {
+//                VStack(alignment: .leading) {
+//                  ForEach(0..<self.viewModel.getNotInvitedUsers(eventKey: event.key).count, id: \.self) { index in
+//                    InviteGuestsModalRow(viewModel: self.viewModel, user: self.viewModel.getNotInvitedUsers(eventKey: event.key)[index])
+//                      .padding(10)
+//                  }
+//                }
+//                .padding()
+//            }
+//            .cornerRadius(10)
+//            .frame(width: 250, height: 400)
+//            .border(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)))
             
             Spacer()
           }
