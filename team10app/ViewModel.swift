@@ -30,6 +30,7 @@ class ViewModel: ObservableObject {
   
     //For use in the inviteGuestsModal; build a list of users to send an invite to an event
     @Published var toBeInvited: [User] = [User]()
+    @Published var searchResults: [User] = [User]()
   
     //@Published var thisUser: User = nil
     
@@ -108,8 +109,8 @@ class ViewModel: ObservableObject {
         return myEvents
     }
   
-  func getAllHosts() {
-    hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
+    func getAllHosts() {
+      hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
         for child in snapshot.children {
             if let snapshot = child as? DataSnapshot,
                let host = Host(snapshot: snapshot) {
@@ -242,6 +243,36 @@ class ViewModel: ObservableObject {
         self.eventInterface.delete(key: eventKey)
     }
     
-
+  
+    func searchUsers(query: String, eventKey: String) -> [User] {
+        if query == "" {
+            return []
+        }
+        
+        let first_name_matches: [User] = self.users.filter{$0.firstName.lowercased().contains(query.lowercased())}
+        let last_name_matches:  [User] = self.users.filter{$0.lastName.lowercased().contains(query.lowercased())}
+        let userName_matches:  [User] = self.users.filter{$0.username.lowercased().contains(query.lowercased())}
+        var result = Array(Set(first_name_matches).union(Set(last_name_matches)).union(Set(userName_matches)))
+        result.sort {
+            if $0.lastName != $1.lastName { // first, compare by last names
+                return $0.lastName < $1.lastName
+            }
+            else { // All other fields are tied, break ties by first name
+                return $0.firstName < $1.firstName
+            }
+        }
+        //Get users who are already invited to this event
+        let guestIDList = self.invites.filter {$0.eventKey == eventKey}.map{$0.userKey}
+        //Filter out users who are already invited to the event, don't include in search results
+        result = result.filter {!guestIDList.contains($0.key)}
+      
+        //needs to be added back in after login is implemented
+        //      if let usr = self.currentUser {
+        //        return result.filter{$0.id != usr.id}
+        //      }
+      
+        self.searchResults =  result
+        return result
+    }
     
 }
