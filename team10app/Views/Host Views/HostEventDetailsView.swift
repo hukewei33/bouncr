@@ -210,8 +210,10 @@ struct HostEventDetailsView: View {
                     ),
                     secondaryButton: .destructive(
                       Text("Delete"),
-                      //Should prob replace this delete w/ Kenny's cascadeDelete at some point?
-                      action: {self.viewModel.eventInterface.delete(key: event.key)}
+                      action: {
+                        self.viewModel.cascadeEventDelete(eventKey: event.key)
+                        //navigate back to host events index page?
+                      }
                     )
                   )
                 }
