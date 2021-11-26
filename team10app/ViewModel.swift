@@ -166,18 +166,11 @@ class ViewModel: ObservableObject {
                 if let snapshot = child as? DataSnapshot,
                    let event = Event(snapshot: snapshot) {
                     //past event
-                    if event.endTime < curTime {
-                      print("Event Name: ", event.name)
-                      self.pastEvents.append(event)
-                    }
+                    if event.endTime < curTime {self.pastEvents.append(event)}
                     //future event
-                    else if event.startTime > curTime {
-                      self.events.append(event)
-                    }
+                    else if event.startTime > curTime {self.events.append(event)}
                     //ongoing event
-                    else {
-                      self.currentEvents.append(event)
-                    }
+                    else {self.currentEvents.append(event)}
                 }
             }
             self.pastEvents.sort(by: {$0.startTime < $1.startTime})
