@@ -101,7 +101,7 @@ struct HostEventDetailsView: View {
             
             Text("\(event.street1), \n\(event.city), \(event.state), \(event.zip)")
             
-            if (event.description != nil){
+            if !(event.description ?? "").isEmpty {
                 
               Text("About: ")
                 .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
@@ -179,18 +179,6 @@ struct HostEventDetailsView: View {
                   )
                   .padding(.bottom)
               }
-
-              // OKAY THE DELETE ACTUALLY WORKS BUT ONLY WHEN YOU REPLACE THE BUILD BC IT NEEDS TO RELOAD
-//              NavigationLink(destination: InvitationsView()){ // isnt redirecting *cries* -g
-//                Button(action: {self.viewModel.eventInterface.delete(key: event.key)}, label: {
-//                  Text("Delete")
-//                    .frame(width: 100, height: 30)
-//                    .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
-//                    .foregroundColor(Color.white)
-//                    .cornerRadius(10)
-//                    .padding(.bottom)
-//                })
-//              }
               
               //New delete button, shows alert for confirmation before deleting an event
               Button(action: {showAlert = true}, label: {
@@ -203,7 +191,7 @@ struct HostEventDetailsView: View {
               })
                 .alert(isPresented: $showAlert) {
                   Alert(
-                    title: Text("Delete " + title + "?"),
+                    title: Text("Delete " + event.name + "?"),
                     message: Text("You won't be able to undo this"),
                     primaryButton: .default(
                       Text("Cancel")

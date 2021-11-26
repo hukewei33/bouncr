@@ -158,7 +158,6 @@ class ViewModel: ObservableObject {
   
     func getEvents() {
         self.eventsReference.queryOrdered(byChild: "endTime").observe(.value, with: { snapshot in
-            print("RUNNING getEvents()")
             let curTime = Date().timeIntervalSinceReferenceDate
             self.events.removeAll()
             self.pastEvents.removeAll()
@@ -181,9 +180,10 @@ class ViewModel: ObservableObject {
                     }
                 }
             }
-            print("past: " , self.pastEvents.count)
-            print("upcoming: " , self.events.count)
-            print("current: " , self.currentEvents.count)
+            self.pastEvents.sort(by: {$0.startTime < $1.startTime})
+            self.events.sort(by: {$0.startTime < $1.startTime})
+            self.currentEvents.sort(by: {$0.startTime < $1.startTime})
+            
         })
     }
     

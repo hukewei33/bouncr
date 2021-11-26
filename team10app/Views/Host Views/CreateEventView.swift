@@ -42,7 +42,6 @@ struct CreateEventView: View {
           Text("Start Date & Time *")
             .bold()
             .font(.system(size: 17))
-          Text("Your start date is \(startTime)")
           DatePicker(
             "",
             selection: $startTime,
@@ -57,7 +56,6 @@ struct CreateEventView: View {
           Text("End Date & Time *")
             .bold()
             .font(.system(size: 17))
-          Text("Your end date is \(endTime)")
           DatePicker(
             "",
             selection: $endTime,
