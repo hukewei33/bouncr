@@ -59,7 +59,7 @@ struct EditEventView: View {
         
         //Event Date field
         Group {
-          Text("Start Date and Time *")
+          Text("Start Date & Time *")
             .bold()
             .font(.system(size: 17))
           DatePicker(
@@ -71,13 +71,13 @@ struct EditEventView: View {
           .padding(.bottom, 30)
           
           //End Time Field
-          Text("End Time *")
+          Text("End Date & Time *")
             .bold()
             .font(.system(size: 17))
           DatePicker(
             "",
             selection: $endTime,
-            displayedComponents: [.hourAndMinute]
+            displayedComponents: [.date, .hourAndMinute]
           )
           .labelsHidden()
           .padding(.bottom, 30)

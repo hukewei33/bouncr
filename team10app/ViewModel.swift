@@ -24,7 +24,9 @@ class ViewModel: ObservableObject {
     //  let appDelegate: AppDelegate = AppDelegate()
     
     @Published var hosts: [Host] = [Host]()
-    @Published var events: [Event] = [Event]()
+    @Published var events: [Event] = [Event]() //Upcoming events that just look like normal events on your Host index pg
+    @Published var pastEvents: [Event] = [Event]() //Past events don't show up on Host index pg
+    @Published var currentEvents: [Event] = [Event]() //Current events = ongoing events you can scan tickets for
     @Published var users: [User] = [User]()
     @Published var invites: [Invite] = [Invite]()
   
@@ -140,16 +142,48 @@ class ViewModel: ObservableObject {
         
     }
     
+//    old getEvents
+//    func getEvents() {
+//        self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
+//            self.events.removeAll()
+//            for child in snapshot.children {
+//                if let snapshot = child as? DataSnapshot,
+//                   let event = Event(snapshot: snapshot) {
+//                    //print(event.name)
+//                    self.events.append(event)
+//                }
+//            }
+//        })
+//    }
+  
     func getEvents() {
-        self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
+        self.eventsReference.queryOrdered(byChild: "endTime").observe(.value, with: { snapshot in
+            print("RUNNING getEvents()")
+            let curTime = Date().timeIntervalSinceReferenceDate
             self.events.removeAll()
+            self.pastEvents.removeAll()
+            self.currentEvents.removeAll()
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let event = Event(snapshot: snapshot) {
-                    //print(event.name)
-                    self.events.append(event)
+                    //past event
+                    if event.endTime < curTime {
+                      print("Event Name: ", event.name)
+                      self.pastEvents.append(event)
+                    }
+                    //future event
+                    else if event.startTime > curTime {
+                      self.events.append(event)
+                    }
+                    //ongoing event
+                    else {
+                      self.currentEvents.append(event)
+                    }
                 }
             }
+            print("past: " , self.pastEvents.count)
+            print("upcoming: " , self.events.count)
+            print("current: " , self.currentEvents.count)
         })
     }
     

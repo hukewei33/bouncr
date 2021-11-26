@@ -27,7 +27,6 @@ struct HostOngoingEventCard: View {
         //Date & Time of upcoming event
         HStack {
           Text(dateStr)
-          //Text(String(event.startTime))
             .bold()
             .font(.system(size: 12))
             .foregroundColor(Color(#colorLiteral(red: 0.4470588235, green: 0.4470588235, blue: 0.4470588235, alpha: 1)))

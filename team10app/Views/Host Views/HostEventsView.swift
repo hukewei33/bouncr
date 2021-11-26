@@ -36,20 +36,37 @@ struct HostEventsView: View {
       ZStack {
         ScrollView {
           VStack(alignment: .leading) {
-            //Ongoing events (TO BE IMPLEMENTED IN V2)
-//            Text("Ongoing Events")
-//              .bold()
-//              .font(.system(size: 22))
-//              .padding()
-//            HostOngoingEventCard(event: self.viewModel.events[0])
+            
+            //Ongoing events
+            if (viewModel.currentEvents.count>0) {
+              Text("Ongoing Events")
+                .bold()
+                .font(.system(size: 22))
+                .padding()
+              ForEach(0..<self.viewModel.currentEvents.count, id: \.self) { index in
+                HostOngoingEventCard(event: self.viewModel.currentEvents[index])
+              }
+            }
             
             //Upcoming events
-            Text("Upcoming Events")
-              .bold()
-              .font(.system(size: 22))
-              .padding()
-            ForEach(0..<self.viewModel.events.count, id: \.self) { index in
-              HostUpcomingEventCard(event: self.viewModel.events[index])
+            if (viewModel.events.count>0) {
+              Text("Upcoming Events")
+                .bold()
+                .font(.system(size: 22))
+                .padding()
+              ForEach(0..<self.viewModel.events.count, id: \.self) { index in
+                HostUpcomingEventCard(event: self.viewModel.events[index])
+              }
+            }
+            
+            //Display placeholder text if no events at all
+            if (viewModel.events.count==0 && viewModel.currentEvents.count==0) {
+              Spacer()
+              Text("You are not hosting any events")
+                .foregroundColor(Color("Gray - 400"))
+                .font(.system(size: 22))
+                .padding()
+              Spacer()
             }
           }
         }

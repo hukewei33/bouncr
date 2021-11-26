@@ -45,7 +45,7 @@ struct Event {
             let value = snapshot.value as? [String: AnyObject],
             let name = value["name"]as? String,
             let startTime = value["startTime"]as? Double,
-            let endTime = value["startTime"]as? Double,
+            let endTime = value["endTime"]as? Double,
             let street1 = value["street1"]as? String,
             let city = value["city"]as? String,
             let state = value["state"]as? String,
