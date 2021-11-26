@@ -21,6 +21,8 @@
 		18EE5BB42732029D00115EA1 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE5BB32732029D00115EA1 /* CreateEventView.swift */; };
 		18F98528272900D00077B7FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F98527272900D00077B7FE /* GoogleService-Info.plist */; };
 		881A946FFA6EC6C367F51BE2 /* Pods_team10app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */; };
+		9D073E7627519E6B0097DA25 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D073E7527519E6B0097DA25 /* Friend.swift */; };
+		9D073E7827519E840097DA25 /* FriendInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D073E7727519E840097DA25 /* FriendInterface.swift */; };
 		9D50390C2734C174001DF338 /* HostEventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D50390B2734C174001DF338 /* HostEventDetailsView.swift */; };
 		9D79D50C273351B200A771D9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D50B273351B200A771D9 /* ProfileView.swift */; };
 		9D79D50E273351BA00A771D9 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D50D273351BA00A771D9 /* EventDetailsView.swift */; };
@@ -79,6 +81,8 @@
 		36C4B4DE11EE047B19FC3257 /* Pods_team10appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EBE37DE8038C2389909058F /* Pods-team10appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10appTests.release.xcconfig"; path = "Target Support Files/Pods-team10appTests/Pods-team10appTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D073E7527519E6B0097DA25 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		9D073E7727519E840097DA25 /* FriendInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInterface.swift; sourceTree = "<group>"; };
 		9D50390B2734C174001DF338 /* HostEventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventDetailsView.swift; sourceTree = "<group>"; };
 		9D79D50B273351B200A771D9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		9D79D50D273351BA00A771D9 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				B2BB3CAE272729A000C6DB94 /* User.swift */,
+				9D073E7527519E6B0097DA25 /* Friend.swift */,
+				9D073E7727519E840097DA25 /* FriendInterface.swift */,
 				B2BB3CB027272A7800C6DB94 /* Event.swift */,
 				B2BB3CB227272BAC00C6DB94 /* Invite.swift */,
 				B2BB3CB427272C4B00C6DB94 /* Host.swift */,
@@ -531,9 +537,11 @@
 				1862DADB27346EA50055E2F0 /* InviteGuestsModal.swift in Sources */,
 				1862DADD27349F290055E2F0 /* InviteGuestsModalRow.swift in Sources */,
 				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
+				9D073E7827519E840097DA25 /* FriendInterface.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
 				9D79D50C273351B200A771D9 /* ProfileView.swift in Sources */,
+				9D073E7627519E6B0097DA25 /* Friend.swift in Sources */,
 				18DAF462272E6F370008B4A3 /* MoreDetailsButton.swift in Sources */,
 				9D79D516273351F300A771D9 /* URLImage.swift in Sources */,
 			);
@@ -694,14 +702,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"team10app/Preview Content\"";
-				DEVELOPMENT_TEAM = V9LGP2662T;
+				DEVELOPMENT_TEAM = R38454R9TK;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = team10app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = team10appSara.67443;
+				PRODUCT_BUNDLE_IDENTIFIER = grace.team10app.67443;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -716,14 +724,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"team10app/Preview Content\"";
-				DEVELOPMENT_TEAM = V9LGP2662T;
+				DEVELOPMENT_TEAM = R38454R9TK;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = team10app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = team10appSara.67443;
+				PRODUCT_BUNDLE_IDENTIFIER = grace.team10app.67443;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

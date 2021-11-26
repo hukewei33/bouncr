@@ -143,7 +143,8 @@ struct CreateEventView: View {
           Button(action: {viewModel.createEvent(name: name, startTime: startTime,
                                                 endTime: endTime, street1: street1,
                                                 street2: street2, city: city,
-                                                zip: zip, state: state, description: descr)
+                                                zip: zip, state: state, description: descr,
+                                                attendenceVisible: true, friendsAttendingVisible: false)
                           self.mode.wrappedValue.dismiss()
           }, label: {
             Text("Create event")
