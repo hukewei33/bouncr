@@ -249,9 +249,13 @@ class ViewModel: ObservableObject {
     }
     
     func indexGuestEvents()->[Event]{
+        print("index1")
         if let userId = loggedin(){
+          print("index2")
         let eventIDs = self.invites.filter{$0.userKey == userId}.map {$0.eventKey}
+          print("index3")
         let myEvents = self.events.filter {eventIDs.contains($0.key)}
+          print("index4")
         return myEvents
         }
         else{

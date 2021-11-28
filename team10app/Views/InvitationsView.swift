@@ -21,29 +21,6 @@ struct InvitationsView: View {
         
         ScrollView((scroll ? .horizontal : .vertical), showsIndicators: false) {
           
-          // old invitations stack
-          // this has a better look to it (fixes some of the weirdness from the animation
-          // but because it turns into a zstack not a hstack, it doesn't let horizontal scrolling work as well
-          
-//          ZStack {
-//
-//            ForEach(0..<viewModel.allEvents.count, id: \.self) { index in
-//
-//                InviteCard(event: viewModel.allEvents[index])
-//                  .offset(x: (move ? CGFloat(((center - index)*300) + 40) : 0), y: (move ? 0 : CGFloat(index*80)))
-//                  .onTapGesture {
-//                    print(index)
-//                    self.center = index
-////                    self.move.toggle()
-//                    move = true
-//                    scroll = true
-//                  }
-//
-//
-//            }.animation(.spring())
-          
-//        }.padding(.top, 50)
-          
           
           if (!move){
             
