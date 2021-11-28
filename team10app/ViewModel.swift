@@ -61,7 +61,6 @@ class ViewModel: ObservableObject {
         getEvents()
         getUsers(userKey:"Tom")
         getInvites()
-        
     }
   
     func indexEventGuests(eventKey: String) -> [User] {
@@ -193,6 +192,7 @@ class ViewModel: ObservableObject {
 //                    }
               }
           }
+          print("Users",self.users)
         })
     }
     
@@ -227,6 +227,7 @@ class ViewModel: ObservableObject {
     }
     
     func indexGuestEvents()->[Event]{
+      print("currUser: ",userInterface.CurrentUser?.key)
         let eventIDs = self.invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
         let myEvents = self.events.filter {eventIDs.contains($0.key)}
         return myEvents
@@ -275,7 +276,6 @@ class ViewModel: ObservableObject {
         if query == "" {
             return []
         }
-        
         let first_name_matches: [User] = self.users.filter{$0.firstName.lowercased().contains(query.lowercased())}
         let last_name_matches:  [User] = self.users.filter{$0.lastName.lowercased().contains(query.lowercased())}
         let userName_matches:  [User] = self.users.filter{$0.username.lowercased().contains(query.lowercased())}
@@ -297,7 +297,7 @@ class ViewModel: ObservableObject {
         //      if let usr = self.currentUser {
         //        return result.filter{$0.id != usr.id}
         //      }
-      
+      print("search results: ",result)
         self.searchResults =  result
         return result
     }
