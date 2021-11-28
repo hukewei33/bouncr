@@ -211,12 +211,14 @@ struct HostEventDetailsView: View {
             }
 
             // SquareScanQR()
-            Button(action: {self.isShowingScanner = true}, label: {
-              Image(systemName: "qrcode.viewfinder")
-              Text("Scan Invites")
-            })
-            .sheet(isPresented: $isShowingScanner) {
-              CodeScannerView(codeTypes: [.qr], completion: self.handleScan)
+            if (ongoing) {
+              Button(action: {self.isShowingScanner = true}, label: {
+                Image(systemName: "qrcode.viewfinder")
+                Text("Scan Invites")
+              })
+              .sheet(isPresented: $isShowingScanner) {
+                CodeScannerView(codeTypes: [.qr], completion: self.handleScan)
+              }
             }
           }
 
