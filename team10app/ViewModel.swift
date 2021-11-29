@@ -227,7 +227,8 @@ class ViewModel: ObservableObject {
     
     func indexGuestEvents()->[Event]{
         let eventIDs = self.invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
-        let myEvents = self.events.filter {eventIDs.contains($0.key)}
+        var myEvents = self.events.filter {eventIDs.contains($0.key)}
+        myEvents += self.currentEvents.filter  {eventIDs.contains($0.key)} //Users should be able to see ongoing events in their invitations too
         return myEvents
     }
     

@@ -136,6 +136,7 @@ struct InviteGuestsModal: View {
       }
     }
     .onAppear() {
+        self.viewModel.clearToBeInvited()
         searchResults = viewModel.getNotInvitedUsers(eventKey: event.key)
     }
     
