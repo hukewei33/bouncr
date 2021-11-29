@@ -23,6 +23,8 @@
 		881A946FFA6EC6C367F51BE2 /* Pods_team10app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */; };
 		9D073E7627519E6B0097DA25 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D073E7527519E6B0097DA25 /* Friend.swift */; };
 		9D073E7827519E840097DA25 /* FriendInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D073E7727519E840097DA25 /* FriendInterface.swift */; };
+		9D13015D2754061E007A2C4B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D13015C2754061E007A2C4B /* LoginView.swift */; };
+		9D13015F27544F88007A2C4B /* PendingInviteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D13015E27544F88007A2C4B /* PendingInviteCard.swift */; };
 		9D50390C2734C174001DF338 /* HostEventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D50390B2734C174001DF338 /* HostEventDetailsView.swift */; };
 		9D79D50C273351B200A771D9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D50B273351B200A771D9 /* ProfileView.swift */; };
 		9D79D50E273351BA00A771D9 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D50D273351BA00A771D9 /* EventDetailsView.swift */; };
@@ -83,6 +85,8 @@
 		7B2ADC4F9F539B512F786281 /* Pods_team10app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_team10app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D073E7527519E6B0097DA25 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		9D073E7727519E840097DA25 /* FriendInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInterface.swift; sourceTree = "<group>"; };
+		9D13015C2754061E007A2C4B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		9D13015E27544F88007A2C4B /* PendingInviteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingInviteCard.swift; sourceTree = "<group>"; };
 		9D50390B2734C174001DF338 /* HostEventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventDetailsView.swift; sourceTree = "<group>"; };
 		9D79D50B273351B200A771D9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		9D79D50D273351BA00A771D9 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
@@ -165,10 +169,12 @@
 				9D79D5172733521100A771D9 /* Other */,
 				18DAF460272E6F1D0008B4A3 /* Buttons */,
 				18DAF458272B1F9D0008B4A3 /* AppView.swift */,
+				9D13015C2754061E007A2C4B /* LoginView.swift */,
 				9D79D50D273351BA00A771D9 /* EventDetailsView.swift */,
 				9D79D513273351CB00A771D9 /* InvitationDetailView.swift */,
 				9D79D515273351F300A771D9 /* URLImage.swift */,
 				9D79D50F273351C300A771D9 /* InvitationsView.swift */,
+				9D13015E27544F88007A2C4B /* PendingInviteCard.swift */,
 				9D79D510273351C300A771D9 /* InviteCard.swift */,
 				9D79D50B273351B200A771D9 /* ProfileView.swift */,
 			);
@@ -519,6 +525,7 @@
 				B250866227278E5000FD9D9C /* Controller.swift in Sources */,
 				18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */,
 				B20E9ECA271FA2BC002BA590 /* SceneDelegate.swift in Sources */,
+				9D13015F27544F88007A2C4B /* PendingInviteCard.swift in Sources */,
 				B2BB3CBB27273BDC00C6DB94 /* HostInterface.swift in Sources */,
 				B2BB3CB527272C4B00C6DB94 /* Host.swift in Sources */,
 				B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */,
@@ -539,6 +546,7 @@
 				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
 				9D073E7827519E840097DA25 /* FriendInterface.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
+				9D13015D2754061E007A2C4B /* LoginView.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
 				9D79D50C273351B200A771D9 /* ProfileView.swift in Sources */,
 				9D073E7627519E6B0097DA25 /* Friend.swift in Sources */,

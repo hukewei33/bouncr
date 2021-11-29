@@ -73,7 +73,6 @@ class ViewModel: ObservableObject {
         getUsers()
         getInvites()
         
-        
     }
     
     func login(username: String, pword: String) -> Bool {
@@ -198,6 +197,7 @@ class ViewModel: ObservableObject {
             }
         })
     }
+  
     
     func getUsers(){
         self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
@@ -217,15 +217,20 @@ class ViewModel: ObservableObject {
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let invite = Invite(snapshot: snapshot) {
+                  print(invite)
                     if invite.inviteStatus{
                         self.invites.append(invite)
                     }
                     else{
                         self.pendingInvites.append(invite)
                     }
+                    print(self.invites)
+                    print(self.pendingInvites)
                 }
             }
+            
         })
+       
     }
   
   
@@ -238,6 +243,7 @@ class ViewModel: ObservableObject {
 
     
     func viewEvent(key:String) -> Event?{
+        print(events)
         let myEvents = self.events.filter {$0.key == key}
         if myEvents.count == 1{
             return myEvents[0]
@@ -250,9 +256,11 @@ class ViewModel: ObservableObject {
     
     func indexGuestEvents()->[Event]{
         print("index1")
-        if let userId = loggedin(){
+//        if let userId = loggedin(){
+        if true {
           print("index2")
-        let eventIDs = self.invites.filter{$0.userKey == userId}.map {$0.eventKey}
+//        let eventIDs = self.invites.filter{$0.userKey == userId}.map {$0.eventKey}
+          let eventIDs = self.invites.filter{$0.userKey == "Tom"}.map {$0.eventKey}
           print("index3")
         let myEvents = self.events.filter {eventIDs.contains($0.key)}
           print("index4")

@@ -24,6 +24,7 @@ class InviteInterface {
             let newInvite = Invite(userKey: userKey,
                             eventKey:  eventKey)
             self.invitesReference.child(userId).setValue(newInvite.toAnyObject())
+          print("userid:" + userId)
             return userId
         }
         else {
