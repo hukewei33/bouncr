@@ -14,7 +14,7 @@ struct InviteGuestsModal: View {
   var event: Event
   
   @State private var searchText: String = ""
-  @State private var searchResults = [User]()
+  @State private var searchResults: [User] = []
   
   //Copied & edited from SwiftRepos lab, for searh functionality
   func displayResults() {
@@ -134,6 +134,9 @@ struct InviteGuestsModal: View {
         .cornerRadius(10)
 
       }
+    }
+    .onAppear() {
+        searchResults = viewModel.getNotInvitedUsers(eventKey: event.key)
     }
     
   }

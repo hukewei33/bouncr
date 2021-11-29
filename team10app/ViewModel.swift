@@ -192,7 +192,6 @@ class ViewModel: ObservableObject {
 //                    }
               }
           }
-          print("Users",self.users)
         })
     }
     
@@ -227,7 +226,6 @@ class ViewModel: ObservableObject {
     }
     
     func indexGuestEvents()->[Event]{
-      print("currUser: ",userInterface.CurrentUser?.key)
         let eventIDs = self.invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
         let myEvents = self.events.filter {eventIDs.contains($0.key)}
         return myEvents
