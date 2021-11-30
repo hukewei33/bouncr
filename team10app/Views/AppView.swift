@@ -45,7 +45,7 @@ struct AppView: View {
             
             // Profile Page
             
-            ProfileView(user: User(firstName: "Dwight", lastName: "Schrute", email: "beets@schrutefarms.com", username: "assistantregionalmanager", profilePicURL: "", passwordHash: 123123))
+            ProfileView(user: User(firstName: "Dwight", lastName: "Schrute", email: "beets@schrutefarms.com", username: "assistantregionalmanager", profilePicURL: "", passwordHash: "examplepw1"))
             .tabItem {
               Image(systemName: "person.crop.circle")
               Text("Profile")

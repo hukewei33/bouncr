@@ -75,12 +75,9 @@ class ViewModel: ObservableObject {
     }
     
     func login(username: String, pword: String) -> Bool {
-        var hasher = Hasher()
-        hasher.combine(pword)
-        let passwordHash = hasher.finalize()
         
         for user in self.users {
-            if (user.username == username && user.passwordHash == passwordHash) {
+            if (user.username == username && user.passwordHash == pword) {
                 self.thisUser = user
                 getFriends(userKey:user.key)
                 return true // login was successful
@@ -276,18 +273,18 @@ class ViewModel: ObservableObject {
     }
     
     func indexGuestEvents()->[Event]{
-//         if let userId = loggedin(){
-//           let eventIDs = self.invites.filter{$0.userKey == userId}.map {$0.eventKey}
+        if let userId = loggedin() {
+            let eventIDs = self.invites.filter{$0.userKey == userId}.map {$0.eventKey}
           
-        let eventIDs = self.invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
-        var myEvents = self.events.filter {eventIDs.contains($0.key)}
-        myEvents += self.currentEvents.filter  {eventIDs.contains($0.key)} //Users should be able to see ongoing events in their invitations too
-        return myEvents
-//         }
-//         else{
-//             print("not logged in")
-//             return []
-//         }
+//        let eventIDs = self.invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
+            var myEvents = self.events.filter {eventIDs.contains($0.key)}
+            myEvents += self.currentEvents.filter  {eventIDs.contains($0.key)} //Users should be able to see ongoing events in their invitations too
+            return myEvents
+        }
+        else{
+            print("not logged in")
+            return []
+        }
     }
   
     // Get all the users who are not invited to an event, display in InviteGuestsModal
