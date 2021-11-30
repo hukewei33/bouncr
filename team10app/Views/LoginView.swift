@@ -12,6 +12,7 @@ struct LoginView: View {
     @ObservedObject var viewModel: ViewModel
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var validLogin: Bool = true
     
     var buttonDisabled: Bool {
       return username.isEmpty || password.isEmpty
@@ -61,15 +62,26 @@ struct LoginView: View {
           .cornerRadius(10)
           .padding(.bottom, 30)
         
+        if (validLogin == false) {
+          Text("Invalid login information, please try again")
+            .foregroundColor(Color.red)
+        }
+        
         //Login button
-        //viewModel.login(username: username, pword: password)
-        Button(action: {print("Pressed button!")},
-               label: {Text("Log in")
-                        .bold()
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 15))
-                        .padding(10)
-        })
+        Button(action: {
+                  if (viewModel.login(username: username, pword: password) ==  false) {
+                    print("Invalid Login")
+                    validLogin = false
+                  }
+               },
+               label: {
+                  Text("Log in")
+                  .bold()
+                  .foregroundColor(Color.white)
+                  .font(.system(size: 15))
+                  .padding(10)
+               }
+        )
           .frame(maxWidth: .infinity, minHeight: 50)
           .background(buttonColor)
           .cornerRadius(10)

@@ -15,16 +15,11 @@ struct AppView: View {
   
     var body: some View {
       
-//      if (viewModel.loggedin() != nil){
-      if true {
-        
-        LoginView(viewModel: viewModel)
-        
+      if (viewModel.loggedin() == nil){
+          LoginView(viewModel: viewModel)
       }
       else {
-        
           TabView {
-            
             //My Events page
             HostEventsView(viewModel: viewModel, events: viewModel.eventsForHosts())
             .tabItem {
@@ -32,23 +27,20 @@ struct AppView: View {
               Text("Your Events")
             }
             
-            
             //Invitations Page
-            
             InvitationsView()
             .tabItem {
               Image(systemName: "envelope")
               Text("Invitations")
             }
             
-            
             // Profile Page
-            
             ProfileView(user: User(firstName: "Dwight", lastName: "Schrute", email: "beets@schrutefarms.com", username: "assistantregionalmanager", profilePicURL: "", passwordHash: "examplepw1"))
             .tabItem {
               Image(systemName: "person.crop.circle")
               Text("Profile")
             }
+            
           }
           .padding(.top)
           .onAppear() {
