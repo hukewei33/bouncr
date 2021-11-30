@@ -37,33 +37,39 @@ struct LoginView: View {
       
       VStack(alignment: .leading) {
         //Username field:
-        Text("Username")
-          .bold()
-          .font(.system(size: 17))
-        TextField(
-          "Username",
-          text: $username
-        )
-          .padding()
-          .background(Color("Form Field Background"))
-          .cornerRadius(10)
-          .padding(.bottom, 30)
+        Group {
+          Text("Username")
+            .bold()
+            .font(.system(size: 17))
+          TextField(
+            "Username",
+            text: $username
+          )
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
+        }
+        
         
         //Password field:
-        Text("Password")
-          .bold()
-          .font(.system(size: 17))
-        TextField(
-          "Password",
-          text: $password
-        )
-          .padding()
-          .background(Color("Form Field Background"))
-          .cornerRadius(10)
-          .padding(.bottom, 30)
+        Group {
+          Text("Password")
+            .bold()
+            .font(.system(size: 17))
+          TextField(
+            "Password",
+            text: $password
+          )
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
+        }
+        
         
         if (validLogin == false) {
-          Text("Invalid login information, please try again")
+          Text("Invalid login information")
             .foregroundColor(Color.red)
         }
         

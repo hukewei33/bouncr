@@ -710,7 +710,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"team10app/Preview Content\"";
-				DEVELOPMENT_TEAM = R38454R9TK;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = team10app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -718,7 +718,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = team10app.67443;
+				PRODUCT_BUNDLE_IDENTIFIER = team10appSara.67443;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -733,7 +733,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"team10app/Preview Content\"";
-				DEVELOPMENT_TEAM = R38454R9TK;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = team10app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -741,7 +741,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = team10app.67443;
+				PRODUCT_BUNDLE_IDENTIFIER = team10appSara.67443;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -754,6 +754,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				INFOPLIST_FILE = team10appTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -774,6 +775,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				INFOPLIST_FILE = team10appTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
