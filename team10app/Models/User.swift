@@ -18,7 +18,7 @@ struct User :Hashable {
     let username: String
     let profilePicURL: String?
     let passwordHash: Int
-    
+
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.key == rhs.key
     }
@@ -49,7 +49,7 @@ struct User :Hashable {
             let passwordHash = value["passwordHash"] as? Int
         
         else {
-            print("bad read")
+            print("bad read: USER")
             return nil
         }
         
