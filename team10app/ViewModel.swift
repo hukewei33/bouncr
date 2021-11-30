@@ -75,7 +75,6 @@ class ViewModel: ObservableObject {
     }
     
     func login(username: String, pword: String) -> Bool {
-        
         for user in self.users {
             if (user.username == username && user.passwordHash == pword) {
                 self.thisUser = user
@@ -86,6 +85,7 @@ class ViewModel: ObservableObject {
         return false // login failed
     }
     
+  
     func logout() {
         self.thisUser = nil;
     }
@@ -235,15 +235,12 @@ class ViewModel: ObservableObject {
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let invite = Invite(snapshot: snapshot) {
-                  print(invite)
                     if invite.inviteStatus{
                         self.invites.append(invite)
                     }
                     else{
                         self.pendingInvites.append(invite)
                     }
-                    print(self.invites)
-                    print(self.pendingInvites)
                 }
             }
             
@@ -261,7 +258,6 @@ class ViewModel: ObservableObject {
 
     
     func viewEvent(key:String) -> Event?{
-        print(events)
         let myEvents = self.events.filter {$0.key == key}
         if myEvents.count == 1{
             return myEvents[0]

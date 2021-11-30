@@ -15,11 +15,10 @@ struct AppView: View {
   
     var body: some View {
       
-      if (viewModel.loggedin() != nil){
+//      if (viewModel.loggedin() != nil){
+      if true {
         
-        // login view
-        // call login with args username + password
-        // login returns boolean
+        LoginView(viewModel: viewModel)
         
       }
       else {

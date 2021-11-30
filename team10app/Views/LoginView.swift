@@ -2,7 +2,83 @@
 //  LoginView.swift
 //  team10app
 //
-//  Created by GraceJoseph on 11/28/21.
+//  Created by Sara Song on 11/30/21.
 //
 
-import Foundation
+import SwiftUI
+
+struct LoginView: View {
+  
+    @ObservedObject var viewModel: ViewModel
+    @State private var username: String = ""
+    @State private var password: String = ""
+    
+    var buttonDisabled: Bool {
+      return username.isEmpty || password.isEmpty
+    }
+  
+    var buttonColor: Color {
+          return buttonDisabled ? Color("Disabled Button") : Color("Primary - Indigo")
+    }
+  
+    var body: some View {
+      //Rectangle at the top:
+      ZStack {
+        Text("Bouncr")
+          .foregroundColor(Color.white)
+          .font(.system(size: 50))
+          .bold()
+      }
+      .frame(maxWidth: .infinity, minHeight: 200)
+      .background(
+        LinearGradient(gradient: Gradient(colors: [Color("Blue - 400"), Color("Primary - Indigo")]), startPoint: .top, endPoint: .bottom)
+      )
+      
+      VStack(alignment: .leading) {
+        //Username field:
+        Text("Username")
+          .bold()
+          .font(.system(size: 17))
+        TextField(
+          "Username",
+          text: $username
+        )
+          .padding()
+          .background(Color("Form Field Background"))
+          .cornerRadius(10)
+          .padding(.bottom, 30)
+        
+        //Password field:
+        Text("Password")
+          .bold()
+          .font(.system(size: 17))
+        TextField(
+          "Password",
+          text: $password
+        )
+          .padding()
+          .background(Color("Form Field Background"))
+          .cornerRadius(10)
+          .padding(.bottom, 30)
+        
+        //Login button
+        //viewModel.login(username: username, pword: password)
+        Button(action: {print("Pressed button!")},
+               label: {Text("Log in")
+                        .bold()
+                        .foregroundColor(Color.white)
+                        .font(.system(size: 15))
+                        .padding(10)
+        })
+          .frame(maxWidth: .infinity, minHeight: 50)
+          .background(buttonColor)
+          .cornerRadius(10)
+          .disabled(buttonDisabled)
+      }
+      .padding(30)
+      
+      Spacer()
+      
+    }
+}
+
