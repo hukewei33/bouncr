@@ -43,21 +43,9 @@ class ViewModel: ObservableObject {
     
     @Published var thisUser: User? = nil
     
-    //  func createEvent(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
-    //      if let newEventID = self.eventInterface.create(name: name, startTime: startTime,street1:  street1, street2: street2,city: city,zip:zip,state: state, description: description ),
-    //         let userID = self.userInterface.CurrentUser?.key {
-    //          return self.hostInterface.create(userKey: userID, eventKey: newEventID)
-    //      }
-    //      else{
-    //          print("failed create new event hosting")
-    //          return nil
-    //      }
-    //  }
     
     init() {
         //lets keep the interfaces for CUD so we dont blow up this file :)
-        
-        //we also need to think about a login process for v2
         
         userInterface = UserInterface()
         eventInterface = EventInterface()
@@ -177,20 +165,6 @@ class ViewModel: ObservableObject {
             }
         })
     }
-    
-//    old getEvents
-//    func getEvents() {
-//        self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
-//            self.events.removeAll()
-//            for child in snapshot.children {
-//                if let snapshot = child as? DataSnapshot,
-//                   let event = Event(snapshot: snapshot) {
-//                    //print(event.name)
-//                    self.events.append(event)
-//                }
-//            }
-//        })
-//    }
   
     func getEvents() {
         self.eventsReference.queryOrdered(byChild: "endTime").observe(.value, with: { snapshot in
