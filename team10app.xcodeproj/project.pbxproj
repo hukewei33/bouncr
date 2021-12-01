@@ -42,7 +42,6 @@
 		B20E9ED4271FA2BE002BA590 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED3271FA2BE002BA590 /* Preview Assets.xcassets */; };
 		B20E9ED7271FA2BE002BA590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED5271FA2BE002BA590 /* LaunchScreen.storyboard */; };
 		B246A9E52755B82300EB58D9 /* viewmodelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B246A9E42755B82200EB58D9 /* viewmodelTests.swift */; };
-		B250866227278E5000FD9D9C /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866127278E5000FD9D9C /* Controller.swift */; };
 		B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2508663272797B200FD9D9C /* InviteInterface.swift */; };
 		B250866C272B236B00FD9D9C /* team10appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866B272B236B00FD9D9C /* team10appTests.swift */; };
 		B2508674272DC77100FD9D9C /* InterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2508673272DC77100FD9D9C /* InterfaceTest.swift */; };
@@ -110,7 +109,6 @@
 		B20E9ED6271FA2BE002BA590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B20E9ED8271FA2BE002BA590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B246A9E42755B82200EB58D9 /* viewmodelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewmodelTests.swift; sourceTree = "<group>"; };
-		B250866127278E5000FD9D9C /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		B2508663272797B200FD9D9C /* InviteInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteInterface.swift; sourceTree = "<group>"; };
 		B2508669272B236B00FD9D9C /* team10appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = team10appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B250866B272B236B00FD9D9C /* team10appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = team10appTests.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 				B20E9ED8271FA2BE002BA590 /* Info.plist */,
 				B20E9ECD271FA2BC002BA590 /* team10app.xcdatamodeld */,
 				B20E9ED2271FA2BE002BA590 /* Preview Content */,
-				B250866127278E5000FD9D9C /* Controller.swift */,
 				18F98527272900D00077B7FE /* GoogleService-Info.plist */,
 				18DAF455272A6B680008B4A3 /* ViewModel.swift */,
 			);
@@ -525,7 +522,6 @@
 				9D79D50E273351BA00A771D9 /* EventDetailsView.swift in Sources */,
 				B20E9EC8271FA2BC002BA590 /* AppDelegate.swift in Sources */,
 				B2BB3CB327272BAC00C6DB94 /* Invite.swift in Sources */,
-				B250866227278E5000FD9D9C /* Controller.swift in Sources */,
 				18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */,
 				B20E9ECA271FA2BC002BA590 /* SceneDelegate.swift in Sources */,
 				9D13015F27544F88007A2C4B /* PendingInviteCard.swift in Sources */,

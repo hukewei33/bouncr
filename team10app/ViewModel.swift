@@ -26,14 +26,19 @@ class ViewModel: ObservableObject {
     //  let appDelegate: AppDelegate = AppDelegate()
     
     @Published var hosts: [Host] = [Host]()
-    @Published var events: [Event] = [Event]() //Upcoming events that just look like normal events on your Host index pg
-    @Published var pastEvents: [Event] = [Event]() //Past events don't show up on Host index pg
-    @Published var currentEvents: [Event] = [Event]() //Current events = ongoing events you can scan tickets for
+    @Published var events: [Event] = [Event]()
+    @Published var pastEvents: [Event] = [Event]()
+    @Published var currentEvents: [Event] = [Event]()
     @Published var users: [User] = [User]()
     @Published var invites: [Invite] = [Invite]()
     @Published var pendingInvites: [Invite] = [Invite]()
     @Published var friends: [Friend] = [Friend]()
     @Published var pendingFriends: [Friend] = [Friend]()
+  
+    //Separate variables for events on host index page
+    @Published var hostEvents: [Event] = [Event]() //Upcoming events that just look like normal events on your Host index pg
+    @Published var hostPastEvents: [Event] = [Event]() //Past events don't show up on Host index pg
+    @Published var hostCurrentEvents: [Event] = [Event]() //Current events = ongoing events you can scan tickets for
     
     
     //For use in the inviteGuestsModal; build a list of users to send an invite to an event
@@ -154,10 +159,6 @@ class ViewModel: ObservableObject {
     
     
     func login(username: String, pword: String) -> Bool {
-//        var hasher = Hasher()
-//        hasher.combine(pword)
-//        let passwordHash = hasher.finalize()
-        
         for user in self.users {
             if (user.username == username && user.passwordHash == pword) {
                 self.thisUser = user
@@ -205,6 +206,7 @@ class ViewModel: ObservableObject {
         return result
     }
     
+    //Get a list of all the hosts hosting an event (should prob just be one host)
     func indexEventHosts(eventKey:String) -> [User] {
         let hostIDList = self.hosts.filter {$0.eventKey == eventKey}.map{$0.userKey}
         return self.users.filter {hostIDList.contains($0.key)}
@@ -242,10 +244,31 @@ class ViewModel: ObservableObject {
         toBeInvited.removeAll()
     }
     
+    //Get all the past, current, and upcoming events that this user is hosting
     func indexHostEvents() -> [Event] {
+        let curTime = Date().timeIntervalSinceReferenceDate
         if let userKey = loggedin(){
+            //Clear the 3 arrays
+            self.hostEvents.removeAll()
+            self.hostPastEvents.removeAll()
+            self.hostCurrentEvents.removeAll()
+            //Get list of all events this user is hosting
             let eventIDs: [String] = self.hosts.filter{$0.userKey == userKey }.map {$0.eventKey}
-            let myEvents = self.events.filter {eventIDs.contains($0.key)}
+            var myEvents = self.events.filter {eventIDs.contains($0.key)}
+            myEvents += self.currentEvents.filter  {eventIDs.contains($0.key)}
+            myEvents += self.pastEvents.filter  {eventIDs.contains($0.key)}
+            for event in myEvents {
+                //past event
+                if event.endTime < curTime {self.hostPastEvents.append(event)}
+                //future event
+                else if event.startTime > curTime {self.hostEvents.append(event)}
+                //ongoing event
+                else {self.hostCurrentEvents.append(event)}
+            }
+            //Sort the 3 arrays
+            self.hostPastEvents = self.hostPastEvents.sorted { $0.startTime < $1.startTime }
+            self.hostCurrentEvents = self.hostCurrentEvents.sorted { $0.startTime < $1.startTime }
+            self.hostEvents = self.hostEvents.sorted { $0.startTime < $1.startTime }
             return myEvents
         }
         else{
@@ -253,21 +276,6 @@ class ViewModel: ObservableObject {
             return []
         }
     }
-    
-
-
-
-    
-//    func viewEvent(key:String) -> Event?{
-//        let myEvents = self.events.filter {$0.key == key}
-//        if myEvents.count == 1{
-//            return myEvents[0]
-//        }
-//        else{
-//            print("event not found")
-//            return nil
-//        }
-//    }
     
     func indexGuestEvents()->[Event]{
         if let userId = loggedin() {
