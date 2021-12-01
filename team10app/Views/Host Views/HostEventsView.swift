@@ -43,8 +43,11 @@ struct HostEventsView: View {
                 .bold()
                 .font(.system(size: 22))
                 .padding()
-              ForEach(0..<self.viewModel.currentEvents.count, id: \.self) { index in
-                HostOngoingEventCard(event: self.viewModel.currentEvents[index])
+//              ForEach(0..<self.viewModel.currentEvents.count, id: \.self) { index in
+//                HostOngoingEventCard(event: self.viewModel.currentEvents[index])
+//              }
+              ForEach(self.viewModel.currentEvents, id: \.self) { event in
+                HostOngoingEventCard(event: event)
               }
             }
             
@@ -54,8 +57,12 @@ struct HostEventsView: View {
                 .bold()
                 .font(.system(size: 22))
                 .padding()
-              ForEach(0..<self.viewModel.events.count, id: \.self) { index in
-                HostUpcomingEventCard(event: self.viewModel.events[index])
+//              ForEach(0..<self.viewModel.events.count, id: \.self) { index in
+//                HostUpcomingEventCard(event: self.viewModel.events[index])
+//              }
+              //ForEach(colors, id: \.self) { color in
+              ForEach(self.viewModel.events, id: \.self) { event in
+                HostUpcomingEventCard(event: event)
               }
             }
             

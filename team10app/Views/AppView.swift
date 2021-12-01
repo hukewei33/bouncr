@@ -11,7 +11,6 @@ struct AppView: View {
   
 
     @ObservedObject var viewModel: ViewModel = ViewModel()
-  // bool login status
   
     var body: some View {
       
