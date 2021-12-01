@@ -22,7 +22,8 @@ class InviteInterface {
         let keyResult :String? = self.invitesReference.childByAutoId().key
         if let userId = keyResult {
             let newInvite = Invite(userKey: userKey,
-                            eventKey:  eventKey)
+                            eventKey: eventKey,
+                                   key: userId)
             self.invitesReference.child(userId).setValue(newInvite.toAnyObject())
           print("userid:" + userId)
             return userId

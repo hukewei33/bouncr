@@ -1,15 +1,14 @@
-//
-//  AppView.swift
-//  team10app
-//
-//  Created by Sara Song on 10/28/21.
-//
+////
+////  AppView.swift
+////  team10app
+////
+////  Created by Sara Song on 10/28/21.
+
 
 import SwiftUI
 
 struct AppView: View {
   
-
     @ObservedObject var viewModel: ViewModel = ViewModel()
   
     var body: some View {

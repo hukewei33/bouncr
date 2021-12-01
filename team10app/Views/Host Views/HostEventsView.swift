@@ -1,9 +1,9 @@
-//
-//  HostEventsView.swift
-//  team10app
-//
-//  Created by Sara Song on 10/28/21.
-//
+////
+////  HostEventsView.swift
+////  team10app
+////
+////  Created by Sara Song on 10/28/21.
+
 
 import SwiftUI
 

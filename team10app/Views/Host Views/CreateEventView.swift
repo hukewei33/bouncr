@@ -1,9 +1,9 @@
-//
-//  CreateEventView.swift
-//  team10app
-//
-//  Created by Sara Song on 11/2/21.
-//
+////
+////  CreateEventView.swift
+////  team10app
+////
+////  Created by Sara Song on 11/2/21.
+
 
 import SwiftUI
 

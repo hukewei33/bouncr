@@ -10,17 +10,17 @@
 //
 ////NOT IN USE ANYMORE, DELETE?
 //class Controller{
-//
-//
-//
-//
+//    
+//    
+//    
+//    
 //    let userInterface = UserInterface(userKey: "userKey")
 //    let eventInterface = EventInterface()
 //    let hostInterface = HostInterface(userKey: "userKey")
 //    let inviteInterface = InviteInterface()
-//
-//
-//
+//    
+//    
+//    
 //    //creates an event and host relationship, returns key of host (intermediate table)
 //    func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
 //        if let newEventID = self.eventInterface.create(name: name, startTime: startTime,endTime:endTime,street1:  street1, street2: street2,city: city,zip:zip,state: state, description: description ),
@@ -32,14 +32,14 @@
 //            return nil
 //        }
 //    }
-//
+//    
 //    //index the events a user is hosting
 //    func indexHostEvents()-> [Event]{
 //        let eventIDs = self.hostInterface.Hosts.map {$0.eventKey}
 //        let myEvents = self.eventInterface.Events.filter {eventIDs.contains($0.key)}
 //        return myEvents
 //    }
-//
+//    
 //    //get info about an event given key
 //    func viewEvent(key:String) -> Event?{
 //        let myEvents = self.eventInterface.Events.filter {$0.key == key}
@@ -51,18 +51,18 @@
 //            return nil
 //        }
 //    }
-//
+//    
 //    //index events a user is invited to
 //    func indexGuestEvents()->[Event]{
 //        let eventIDs = self.inviteInterface.Invites.filter{$0.userKey == self.userInterface.CurrentUser?.key}.map {$0.eventKey}
 //        let myEvents = self.eventInterface.Events.filter {eventIDs.contains($0.key)}
 //        return myEvents
 //    }
-//
-//
-//
-//
-//
-//
-//
+//    
+//    
+//    
+//    
+//    
+//    
+//    
 //}
