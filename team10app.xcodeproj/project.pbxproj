@@ -42,8 +42,6 @@
 		B20E9ED4271FA2BE002BA590 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED3271FA2BE002BA590 /* Preview Assets.xcassets */; };
 		B20E9ED7271FA2BE002BA590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20E9ED5271FA2BE002BA590 /* LaunchScreen.storyboard */; };
 		B246A9E52755B82300EB58D9 /* viewmodelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B246A9E42755B82200EB58D9 /* viewmodelTests.swift */; };
-		B247892D2739BD85006B7362 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247892C2739BD85006B7362 /* Friend.swift */; };
-		B247892F2739BE57006B7362 /* FriendInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B247892E2739BE57006B7362 /* FriendInterface.swift */; };
 		B250866227278E5000FD9D9C /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866127278E5000FD9D9C /* Controller.swift */; };
 		B2508664272797B200FD9D9C /* InviteInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2508663272797B200FD9D9C /* InviteInterface.swift */; };
 		B250866C272B236B00FD9D9C /* team10appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B250866B272B236B00FD9D9C /* team10appTests.swift */; };
@@ -112,8 +110,6 @@
 		B20E9ED6271FA2BE002BA590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B20E9ED8271FA2BE002BA590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B246A9E42755B82200EB58D9 /* viewmodelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewmodelTests.swift; sourceTree = "<group>"; };
-		B247892C2739BD85006B7362 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		B247892E2739BE57006B7362 /* FriendInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInterface.swift; sourceTree = "<group>"; };
 		B250866127278E5000FD9D9C /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		B2508663272797B200FD9D9C /* InviteInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteInterface.swift; sourceTree = "<group>"; };
 		B2508669272B236B00FD9D9C /* team10appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = team10appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -718,7 +714,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"team10app/Preview Content\"";
-				DEVELOPMENT_TEAM = 9J56NDXZ35;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = team10app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -726,7 +722,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = team10app.67443;
+				PRODUCT_BUNDLE_IDENTIFIER = team10appSara.67443;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -741,7 +737,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"team10app/Preview Content\"";
-				DEVELOPMENT_TEAM = 9J56NDXZ35;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = team10app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -749,7 +745,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = team10app.67443;
+				PRODUCT_BUNDLE_IDENTIFIER = team10appSara.67443;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -763,7 +759,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9J56NDXZ35;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				INFOPLIST_FILE = team10appTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -785,7 +781,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9J56NDXZ35;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				INFOPLIST_FILE = team10appTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
