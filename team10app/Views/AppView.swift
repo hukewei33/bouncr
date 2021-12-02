@@ -62,8 +62,6 @@ struct AppView: View {
           }
           .edgesIgnoringSafeArea(.top) //Makes top nav bar stretch all the way to top of device
         }
-        
+      
       }
-      
-      
 }
