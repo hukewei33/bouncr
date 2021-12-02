@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		183C633C27588FE300324253 /* EventForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C633B27588FE300324253 /* EventForm.swift */; };
+		183C633E2758D98000324253 /* GuestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C633D2758D98000324253 /* GuestList.swift */; };
+		183C63402758DD5200324253 /* GuestListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C633F2758DD5200324253 /* GuestListRow.swift */; };
 		1862DADB27346EA50055E2F0 /* InviteGuestsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */; };
 		1862DADD27349F290055E2F0 /* InviteGuestsModalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862DADC27349F290055E2F0 /* InviteGuestsModalRow.swift */; };
 		18B546812756165400F7107B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B546802756165400F7107B /* LoginView.swift */; };
@@ -67,6 +69,8 @@
 /* Begin PBXFileReference section */
 		0C2769A3E92908E5F7EF0E7A /* Pods-team10app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10app.release.xcconfig"; path = "Target Support Files/Pods-team10app/Pods-team10app.release.xcconfig"; sourceTree = "<group>"; };
 		183C633B27588FE300324253 /* EventForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventForm.swift; sourceTree = "<group>"; };
+		183C633D2758D98000324253 /* GuestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestList.swift; sourceTree = "<group>"; };
+		183C633F2758DD5200324253 /* GuestListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListRow.swift; sourceTree = "<group>"; };
 		1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModal.swift; sourceTree = "<group>"; };
 		1862DADC27349F290055E2F0 /* InviteGuestsModalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModalRow.swift; sourceTree = "<group>"; };
 		18B546802756165400F7107B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 				9D79D510273351C300A771D9 /* InviteCard.swift */,
 				9D79D50B273351B200A771D9 /* ProfileView.swift */,
 				18B546802756165400F7107B /* LoginView.swift */,
+				183C633D2758D98000324253 /* GuestList.swift */,
+				183C633F2758DD5200324253 /* GuestListRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 				9D8CC249272F354400687207 /* QRViewController.swift in Sources */,
 				18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */,
 				18DAF45F272D39CD0008B4A3 /* HostUpcomingEventCard.swift in Sources */,
+				183C63402758DD5200324253 /* GuestListRow.swift in Sources */,
 				18DAF468272EA3600008B4A3 /* AddEventButton.swift in Sources */,
 				18DAF466272E93BF0008B4A3 /* SquareScanQR.swift in Sources */,
 				9D50390C2734C174001DF338 /* HostEventDetailsView.swift in Sources */,
@@ -542,6 +549,7 @@
 				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
 				9D073E7827519E840097DA25 /* FriendInterface.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
+				183C633E2758D98000324253 /* GuestList.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
 				9D79D50C273351B200A771D9 /* ProfileView.swift in Sources */,
 				9D073E7627519E6B0097DA25 /* Friend.swift in Sources */,
