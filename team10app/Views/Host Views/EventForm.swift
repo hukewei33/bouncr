@@ -87,8 +87,10 @@ struct EventForm: View {
           DatePicker(
             "",
             selection: $startTime,
+            in: Date()...,
             displayedComponents: [.date, .hourAndMinute]
           )
+          .id(UUID()) //A hacky way to fix a bug where date was randomly displayed differently (Dec. 1, 2021 vs. 12/1/21)
           .labelsHidden()
           .padding(.bottom, 30)
           
@@ -99,8 +101,10 @@ struct EventForm: View {
           DatePicker(
             "",
             selection: $endTime,
+            in: startTime...,
             displayedComponents: [.date, .hourAndMinute]
           )
+          .id(UUID()) //A hacky way to fix a bug where date was randomly displayed differently (Dec. 1, 2021 vs. 12/1/21)
           .labelsHidden()
           .padding(.bottom, 30)
         }
