@@ -13,7 +13,7 @@ struct Friend {
     let key: String
     let userKey1: String
     let userKey2: String
-    let twinKey : String
+    var twinKey : String
     let accepted : Bool
 
 
@@ -22,7 +22,7 @@ struct Friend {
         self.key = key
         self.userKey1 = userKey1
         self.userKey2 = userKey2
-        self.twinKey = ""
+        self.twinKey = "dummy"
         self.accepted = false
         
 
@@ -53,6 +53,8 @@ struct Friend {
         return [
             "userKey1": userKey1,
             "userKey2": userKey2,
+            "twinKey":twinKey,
+            "accepted":accepted
         ]
     }
 }

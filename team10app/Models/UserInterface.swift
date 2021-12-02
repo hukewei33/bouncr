@@ -27,7 +27,7 @@ class UserInterface {
     
     let usersReference = Database.database().reference(withPath: "users")
     
-    func create(firstName: String, lastName : String, email: String, passwordHash: String , username: String)-> String?{
+  func create(firstName: String, lastName : String, email: String, password: String , username: String)-> String?{
         let keyResult :String? = self.usersReference.childByAutoId().key
         if let userId = keyResult {
             let newUser = User(firstName: firstName,
@@ -35,7 +35,7 @@ class UserInterface {
                             email:email,
                             username:  username,
                             profilePicURL: nil ,
-                            passwordHash: passwordHash,
+                            passwordHash: password,
                             key: userId
                             )
             self.usersReference.child(userId).setValue(newUser.toAnyObject())

@@ -26,14 +26,19 @@ class ViewModel: ObservableObject {
     //  let appDelegate: AppDelegate = AppDelegate()
     
     @Published var hosts: [Host] = [Host]()
-    @Published var events: [Event] = [Event]() //Upcoming events that just look like normal events on your Host index pg
-    @Published var pastEvents: [Event] = [Event]() //Past events don't show up on Host index pg
-    @Published var currentEvents: [Event] = [Event]() //Current events = ongoing events you can scan tickets for
+    @Published var events: [Event] = [Event]()
+    @Published var pastEvents: [Event] = [Event]()
+    @Published var currentEvents: [Event] = [Event]()
     @Published var users: [User] = [User]()
     @Published var invites: [Invite] = [Invite]()
     @Published var pendingInvites: [Invite] = [Invite]()
     @Published var friends: [Friend] = [Friend]()
     @Published var pendingFriends: [Friend] = [Friend]()
+  
+    //Separate variables for events on host index page
+    @Published var hostEvents: [Event] = [Event]() //Upcoming events that just look like normal events on your Host index pg
+    @Published var hostPastEvents: [Event] = [Event]() //Past events don't show up on Host index pg
+    @Published var hostCurrentEvents: [Event] = [Event]() //Current events = ongoing events you can scan tickets for
     
     
     //For use in the inviteGuestsModal; build a list of users to send an invite to an event
@@ -43,49 +48,126 @@ class ViewModel: ObservableObject {
     
     @Published var thisUser: User? = nil
     
-    //  func createEvent(name: String, startTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?)->String?{
-    //      if let newEventID = self.eventInterface.create(name: name, startTime: startTime,street1:  street1, street2: street2,city: city,zip:zip,state: state, description: description ),
-    //         let userID = self.userInterface.CurrentUser?.key {
-    //          return self.hostInterface.create(userKey: userID, eventKey: newEventID)
-    //      }
-    //      else{
-    //          print("failed create new event hosting")
-    //          return nil
-    //      }
-    //  }
-    
     init() {
         //lets keep the interfaces for CUD so we dont blow up this file :)
-        
-        //we also need to think about a login process for v2
         
         userInterface = UserInterface()
         eventInterface = EventInterface()
         hostInterface = HostInterface()
         inviteInterface = InviteInterface()
         friendInterface = FriendInterface()
+      
         
-        //why is this here??
-        //indexEventHosts(eventKey: "JohnParty")
-        
-        getHosts()
-        getEvents()
-        getUsers()
-        getInvites()
+        getHosts(){a in return }
+        getEvents(){(a,b,c) in return }
+        getUsers(){a in return }
+        getInvites(){(a,b) in return }
     }
+  
+  func getHosts(completionHandler: @escaping ([Host]) -> Void) {
+          hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
+              self.hosts.removeAll()
+              for child in snapshot.children {
+                  if let snapshot = child as? DataSnapshot,
+                     let host = Host(snapshot: snapshot) {
+                      self.hosts.append(host)
+                  }
+              }
+              completionHandler(self.hosts)
+          })
+      }
+
+      func getEvents(completionHandler: @escaping ([Event],[Event],[Event]) -> Void) {
+          self.eventsReference.queryOrdered(byChild: "endTime").observe(.value, with: { snapshot in
+              let curTime = Date().timeIntervalSinceReferenceDate
+              self.events.removeAll()
+              self.pastEvents.removeAll()
+              self.currentEvents.removeAll()
+              for child in snapshot.children {
+                  if let snapshot = child as? DataSnapshot,
+                     let event = Event(snapshot: snapshot) {
+                      //past event
+                      if event.endTime < curTime {self.pastEvents.append(event)}
+                      //future event
+                      else if event.startTime > curTime {self.events.append(event)}
+                      //ongoing event
+                      else {self.currentEvents.append(event)}
+                  }
+              }
+              self.pastEvents = self.pastEvents.sorted { $0.startTime < $1.startTime }
+              self.currentEvents = self.currentEvents.sorted { $0.startTime < $1.startTime }
+              self.events = self.events.sorted { $0.startTime < $1.startTime }
+              completionHandler(self.pastEvents,self.currentEvents,self.events)
+          })
+      }
+
+
+      func getUsers(completionHandler: @escaping ([User]) -> Void){
+          self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
+              self.users.removeAll()
+              for child in snapshot.children {
+                  if let snapshot = child as? DataSnapshot,
+                     let user = User(snapshot: snapshot) {
+                      self.users.append(user)
+                  }
+              }
+              self.users = self.users .sorted { $0.username < $1.username }
+              completionHandler(self.users)
+          })
+      }
+
+      func getInvites(completionHandler: @escaping ([Invite],[Invite]) -> Void){
+          self.invitesReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
+              self.invites.removeAll()
+              for child in snapshot.children {
+                  if let snapshot = child as? DataSnapshot,
+                     let invite = Invite(snapshot: snapshot) {
+
+                      if invite.inviteStatus{
+                          self.invites.append(invite)
+                      }
+                      else{
+                          self.pendingInvites.append(invite)
+                      }
+                  }
+              }
+              completionHandler(self.invites,self.pendingInvites)
+
+          })
+
+      }
+
+      func getFriends(completionHandler: @escaping ([Friend],[Friend]) -> Void){
+          self.friendReference.queryOrdered(byChild: "userKey1").observe(.value, with: { snapshot in
+              for child in snapshot.children {
+                  if let snapshot = child as? DataSnapshot,
+                     let friend = Friend(snapshot: snapshot) {
+                      //if friend.userKey1 == userKey{
+                          if friend.accepted{
+                              self.friends.append(friend)
+                          }
+                          else{
+                              self.pendingFriends.append(friend)
+                          }
+
+                      //}
+                  }
+              }
+              completionHandler(self.friends,self.pendingFriends)
+          })
+      }
+
     
     func login(username: String, pword: String) -> Bool {
-        var hasher = Hasher()
-        hasher.combine(pword)
-        let passwordHash = hasher.finalize()
-        
         for user in self.users {
-            if (user.username == username && user.passwordHash == passwordHash) {
+            if (user.username == username && user.passwordHash == pword) {
                 self.thisUser = user
-                getFriends(userKey:user.key)
+                getFriends(){(friends,pendingFriends) in self.friends = friends.filter{$0.userKey1 == user.key}; self.pendingFriends = pendingFriends.filter{$0.userKey1 == user.key}}
+                print("login successful")
                 return true // login was successful
             }
         }
+        print("login failure")
         return false // login failed
     }
     
@@ -94,6 +176,8 @@ class ViewModel: ObservableObject {
     }
     
     func loggedin()->String?{
+        print("loggedin")
+        print(self.thisUser)
         if let user = self.thisUser{
             return user.key
         }
@@ -126,8 +210,8 @@ class ViewModel: ObservableObject {
         return result
     }
     
+  //Get a list of all the hosts hosting an event (should prob just be one host)
     func indexEventHosts(eventKey:String) -> [User] {
-      print("hullabaloo")
         print(eventKey)
 //      print(self.hosts)
         let hostIDList = self.hosts.filter {$0.eventKey == eventKey}.map{$0.userKey}
@@ -148,11 +232,21 @@ class ViewModel: ObservableObject {
     }
     
     //For use in the inviteGuestsModal; use the toBeInvited list to send invites to ppl
-    func sendInvites(event: Event) {
+    func sendInvites(event: Event )-> [String]? {
+        var inviteCreated:[String] = [String]()
+        //need to make sure that the user is already not invited
+        let currentGuests = indexEventGuests(eventKey: event.key).map {$0.key}
         for user in self.toBeInvited {
-            if self.inviteInterface.create(userKey: user.key, eventKey: event.key) == nil{print("error in invite creation")}
+          //need to make sure that the user is already not invited
+          if !(currentGuests.contains(user.key)) && user.key != thisUser?.key{
+              if let newId = self.inviteInterface.create(userKey: user.key, eventKey: event.key){
+                  inviteCreated.append(newId)
+              }
+              else{print("error in invite creation")}
+          }
         }
         self.clearToBeInvited()
+        return inviteCreated
     }
     
     func clearToBeInvited() {
@@ -160,145 +254,61 @@ class ViewModel: ObservableObject {
     }
     
     func indexHostEvents() -> [Event] {
-//         if let userKey = loggedin(){
-//             let eventIDs: [String] = self.hosts.filter{$0.userKey == userKey }.map {$0.eventKey}
-//             let myEvents = self.events.filter {eventIDs.contains($0.key)}
-//             return myEvents
-//         }
-//         else{
-//             print("not logged in")
-//             return []
-//         }
-        let eventIDs: [String] = self.hosts.map {$0.eventKey}
-        let myEvents = self.events.filter {eventIDs.contains($0.key)}
-        //    self.events = myEvents
-        return myEvents
-    }
-  
-    func getHosts() {
-        hostsReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
-            self.hosts.removeAll()
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let host = Host(snapshot: snapshot) {
-                    self.hosts.append(host)
-                }
+      let curTime = Date().timeIntervalSinceReferenceDate
+        if let userKey = loggedin(){
+            //Clear the 3 arrays
+            self.hostEvents.removeAll()
+            self.hostPastEvents.removeAll()
+            self.hostCurrentEvents.removeAll()
+            //Get list of all events this user is hosting
+            let eventIDs: [String] = self.hosts.filter{$0.userKey == userKey }.map {$0.eventKey}
+            var myEvents = self.events.filter {eventIDs.contains($0.key)}
+            myEvents += self.currentEvents.filter  {eventIDs.contains($0.key)}
+            myEvents += self.pastEvents.filter  {eventIDs.contains($0.key)}
+            for event in myEvents {
+                //past event
+                if event.endTime < curTime {self.hostPastEvents.append(event)}
+                //future event
+                else if event.startTime > curTime {self.hostEvents.append(event)}
+                //ongoing event
+                else {self.hostCurrentEvents.append(event)}
             }
-        })
-    }
-    
-//    old getEvents
-//    func getEvents() {
-//        self.eventsReference.queryOrdered(byChild: "name").observe(.value, with: { snapshot in
-//            self.events.removeAll()
-//            for child in snapshot.children {
-//                if let snapshot = child as? DataSnapshot,
-//                   let event = Event(snapshot: snapshot) {
-//                    //print(event.name)
-//                    self.events.append(event)
-//                }
-//            }
-//        })
-//    }
-  
-    func getEvents() {
-        self.eventsReference.queryOrdered(byChild: "endTime").observe(.value, with: { snapshot in
-            let curTime = Date().timeIntervalSinceReferenceDate
-            self.events.removeAll()
-            self.pastEvents.removeAll()
-            self.currentEvents.removeAll()
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let event = Event(snapshot: snapshot) {
-                    //past event
-                    if event.endTime < curTime {self.pastEvents.append(event)}
-                    //future event
-                    else if event.startTime > curTime {self.events.append(event)}
-                    //ongoing event
-                    else {self.currentEvents.append(event)}
-                }
-            }
-            self.pastEvents.sort(by: {$0.startTime < $1.startTime})
-            self.events.sort(by: {$0.startTime < $1.startTime})
-            self.currentEvents.sort(by: {$0.startTime < $1.startTime})
-            
-        })
-    }
-  
-    
-    func getUsers(){
-        self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
-            self.users.removeAll()
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let user = User(snapshot: snapshot) {
-                  print("user incoming")
-                  print(user)
-                    self.users.append(user)
-                }
-            }
-        })
-    }
-    
-    func getInvites(){
-        self.invitesReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
-            self.invites.removeAll()
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let invite = Invite(snapshot: snapshot) {
-                  print(invite)
-                    if invite.inviteStatus{
-                        self.invites.append(invite)
-                    }
-                    else{
-                        self.pendingInvites.append(invite)
-                    }
-                    print(self.invites)
-                    print(self.pendingInvites)
-                }
-            }
-            
-        })
-       
-    }
-  
-  
-    func eventsForHosts() -> [Event] {
-        let eventIDs: [String] = self.hosts.map {$0.eventKey}
-        let myEvents = self.events.filter {eventIDs.contains($0.key)}
-        return myEvents
-    }
-    
-
-    
-    func viewEvent(key:String) -> Event?{
-        print(events)
-        let myEvents = self.events.filter {$0.key == key}
-        if myEvents.count == 1{
-            return myEvents[0]
-        }
-        else{
-            print("event not found")
-            return nil
-        }
-    }
+          
+            //Sort the 3 arrays
+            self.hostPastEvents = self.hostPastEvents.sorted { $0.startTime < $1.startTime }
+            self.hostCurrentEvents = self.hostCurrentEvents.sorted { $0.startTime < $1.startTime }
+            self.hostEvents = self.hostEvents.sorted { $0.startTime < $1.startTime }
+            return myEvents
+          }
+          else {
+            print("indexhostevents, not logged in")
+            return []
+          }
+      }
     
     func indexGuestEvents()->[Event]{
-        print("index1")
-//        if let userId = loggedin(){
-        if true {
-          print("index2")
-//        let eventIDs = self.invites.filter{$0.userKey == userId}.map {$0.eventKey}
-          let eventIDs = self.invites.filter{$0.userKey == "Tom" && $0.inviteStatus}.map {$0.eventKey}
-          print("index3")
-          let myEvents = self.events.filter {eventIDs.contains($0.key)}
-            print("index4")
+      
+      while (self.thisUser == nil){
+        print(self.thisUser)
+      }
+      
+      if let userId = loggedin() {
+          let eventIDs = self.invites.filter{$0.userKey == userId}.map {$0.eventKey}
+          print("eventIDs")
+          print(eventIDs)
+          var myEvents = self.events.filter {eventIDs.contains($0.key)}
+          print("myEvents")
+          print(myEvents)
+          myEvents += self.currentEvents.filter  {eventIDs.contains($0.key)}
+          //Users should be able to see ongoing events in their invitations too
+          print("myEvents")
+          print(myEvents)
           return myEvents
-        }
-        else{
-            print("not logged in")
-            return []
-        }
+      }
+      else{
+          print("indexguestevents, not logged in")
+          return []
+      }
         
     }
   
@@ -309,23 +319,26 @@ class ViewModel: ObservableObject {
     }
     
     //creates an event and host relationship, returns key of host (intermediate table)
-    func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?,attendenceVisible:Bool, friendsAttendingVisible:Bool)->String? {
+    func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?,attendenceVisible:Bool, friendsAttendingVisible:Bool, testing:Bool = false)->(String,String)? {
         if let newEventID = self.eventInterface.create(name: name, startTime: startTime, endTime:endTime, street1: street1, street2: street2, city: city, zip: zip, state: state, description: description,attendenceVisible:attendenceVisible, friendsAttendingVisible:friendsAttendingVisible),
            //we need a way to get login and store the user info of this user
-           let userID = loggedin(){
-            return self.hostInterface.create(userKey: userID, eventKey: newEventID)
+           let userID = testing ? "testingID" : loggedin() {
+               if let hostID = self.hostInterface.create(userKey: userID, eventKey: newEventID){
+                   return (newEventID,hostID)
+               }
         }
         else{
             print("failed to create new event hosting")
             return nil
         }
+        return nil
     }
     
     func checkin(inviteKey:String)->Bool{
         //use invitekey to get invite
         let thisInvite = self.invites.filter{$0.key == inviteKey}.map{$0.eventKey}
         //use eventid of invite to get hosts
-        let hostIDs = self.hosts.filter{thisInvite.contains($0.eventKey)}.map{$0.key}
+        let hostIDs = self.hosts.filter{thisInvite.contains($0.eventKey)}.map{$0.userKey}
         //check the person scanning the id is one of the hosts
         if let scannerID = loggedin(),
            hostIDs.contains(scannerID){
@@ -340,39 +353,25 @@ class ViewModel: ObservableObject {
     
     
     func cascadeEventDelete(eventKey:String) {
+        let a = self.hosts
+        let b = self.pendingInvites
         let relatedHostIDs = self.hosts.filter {$0.eventKey == eventKey} .map {$0.key }
-        relatedHostIDs.forEach {self.hostInterface.delete(key: $0)}
+        relatedHostIDs.forEach {x in self.hostInterface.delete(key: x)}
         let relatedInviteIDs = self.invites.filter {$0.eventKey == eventKey} .map {$0.key }
-        relatedInviteIDs.forEach {self.inviteInterface.delete(key: $0)}
-        self.eventInterface.delete(key: eventKey)   
-    }
-    
-    func getFriends(userKey: String){
-        self.friendReference.queryOrdered(byChild: "userKey1").observe(.value, with: { snapshot in
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let friend = Friend(snapshot: snapshot) {
-                    if friend.userKey1 == userKey{
-                        if friend.accepted{
-                            self.friends.append(friend)
-                        }
-                        else{
-                            self.pendingFriends.append(friend)
-                        }
-                        
-                    }
-                }
-            }
-        })
+        relatedInviteIDs.forEach {x in self.inviteInterface.delete(key: x)}
+        let relatedPendingInviteIDs = self.pendingInvites.filter {$0.eventKey == eventKey} .map {$0.key }
+        relatedPendingInviteIDs.forEach {x in self.inviteInterface.delete(key: x)}
+        self.eventInterface.delete(key: eventKey)
     }
     
                                                                       
-    func addFriend(userKey1: String, userKey2 : String){
+    func addFriend(userKey1: String, userKey2 : String)->(String,String)? {
         if let friendRelation1 = self.friendInterface.create(userKey1: userKey1, userKey2: userKey2)
         {
             if let friendRelation2 = self.friendInterface.create(userKey1: userKey2, userKey2: userKey1){
                 self.friendInterface.update(key: friendRelation1, updateVals: ["twinKey" : friendRelation2])
                 self.friendInterface.update(key: friendRelation2, updateVals: ["twinKey" : friendRelation1])
+                return (friendRelation1,friendRelation2)
             }
             //second entry not created so we delete the first and try again
             self.friendInterface.delete(key: friendRelation1)
@@ -381,6 +380,7 @@ class ViewModel: ObservableObject {
         else{
             print("unable to create first relationship in twin, failed to create friend request")
         }
+        return nil
     }
     
                                                                       
@@ -403,6 +403,7 @@ class ViewModel: ObservableObject {
         if query == "" {
             return []
         }
+        //add additional logic to prevent adding yourself or guests already added?
         let first_name_matches: [User] = self.users.filter{$0.firstName.lowercased().contains(query.lowercased())}
         let last_name_matches:  [User] = self.users.filter{$0.lastName.lowercased().contains(query.lowercased())}
         let userName_matches:  [User] = self.users.filter{$0.username.lowercased().contains(query.lowercased())}

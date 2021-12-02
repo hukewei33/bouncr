@@ -34,7 +34,10 @@ struct CreateEventView: View {
             "Name",
             text: $name
           )
-          .padding(.bottom, 30)
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
         }
         
         //Start Date/Time field
@@ -74,7 +77,10 @@ struct CreateEventView: View {
             "Street 1",
             text: $street1
           )
-          .padding(.bottom, 30)
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
         
         //Street2 field
           Text("Street 2 (optional)")
@@ -84,7 +90,10 @@ struct CreateEventView: View {
             "Street 2",
             text: $street2
           )
-          .padding(.bottom, 30)
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
         }
         
         //City field
@@ -97,6 +106,9 @@ struct CreateEventView: View {
               "City",
               text: $city
             )
+              .padding()
+              .background(Color("Form Field Background"))
+              .cornerRadius(10)
           }
         
         
@@ -109,6 +121,9 @@ struct CreateEventView: View {
               "State",
               text: $state
             )
+              .padding()
+              .background(Color("Form Field Background"))
+              .cornerRadius(10)
           }
         }
         .padding(.bottom, 30)
@@ -122,7 +137,10 @@ struct CreateEventView: View {
             "Zip",
             text: $zip
           )
-          .padding(.bottom, 30)
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
         }
         
         //Event Description field
@@ -134,7 +152,10 @@ struct CreateEventView: View {
             "Description",
             text: $descr
           )
-          .padding(.bottom, 30)
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
         }
         
         Spacer()
@@ -160,7 +181,6 @@ struct CreateEventView: View {
         }
       }
       .padding(30)
-      .textFieldStyle(RoundedBorderTextFieldStyle())
     }
     .navigationTitle("New Event")
     

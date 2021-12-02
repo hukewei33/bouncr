@@ -26,10 +26,10 @@ struct EditEventView: View {
   // Had to use a function to init vars because @State vars can't be changes outside the body
   func initView() {
     let startTimeInterval = TimeInterval(event.startTime)
-    let endTimeInterval = TimeInterval(event.startTime)
+    let endTimeInterval = TimeInterval(event.endTime)
     self.name = event.name
-    startTime = Date(timeIntervalSince1970: startTimeInterval)
-    endTime = Date(timeIntervalSince1970: endTimeInterval)
+    startTime = Date(timeIntervalSinceReferenceDate: startTimeInterval)
+    endTime = Date(timeIntervalSinceReferenceDate: endTimeInterval)
     street1 = event.street1
     if let s2 = event.street2 {
       street2 = s2 //optional
@@ -54,7 +54,10 @@ struct EditEventView: View {
             "Name",
             text: $name
           )
-          .padding(.bottom, 30)
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
         }
         
         //Event Date field
@@ -92,7 +95,10 @@ struct EditEventView: View {
             "Street 1",
             text: $street1
           )
-          .padding(.bottom, 30)
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
         
         //Street2 field
           Text("Street 2 (optional)")
@@ -102,7 +108,10 @@ struct EditEventView: View {
             "Street 2",
             text: $street2
           )
-          .padding(.bottom, 30)
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
         }
         
         //City field
@@ -115,6 +124,10 @@ struct EditEventView: View {
               "City",
               text: $city
             )
+              .padding()
+              .background(Color("Form Field Background"))
+              .cornerRadius(10)
+              .padding(.bottom, 30)
           }
         
         
@@ -127,9 +140,12 @@ struct EditEventView: View {
               "State",
               text: $state
             )
+              .padding()
+              .background(Color("Form Field Background"))
+              .cornerRadius(10)
+              .padding(.bottom, 30)
           }
         }
-        .padding(.bottom, 30)
         
         //Zip field
         Group {
@@ -140,7 +156,10 @@ struct EditEventView: View {
             "Zip",
             text: $zip
           )
-          .padding(.bottom, 30)
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
         }
         
         //Event Description field
@@ -152,7 +171,10 @@ struct EditEventView: View {
             "Description",
             text: $descr
           )
-          .padding(.bottom, 30)
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
         }
         
         Spacer()
@@ -160,10 +182,7 @@ struct EditEventView: View {
         //Submit button; Creates new event using viewModel
         HStack {
           Spacer()
-          Button(action: {viewModel.eventInterface.update(key: self.event.key, updateVals: ["name": name, "startTime": startTime.timeIntervalSinceReferenceDate,
-                                                                                            "endTime": endTime.timeIntervalSinceReferenceDate, "street1": street1,
-                                                                                            "street2": street2, "city": city,
-                                                                                            "zip": zip, "state": state, "description": descr])
+          Button(action: {viewModel.eventInterface.update(key: self.event.key, updateVals: ["name": name, "startTime": startTime.timeIntervalSinceReferenceDate,"endTime": endTime.timeIntervalSinceReferenceDate, "street1": street1, "street2": street2, "city": city,"zip": zip, "state": state, "description": descr])
                           self.mode.wrappedValue.dismiss()
           }, label: {
             Text("Save event")
@@ -177,7 +196,6 @@ struct EditEventView: View {
         }
       }
       .padding(30)
-      .textFieldStyle(RoundedBorderTextFieldStyle())
       .onAppear{ initView() }
     }
     .navigationTitle("Edit Event")

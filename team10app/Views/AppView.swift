@@ -3,7 +3,6 @@
 //  team10app
 //
 //  Created by Sara Song on 10/28/21.
-//
 
 import SwiftUI
 
@@ -11,15 +10,12 @@ struct AppView: View {
   
 
     @ObservedObject var viewModel: ViewModel = ViewModel()
-  // bool login status
   
     var body: some View {
       
-      if (viewModel.loggedin() != nil){
+      if (viewModel.loggedin() == nil){
         
-        // login view
-        // call login with args username + password
-        // login returns boolean
+        LoginView(viewModel: viewModel)
         
       }
       else {
@@ -27,7 +23,7 @@ struct AppView: View {
           TabView {
             
             //My Events page
-            HostEventsView(viewModel: viewModel, events: viewModel.eventsForHosts())
+            HostEventsView(viewModel: viewModel)
             .tabItem {
               Image(systemName: "calendar")
               Text("Your Events")
@@ -45,11 +41,12 @@ struct AppView: View {
             
             // Profile Page
             
-            ProfileView(user: User(firstName: "Dwight", lastName: "Schrute", email: "beets@schrutefarms.com", username: "assistantregionalmanager", profilePicURL: "", passwordHash: 123123))
+            ProfileView(user: User(firstName: "Dwight", lastName: "Schrute", email: "beets@schrutefarms.com", username: "assistantregionalmanager", profilePicURL: "", passwordHash: "examplepw1"))
             .tabItem {
               Image(systemName: "person.crop.circle")
               Text("Profile")
             }
+      
           }
           .padding(.top)
           .onAppear() {
