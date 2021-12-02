@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GuestList: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
   var event: Event
 
   var body: some View {
