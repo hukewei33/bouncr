@@ -128,7 +128,13 @@ class ViewModel: ObservableObject {
     }
     
     func indexEventHosts(eventKey:String) -> [User] {
+      print("hullabaloo")
+        print(eventKey)
+//      print(self.hosts)
         let hostIDList = self.hosts.filter {$0.eventKey == eventKey}.map{$0.userKey}
+        print(hostIDList)
+      print(self.users)
+        print(self.users.filter {hostIDList.contains($0.key)})
         return self.users.filter {hostIDList.contains($0.key)}
     }
     
@@ -205,6 +211,8 @@ class ViewModel: ObservableObject {
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let user = User(snapshot: snapshot) {
+                  print("user incoming")
+                  print(user)
                     self.users.append(user)
                 }
             }
@@ -260,11 +268,11 @@ class ViewModel: ObservableObject {
         if true {
           print("index2")
 //        let eventIDs = self.invites.filter{$0.userKey == userId}.map {$0.eventKey}
-          let eventIDs = self.invites.filter{$0.userKey == "Tom"}.map {$0.eventKey}
+          let eventIDs = self.invites.filter{$0.userKey == "Tom" && $0.inviteStatus}.map {$0.eventKey}
           print("index3")
-        let myEvents = self.events.filter {eventIDs.contains($0.key)}
-          print("index4")
-        return myEvents
+          let myEvents = self.events.filter {eventIDs.contains($0.key)}
+            print("index4")
+          return myEvents
         }
         else{
             print("not logged in")

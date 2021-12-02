@@ -49,19 +49,6 @@ struct InvitationsView: View {
                     ForEach(0..<self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}.count, id: \.self) { index in
                       if #available(iOS 15.0, *) {
                         PendingInviteCard(invite: self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}[index])
-                          .swipeActions(edge: .leading) {
-                            Button(action: {
-                              print("declined")
-                              viewModel.inviteInterface.delete(key: self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}[index].key)
-                            }){
-                              HStack{
-                                Text("Decline")
-                                Image(systemName: "x.circle")
-                                  .foregroundColor(.white)
-                              }
-                            }
-                            .tint(.red)
-                          }
                           .swipeActions(edge: .trailing) {
                             Button(action: {
                               print("accepted")
@@ -74,6 +61,19 @@ struct InvitationsView: View {
                               }
                             }
                             .tint(.green)
+                          }
+                          .swipeActions(edge: .leading) {
+                            Button(action: {
+                              print("declined")
+                              viewModel.inviteInterface.delete(key: self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}[index].key)
+                            }){
+                              HStack{
+                                Text("Decline")
+                                Image(systemName: "x.circle")
+                                  .foregroundColor(.white)
+                              }
+                            }
+                            .tint(.red)
                           }
                       } else {
                         // Fallback on earlier versions

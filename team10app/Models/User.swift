@@ -40,6 +40,8 @@ struct User :Hashable {
     }
     
     init?(snapshot: DataSnapshot) {
+      print("snapshot")
+        print(snapshot)
         guard
             let value = snapshot.value as? [String: AnyObject],
             let firstName = value["firstName"] as? String,
@@ -47,7 +49,6 @@ struct User :Hashable {
             let email = value["email"] as? String,
             let username = value["username"] as? String,
             let passwordHash = value["passwordHash"] as? Int
-        
         else {
             print("bad read")
             return nil

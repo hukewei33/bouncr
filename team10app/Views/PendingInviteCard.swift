@@ -27,15 +27,17 @@ struct PendingInviteCard: View {
 //
 //      }
       
-      
-      
+//      Text(String(viewModel.hosts.count))
+//      Text(invite.eventKey)
+//      Text(String(viewModel.indexEventHosts(eventKey: invite.eventKey).count))
+//      Text(String(self.viewModel.events.count))
         
         if (viewModel.indexEventHosts(eventKey: invite.eventKey).count > 0) {
 
             Text("@" + self.viewModel.indexEventHosts(eventKey: invite.eventKey)[0].username + " ")
               .bold()
             + Text("has invited you to ")
-            + Text(invite.eventKey)
+          + Text(invite.eventKey)
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
             // + Text() of event date + time
 
