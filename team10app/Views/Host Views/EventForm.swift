@@ -49,6 +49,15 @@ struct EventForm: View {
     }
   }
   
+  //User can't create/edit event if any required fields are left blank
+  var buttonDisabled: Bool {
+    return (name.isEmpty || street1.isEmpty || city.isEmpty || state.isEmpty || zip.isEmpty)
+  }
+
+  var buttonColor: Color {
+    return buttonDisabled ? Color("Disabled Button") : Color("Primary - Indigo")
+  }
+  
   var body: some View {
     ScrollView {
       VStack(alignment: .leading) {
@@ -245,8 +254,9 @@ struct EventForm: View {
                 .padding(10)
             }
           })
-            .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
+            .background(buttonColor)
             .cornerRadius(10)
+            .disabled(buttonDisabled)
         }
       }
       .padding(30)

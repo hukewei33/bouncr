@@ -79,6 +79,7 @@ class ViewModel: ObservableObject {
     
     func getEvents(completionHandler: @escaping ([Event],[Event],[Event]) -> Void) {
         self.eventsReference.queryOrdered(byChild: "endTime").observe(.value, with: { snapshot in
+          print("getEvents() ran")
             let curTime = Date().timeIntervalSinceReferenceDate
             self.events.removeAll()
             self.pastEvents.removeAll()
@@ -246,6 +247,8 @@ class ViewModel: ObservableObject {
     
     //Get all the past, current, and upcoming events that this user is hosting
     func indexHostEvents() -> [Event] {
+      print("indexHostEvents() ran")
+      print("userKey:", self.thisUser )
         let curTime = Date().timeIntervalSinceReferenceDate
         if let userKey = loggedin(){
             //Clear the 3 arrays
@@ -254,10 +257,14 @@ class ViewModel: ObservableObject {
             self.hostCurrentEvents.removeAll()
             //Get list of all events this user is hosting
             let eventIDs: [String] = self.hosts.filter{$0.userKey == userKey }.map {$0.eventKey}
+          print("eventIDs: ", eventIDs.count)
             var myEvents = self.events.filter {eventIDs.contains($0.key)}
             myEvents += self.currentEvents.filter  {eventIDs.contains($0.key)}
             myEvents += self.pastEvents.filter  {eventIDs.contains($0.key)}
+          print("myEvents: ", myEvents.count)
             for event in myEvents {
+              print("Event name: ", event.name)
+              print("Event start: ", event.startTime)
                 //past event
                 if event.endTime < curTime {self.hostPastEvents.append(event)}
                 //future event
@@ -269,6 +276,9 @@ class ViewModel: ObservableObject {
             self.hostPastEvents = self.hostPastEvents.sorted { $0.startTime < $1.startTime }
             self.hostCurrentEvents = self.hostCurrentEvents.sorted { $0.startTime < $1.startTime }
             self.hostEvents = self.hostEvents.sorted { $0.startTime < $1.startTime }
+          print("past: ", self.hostPastEvents.count)
+          print("current: ", self.hostCurrentEvents.count)
+          print("upcoming: ", self.hostEvents.count)
             return myEvents
         }
         else{
