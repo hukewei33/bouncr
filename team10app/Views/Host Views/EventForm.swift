@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct EventForm: View {
   
@@ -54,6 +55,7 @@ struct EventForm: View {
     return (name.isEmpty || street1.isEmpty || city.isEmpty || state.isEmpty || zip.isEmpty)
   }
 
+  //Submit button is a faded color if disabled
   var buttonColor: Color {
     return buttonDisabled ? Color("Disabled Button") : Color("Primary - Indigo")
   }
@@ -172,6 +174,18 @@ struct EventForm: View {
             "Zip",
             text: $zip
           )
+            .keyboardType(.numberPad)
+            //CITATION: code to only allow numeric input: https://stackoverflow.com/questions/58733003/swiftui-how-to-create-textfield-that-only-accepts-numbers
+            .onReceive(Just(zip)) { newValue in
+              let filtered = newValue.filter { "0123456789".contains($0) }
+              if (filtered != newValue) {
+                  self.zip = filtered
+              }
+              //Zip code can only be 5 digits long
+              if newValue.count > 5 {
+                  self.zip.removeLast()
+              }
+            }
             .padding()
             .background(Color("Form Field Background"))
             .cornerRadius(10)
