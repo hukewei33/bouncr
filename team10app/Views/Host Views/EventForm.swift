@@ -24,8 +24,8 @@ struct EventForm: View {
   @State private var state: String = ""
   @State private var zip: String = ""
   @State private var descr: String = "" //optional
-  @State private var attendenceVisible = false
-  @State private var friendsAttendingVisible = false
+  @State private var attendenceVisible: Bool = false
+  @State private var friendsAttendingVisible: Bool = false
   
   // Had to use a function to init vars because @State vars can't be changes outside the body
   func initView() {
@@ -52,7 +52,8 @@ struct EventForm: View {
   
   //User can't create/edit event if any required fields are left blank
   var buttonDisabled: Bool {
-    return (name.isEmpty || street1.isEmpty || city.isEmpty || state.isEmpty || zip.isEmpty)
+    let invalidZip = zip.isEmpty || zip.count != 5
+    return (name.isEmpty || street1.isEmpty || city.isEmpty || state.isEmpty || invalidZip)
   }
 
   //Submit button is a faded color if disabled
