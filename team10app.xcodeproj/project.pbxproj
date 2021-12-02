@@ -13,6 +13,7 @@
 		1862DADB27346EA50055E2F0 /* InviteGuestsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */; };
 		1862DADD27349F290055E2F0 /* InviteGuestsModalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1862DADC27349F290055E2F0 /* InviteGuestsModalRow.swift */; };
 		18B546812756165400F7107B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B546802756165400F7107B /* LoginView.swift */; };
+		18C1A35D2759808A00DA54D4 /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C1A35C2759808A00DA54D4 /* EditProfile.swift */; };
 		18DAF456272A6B680008B4A3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF455272A6B680008B4A3 /* ViewModel.swift */; };
 		18DAF459272B1F9D0008B4A3 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF458272B1F9D0008B4A3 /* AppView.swift */; };
 		18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF45A272B71890008B4A3 /* HostEventsView.swift */; };
@@ -74,6 +75,7 @@
 		1862DADA27346EA50055E2F0 /* InviteGuestsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModal.swift; sourceTree = "<group>"; };
 		1862DADC27349F290055E2F0 /* InviteGuestsModalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModalRow.swift; sourceTree = "<group>"; };
 		18B546802756165400F7107B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		18C1A35C2759808A00DA54D4 /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		18DAF455272A6B680008B4A3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		18DAF458272B1F9D0008B4A3 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		18DAF45A272B71890008B4A3 /* HostEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventsView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				18B546802756165400F7107B /* LoginView.swift */,
 				183C633D2758D98000324253 /* GuestList.swift */,
 				183C633F2758DD5200324253 /* GuestListRow.swift */,
+				18C1A35C2759808A00DA54D4 /* EditProfile.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				B20E9ECA271FA2BC002BA590 /* SceneDelegate.swift in Sources */,
 				9D13015F27544F88007A2C4B /* PendingInviteCard.swift in Sources */,
 				183C633C27588FE300324253 /* EventForm.swift in Sources */,
+				18C1A35D2759808A00DA54D4 /* EditProfile.swift in Sources */,
 				B2BB3CBB27273BDC00C6DB94 /* HostInterface.swift in Sources */,
 				B2BB3CB527272C4B00C6DB94 /* Host.swift in Sources */,
 				18B546812756165400F7107B /* LoginView.swift in Sources */,

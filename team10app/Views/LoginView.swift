@@ -29,7 +29,7 @@ struct LoginView: View {
           .foregroundColor(Color.white)
           .font(.system(size: 50))
           .bold()
-      }
+      } //End ZStack
       .frame(maxWidth: .infinity, minHeight: 200)
       .background(
         LinearGradient(gradient: Gradient(colors: [Color("Blue - 400"), Color("Primary - Indigo")]), startPoint: .top, endPoint: .bottom)
@@ -92,7 +92,7 @@ struct LoginView: View {
           .background(buttonColor)
           .cornerRadius(10)
           .disabled(buttonDisabled)
-      }
+      } //End VStack
       .padding(30)
       
       Spacer()

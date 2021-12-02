@@ -289,10 +289,10 @@ struct EventForm: View {
             .cornerRadius(10)
             .disabled(buttonDisabled)
         }
-      }
+      } //End VStack
       .padding(30)
       .onAppear{ initView() }
-    }
+    } //End ScrollView
     .navigationTitle(self.navTitle)
     .navigationViewStyle(StackNavigationViewStyle())
   }
