@@ -168,7 +168,7 @@ struct HostEventDetailsView: View {
               
               Spacer()
               
-              NavigationLink(destination: EditEventView(viewModel: self.viewModel, event: self.event)){
+              NavigationLink(destination: EventForm(viewModel: self.viewModel, optionalEvent: self.event, navTitle: "Edit Event")){
                 Text("Edit")
                   .frame(width: 100, height: 30)
                   .background(Color.white)
