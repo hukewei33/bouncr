@@ -10,6 +10,13 @@ import Combine
 
 struct EventForm: View {
   
+  //List of US States for the State picker field
+  let states = [ "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA",
+                 "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD",
+                 "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH",
+                 "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC",
+                 "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
+  
   @ObservedObject var viewModel: ViewModel
   var optionalEvent: Event? //if nil, you're creating an event; if not, you're editing one
   var navTitle: String
@@ -159,14 +166,19 @@ struct EventForm: View {
             Text("State *")
               .bold()
               .font(.system(size: 17))
-            TextField(
-              "State",
-              text: $state
-            )
-              .padding()
-              .background(Color("Form Field Background"))
-              .cornerRadius(10)
-              .padding(.bottom, 30)
+            Picker("Please pick a state", selection: $state) {
+              //Have an item in the picker for an empty input:
+              Text("---").tag("")
+                .foregroundColor(Color("Gray - 400"))
+              //Loop thru states list for each item in Picker
+              ForEach(states, id: \.self) {
+                  Text($0)
+              }
+            }
+            .padding()
+            .background(Color("Form Field Background"))
+            .cornerRadius(10)
+            .padding(.bottom, 30)
           }
         }
         
