@@ -45,7 +45,7 @@ struct HostEventsView: View {
 //                HostOngoingEventCard(event: self.viewModel.currentEvents[index])
 //              }
               ForEach(self.viewModel.hostCurrentEvents, id: \.self) { event in
-                HostOngoingEventCard(event: event)
+                HostOngoingEventCard(viewModel: viewModel, event: event)
               }
             }
             
@@ -60,7 +60,7 @@ struct HostEventsView: View {
 //              }
               //ForEach(colors, id: \.self) { color in
               ForEach(self.viewModel.hostEvents, id: \.self) { event in
-                HostUpcomingEventCard(event: event)
+                HostUpcomingEventCard(viewModel: viewModel, event: event)
               }
             }
             
@@ -82,7 +82,7 @@ struct HostEventsView: View {
           HStack {
             Spacer()
             NavigationLink(destination: EventForm(viewModel: viewModel, navTitle: "New Event")) {
-              AddEventButton()
+              AddEventButton(viewModel: viewModel)
             }
           }
         }

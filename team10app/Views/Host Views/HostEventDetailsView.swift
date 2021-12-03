@@ -12,7 +12,7 @@ import CodeScanner
 
 struct HostEventDetailsView: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
   @State private var isShowingScanner = false
   @State private var showPopUp: Bool = false
   @State private var showAlert = false
@@ -25,7 +25,8 @@ struct HostEventDetailsView: View {
   let dateStr: String
   let title: String
   
-  init(event: Event, ongoing: Bool) {
+  init(viewModel: ViewModel, event: Event, ongoing: Bool) {
+    self.viewModel = viewModel
     self.event = event
     self.ongoing = ongoing
     let timeInterval = TimeInterval(event.startTime)

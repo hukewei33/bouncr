@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PendingInviteCard: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
   
   var invite: Invite
 

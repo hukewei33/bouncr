@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AppView: View {
   
-    @ObservedObject var viewModel: ViewModel = ViewModel()
+    @ObservedObject var viewModel: ViewModel
   
     var body: some View {
       
@@ -26,7 +26,7 @@ struct AppView: View {
             }
             
             //Invitations Page
-            InvitationsView()
+            InvitationsView(viewModel: viewModel)
             .tabItem {
               Image(systemName: "envelope")
               Text("Invitations")

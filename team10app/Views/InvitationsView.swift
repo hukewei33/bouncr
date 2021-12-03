@@ -10,7 +10,7 @@ import SwiftUI
 
 struct InvitationsView: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
   @State var move = false
   @State var scroll = false
   
@@ -48,7 +48,7 @@ struct InvitationsView: View {
                     
                     ForEach(0..<self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}.count, id: \.self) { index in
                       if #available(iOS 15.0, *) {
-                        PendingInviteCard(invite: self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}[index])
+                        PendingInviteCard(viewModel: viewModel, invite: self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}[index])
                           .swipeActions(edge: .leading) {
                             Button(action: {
                               print("declined")
@@ -106,7 +106,7 @@ struct InvitationsView: View {
 
                 ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
 
-                  InviteCard(event: viewModel.indexGuestEvents()[index])
+                  InviteCard(viewModel: viewModel, event: viewModel.indexGuestEvents()[index])
                      .offset(y: CGFloat(-100*index))
                      .frame(height: 200)
                      .onTapGesture {
@@ -167,7 +167,7 @@ struct InvitationsView: View {
                 
                 VStack(alignment: .leading) {
                   
-                  InviteCard(event: self.viewModel.indexGuestEvents()[cardID])
+                  InviteCard(viewModel: viewModel, event: self.viewModel.indexGuestEvents()[cardID])
                   .frame(width: 300)
                   .padding(.top, 50)
                   .onTapGesture {

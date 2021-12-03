@@ -9,11 +9,13 @@ import SwiftUI
 
 struct HostOngoingEventCard: View {
   
+  @ObservedObject var viewModel: ViewModel
   var event: Event
   let date: Date
   let dateStr: String
   
-  init(event: Event) {
+  init(viewModel: ViewModel, event: Event) {
+    self.viewModel = viewModel
     self.event = event
     let timeInterval = TimeInterval(event.startTime)
     date = Date(timeIntervalSince1970: timeInterval)
@@ -59,7 +61,7 @@ struct HostOngoingEventCard: View {
       
           //Button to scan QR Codes
           //CHANGE TO NAVIGATE TO QR CAMERA SCANNER VIEW!!
-          NavigationLink(destination: InvitationsView()) {
+          NavigationLink(destination: InvitationsView(viewModel: viewModel)) {
             SquareScanQR()
           }
           
@@ -71,7 +73,7 @@ struct HostOngoingEventCard: View {
           .padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
         
         //"More details" button
-        MoreDetailsButton(event: event, ongoing: true)
+        MoreDetailsButton(viewModel: viewModel, event: event, ongoing: true)
         
       }
       .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 0.05)))
