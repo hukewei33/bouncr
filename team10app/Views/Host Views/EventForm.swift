@@ -21,6 +21,11 @@ struct EventForm: View {
   var navTitle: String
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
   
+//  init(viewModel: ViewModel, navTitle: String){
+//    self.viewModel = viewModel
+//    self.navTitle = navTitle
+//  }
+  
   @State private var name: String = ""
   @State private var startTime = Date()
   @State private var endTime = Date()
