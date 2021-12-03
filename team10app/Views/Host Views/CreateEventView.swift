@@ -22,6 +22,10 @@ struct CreateEventView: View {
   @State private var zip: String = ""
   @State private var descr: String = "" //optional
   
+  init(viewModel: ViewModel){
+    self.viewModel = viewModel
+  }
+  
   var body: some View {
     ScrollView {
       VStack(alignment: .leading) {

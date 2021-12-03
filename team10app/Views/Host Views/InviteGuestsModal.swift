@@ -16,6 +16,12 @@ struct InviteGuestsModal: View {
   @State private var searchText: String = ""
   @State private var searchResults: [User] = []
   
+  init(show: Binding<Bool>, viewModel: ViewModel, event: Event){
+    self._show = show
+    self.viewModel = viewModel
+    self.event = event
+  }
+  
   //Copied & edited from SwiftRepos lab, for searh functionality
   func displayResults() {
     if searchText == "" {
@@ -25,6 +31,7 @@ struct InviteGuestsModal: View {
     }
   }
 
+  
 
   var body: some View {
     

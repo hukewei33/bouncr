@@ -17,6 +17,12 @@ struct PendingInviteCard: View {
   @State var date = Date()
   @State var dateStr : String = ""
   
+  
+  init(viewModel: ViewModel, invite: Invite){
+    self.viewModel = viewModel
+    self.invite = invite
+  }
+  
   func initView() {
     let allEvents = self.viewModel.currentEvents + self.viewModel.events
     print("i hate everything")

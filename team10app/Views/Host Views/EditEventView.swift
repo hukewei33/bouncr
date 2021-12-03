@@ -23,6 +23,11 @@ struct EditEventView: View {
   @State private var zip: String = ""
   @State private var descr: String = "" //optional
   
+  init(viewModel: ViewModel, event: Event){
+    self.viewModel = viewModel
+    self.event = event
+  }
+  
   // Had to use a function to init vars because @State vars can't be changes outside the body
   func initView() {
     let startTimeInterval = TimeInterval(event.startTime)
