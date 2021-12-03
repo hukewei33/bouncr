@@ -18,8 +18,13 @@ struct PendingInviteCard: View {
   @State var dateStr : String = ""
   
   func initView() {
-    let startTimeInterval = TimeInterval(viewModel.events.filter{$0.key == invite.eventKey}[0].startTime)
-//    startTime = Date(timeIntervalSinceReferenceDate: startTimeInterval)
+    let allEvents = self.viewModel.currentEvents + self.viewModel.events
+    print("i hate everything")
+    print(allEvents)
+    print(self.viewModel.currentEvents)
+    print(self.viewModel.events)
+    print(allEvents.filter{$0.key == invite.eventKey})
+    let startTimeInterval = TimeInterval(allEvents.filter{$0.key == invite.eventKey}[0].startTime)
     startTime = Date(timeIntervalSince1970: startTimeInterval)
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMM. d, h:mm a"
@@ -29,6 +34,8 @@ struct PendingInviteCard: View {
   
   
   var body: some View {
+    
+    let allEvents = self.viewModel.currentEvents + self.viewModel.events
     
     VStack(alignment: .leading) {
       
@@ -49,7 +56,7 @@ struct PendingInviteCard: View {
             Text("@" + self.viewModel.indexEventHosts(eventKey: invite.eventKey)[0].username + " ")
               .bold()
             + Text("has invited you to ")
-          + Text(self.viewModel.events.filter{$0.key == invite.eventKey}[0].name)
+          + Text(allEvents.filter{$0.key == invite.eventKey}[0].name)
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
           + Text(" on ")
           + Text(dateStr)

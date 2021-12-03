@@ -30,6 +30,7 @@ struct InvitationsView: View {
     var body: some View {
       
       let personalInvites = self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}
+      let acceptedInvites = self.viewModel.invites.filter{$0.userKey == self.viewModel.thisUser?.key}
       
       NavigationView {
         
@@ -43,7 +44,7 @@ struct InvitationsView: View {
               VStack(alignment: .leading) {
                   
                 
-                if (self.viewModel.thisUser != nil && self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}.count > 0){ // debugging
+                if (self.viewModel.thisUser != nil && personalInvites.count > 0){ // debugging
                   
                   Text("Incoming Invites")
                     .bold()
@@ -56,33 +57,39 @@ struct InvitationsView: View {
                     ForEach(0..<personalInvites.count, id: \.self) { index in
                         
                       if #available(iOS 15.0, *) {
-                        PendingInviteCard(viewModel: self.viewModel, invite: self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}[index])
-                          .swipeActions(edge: .trailing) {
-                            Button(action: {
-                              print("accepted")
-                              self.viewModel.acceptInvite(invite: self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}[index])
-                            }){
-                              HStack{
-                                Text("Accept")
-                                Image(systemName: "checkmark.circle.fill")
-                                  .foregroundColor(.white)
+                        
+                        if (self.viewModel.pastEvents.filter({$0.key == personalInvites[index].eventKey}) == []){
+                          
+                          PendingInviteCard(viewModel: self.viewModel, invite: personalInvites[index])
+                            .swipeActions(edge: .trailing) {
+                              Button(action: {
+                                print("accepted")
+                                self.viewModel.acceptInvite(invite: personalInvites[index])
+                              }){
+                                HStack{
+                                  Text("Accept")
+                                  Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(.white)
+                                }
                               }
+                              .tint(.green)
                             }
-                            .tint(.green)
-                          }
-                          .swipeActions(edge: .leading) {
-                            Button(action: {
-                              print("declined")
-                              viewModel.inviteInterface.delete(key: self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}[index].key)
-                            }){
-                              HStack{
-                                Text("Decline")
-                                Image(systemName: "x.circle")
-                                  .foregroundColor(.white)
+                            .swipeActions(edge: .leading) {
+                              Button(action: {
+                                print("declined")
+                                self.viewModel.declineInvite(invite: self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}[index])
+                              }){
+                                HStack{
+                                  Text("Decline")
+                                  Image(systemName: "x.circle")
+                                    .foregroundColor(.white)
+                                }
                               }
+                              .tint(.red)
                             }
-                            .tint(.red)
-                          }
+                          
+                        }
+                        
                       } else {
                         // Fallback on earlier versions
                       }
@@ -90,7 +97,7 @@ struct InvitationsView: View {
                     
                   }
                   .listStyle(GroupedListStyle())
-                  .frame(width: 400, height: CGFloat((self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}.count)*72), alignment: .leading)
+                  .frame(width: 400, height: CGFloat((personalInvites.count)*72), alignment: .leading)
                     .onAppear {
                         UITableView.appearance().isScrollEnabled = false
                     }

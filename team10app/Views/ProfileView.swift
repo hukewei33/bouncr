@@ -43,6 +43,10 @@ struct ProfileView: View {
           else {
             
             Image(uiImage: user.profilePicURL!.load())
+              .resizable()
+              .frame(width: 100, height: 100)
+              .aspectRatio(contentMode: .fit)
+              .cornerRadius(50)
             
           }
           

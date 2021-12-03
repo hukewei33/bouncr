@@ -128,13 +128,20 @@ class ViewModel: ObservableObject {
               for child in snapshot.children {
                   if let snapshot = child as? DataSnapshot,
                      let invite = Invite(snapshot: snapshot) {
-
+                    
+                    // verify that a past event is not added to the pending invites or the invites
+                    if self.pastEvents.filter{$0.key == invite.eventKey} == []{
+                      
                       if invite.inviteStatus{
                           self.invites.append(invite)
                       }
                       else{
                           self.pendingInvites.append(invite)
                       }
+                      
+                    }
+
+                      
                   }
               }
               completionHandler(self.invites,self.pendingInvites)
@@ -325,6 +332,28 @@ class ViewModel: ObservableObject {
           print(self.thisUser)
           return []
       }
+    }
+      
+      func indexPendingGuestEvents()->[Event]{
+        print("indexguestevents")
+        if let userId = loggedin() {
+          let eventIDs = self.invites.filter{$0.userKey == userId && !($0.inviteStatus)}.map {$0.eventKey}
+            print("eventIDs")
+            print(eventIDs)
+            var myEvents = self.events.filter {eventIDs.contains($0.key)}
+            print("myEvents")
+            print(myEvents)
+            myEvents += self.currentEvents.filter {eventIDs.contains($0.key)}
+            //Users should be able to see ongoing events in their invitations too
+            print("myEvents")
+            print(myEvents)
+            return myEvents
+        }
+        else{
+            print("indexguestevents, not logged in")
+            print(self.thisUser)
+            return []
+        }
 
     }
   
@@ -334,8 +363,15 @@ class ViewModel: ObservableObject {
       print(pendingInvites)
       print("invites")
       print(invites)
-//      getInvites(){(a,b) in return }
     }
+  
+  func declineInvite(invite: Invite){
+    self.inviteInterface.delete(key: invite.key)
+    print("pendingInvites")
+    print(pendingInvites)
+    print("invites")
+    print(invites)
+  }
   
   
     // Get all the users who are not invited to an event, display in InviteGuestsModal
