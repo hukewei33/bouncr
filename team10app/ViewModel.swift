@@ -124,6 +124,7 @@ class ViewModel: ObservableObject {
       func getInvites(completionHandler: @escaping ([Invite],[Invite]) -> Void){
           self.invitesReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
               self.invites.removeAll()
+              self.pendingInvites.removeAll()
               for child in snapshot.children {
                   if let snapshot = child as? DataSnapshot,
                      let invite = Invite(snapshot: snapshot) {
