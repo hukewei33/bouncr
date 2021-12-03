@@ -20,6 +20,9 @@ struct ProfileView: View {
   init(viewModel: ViewModel, user: User){
     self.viewModel = viewModel
     self.user = user
+    print("what the damn hell")
+    print(viewModel.pendingFriends.filter{$0.userKey1 == self.viewModel.thisUser!.key})
+    print(viewModel.friends.filter{$0.userKey1 == self.viewModel.thisUser!.key})
   }
   
     var body: some View {
@@ -28,6 +31,7 @@ struct ProfileView: View {
         
         let friendRequests = self.viewModel.pendingFriends.filter{$0.userKey1 == self.viewModel.thisUser!.key}
         let friends = self.viewModel.friends.filter{$0.userKey1 == self.viewModel.thisUser!.key}
+          
         
         VStack {
 
@@ -39,7 +43,7 @@ struct ProfileView: View {
             
             
             // use a default if null
-            if (user.profilePicURL == nil || user.profilePicURL == ""){
+            if (viewModel.thisUser!.profilePicURL == nil || viewModel.thisUser!.profilePicURL == ""){
 
               Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
                 .resizable()
@@ -51,39 +55,55 @@ struct ProfileView: View {
             // display the non-nil profile pic
             else {
               
-              Image(uiImage: user.profilePicURL!.load())
+              Image(uiImage: viewModel.thisUser!.profilePicURL!.load())
                 .resizable()
                 .frame(width: 100, height: 100)
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(50)
+                .padding([.leading, .trailing], 5)
               
             }
             
-            
+           
 
             VStack(alignment: .leading) {
 
               // display username
-              Text("@" + user.username)
+              Text("@" + viewModel.thisUser!.username)
                 .foregroundColor(.white)
                 .font(.subheadline)
 
 
               // display name
-              Text(user.firstName + " " + user.lastName)
+              Text(viewModel.thisUser!.firstName + " " + viewModel.thisUser!.lastName)
                 .foregroundColor(.white)
                 .fontWeight(.bold)
                 .font(.system(size: 24))
 
             }
             
-            .padding()
+            .padding([.leading, .trailing], 5)
+            Spacer()
+            
+            NavigationLink(destination: EditProfile(viewModel: viewModel)){
+              
+              ZStack {
+                Image(systemName: "square.and.pencil")
+                  .font(.system(.title))
+                  .frame(width: 20, height: 20)
+                  .foregroundColor(.white)
+                  
+              }
+              .padding([.leading, .trailing], 5)
+                
+            }
             
 
           }
           .frame(maxWidth: .infinity, minHeight: 180)
           .padding(.top, 50)
           .padding(.bottom, 0)
+          .padding([.horizontal], 30)
           .background(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
           .edgesIgnoringSafeArea(.top)
           
@@ -176,20 +196,21 @@ struct ProfileView: View {
                     
                     ForEach(0..<friends.count, id: \.self) { index in
                       
-  //                    Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].firstName)
-                      Group {
-                        Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].firstName) +
-                        Text(" ") +
-                        Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].lastName)
-                      }
+                    
+                        
+                        Group {
+                          Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].firstName) +
+                          Text(" ") +
+                          Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].lastName)
+                      
+                        }
+                    
                     
                     }
-                    
                   }
               }
               
-              
-            }.padding(.top, -50)
+          }.padding(.top, -50)
             
             // if they have no friends and friend requests
             if (friends.count == 0 && friendRequests.count == 0){

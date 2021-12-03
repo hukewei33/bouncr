@@ -445,6 +445,8 @@ class ViewModel: ObservableObject {
             if let friendRelation2 = self.friendInterface.create(userKey1: userKey2, userKey2: userKey1){
                 self.friendInterface.update(key: friendRelation1, updateVals: ["twinKey" : friendRelation2])
                 self.friendInterface.update(key: friendRelation2, updateVals: ["twinKey" : friendRelation1])
+                // ADDED TO INDICATE WHO INITIATED FOR VIEW
+                self.friendInterface.update(key: friendRelation1, updateVals: ["accepted" : true])
                 return (friendRelation1,friendRelation2)
             }
             //second entry not created so we delete the first and try again
@@ -478,6 +480,13 @@ class ViewModel: ObservableObject {
       let user2IDs = allFriends.map {$0.userKey2}
       return self.users.filter{!user2IDs.contains($0.key) && $0.key != self.thisUser!.key}
     }
+  
+  func editProfile(updateVals: [String : Any]) -> (){
+    if let userkey = self.loggedin(){
+      userInterface.update(key: userkey ,updateVals: updateVals)
+    }
+    
+  }
   
                                                                       
     func searchUsers(query: String, eventKey: String) -> [User] {
