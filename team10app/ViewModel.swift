@@ -212,7 +212,11 @@ class ViewModel: ObservableObject {
     
     //return an array where the first number is the first number is the number of current attendess and the second number is the size of the guest list
     func getEventAttendence(eventKey: String) -> [Int]{
-        let eventInvites = self.invites.filter {$0.eventKey == eventKey}
+      print("asadfa")
+        print(eventKey)
+        var eventInvites = self.invites.filter {$0.eventKey == eventKey}
+        eventInvites += self.pendingInvites.filter{$0.eventKey == eventKey}
+        print(eventInvites)
         return [eventInvites.filter {$0.checkinStatus}.count,eventInvites.count]
     }
     
@@ -445,8 +449,8 @@ class ViewModel: ObservableObject {
             if let friendRelation2 = self.friendInterface.create(userKey1: userKey2, userKey2: userKey1){
                 self.friendInterface.update(key: friendRelation1, updateVals: ["twinKey" : friendRelation2])
                 self.friendInterface.update(key: friendRelation2, updateVals: ["twinKey" : friendRelation1])
-                // ADDED TO INDICATE WHO INITIATED FOR VIEW
-                self.friendInterface.update(key: friendRelation1, updateVals: ["accepted" : true])
+//                // ADDED TO INDICATE WHO INITIATED FOR VIEW
+//                self.friendInterface.update(key: friendRelation1, updateVals: ["accepted" : true])
                 return (friendRelation1,friendRelation2)
             }
             //second entry not created so we delete the first and try again

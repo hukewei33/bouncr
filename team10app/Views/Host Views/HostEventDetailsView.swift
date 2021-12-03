@@ -25,7 +25,6 @@ struct HostEventDetailsView: View {
   let startDateStr: String
   let endDate: Date
   let endDateStr: String
-  let title: String
   
   init(viewModel: ViewModel, event: Event, ongoing: Bool) {
     self.viewModel = viewModel
@@ -42,15 +41,11 @@ struct HostEventDetailsView: View {
     endDate = Date(timeIntervalSince1970: endTimeInterval)
     endDateStr = dateFormatter.string(from: endDate)
     
-    if (ongoing){
-      self.title = event.name + " 🟢"
-    }
-    else {
-      self.title = event.name
-    }
   }
   
   var body: some View {
+    
+    let attendance = self.viewModel.getEventAttendence(eventKey: event.key)
     
     ZStack {
       
@@ -73,6 +68,9 @@ struct HostEventDetailsView: View {
                 .fill(Color(#colorLiteral(red: 0.262745098, green: 0.8784313725, blue: 0, alpha: 1)))
                 .frame(width: 12, height: 12)
             }
+            else {
+              Spacer()
+            }
             
           }
           
@@ -80,37 +78,28 @@ struct HostEventDetailsView: View {
             .foregroundColor(.white)
             .font(.system(size: 18))
           
-          HStack {
+          if (ongoing){
+            
+            HStack {
 
-            // number of attendees currently checked in
-            VStack (alignment: .center) {
+              // number of attendees currently checked in
+              VStack (alignment: .center) {
 
-              Text ("# / #") // placeholder
-                .fontWeight(.bold)
-                .padding(.bottom, 4)
-              Text ("checked in")
+                Text (String(attendance[0]) + " / " + String(attendance[1]))
+                  .fontWeight(.bold)
+                  .padding(.bottom, 2)
+                Text ("checked in")
+                  .bold()
 
-            }
-            .foregroundColor(.white)
+              }
+              .foregroundColor(.white)
 
-            Spacer()
-
-            // number of friends invited
-            VStack (alignment: .center) {
-
-              Text ("#") // placeholder
-                .fontWeight(.bold)
-                .padding(.bottom, 4)
-              Text ("friends invited")
+              Spacer()
 
             }
-            .foregroundColor(.white)
-            .padding(10)
-
-            Spacer(minLength: 30)
-
+            .padding([.vertical], 10)
+            
           }
-          .padding(.top, 10)
           
         }
         .frame(maxWidth: .infinity, minHeight: 120)

@@ -11,13 +11,28 @@ struct AddFriends: View {
   @ObservedObject var viewModel: ViewModel
   
   var body: some View {
-    List {
-      ForEach(self.viewModel.getNonFriends(), id: \.self) { user in
-        AddFriendsRow(viewModel: self.viewModel, user: user)
-          .padding(10)
+    
+    if (self.viewModel.getNonFriends().count > 0){
+      
+      List {
+        ForEach(self.viewModel.getNonFriends(), id: \.self) { user in
+          AddFriendsRow(viewModel: self.viewModel, user: user)
+            .padding(10)
+        }
+        
       }
+      .navigationTitle("Add Friends")
+      
+    } else {
+      
+      
+      Text("You are friends with all of the users on this app! Congratulations!")
+      .foregroundColor(Color("Gray - 400"))
+      .font(.system(size: 22))
+      .padding()
       
     }
-    .navigationTitle("Add Friends")
+    
+    
   }
 }

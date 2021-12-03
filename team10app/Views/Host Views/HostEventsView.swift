@@ -82,7 +82,7 @@ struct HostEventsView: View {
           HStack {
             Spacer()
             NavigationLink(destination: CreateEventView(viewModel: viewModel)) {
-              AddEventButton()
+              AddEventButton(viewModel: viewModel)
             }
           }
         }

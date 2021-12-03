@@ -20,7 +20,6 @@ struct ProfileView: View {
   init(viewModel: ViewModel, user: User){
     self.viewModel = viewModel
     self.user = user
-    print("what the damn hell")
     print(viewModel.pendingFriends.filter{$0.userKey1 == self.viewModel.thisUser!.key})
     print(viewModel.friends.filter{$0.userKey1 == self.viewModel.thisUser!.key})
   }

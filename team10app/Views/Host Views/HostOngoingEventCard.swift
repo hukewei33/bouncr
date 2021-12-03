@@ -10,7 +10,6 @@ import CodeScanner
 
 struct HostOngoingEventCard: View {
   
-//  @ObservedObject var viewModel = ViewModel()
   @ObservedObject var viewModel : ViewModel
   @State private var isShowingScanner = false
   @State private var showPopUp: Bool = false
@@ -31,8 +30,11 @@ struct HostOngoingEventCard: View {
   }
   
     var body: some View {
+      
+      let attendance = self.viewModel.getEventAttendence(eventKey: event.key)
+      
       VStack {
-        //Date & Time of upcoming event
+        //Date & Time of ongoing event
         HStack {
           Text(dateStr)
             .bold()
@@ -80,7 +82,7 @@ struct HostOngoingEventCard: View {
         }
         .padding(EdgeInsets(top: 2, leading: 15, bottom: 15, trailing: 15))
         
-        Text("#/## guests checked in")
+        Text (String(attendance[0]) + " / " + String(attendance[1]) + " guests checked in")
           .font(.system(size: 17))
           .padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
         

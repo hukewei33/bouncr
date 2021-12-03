@@ -56,7 +56,7 @@ struct HostUpcomingEventCard: View {
         Spacer()
     
         VStack {
-          Text("#")
+          Text(String(self.viewModel.getEventAttendence(eventKey: event.key)[1]))
             .bold()
             .font(.system(size: 20))
           

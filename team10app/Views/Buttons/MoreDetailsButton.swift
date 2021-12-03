@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MoreDetailsButton: View {
   
-//  @ObservedObject var viewModel = ViewModel()
+  
   @ObservedObject var viewModel: ViewModel
   //Add some fields here for event id, will determine action of button
   var event: Event

@@ -10,9 +10,14 @@ import SwiftUI
 
 struct InvitationDetailView: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
   
   var position: CGFloat
+  
+  init(viewModel: ViewModel, position: CGFloat){
+    self.viewModel = viewModel
+    self.position = position
+  }
   
   var body: some View {
   

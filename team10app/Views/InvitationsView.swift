@@ -10,7 +10,6 @@ import SwiftUI
 
 struct InvitationsView: View {
   
-//  @ObservedObject var viewModel = ViewModel()
   @ObservedObject var viewModel: ViewModel
   @State var move = false
   @State var scroll = false
