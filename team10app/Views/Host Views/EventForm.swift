@@ -20,7 +20,6 @@ struct EventForm: View {
   @ObservedObject var viewModel: ViewModel
   var optionalEvent: Event? //if nil, you're creating an event; if not, you're editing one
   var navTitle: String
-  @Environment(\.presentationMode) var mode: Binding<PresentationMode>
   
   @State private var name: String = ""
   @State private var startTime = Date()
@@ -265,8 +264,6 @@ struct EventForm: View {
                                     attendenceVisible: attendenceVisible,
                                     friendsAttendingVisible: friendsAttendingVisible)
             }
-            viewModel.indexHostEvents()
-            self.mode.wrappedValue.dismiss()
           }, label: {
             //Editing event button label:
             if self.optionalEvent != nil {
