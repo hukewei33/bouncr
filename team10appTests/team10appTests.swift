@@ -4,7 +4,6 @@
 //
 //  Created by Kenny Hu on 10/28/21.
 //
-
 import XCTest
 import Foundation
 
@@ -13,15 +12,15 @@ import Firebase
 
 class team10appTests: XCTestCase {
 
-      override func setUpWithError() throws {
-          // Put setup code here. This method is called before the invocation of each test method in the class.
-      }
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
 
-      override func tearDownWithError() throws {
-          // Put teardown code here. This method is called after the invocation of each test method in the class.
-      }
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
 
-      func testUserModel(){
+    func testUserModel(){
         let newUser = User(firstName: "testfirstName",
                            lastName: "testlastName",
                            email:"testemail",
@@ -53,15 +52,15 @@ class team10appTests: XCTestCase {
             XCTAssertEqual(key, "testinguserId")
         }
         //self.expectation.fulfill()
-      }
-
-      func testEventModel(){
-
+    }
+    
+    func testEventModel(){
+        
         let curTime1 = Date()
         let curTime2 = Date()
         let newEvent = Event(name: "testname", startTime: curTime1 , endTime: curTime2, street1: "teststreet1", street2: "teststreet2", city: "testcity", state: "pa", zip: "12345", description: "testdescription", key: "testeventId",attendenceVisible:true,friendsAttendingVisible:false)
-
-
+        
+        
         let converted = newEvent.toAnyObject() as? NSDictionary
         if let name = converted?["name"] as? String{
             XCTAssertEqual(name, "testname")
@@ -99,65 +98,65 @@ class team10appTests: XCTestCase {
         if let key = converted?["key"] as? String{
             XCTAssertEqual(key, "testeventId")
         }
-      }
-
-      func testInviteModel(){
-          let newInvite = Invite(userKey: "testuserKey",
-                                 eventKey: "testeventKey",
-                                 key: "testId")
-          let converted = newInvite.toAnyObject() as? NSDictionary
-          if let userKey = converted?["userKey"] as? String{
-              XCTAssertEqual(userKey, "testuserKey")
-          }
-          if let eventKey = converted?["eventKey"] as? String{
-              XCTAssertEqual(eventKey, "testeventKey")
-          }
-          if let inviteStatus = converted?["inviteStatus"] as? Bool{
-              XCTAssertEqual(inviteStatus, false)
-          }
-          if let checkinStatus = converted?["checkinStatus"] as? Bool{
-              XCTAssertEqual(checkinStatus, false)
-          }
-          if let checkinTime = converted?["checkinTime"] as? Double?{
-              XCTAssertEqual(checkinTime, nil)
-          }
-
-          if let key = converted?["key"] as? String{
-              XCTAssertEqual(key, "testId")
-          }
-      }
-
-      func testHostModel(){
-          let newHost = Host(userKey: "testuserKey" ,
-                             eventKey:"testeventKey",
-                             key : "testhostId")
-          let converted = newHost.toAnyObject() as? NSDictionary
-          if let userKey = converted?["userKey"] as? String{
-              XCTAssertEqual(userKey, "testuserKey")
-          }
-          if let eventKey = converted?["eventKey"] as? String{
-              XCTAssertEqual(eventKey, "testeventKey")
-          }
-
-          if let key = converted?["key"] as? String{
-              XCTAssertEqual(key, "testhostId")
-          }
-      }
-
-      func testFriendModel(){
-          let newFriend = Friend(userKey1: "testuserKey1" ,
-                                 userKey2:"testuserKey2",
-                                 key : "testFriendId")
-          let converted = newFriend.toAnyObject() as? NSDictionary
-          if let userKey1 = converted?["userKey1"] as? String{
-              XCTAssertEqual(userKey1, "testuserKey1")
-          }
-          if let userKey2 = converted?["userKey2"] as? String{
-              XCTAssertEqual(userKey2, "testuserKey2")
-          }
-
-          if let key = converted?["key"] as? String{
-              XCTAssertEqual(key, "testFriendId")
+    }
+    
+    func testInviteModel(){
+        let newInvite = Invite(userKey: "testuserKey",
+                               eventKey: "testeventKey",
+                               key: "testId")
+        let converted = newInvite.toAnyObject() as? NSDictionary
+        if let userKey = converted?["userKey"] as? String{
+            XCTAssertEqual(userKey, "testuserKey")
+        }
+        if let eventKey = converted?["eventKey"] as? String{
+            XCTAssertEqual(eventKey, "testeventKey")
+        }
+        if let inviteStatus = converted?["inviteStatus"] as? Bool{
+            XCTAssertEqual(inviteStatus, false)
+        }
+        if let checkinStatus = converted?["checkinStatus"] as? Bool{
+            XCTAssertEqual(checkinStatus, false)
+        }
+        if let checkinTime = converted?["checkinTime"] as? Double?{
+            XCTAssertEqual(checkinTime, nil)
+        }
+        
+        if let key = converted?["key"] as? String{
+            XCTAssertEqual(key, "testId")
+        }
+    }
+    
+    func testHostModel(){
+        let newHost = Host(userKey: "testuserKey" ,
+                           eventKey:"testeventKey",
+                           key : "testhostId")
+        let converted = newHost.toAnyObject() as? NSDictionary
+        if let userKey = converted?["userKey"] as? String{
+            XCTAssertEqual(userKey, "testuserKey")
+        }
+        if let eventKey = converted?["eventKey"] as? String{
+            XCTAssertEqual(eventKey, "testeventKey")
+        }
+        
+        if let key = converted?["key"] as? String{
+            XCTAssertEqual(key, "testhostId")
+        }
+    }
+    
+    func testFriendModel(){
+        let newFriend = Friend(userKey1: "testuserKey1" ,
+                               userKey2:"testuserKey2",
+                               key : "testFriendId")
+        let converted = newFriend.toAnyObject() as? NSDictionary
+        if let userKey1 = converted?["userKey1"] as? String{
+            XCTAssertEqual(userKey1, "testuserKey1")
+        }
+        if let userKey2 = converted?["userKey2"] as? String{
+            XCTAssertEqual(userKey2, "testuserKey2")
+        }
+        
+        if let key = converted?["key"] as? String{
+            XCTAssertEqual(key, "testFriendId")
         }
     }
 
