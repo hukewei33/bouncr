@@ -11,6 +11,8 @@ import UIKit
 
 struct EventDetailsView: View {
   
+  @ObservedObject var viewModel: ViewModel
+  
   var event: Event;
 //  let dayTimePeriodFormatter = DateFormatter();
 //  dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a";
@@ -21,7 +23,8 @@ struct EventDetailsView: View {
   let endDate: Date
   let endDateStr: String
   
-  init(event: Event) {
+  init(viewModel: ViewModel, event: Event) {
+    self.viewModel = viewModel
     self.event = event
     let startTimeInterval = TimeInterval(event.startTime)
     startDate = Date(timeIntervalSince1970: startTimeInterval)
@@ -34,6 +37,9 @@ struct EventDetailsView: View {
   }
   
   var body: some View {
+    
+    let attendance = self.viewModel.getEventAttendence(eventKey: event.key)
+    let attendingFriends = self.viewModel.getAttendingFriends(eventKey: event.key)
     
     VStack {
       
@@ -49,7 +55,7 @@ struct EventDetailsView: View {
 
           VStack (alignment: .center) {
 
-            Text ("# / #") // placeholder
+            Text (String(attendance[0]) + " / " + String(attendance[1]))
               .fontWeight(.bold)
               .padding(.bottom, 4)
             Text ("checked in")
@@ -62,7 +68,7 @@ struct EventDetailsView: View {
 
           VStack (alignment: .center) {
 
-            Text ("#") // placeholder
+            Text (String(attendingFriends.count)) // placeholder
               .fontWeight(.bold)
               .padding(.bottom, 4)
             Text ("friends invited")

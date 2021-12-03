@@ -102,6 +102,7 @@ class ViewModel: ObservableObject {
               self.events = self.events.sorted { $0.startTime < $1.startTime }
               print("events")
               print(self.events)
+              self.indexHostEvents() // added for EventForm
               completionHandler(self.pastEvents,self.currentEvents,self.events)
           })
       }
@@ -212,7 +213,6 @@ class ViewModel: ObservableObject {
     
     //return an array where the first number is the first number is the number of current attendess and the second number is the size of the guest list
     func getEventAttendence(eventKey: String) -> [Int]{
-      print("asadfa")
         print(eventKey)
         var eventInvites = self.invites.filter {$0.eventKey == eventKey}
         eventInvites += self.pendingInvites.filter{$0.eventKey == eventKey}
@@ -292,8 +292,14 @@ class ViewModel: ObservableObject {
             myEvents += self.currentEvents.filter  {eventIDs.contains($0.key)}
             myEvents += self.pastEvents.filter  {eventIDs.contains($0.key)}
             for event in myEvents {
+              print(event.name)
                 //past event
-                if event.endTime < curTime {self.hostPastEvents.append(event)}
+                if event.endTime < curTime {
+                  self.hostPastEvents.append(event)
+                  print("curTime: ", curTime)
+                  print("event startTime: ", event.startTime)
+                  print("event endTime: ", event.endTime)
+                }
                 //future event
                 else if event.startTime > curTime {self.hostEvents.append(event)}
                 //ongoing event
@@ -304,6 +310,9 @@ class ViewModel: ObservableObject {
             self.hostPastEvents = self.hostPastEvents.sorted { $0.startTime < $1.startTime }
             self.hostCurrentEvents = self.hostCurrentEvents.sorted { $0.startTime < $1.startTime }
             self.hostEvents = self.hostEvents.sorted { $0.startTime < $1.startTime }
+            print("hostPastEvents: ", self.hostPastEvents)
+            print("hostCurrentEvents: ", self.hostCurrentEvents)
+            print("hostEvents: ", self.hostEvents)
             return myEvents
           }
           else {
@@ -319,7 +328,6 @@ class ViewModel: ObservableObject {
 //          return []
 //        }
 //        else {
-//          print("fuck")
 //          return []
 //        }
 //      }

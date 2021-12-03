@@ -81,7 +81,8 @@ struct HostEventsView: View {
           Spacer()
           HStack {
             Spacer()
-            NavigationLink(destination: CreateEventView(viewModel: viewModel)) {
+//            NavigationLink(destination: CreateEventView(viewModel: viewModel)) {
+            NavigationLink(destination: EventForm(viewModel: viewModel, navTitle: "New Event")) {
               AddEventButton(viewModel: viewModel)
             }
           }

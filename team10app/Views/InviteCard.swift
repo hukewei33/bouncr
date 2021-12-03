@@ -91,7 +91,7 @@ struct InviteCard: View {
         
       
       // link to event
-      NavigationLink(destination: EventDetailsView(event: event)){
+      NavigationLink(destination: EventDetailsView(viewModel: viewModel, event: event)){
         Text("See Event Details")
           .underline()
       }
