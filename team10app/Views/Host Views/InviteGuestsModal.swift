@@ -12,9 +12,30 @@ struct InviteGuestsModal: View {
   @Binding var show: Bool
   @ObservedObject var viewModel: ViewModel
   var event: Event
+  
+  @State private var searchText: String = ""
+  @State private var searchResults: [User] = []
+  
+  //Copied & edited from SwiftRepos lab, for searh functionality
+  func displayResults() {
+    if searchText == "" {
+      searchResults = viewModel.getNotInvitedUsers(eventKey: event.key)
+    } else {
+      searchResults = viewModel.searchUsers(query: searchText, eventKey: event.key)
+    }
+  }
 
 
   var body: some View {
+    
+    //Copied & edited from SwiftRepos lab, for searh functionality
+    let binding = Binding<String>(get: {
+      self.searchText
+    }, set: {
+      self.searchText = $0
+      self.displayResults()
+    })
+    
     ZStack {
       if show {
         // Background color
@@ -44,26 +65,44 @@ struct InviteGuestsModal: View {
           }
           .padding(.bottom)
           
-          //Search bar
           
-          
-          
-          //List of users
           HStack {
             Spacer()
             
-            ScrollView {
-                VStack(alignment: .leading) {
-                  ForEach(0..<self.viewModel.users.count, id: \.self) { index in
-                    InviteGuestsModalRow(viewModel: self.viewModel, user: self.viewModel.users[index])
-                      .padding(10)
+            VStack {
+              
+              //Search bar
+              TextField(
+                "Search for users",
+                text: binding
+              )
+              .padding(.bottom, 30)
+              .textFieldStyle(RoundedBorderTextFieldStyle())
+              
+              
+              //List of users
+              ScrollView {
+                  VStack(alignment: .leading) {
+                    //Can only show users if they exist in search results
+                    if (searchResults.count>0) {
+                      ForEach(0..<self.searchResults.count, id: \.self) { index in
+                        InviteGuestsModalRow(viewModel: self.viewModel, user: self.searchResults[index])
+                          .padding(10)
+                      }
+                    }
+                    //Display appropriate message if there are no relevant search results
+                    else {
+                      Text("No search results")
+                        .foregroundColor(Color("Gray - 400"))
+                    }
                   }
-                }
-                .padding()
+                  .padding()
+              }
+              .cornerRadius(10)
+              .frame(width: 250, height: 375)
+              .border(Color("Gray - 100"))
+              
             }
-            .cornerRadius(10)
-            .frame(width: 250)
-            .border(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)))
             
             Spacer()
           }
@@ -96,5 +135,10 @@ struct InviteGuestsModal: View {
 
       }
     }
+    .onAppear() {
+        self.viewModel.clearToBeInvited()
+        searchResults = viewModel.getNotInvitedUsers(eventKey: event.key)
+    }
+    
   }
 }

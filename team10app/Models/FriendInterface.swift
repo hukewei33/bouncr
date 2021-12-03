@@ -4,7 +4,6 @@
 //
 //  Created by Kenny Hu on 11/8/21.
 //
-
 import Foundation
 
 import Firebase
@@ -14,11 +13,11 @@ class FriendInterface {
     var Friends: [Friend] = []
     let friendReference = Database.database().reference(withPath: "friends")
     
-    init(userKey:String){
-
-        self.fetch (userKey:userKey){friends in return }
-
-    }
+//    init(userKey:String){
+//
+//        self.fetch (userKey:userKey){friends in return }
+//
+//    }
     
     func create(userKey1: String, userKey2: String)-> String?{
         let keyResult :String? = self.friendReference.childByAutoId().key

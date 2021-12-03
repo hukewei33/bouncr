@@ -10,7 +10,7 @@ import SwiftUI
 
 struct InvitationDetailView: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
   
   var position: CGFloat
   
@@ -25,7 +25,7 @@ struct InvitationDetailView: View {
           ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
             
            
-              InviteCard(event: viewModel.indexGuestEvents()[index])
+            InviteCard(viewModel: viewModel, event: viewModel.indexGuestEvents()[index])
                 .offset(y: position)
               
             

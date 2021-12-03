@@ -94,7 +94,7 @@ struct EventDetailsView: View {
         
         Text(dateStr)
         
-        if (event.description != nil){
+        if !(event.description ?? "").isEmpty {
             
           Text("About: ")
             .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
@@ -111,7 +111,7 @@ struct EventDetailsView: View {
     Spacer()
       .navigationBarTitle(event.name, displayMode: .large)
     }
-
+    .navigationViewStyle(StackNavigationViewStyle())
         
 //        Text(event.name)
 //          .foregroundColor(.white)
