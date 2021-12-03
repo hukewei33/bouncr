@@ -16,16 +16,21 @@ struct EventDetailsView: View {
 //  dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a";
   
   let columns = [GridItem(.fixed(100)), GridItem(.flexible())]
-  let date: Date
-  let dateStr: String
+  let startDate: Date
+  let startDateStr: String
+  let endDate: Date
+  let endDateStr: String
   
   init(event: Event) {
     self.event = event
-    let timeInterval = TimeInterval(event.startTime)
-    date = Date(timeIntervalSince1970: timeInterval)
+    let startTimeInterval = TimeInterval(event.startTime)
+    startDate = Date(timeIntervalSince1970: startTimeInterval)
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMM. d, hh:mm a z"
-    dateStr = dateFormatter.string(from: date)
+    dateFormatter.dateFormat = "MMM. d, h:mm a z"
+    startDateStr = dateFormatter.string(from: startDate)
+    let endTimeInterval = TimeInterval(event.endTime)
+    endDate = Date(timeIntervalSince1970: endTimeInterval)
+    endDateStr = dateFormatter.string(from: endDate)
   }
   
   var body: some View {
@@ -34,7 +39,7 @@ struct EventDetailsView: View {
       
       VStack (alignment: .leading) {
         
-        Text(dateStr)
+        Text(startDateStr)
           .foregroundColor(.white)
           .font(.system(size: 18))
         
@@ -92,7 +97,7 @@ struct EventDetailsView: View {
         Text("Date/Time: ")
           .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
         
-        Text(dateStr)
+        Text(startDateStr) + Text(" to ") + Text(endDateStr)
         
         if !(event.description ?? "").isEmpty {
             

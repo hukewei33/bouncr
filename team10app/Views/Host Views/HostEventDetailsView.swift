@@ -21,8 +21,10 @@ struct HostEventDetailsView: View {
   
   let columns = [GridItem(.fixed(100)), GridItem(.flexible())]
   let rows = [GridItem(.fixed(30))]
-  let date: Date
-  let dateStr: String
+  let startDate: Date
+  let startDateStr: String
+  let endDate: Date
+  let endDateStr: String
   let title: String
   
   init(viewModel: ViewModel, event: Event, ongoing: Bool) {
@@ -31,11 +33,14 @@ struct HostEventDetailsView: View {
 //    print(viewModel.thisUser)
     self.event = event
     self.ongoing = ongoing
-    let timeInterval = TimeInterval(event.startTime)
-    date = Date(timeIntervalSince1970: timeInterval)
+    let startTimeInterval = TimeInterval(event.startTime)
+    startDate = Date(timeIntervalSince1970: startTimeInterval)
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMM. d, hh:mm a z"
-    dateStr = dateFormatter.string(from: date)
+    dateFormatter.dateFormat = "MMM. d, h:mm a z"
+    startDateStr = dateFormatter.string(from: startDate)
+    let endTimeInterval = TimeInterval(event.endTime)
+    endDate = Date(timeIntervalSince1970: endTimeInterval)
+    endDateStr = dateFormatter.string(from: endDate)
     
     if (ongoing){
       self.title = event.name + " 🟢"
@@ -53,7 +58,7 @@ struct HostEventDetailsView: View {
         
         VStack (alignment: .leading) {
           
-          Text(dateStr)
+          Text(startDateStr)
             .foregroundColor(.white)
             .font(.system(size: 18))
           
@@ -103,6 +108,11 @@ struct HostEventDetailsView: View {
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
             
             Text("\(event.street1), \n\(event.city), \(event.state), \(event.zip)")
+            
+            Text("Date/Time: ")
+              .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+            
+            Text(startDateStr) + Text(" to ") + Text(endDateStr)
             
             if !(event.description ?? "").isEmpty {
                 

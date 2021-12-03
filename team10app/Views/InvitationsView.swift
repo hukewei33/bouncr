@@ -118,6 +118,15 @@ struct InvitationsView: View {
               }.padding(.top, (self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}.count > 0) ? 0 : 20)
               
               VStack {
+                
+                if (viewModel.indexGuestEvents().count == 0){
+                  Spacer()
+                  Text("You have no accepted invitations")
+                    .foregroundColor(Color("Gray - 400"))
+                    .font(.system(size: 22))
+                    .padding()
+                  Spacer()
+                }
 
                 ForEach(0..<self.viewModel.indexGuestEvents().count, id: \.self) { index in
 
@@ -207,64 +216,6 @@ struct InvitationsView: View {
                 
               }.padding([.leading, .trailing], 20)
                 
-                
-              
-              
-              
-              
-//              HStack(alignment: .top) {
-//
-////                InviteCard(event: self.viewModel.indexGuestEvents()[cardID])
-////                  .onTapGesture {
-////                    self.move.toggle()
-////                    self.scroll.toggle()
-////                  }
-////
-////                ForEach(0..<cardID, id: \.self) { index in
-////
-////                  InviteCard(event: self.viewModel.indexGuestEvents()[index])
-//////                    .offset(x: CGFloat(50*(index - cardID)))
-////                    .onTapGesture {
-////                      self.move.toggle()
-////                      self.scroll.toggle()
-////                    }
-////
-////
-////                }
-//
-//                ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
-//
-//                  InviteCard(event: self.viewModel.indexGuestEvents()[index])
-////                    .offset(x: CGFloat(50*(index - cardID)))
-//                    .id(index)
-//                    .onTapGesture {
-//                      self.move.toggle()
-//                      self.scroll.toggle()
-//                    }
-//
-//                }
-//
-//
-//              }
-//              .onAppear() {
-//
-//              }
-
-//                HStack {
-//
-//                  ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
-//                    InviteCard(event: viewModel.indexGuestEvents()[index])
-//                      .onTapGesture {
-//                        self.move.toggle()
-//                        self.scroll.toggle()
-//                      }
-//
-//                    // for V2 add code so that it automatically scrolls to the right card clicked
-//
-//                  }
-//                }.animation(.spring())
-//                .padding([.trailing, .leading], 40)
-//                .padding(.top, 0)
 
             }
             
