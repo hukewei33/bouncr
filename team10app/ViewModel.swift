@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Firebase
+import SwiftUI
 
 class ViewModel: ObservableObject {
     
@@ -96,7 +97,11 @@ class ViewModel: ObservableObject {
               }
               self.pastEvents = self.pastEvents.sorted { $0.startTime < $1.startTime }
               self.currentEvents = self.currentEvents.sorted { $0.startTime < $1.startTime }
+//              print("currentevents")
+//              print(self.events)
               self.events = self.events.sorted { $0.startTime < $1.startTime }
+//              print("events")
+//              print(self.events)
               completionHandler(self.pastEvents,self.currentEvents,self.events)
           })
       }
@@ -164,6 +169,7 @@ class ViewModel: ObservableObject {
                 self.thisUser = user
                 getFriends(){(friends,pendingFriends) in self.friends = friends.filter{$0.userKey1 == user.key}; self.pendingFriends = pendingFriends.filter{$0.userKey1 == user.key}}
                 print("login successful")
+                print(self.thisUser)
                 return true // login was successful
             }
         }
@@ -178,7 +184,7 @@ class ViewModel: ObservableObject {
     func loggedin()->String?{
         print("loggedin")
         print(self.thisUser)
-        if let user = self.thisUser{
+        if let user = self.thisUser {
             return user.key
         }
         return nil
@@ -254,6 +260,7 @@ class ViewModel: ObservableObject {
     }
     
     func indexHostEvents() -> [Event] {
+      print("indexHostEvents");
       let curTime = Date().timeIntervalSinceReferenceDate
         if let userKey = loggedin(){
             //Clear the 3 arrays
@@ -285,21 +292,29 @@ class ViewModel: ObservableObject {
             return []
           }
       }
+  
+//      func indexGuestEvents()->[Event]{
+//        print("indexguestevents")
+//        if let userkey = loggedin() {
+//          print(userkey)
+//          return []
+//        }
+//        else {
+//          print("fuck")
+//          return []
+//        }
+//      }
     
     func indexGuestEvents()->[Event]{
-      
-      while (self.thisUser == nil){
-        print(self.thisUser)
-      }
-      
+      print("indexguestevents")
       if let userId = loggedin() {
-          let eventIDs = self.invites.filter{$0.userKey == userId}.map {$0.eventKey}
+        let eventIDs = self.invites.filter{$0.userKey == userId && $0.inviteStatus}.map {$0.eventKey}
           print("eventIDs")
           print(eventIDs)
           var myEvents = self.events.filter {eventIDs.contains($0.key)}
           print("myEvents")
           print(myEvents)
-          myEvents += self.currentEvents.filter  {eventIDs.contains($0.key)}
+          myEvents += self.currentEvents.filter {eventIDs.contains($0.key)}
           //Users should be able to see ongoing events in their invitations too
           print("myEvents")
           print(myEvents)
@@ -307,10 +322,21 @@ class ViewModel: ObservableObject {
       }
       else{
           print("indexguestevents, not logged in")
+          print(self.thisUser)
           return []
       }
-        
+
     }
+  
+    func acceptInvite(invite: Invite){
+      self.inviteInterface.update(key: invite.key, updateVals: ["inviteStatus": true])
+      print("pendingInvites")
+      print(pendingInvites)
+      print("invites")
+      print(invites)
+//      getInvites(){(a,b) in return }
+    }
+  
   
     // Get all the users who are not invited to an event, display in InviteGuestsModal
     func getNotInvitedUsers(eventKey: String) -> [User] {
@@ -320,6 +346,7 @@ class ViewModel: ObservableObject {
     
     //creates an event and host relationship, returns key of host (intermediate table)
     func createEvent(name: String, startTime: Date, endTime: Date, street1: String, street2: String?, city : String, zip: String , state:String, description : String?,attendenceVisible:Bool, friendsAttendingVisible:Bool, testing:Bool = false)->(String,String)? {
+        print("createEvent")
         if let newEventID = self.eventInterface.create(name: name, startTime: startTime, endTime:endTime, street1: street1, street2: street2, city: city, zip: zip, state: state, description: description,attendenceVisible:attendenceVisible, friendsAttendingVisible:friendsAttendingVisible),
            //we need a way to get login and store the user info of this user
            let userID = testing ? "testingID" : loggedin() {
@@ -335,6 +362,7 @@ class ViewModel: ObservableObject {
     }
     
     func checkin(inviteKey:String)->Bool{
+        print("checkin")
         //use invitekey to get invite
         let thisInvite = self.invites.filter{$0.key == inviteKey}.map{$0.eventKey}
         //use eventid of invite to get hosts
@@ -343,7 +371,7 @@ class ViewModel: ObservableObject {
         if let scannerID = loggedin(),
            hostIDs.contains(scannerID){
             //update
-            self.inviteInterface.update(key: inviteKey, updateVals: ["checkinStatus" : true,"checkinTime":Date().timeIntervalSinceReferenceDate])
+            self.inviteInterface.update(key: inviteKey, updateVals: ["checkinStatus" : true,"checkinTime": Date().timeIntervalSinceReferenceDate])
             return true
         }
         else {

@@ -10,9 +10,21 @@ import SwiftUI
 
 struct PendingInviteCard: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
   
   var invite: Invite
+  @State var startTime = Date()
+  @State var date = Date()
+  @State var dateStr : String = ""
+  
+  func initView() {
+    let startTimeInterval = TimeInterval(viewModel.events.filter{$0.key == invite.eventKey}[0].startTime)
+//    startTime = Date(timeIntervalSinceReferenceDate: startTimeInterval)
+    startTime = Date(timeIntervalSince1970: startTimeInterval)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM. d, hh:mm a"
+    dateStr = dateFormatter.string(from: startTime)
+  }
 
   
   
@@ -37,13 +49,15 @@ struct PendingInviteCard: View {
             Text("@" + self.viewModel.indexEventHosts(eventKey: invite.eventKey)[0].username + " ")
               .bold()
             + Text("has invited you to ")
-          + Text(invite.eventKey)
+          + Text(self.viewModel.events.filter{$0.key == invite.eventKey}[0].name)
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-            // + Text() of event date + time
-
+          + Text(" on ")
+          + Text(dateStr)
+          
         }
       
     }
+      .onAppear{ initView() }
       .padding([.leading, .trailing], 10)
       .padding([.top, .bottom], 5)
       .frame(height: 60)

@@ -13,7 +13,7 @@ struct AppView: View {
   
     var body: some View {
       
-      if (viewModel.loggedin() == nil){
+      if (self.viewModel.loggedin() == nil){
         
         LoginView(viewModel: viewModel)
         
@@ -32,7 +32,7 @@ struct AppView: View {
             
             //Invitations Page
             
-            InvitationsView()
+            InvitationsView(viewModel: viewModel)
             .tabItem {
               Image(systemName: "envelope")
               Text("Invitations")
@@ -41,7 +41,7 @@ struct AppView: View {
             
             // Profile Page
             
-            ProfileView(user: User(firstName: "Dwight", lastName: "Schrute", email: "beets@schrutefarms.com", username: "assistantregionalmanager", profilePicURL: "", passwordHash: "examplepw1"))
+            ProfileView(user: viewModel.thisUser!)
             .tabItem {
               Image(systemName: "person.crop.circle")
               Text("Profile")

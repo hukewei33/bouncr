@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct HostOngoingEventCard: View {
+  
+  @ObservedObject var viewModel = ViewModel()
+  @State private var isShowingScanner = false
+  @State private var showPopUp: Bool = false
+  @State private var showAlert = false
   
   var event: Event
   let date: Date
@@ -59,8 +65,14 @@ struct HostOngoingEventCard: View {
       
           //Button to scan QR Codes
           //CHANGE TO NAVIGATE TO QR CAMERA SCANNER VIEW!!
-          NavigationLink(destination: InvitationsView()) {
+//          NavigationLink(destination: InvitationsView()) {
+//            SquareScanQR()
+//          }
+          Button(action: {self.isShowingScanner = true}, label: {
             SquareScanQR()
+          })
+          .sheet(isPresented: $isShowingScanner) {
+            CodeScannerView(codeTypes: [.qr], completion: self.handleScan)
           }
           
         }
@@ -81,5 +93,22 @@ struct HostOngoingEventCard: View {
               .stroke(Color(#colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1)), lineWidth: 1)
       )
       .padding([.bottom, .horizontal])
+        
+        
+    }
+  
+    func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+      self.isShowingScanner = false
+       
+      switch result {
+      case .success(let code):
+        let details = code.components(separatedBy: "\n")
+        print(details)
+        guard details.count == 2 else { return }
+        
+        print("success" + code)
+      case .failure(let error):
+        print("failure")
+      }
     }
 }

@@ -10,13 +10,18 @@ import SwiftUI
 
 struct InvitationsView: View {
   
-  @ObservedObject var viewModel = ViewModel()
+//  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
   @State var move = false
   @State var scroll = false
   
   @State var center = 0
   @State var cardID = 0
   @State var invitationArray = []
+  
+  init(viewModel: ViewModel) {
+    self.viewModel = viewModel;
+  }
   
 //  @State var showIncomingInvites = true
 //  @State var numIncomingInvites = 0
@@ -36,7 +41,7 @@ struct InvitationsView: View {
               VStack(alignment: .leading) {
                   
                 
-                if (self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}.count > 0){
+                if (self.viewModel.thisUser != nil && self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}.count > 0){ // debugging
                   
                   Text("Incoming Invites")
                     .bold()
@@ -46,13 +51,14 @@ struct InvitationsView: View {
                   
                   List {
                     
-                    ForEach(0..<self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}.count, id: \.self) { index in
+                    ForEach(0..<self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser!.key}.count, id: \.self) { index in
+                        
                       if #available(iOS 15.0, *) {
-                        PendingInviteCard(invite: self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}[index])
+                        PendingInviteCard(viewModel: self.viewModel, invite: self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}[index])
                           .swipeActions(edge: .trailing) {
                             Button(action: {
                               print("accepted")
-                              viewModel.inviteInterface.update(key: self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}[index].key, updateVals: ["inviteStatus": true])
+                              self.viewModel.acceptInvite(invite: self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}[index])
                             }){
                               HStack{
                                 Text("Accept")
@@ -100,11 +106,11 @@ struct InvitationsView: View {
                 }
                 
                 
-              }.padding(.top, (self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}.count > 0) ? 0 : 20)
+              }.padding(.top, (self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}.count > 0) ? 0 : 20)
               
               VStack {
 
-                ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
+                ForEach(0..<self.viewModel.indexGuestEvents().count, id: \.self) { index in
 
                   InviteCard(event: viewModel.indexGuestEvents()[index])
                      .offset(y: CGFloat(-100*index))

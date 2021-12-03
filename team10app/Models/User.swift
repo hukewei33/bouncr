@@ -40,8 +40,8 @@ struct User :Hashable {
     }
     
     init?(snapshot: DataSnapshot) {
-      print("snapshot")
-        print(snapshot)
+//      print("snapshot")
+//        print(snapshot)
         guard
             let value = snapshot.value as? [String: AnyObject],
             let firstName = value["firstName"] as? String,

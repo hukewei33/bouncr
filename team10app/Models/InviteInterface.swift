@@ -25,11 +25,11 @@ class InviteInterface {
                                    eventKey: eventKey,
                                    key: userId)
             self.invitesReference.child(userId).setValue(newInvite.toAnyObject())
-          print("userid:" + userId)
+//          print("userid:" + userId)
             return userId
         }
         else {
-            print("failed to add invite")
+//            print("failed to add invite")
             return nil
         }
     }

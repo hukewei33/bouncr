@@ -73,12 +73,13 @@ struct LoginView: View {
             .foregroundColor(Color.red)
         }
 
-        //Login button
-        Button(action: {
+          //Login button
+          Button(action: {
                   if (viewModel.login(username: username, pword: password) ==  false) {
                     print("Invalid Login")
                     validLogin = false
                   }
+                 
                },
                label: {
                   Text("Log in")

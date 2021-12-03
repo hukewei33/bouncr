@@ -95,8 +95,8 @@ struct InviteCard: View {
           .underline()
       }
       
-      // qr code (i assumed the user id to be 1)
-      Image(uiImage: qrViewController.generateQRCode(from: "\(event.key)\n1"))
+      // qr code
+      Image(uiImage: qrViewController.generateQRCode(from: "\(event.key)\n\(self.viewModel.thisUser?.key)"))
           .interpolation(.none)
           .resizable()
           .scaledToFit()
@@ -118,6 +118,7 @@ struct InviteCard: View {
     .clipped()
     .shadow(radius: 5)
     .padding()
+    
     
   }
   
