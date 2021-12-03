@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+  
+  @ObservedObject var viewModel = ViewModel()
+  
+  
+  init() {
+    
+    // Customizations for the Top Navigation Bar
+    UINavigationBar.appearance().backgroundColor = UIColor(red: 66/255, green: 0, blue: 255/255, alpha: 1.0);
+    UINavigationBar.appearance().largeTitleTextAttributes =
+      [ .foregroundColor: UIColor.white ]
+    
+    
+  }
+  
+  
+  var body: some View {
+    VStack {
+      AppView(viewModel: viewModel)
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  }
 }

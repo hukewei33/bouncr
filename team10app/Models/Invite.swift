@@ -24,13 +24,13 @@ struct Invite {
     //flag to indicate if user checked into event
     var checkinStatus: Bool
 
-    init(userKey: String,eventKey: String,  key: String = "") {
+    init(userKey: String, eventKey: String,  key: String = "") {
         self.ref = nil
         self.key = key
         self.userKey = userKey
         self.eventKey = eventKey
         self.checkinTime = nil
-        self.inviteStatus = true
+        self.inviteStatus = false
         self.checkinStatus = false
     }
 
