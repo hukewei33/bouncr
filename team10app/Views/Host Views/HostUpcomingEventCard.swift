@@ -9,12 +9,13 @@ import SwiftUI
 
 struct HostUpcomingEventCard: View {
   
-  //var viewModel: ViewModel
+  @ObservedObject var viewModel : ViewModel
   var event: Event
   let date: Date
   let dateStr: String
   
-  init(event: Event) {
+  init(viewModel: ViewModel, event: Event) {
+    self.viewModel = viewModel
     self.event = event
     let timeInterval = TimeInterval(event.startTime)
     date = Date(timeIntervalSince1970: timeInterval)
@@ -66,7 +67,7 @@ struct HostUpcomingEventCard: View {
       .padding(EdgeInsets(top: 2, leading: 15, bottom: 15, trailing: 15))
       
       //"More details" button
-      MoreDetailsButton(event: event, ongoing: false)
+      MoreDetailsButton(viewModel: viewModel, event: event, ongoing: false)
       
     }
     .cornerRadius(10)

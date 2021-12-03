@@ -11,7 +11,7 @@ import CoreImage.CIFilterBuiltins
 
 struct InviteCard: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
   
   // controller responsible for generating the qr code
   var qrViewController = QRViewController()
@@ -25,8 +25,9 @@ struct InviteCard: View {
   let date: Date
   let dateStr: String
   
-  init(event: Event) {
+  init(viewModel: ViewModel,  event: Event) {
 //    self.cardIndex = cardIndex
+    self.viewModel = viewModel
     self.event = event
     let timeInterval = TimeInterval(event.startTime)
     date = Date(timeIntervalSince1970: timeInterval)
@@ -96,7 +97,7 @@ struct InviteCard: View {
       }
       
       // qr code
-      Image(uiImage: qrViewController.generateQRCode(from: "\(event.key)\n\(self.viewModel.thisUser?.key)"))
+      Image(uiImage: qrViewController.generateQRCode(from: "\(event.key)\n\(self.viewModel.thisUser!.key)"))
           .interpolation(.none)
           .resizable()
           .scaledToFit()

@@ -10,7 +10,8 @@ import CodeScanner
 
 struct HostOngoingEventCard: View {
   
-  @ObservedObject var viewModel = ViewModel()
+//  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel : ViewModel
   @State private var isShowingScanner = false
   @State private var showPopUp: Bool = false
   @State private var showAlert = false
@@ -19,7 +20,8 @@ struct HostOngoingEventCard: View {
   let date: Date
   let dateStr: String
   
-  init(event: Event) {
+  init(viewModel: ViewModel, event: Event) {
+    self.viewModel = viewModel
     self.event = event
     let timeInterval = TimeInterval(event.startTime)
     date = Date(timeIntervalSince1970: timeInterval)
@@ -83,7 +85,7 @@ struct HostOngoingEventCard: View {
           .padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
         
         //"More details" button
-        MoreDetailsButton(event: event, ongoing: true)
+        MoreDetailsButton(viewModel: viewModel, event: event, ongoing: true)
         
       }
       .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 0.05)))
@@ -97,18 +99,22 @@ struct HostOngoingEventCard: View {
         
     }
   
-    func handleScan(result: Result<String, CodeScannerView.ScanError>) {
-      self.isShowingScanner = false
-       
-      switch result {
-      case .success(let code):
-        let details = code.components(separatedBy: "\n")
-        print(details)
-        guard details.count == 2 else { return }
-        
-        print("success" + code)
-      case .failure(let error):
-        print("failure")
-      }
+  func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+    self.isShowingScanner = false
+     
+    switch result {
+    case .success(let code):
+      let details = code.components(separatedBy: "\n")
+      print(details)
+      guard details.count == 2 else { return }
+      print(self.viewModel.invites)
+      print(self.viewModel.invites.filter{$0.userKey == details[1] && $0.eventKey == details[0]})
+      let inviteKey = self.viewModel.invites.filter{$0.userKey == details[1] && $0.eventKey == details[0]}[0].key;
+      print(inviteKey)
+      print(self.viewModel.checkin(inviteKey: inviteKey))
+      print("success" + code)
+    case .failure(let error):
+      print("failure")
     }
+  }
 }

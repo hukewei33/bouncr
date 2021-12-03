@@ -23,6 +23,9 @@ struct InvitationsView: View {
     self.viewModel = viewModel;
   }
   
+//  @State var showIncomingInvites = true
+//  @State var numIncomingInvites = 0
+  
   
     var body: some View {
       
@@ -40,7 +43,7 @@ struct InvitationsView: View {
               VStack(alignment: .leading) {
                   
                 
-                if (self.viewModel.thisUser != nil && personalInvites.count > 0){ // debugging
+                if (self.viewModel.thisUser != nil && self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}.count > 0){ // debugging
                   
                   Text("Incoming Invites")
                     .bold()
@@ -53,11 +56,11 @@ struct InvitationsView: View {
                     ForEach(0..<personalInvites.count, id: \.self) { index in
                         
                       if #available(iOS 15.0, *) {
-                        PendingInviteCard(viewModel: self.viewModel, invite: personalInvites[index])
+                        PendingInviteCard(viewModel: self.viewModel, invite: self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}[index])
                           .swipeActions(edge: .trailing) {
                             Button(action: {
                               print("accepted")
-                              self.viewModel.acceptInvite(invite: personalInvites[index])
+                              self.viewModel.acceptInvite(invite: self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}[index])
                             }){
                               HStack{
                                 Text("Accept")
@@ -70,7 +73,7 @@ struct InvitationsView: View {
                           .swipeActions(edge: .leading) {
                             Button(action: {
                               print("declined")
-                              viewModel.inviteInterface.delete(key: personalInvites[index].key)
+                              viewModel.inviteInterface.delete(key: self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}[index].key)
                             }){
                               HStack{
                                 Text("Decline")
@@ -105,13 +108,13 @@ struct InvitationsView: View {
                 }
                 
                 
-              }.padding(.top, (personalInvites.count > 0) ? 0 : 20)
+              }.padding(.top, (self.viewModel.pendingInvites.filter{$0.userKey == self.viewModel.thisUser?.key}.count > 0) ? 0 : 20)
               
               VStack {
 
                 ForEach(0..<self.viewModel.indexGuestEvents().count, id: \.self) { index in
 
-                  InviteCard(event: viewModel.indexGuestEvents()[index])
+                  InviteCard(viewModel: viewModel, event: viewModel.indexGuestEvents()[index])
                      .offset(y: CGFloat(-100*index))
                      .frame(height: 200)
                      .onTapGesture {
@@ -132,6 +135,26 @@ struct InvitationsView: View {
               }.animation(.spring())
                 .padding(.top, 150)
               
+              // scroll view reader
+              
+              
+//                .frame(height: CGFloat(viewModel.indexGuestEvents().count*400))
+              
+//              ZStack {
+//
+//                ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
+//
+//                  NavigationLink(destination: InvitationsHorizontalView(cardIndex: index)){
+//                    InviteCard(event: viewModel.indexGuestEvents()[index])
+//                      .offset(y: CGFloat(index*100))
+////
+//                  }
+//
+//
+//                }
+//
+//              }.animation(.spring())
+//                .padding(.top, (self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}.count > 0) ? 0 : 20)
             
             }
             else {
@@ -152,7 +175,7 @@ struct InvitationsView: View {
                 
                 VStack(alignment: .leading) {
                   
-                  InviteCard(event: self.viewModel.indexGuestEvents()[cardID])
+                  InviteCard(viewModel: viewModel, event: self.viewModel.indexGuestEvents()[cardID])
                   .frame(width: 300)
                   .padding(.top, 50)
                   .onTapGesture {
@@ -176,7 +199,65 @@ struct InvitationsView: View {
                 
                 
               }.padding([.leading, .trailing], 20)
+                
+                
               
+              
+              
+              
+//              HStack(alignment: .top) {
+//
+////                InviteCard(event: self.viewModel.indexGuestEvents()[cardID])
+////                  .onTapGesture {
+////                    self.move.toggle()
+////                    self.scroll.toggle()
+////                  }
+////
+////                ForEach(0..<cardID, id: \.self) { index in
+////
+////                  InviteCard(event: self.viewModel.indexGuestEvents()[index])
+//////                    .offset(x: CGFloat(50*(index - cardID)))
+////                    .onTapGesture {
+////                      self.move.toggle()
+////                      self.scroll.toggle()
+////                    }
+////
+////
+////                }
+//
+//                ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
+//
+//                  InviteCard(event: self.viewModel.indexGuestEvents()[index])
+////                    .offset(x: CGFloat(50*(index - cardID)))
+//                    .id(index)
+//                    .onTapGesture {
+//                      self.move.toggle()
+//                      self.scroll.toggle()
+//                    }
+//
+//                }
+//
+//
+//              }
+//              .onAppear() {
+//
+//              }
+
+//                HStack {
+//
+//                  ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
+//                    InviteCard(event: viewModel.indexGuestEvents()[index])
+//                      .onTapGesture {
+//                        self.move.toggle()
+//                        self.scroll.toggle()
+//                      }
+//
+//                    // for V2 add code so that it automatically scrolls to the right card clicked
+//
+//                  }
+//                }.animation(.spring())
+//                .padding([.trailing, .leading], 40)
+//                .padding(.top, 0)
 
             }
             

@@ -12,7 +12,7 @@ import CodeScanner
 
 struct HostEventDetailsView: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
   @State private var isShowingScanner = false
   @State private var showPopUp: Bool = false
   @State private var showAlert = false
@@ -25,7 +25,10 @@ struct HostEventDetailsView: View {
   let dateStr: String
   let title: String
   
-  init(event: Event, ongoing: Bool) {
+  init(viewModel: ViewModel, event: Event, ongoing: Bool) {
+    self.viewModel = viewModel
+//    print("fuck this shit")
+//    print(viewModel.thisUser)
     self.event = event
     self.ongoing = ongoing
     let timeInterval = TimeInterval(event.startTime)
@@ -242,9 +245,11 @@ struct HostEventDetailsView: View {
       let details = code.components(separatedBy: "\n")
       print(details)
       guard details.count == 2 else { return }
+      print(self.viewModel.invites)
+      print(self.viewModel.invites.filter{$0.userKey == details[1] && $0.eventKey == details[0]})
       let inviteKey = self.viewModel.invites.filter{$0.userKey == details[1] && $0.eventKey == details[0]}[0].key;
-      var result = self.viewModel.checkin(inviteKey: inviteKey)
-      print(result)
+      print(inviteKey)
+      print(self.viewModel.checkin(inviteKey: inviteKey))
       print("success" + code)
     case .failure(let error):
       print("failure")

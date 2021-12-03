@@ -100,8 +100,8 @@ class ViewModel: ObservableObject {
 //              print("currentevents")
 //              print(self.events)
               self.events = self.events.sorted { $0.startTime < $1.startTime }
-//              print("events")
-//              print(self.events)
+              print("events")
+              print(self.events)
               completionHandler(self.pastEvents,self.currentEvents,self.events)
           })
       }
@@ -140,7 +140,6 @@ class ViewModel: ObservableObject {
               completionHandler(self.invites,self.pendingInvites)
 
           })
-
       }
 
       func getFriends(completionHandler: @escaping ([Friend],[Friend]) -> Void){
@@ -223,7 +222,7 @@ class ViewModel: ObservableObject {
 //      print(self.hosts)
         let hostIDList = self.hosts.filter {$0.eventKey == eventKey}.map{$0.userKey}
         print(hostIDList)
-      print(self.users)
+        print(self.users)
         print(self.users.filter {hostIDList.contains($0.key)})
         return self.users.filter {hostIDList.contains($0.key)}
     }
@@ -364,6 +363,7 @@ class ViewModel: ObservableObject {
     
     func checkin(inviteKey:String)->Bool{
         print("checkin")
+        print(self.thisUser)
         //use invitekey to get invite
         let thisInvite = self.invites.filter{$0.key == inviteKey}.map{$0.eventKey}
         //use eventid of invite to get hosts

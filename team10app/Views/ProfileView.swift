@@ -15,7 +15,7 @@ struct ProfileView: View {
   
   var user: User
   @ObservedObject var viewModel = ViewModel()
-  @State private var viewFriendRequests = true
+//  @State private var viewFriendRequests = true
   
     var body: some View {
     
@@ -30,7 +30,7 @@ struct ProfileView: View {
           
           
           // use a default if null
-          if (user.profilePicURL == nil){
+          if (user.profilePicURL == nil || user.profilePicURL == ""){
 
             Image(uiImage: "https://www.myany.city/sites/default/files/styles/scaled_cropped_medium__260x260/public/field/image/node-related-images/sample-dwight-k-schrute.jpg?itok=8TfRscbA".load())
               .resizable()
@@ -43,7 +43,6 @@ struct ProfileView: View {
           else {
             
             Image(uiImage: user.profilePicURL!.load())
-
             
           }
           
@@ -76,18 +75,18 @@ struct ProfileView: View {
         .edgesIgnoringSafeArea(.top)
         
 
-        // SEGMENTED CONTROL
-        
-        Picker("List to View", selection: $viewFriendRequests){
-          
-          Text("Friends").tag(true)
-          Text("Past Events").tag(false)
-          
-        }.pickerStyle(SegmentedPickerStyle())
-        .frame(maxWidth: 300, alignment: .center)
+//        // SEGMENTED CONTROL
+//
+//        Picker("List to View", selection: $viewFriendRequests){
+//
+//          Text("Friends").tag(true)
+//          Text("Past Events").tag(false)
+//
+//        }.pickerStyle(SegmentedPickerStyle())
+//        .frame(maxWidth: 300, alignment: .center)
         
         // list of friend request the user must respond to
-        if (viewFriendRequests && self.viewModel.thisUser != nil){
+        if (self.viewModel.thisUser != nil){
           
           List {
             
@@ -99,29 +98,16 @@ struct ProfileView: View {
                 self.viewModel.users.filter{$0.key == self.viewModel.pendingFriends[index].userKey2}[0].firstName)
                   
               }
-              
-//            }
+            
             
           }
           
           
         }
-        // list of events the user has attended
-        else {
-          
-          List {
-            
-            
-            
-          }
-          
-        }
-        
         
         Spacer()
-
+        
       }
-      
-            
+        
     }
 }

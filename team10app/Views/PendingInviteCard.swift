@@ -22,7 +22,7 @@ struct PendingInviteCard: View {
 //    startTime = Date(timeIntervalSinceReferenceDate: startTimeInterval)
     startTime = Date(timeIntervalSince1970: startTimeInterval)
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMM. d, hh:mm a"
+    dateFormatter.dateFormat = "MMM. d, h:mm a"
     dateStr = dateFormatter.string(from: startTime)
   }
 
@@ -44,7 +44,7 @@ struct PendingInviteCard: View {
 //      Text(String(viewModel.indexEventHosts(eventKey: invite.eventKey).count))
 //      Text(String(self.viewModel.events.count))
         
-        if (viewModel.indexEventHosts(eventKey: invite.eventKey).count > 0) {
+      if (self.viewModel.indexEventHosts(eventKey: invite.eventKey).count > 0) {
 
             Text("@" + self.viewModel.indexEventHosts(eventKey: invite.eventKey)[0].username + " ")
               .bold()
