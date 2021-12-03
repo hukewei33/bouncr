@@ -14,104 +14,208 @@ import Combine
 struct ProfileView: View {
   
   var user: User
-  @ObservedObject var viewModel = ViewModel()
+  @ObservedObject var viewModel: ViewModel
 //  @State private var viewFriendRequests = true
   
+  init(viewModel: ViewModel, user: User){
+    self.viewModel = viewModel
+    self.user = user
+  }
+  
     var body: some View {
-    
       
-      VStack {
-
-        // TOPBAR
-
-        HStack {
-
-          // need to still write code for profile pic here
-          
-          
-          // use a default if null
-          if (user.profilePicURL == nil || user.profilePicURL == ""){
-
-            Image(uiImage: "https://www.myany.city/sites/default/files/styles/scaled_cropped_medium__260x260/public/field/image/node-related-images/sample-dwight-k-schrute.jpg?itok=8TfRscbA".load())
-              .resizable()
-              .frame(width: 100, height: 100)
-              .aspectRatio(contentMode: .fit)
-              .cornerRadius(50)
-
-          }
-          // display the non-nil profile pic
-          else {
-            
-            Image(uiImage: user.profilePicURL!.load())
-              .resizable()
-              .frame(width: 100, height: 100)
-              .aspectRatio(contentMode: .fit)
-              .cornerRadius(50)
-            
-          }
-          
-          
-
-          VStack(alignment: .leading) {
-
-            // display username
-            Text("@" + user.username)
-              .foregroundColor(.white)
-              .font(.subheadline)
-
-
-            // display name
-            Text(user.firstName + " " + user.lastName)
-              .foregroundColor(.white)
-              .fontWeight(.bold)
-              .font(.system(size: 24))
-
-          }
-          
-          .padding()
-          
-
-        }
-        .frame(maxWidth: .infinity, minHeight: 180)
-        .padding(.top, 50)
-        .padding(.bottom, 0)
-        .background(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-        .edgesIgnoringSafeArea(.top)
+      NavigationView {
         
-
-//        // SEGMENTED CONTROL
-//
-//        Picker("List to View", selection: $viewFriendRequests){
-//
-//          Text("Friends").tag(true)
-//          Text("Past Events").tag(false)
-//
-//        }.pickerStyle(SegmentedPickerStyle())
-//        .frame(maxWidth: 300, alignment: .center)
+        let friendRequests = self.viewModel.pendingFriends.filter{$0.userKey1 == self.viewModel.thisUser!.key}
+        let friends = self.viewModel.friends.filter{$0.userKey1 == self.viewModel.thisUser!.key}
         
-        // list of friend request the user must respond to
-        if (self.viewModel.thisUser != nil){
-          
-          List {
+        VStack {
+
+          // TOPBAR
+
+          HStack {
+
+            // need to still write code for profile pic here
             
-//            Section(header: Text("Friend Requests")){
+            
+            // use a default if null
+            if (user.profilePicURL == nil || user.profilePicURL == ""){
+
+              Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
+                .resizable()
+                .frame(width: 100, height: 100)
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(50)
+
+            }
+            // display the non-nil profile pic
+            else {
               
-            ForEach(0..<self.viewModel.pendingFriends.filter{$0.userKey1 == self.viewModel.thisUser!.key}.count, id: \.self) { index in
-                
-              Text(
-                self.viewModel.users.filter{$0.key == self.viewModel.pendingFriends[index].userKey2}[0].firstName)
-                  
+              Image(uiImage: user.profilePicURL!.load())
+                .resizable()
+                .frame(width: 100, height: 100)
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(50)
+              
+            }
+            
+            
+
+            VStack(alignment: .leading) {
+
+              // display username
+              Text("@" + user.username)
+                .foregroundColor(.white)
+                .font(.subheadline)
+
+
+              // display name
+              Text(user.firstName + " " + user.lastName)
+                .foregroundColor(.white)
+                .fontWeight(.bold)
+                .font(.system(size: 24))
+
+            }
+            
+            .padding()
+            
+
+          }
+          .frame(maxWidth: .infinity, minHeight: 180)
+          .padding(.top, 50)
+          .padding(.bottom, 0)
+          .background(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+          .edgesIgnoringSafeArea(.top)
+          
+
+  //        // SEGMENTED CONTROL
+  //
+  //        Picker("List to View", selection: $viewFriendRequests){
+  //
+  //          Text("Friends").tag(true)
+  //          Text("Past Events").tag(false)
+  //
+  //        }.pickerStyle(SegmentedPickerStyle())
+  //        .frame(maxWidth: 300, alignment: .center)
+          
+          
+          if (self.viewModel.thisUser != nil){
+            
+            List {
+              
+  //            Button(action: {
+  //              print("make friend req")
+  //            }, label: {
+  //              Text("Make Friend Request")
+  //                .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+  //
+  //            })
+              
+              NavigationLink(destination: AddFriends(viewModel: viewModel)) {
+                Text("Make Friend Request")
+                  .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
               }
+              .navigationBarTitleDisplayMode(.inline)
+              .navigationBarHidden(true)
+              
+              
+              if (friendRequests.count > 0){
+                
+                Section(header: Text("Friend Requests")){
+                  
+                  
+                  ForEach(0..<friendRequests.count, id: \.self) { index in
+                    
+                    Group {
+                      Text(self.viewModel.users.filter{$0.key == self.viewModel.pendingFriends[index].userKey2}[0].firstName) +
+                      Text(" ") +
+                      Text(self.viewModel.users.filter{$0.key == self.viewModel.pendingFriends[index].userKey2}[0].lastName)
+                    }
+                        .swipeActions(edge: .trailing) {
+                          Button(action: {
+                            print("friend req accepted")
+                            self.viewModel.acceptFriendInvite(acceptedInvite: self.viewModel.pendingFriends[index])
+                            print(self.viewModel.pendingFriends)
+                          }){
+                            HStack{
+                              Text("Accept")
+                              Image(systemName: "checkmark.circle.fill")
+                                .foregroundColor(.white)
+                            }
+                          }
+                          .tint(.green)
+                        }
+                        .swipeActions(edge: .leading) {
+                          Button(action: {
+                            print("friend req declined")
+                            self.viewModel.rejectFriend(rejectedInvite: self.viewModel.pendingFriends[index])
+                          }){
+                            HStack{
+                              Text("Decline")
+                              Image(systemName: "x.circle")
+                                .foregroundColor(.white)
+                            }
+                          }
+                          .tint(.red)
+                        }
+                    
+                  
+                  }
+                   
+                  
+                }
+                
+              }
+              
+              if (friends.count > 0){
+                
+                  
+                  // list of current friends the user has
+                  Section(header: Text("Friends")){
+                    
+                    
+                    ForEach(0..<friends.count, id: \.self) { index in
+                      
+  //                    Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].firstName)
+                      Group {
+                        Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].firstName) +
+                        Text(" ") +
+                        Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].lastName)
+                      }
+                    
+                    }
+                    
+                  }
+              }
+              
+              
+            }.padding(.top, -50)
+            
+            // if they have no friends and friend requests
+            if (friends.count == 0 && friendRequests.count == 0){
+              
+              Group {
+                Text("You have no friends :(")
+                Text("maybe send a friend request ;)")
+              }
+              .foregroundColor(Color("Gray - 400"))
+              .font(.system(size: 22))
+              
+            }
+            
+            Spacer()
             
             
           }
+
           
+          Spacer()
           
         }
         
-        Spacer()
         
       }
+  
         
     }
 }

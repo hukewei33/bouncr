@@ -151,6 +151,8 @@ class ViewModel: ObservableObject {
 
       func getFriends(completionHandler: @escaping ([Friend],[Friend]) -> Void){
           self.friendReference.queryOrdered(byChild: "userKey1").observe(.value, with: { snapshot in
+            self.friends.removeAll()
+            self.pendingFriends.removeAll()
               for child in snapshot.children {
                   if let snapshot = child as? DataSnapshot,
                      let friend = Friend(snapshot: snapshot) {
@@ -468,6 +470,13 @@ class ViewModel: ObservableObject {
         self.friendInterface.delete(key: rejectedInvite.twinKey)
         self.friendInterface.delete(key: rejectedInvite.key)
         
+    }
+  
+    //Returns an array of all Users the current user isn't friends with or has sent a friend request to
+    func getNonFriends() -> [User] {
+      let allFriends = self.pendingFriends + self.friends
+      let user2IDs = allFriends.map {$0.userKey2}
+      return self.users.filter{!user2IDs.contains($0.key) && $0.key != self.thisUser!.key}
     }
   
                                                                       

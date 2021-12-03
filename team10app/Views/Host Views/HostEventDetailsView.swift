@@ -58,6 +58,24 @@ struct HostEventDetailsView: View {
         
         VStack (alignment: .leading) {
           
+          HStack {
+            Text(event.name)
+              .bold()
+              .font(.system(size: 32))
+              .foregroundColor(.white)
+
+              .padding(.top, 10)
+              .padding(.bottom, 5)
+              .lineLimit(1)
+            
+            if (ongoing){
+              Circle()
+                .fill(Color(#colorLiteral(red: 0.262745098, green: 0.8784313725, blue: 0, alpha: 1)))
+                .frame(width: 12, height: 12)
+            }
+            
+          }
+          
           Text(startDateStr)
             .foregroundColor(.white)
             .font(.system(size: 18))
@@ -140,7 +158,7 @@ struct HostEventDetailsView: View {
                  })
                  .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
                  .cornerRadius(38.5)
-                 .padding()
+//                 .padding()
                  .shadow(color: Color.black.opacity(0.3),
                          radius: 3,
                          x: 3,
@@ -170,32 +188,38 @@ struct HostEventDetailsView: View {
             }
             .padding(.top, 30)
             
-            
-            Text("Accepted Guests: ")
-              .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-            
-            LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
+            if (viewModel.indexEventGuests(eventKey: event.key).count > 0){
+              
+              Text("Accepted Guests: ")
+                .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+              
+              LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
 
-               // for each guest invited should show a small circle with the first name under it
-               ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
+                 // for each guest invited should show a small circle with the first name under it
+                 ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
 
-                 VStack {
+                   VStack {
 
-                   ZStack {
-                     Circle()
-                       .fill(Color("Primary - Indigo"))
+                     ZStack {
+                       Circle()
+                         .fill(Color("Primary - Indigo"))
+                     }
+
+                     Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
+                       .font(.system(size: 10))
                    }
-
-                   Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
-                     .font(.system(size: 10))
                  }
-               }
-            
+              
+              }
+              .padding(.top, 30)
+              
             }
-            .padding(.top, 30)
+            
+            
 
           }
-          .padding(40)
+          .padding([.leading, .trailing, .bottom], 30)
+          .padding(.top, 10)
           
           VStack {
             
@@ -259,8 +283,24 @@ struct HostEventDetailsView: View {
           }
 
           Spacer()
-
-          .navigationBarTitle(title)
+            .navigationBarTitleDisplayMode(.inline)
+//          .navigationBarTitle(title)
+//            .navigationBarItems(leading:
+//                              HStack {
+//                                Text(event.name)
+//                                  .bold()
+//                                  .font(.system(size: 28))
+//                                  .foregroundColor(.white)
+//
+//                                  .padding(.bottom, 1)
+//                                  .lineLimit(1)
+//                                Circle()
+//                                  .fill(Color(#colorLiteral(red: 0.262745098, green: 0.8784313725, blue: 0, alpha: 1)))
+//                                  .frame(width: 12, height: 12)
+//                              }
+//            )
+            
+          
         }
         .navigationViewStyle(StackNavigationViewStyle())
       }//end vstack
