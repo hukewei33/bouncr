@@ -123,7 +123,7 @@ struct HostEventDetailsView: View {
               
             }
             
-            Text("Guest List: ")
+            Text("Pending Guests: ")
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
             
             LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
@@ -153,7 +153,30 @@ struct HostEventDetailsView: View {
                .frame(width: 60, height: 30, alignment: .center)
 
                // for each guest invited should show a small circle with the first name under it
-               // for v2 make it just the first 6 guests
+               ForEach(0..<viewModel.indexPendingEventGuests(eventKey: event.key).count, id: \.self){ index in
+
+                 VStack {
+
+                   ZStack {
+                     Circle()
+                       .fill(Color("Primary - Indigo"))
+                   }
+
+                   Text(viewModel.indexPendingEventGuests(eventKey: event.key)[index].firstName)
+                     .font(.system(size: 10))
+                 }
+               }
+            
+            }
+            .padding(.top, 30)
+            
+            
+            Text("Accepted Guests: ")
+              .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+            
+            LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
+
+               // for each guest invited should show a small circle with the first name under it
                ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
 
                  VStack {

@@ -201,6 +201,12 @@ class ViewModel: ObservableObject {
         let guestIDList = self.invites.filter {$0.eventKey == eventKey}.map{$0.userKey}
         return self.users.filter {guestIDList.contains($0.key)}
     }
+  
+    func indexPendingEventGuests(eventKey: String) -> [User] {
+        let pendingGuestIDList = self.pendingInvites.filter {$0.eventKey == eventKey}.map{$0.userKey}
+        return self.users.filter {pendingGuestIDList.contains($0.key)}
+    }
+  
     
     //return an array where the first number is the first number is the number of current attendess and the second number is the size of the guest list
     func getEventAttendence(eventKey: String) -> [Int]{
@@ -376,8 +382,9 @@ class ViewModel: ObservableObject {
   
     // Get all the users who are not invited to an event, display in InviteGuestsModal
     func getNotInvitedUsers(eventKey: String) -> [User] {
-      let guestIDList = self.invites.filter {$0.eventKey == eventKey}.map{$0.userKey}
-      return self.users.filter {!guestIDList.contains($0.key)}
+      var guestIDList = self.invites.filter {$0.eventKey == eventKey}.map{$0.userKey}
+      guestIDList += self.pendingInvites.filter {$0.eventKey == eventKey}.map{$0.userKey}
+      return self.users.filter {!guestIDList.contains($0.key) && $0.key != self.thisUser!.key}
     }
     
     //creates an event and host relationship, returns key of host (intermediate table)
