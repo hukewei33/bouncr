@@ -20,6 +20,7 @@ struct EventForm: View {
   @ObservedObject var viewModel: ViewModel
   var optionalEvent: Event? //if nil, you're creating an event; if not, you're editing one
   var navTitle: String
+  @Environment(\.presentationMode) var mode: Binding<PresentationMode>
   
   @State private var name: String = ""
   @State private var startTime = Date()
@@ -248,7 +249,7 @@ struct EventForm: View {
           Button(action: {
             //Editing event, update existing event
             if let event=self.optionalEvent {
-              print("Editing event...")
+              print("EDITING EVENT...")
               viewModel.eventInterface.update(key: event.key,
                                               updateVals: ["name": name, "startTime": startTime.timeIntervalSinceReferenceDate,
                                                            "endTime": endTime.timeIntervalSinceReferenceDate, "street1": street1,
@@ -257,12 +258,14 @@ struct EventForm: View {
             }
             //Creating event, create new event
             else {
+              print("CREATING EVENT...")
               viewModel.createEvent(name: name, startTime: startTime,
                                     endTime: endTime, street1: street1,
                                     street2: street2, city: city,
                                     zip: zip, state: state, description: descr,
                                     attendenceVisible: attendenceVisible,
                                     friendsAttendingVisible: friendsAttendingVisible)
+              self.mode.wrappedValue.dismiss()
             }
           }, label: {
             //Editing event button label:
