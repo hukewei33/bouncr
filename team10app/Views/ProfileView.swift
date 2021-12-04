@@ -103,29 +103,9 @@ struct ProfileView: View {
           .background(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
           .edgesIgnoringSafeArea(.top)
           
-
-  //        // SEGMENTED CONTROL
-  //
-  //        Picker("List to View", selection: $viewFriendRequests){
-  //
-  //          Text("Friends").tag(true)
-  //          Text("Past Events").tag(false)
-  //
-  //        }.pickerStyle(SegmentedPickerStyle())
-  //        .frame(maxWidth: 300, alignment: .center)
-          
-          
           if (self.viewModel.thisUser != nil){
             
             List {
-              
-  //            Button(action: {
-  //              print("make friend req")
-  //            }, label: {
-  //              Text("Make Friend Request")
-  //                .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-  //
-  //            })
               
               NavigationLink(destination: AddFriends()) {
                 Text("Make Friend Request")
@@ -149,9 +129,9 @@ struct ProfileView: View {
                     }
                         .swipeActions(edge: .trailing) {
                           Button(action: {
-                            print("friend req accepted")
+//                            print("friend req accepted")
                             self.viewModel.acceptFriendInvite(acceptedInvite: self.viewModel.pendingFriends[index])
-                            print(self.viewModel.pendingFriends)
+//                            print(self.viewModel.pendingFriends)
                           }){
                             HStack{
                               Text("Accept")
@@ -163,7 +143,7 @@ struct ProfileView: View {
                         }
                         .swipeActions(edge: .leading) {
                           Button(action: {
-                            print("friend req declined")
+//                            print("friend req declined")
                             self.viewModel.rejectFriend(rejectedInvite: self.viewModel.pendingFriends[index])
                           }){
                             HStack{
@@ -222,17 +202,11 @@ struct ProfileView: View {
             
             Spacer()
             
-            
           }
 
-          
           Spacer()
           
         }
-        
-        
       }
-  
-        
     }
 }

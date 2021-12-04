@@ -106,16 +106,16 @@ struct HostOngoingEventCard: View {
     switch result {
     case .success(let code):
       let details = code.components(separatedBy: "\n")
-      print(details)
+//      print(details)
       guard details.count == 2 else { return }
-      print(self.viewModel.invites)
-      print(self.viewModel.invites.filter{$0.userKey == details[1] && $0.eventKey == details[0]})
+//      print(self.viewModel.invites)
+//      print(self.viewModel.invites.filter{$0.userKey == details[1] && $0.eventKey == details[0]})
       let inviteKey = self.viewModel.invites.filter{$0.userKey == details[1] && $0.eventKey == details[0]}[0].key;
-      print(inviteKey)
-      print(self.viewModel.checkin(inviteKey: inviteKey))
-      print("success" + code)
+//      print(inviteKey)
+//      print(self.viewModel.checkin(inviteKey: inviteKey))
+//      print("success" + code)
     case .failure(let error):
-      print("failure")
+      print("failure to scan")
     }
   }
 }

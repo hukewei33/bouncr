@@ -19,10 +19,10 @@ struct PendingInviteCard: View {
   
   func initView() {
     let allEvents = self.viewModel.currentEvents + self.viewModel.events
-    print(allEvents)
-    print(self.viewModel.currentEvents)
-    print(self.viewModel.events)
-    print(allEvents.filter{$0.key == invite.eventKey})
+//    print(allEvents)
+//    print(self.viewModel.currentEvents)
+//    print(self.viewModel.events)
+//    print(allEvents.filter{$0.key == invite.eventKey})
     let startTimeInterval = TimeInterval(allEvents.filter{$0.key == invite.eventKey}[0].startTime)
     startTime = Date(timeIntervalSince1970: startTimeInterval)
     let dateFormatter = DateFormatter()
