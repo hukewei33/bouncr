@@ -40,8 +40,7 @@ struct AppView: View {
             
             
             // Profile Page
-            
-            ProfileView(user: viewModel.thisUser!)
+            ProfileView()
             .tabItem {
               Image(systemName: "person.crop.circle")
               Text("Profile")

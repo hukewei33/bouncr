@@ -112,6 +112,7 @@ class ViewModel: ObservableObject {
 
       func getUsers(completionHandler: @escaping ([User]) -> Void){
           self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
+              print("getUsers() ran")
               self.users.removeAll()
               for child in snapshot.children {
                   if let snapshot = child as? DataSnapshot,
@@ -120,6 +121,9 @@ class ViewModel: ObservableObject {
                   }
               }
               self.users = self.users .sorted { $0.username < $1.username }
+              if let userKey = self.loggedin() {
+                self.getUser(userKey: userKey)
+              }
               completionHandler(self.users)
           })
       }
@@ -445,14 +449,25 @@ class ViewModel: ObservableObject {
       return self.users.filter{!user2IDs.contains($0.key) && $0.key != self.thisUser!.key}
     }
   
-  func editProfile(updateVals: [String : Any]) -> (){
-    if let userkey = self.loggedin(){
-      userInterface.update(key: userkey ,updateVals: updateVals)
+    func editProfile(updateVals: [String : Any]) -> (){
+      if let userkey = self.loggedin(){
+        userInterface.update(key: userkey ,updateVals: updateVals)
+      }
     }
-    
-  }
   
-                                                                      
+    //After editing your own profile, is called after db is updated, sets thisuser to updated version of thisuser
+    func getUser(userKey: String) {
+      print("getUser() ran")
+      if let currUser = self.thisUser {
+        for user in self.users {
+            if (user.key == userKey) {
+                self.thisUser = user
+                getFriends(){(friends,pendingFriends) in self.friends = friends.filter{$0.userKey1 == user.key}; self.pendingFriends = pendingFriends.filter{$0.userKey1 == user.key}}
+            }
+        }
+      }
+    }
+                                                                  
     func searchUsers(query: String, eventKey: String) -> [User] {
         if query == "" {
             return []

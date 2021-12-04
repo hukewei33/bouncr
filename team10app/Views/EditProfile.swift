@@ -126,6 +126,7 @@ struct EditProfile: View {
         HStack {
           Spacer()
           Button(action: {
+              print("EDITING PROFILE...")
               self.viewModel.editProfile(updateVals: ["firstName": fName, "lastName": lName,"email": email, "username": username,"profilePicURL": profilePicURL, "passwordHash": password])
               self.mode.wrappedValue.dismiss()
           }, label: {

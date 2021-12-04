@@ -13,13 +13,9 @@ import Combine
 
 struct ProfileView: View {
   
-  var user: User
   @EnvironmentObject var viewModel: ViewModel
 //  @State private var viewFriendRequests = true
   
-  init(user: User){
-    self.user = user
-  }
   
     var body: some View {
       
@@ -207,6 +203,6 @@ struct ProfileView: View {
           Spacer()
           
         }
-      }
+      } //End NavigationView
     }
 }
