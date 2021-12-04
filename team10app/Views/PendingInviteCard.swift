@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PendingInviteCard: View {
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   
   var invite: Invite
   @State var startTime = Date()
@@ -19,7 +19,6 @@ struct PendingInviteCard: View {
   
   func initView() {
     let allEvents = self.viewModel.currentEvents + self.viewModel.events
-    print("i hate everything")
     print(allEvents)
     print(self.viewModel.currentEvents)
     print(self.viewModel.events)

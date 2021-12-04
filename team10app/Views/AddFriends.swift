@@ -8,7 +8,7 @@ import SwiftUI
 
 struct AddFriends: View {
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   
   var body: some View {
     
@@ -16,7 +16,7 @@ struct AddFriends: View {
       
       List {
         ForEach(self.viewModel.getNonFriends(), id: \.self) { user in
-          AddFriendsRow(viewModel: self.viewModel, user: user)
+          AddFriendsRow(user: user)
             .padding(10)
         }
         

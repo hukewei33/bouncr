@@ -10,18 +10,12 @@ import SwiftUI
 //CITATION: Incorporated code for checkbox from: https://makeapppie.com/2019/10/16/checkboxes-in-swiftui/
 struct InviteGuestsModalRow: View {
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   var user: User
   let width = UIScreen.main.bounds.width * 0.25
   @State var isChecked: Bool = false
  
   func toggleCheckBox() {
-//    if (!isChecked) {
-//      isChecked = !isChecked
-//      if (isChecked) {
-//        self.viewModel.inviteInterface.create(userKey: user.key, eventKey: event.key)
-//      }
-//    }
     isChecked = !isChecked
     if (isChecked) {
       self.viewModel.addPotentialInvite(user: self.user)

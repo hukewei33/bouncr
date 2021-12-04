@@ -9,13 +9,13 @@ import SwiftUI
 struct AppView: View {
   
 
-  @ObservedObject var viewModel: ViewModel
+    @EnvironmentObject var viewModel: ViewModel
   
     var body: some View {
       
       if (self.viewModel.loggedin() == nil){
         
-        LoginView(viewModel: viewModel)
+        LoginView()
         
       }
       else {
@@ -23,7 +23,7 @@ struct AppView: View {
           TabView {
             
             //My Events page
-            HostEventsView(viewModel: viewModel)
+            HostEventsView()
             .tabItem {
               Image(systemName: "calendar")
               Text("Your Events")
@@ -32,7 +32,7 @@ struct AppView: View {
             
             //Invitations Page
             
-            InvitationsView(viewModel: viewModel)
+            InvitationsView()
             .tabItem {
               Image(systemName: "envelope")
               Text("Invitations")
@@ -41,7 +41,7 @@ struct AppView: View {
             
             // Profile Page
             
-            ProfileView(viewModel: viewModel, user: viewModel.thisUser!)
+            ProfileView(user: viewModel.thisUser!)
             .tabItem {
               Image(systemName: "person.crop.circle")
               Text("Profile")

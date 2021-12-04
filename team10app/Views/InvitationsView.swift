@@ -10,17 +10,13 @@ import SwiftUI
 
 struct InvitationsView: View {
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   @State var move = false
   @State var scroll = false
   
   @State var center = 0
   @State var cardID = 0
   @State var invitationArray = []
-  
-  init(viewModel: ViewModel) {
-    self.viewModel = viewModel;
-  }
   
 //  @State var showIncomingInvites = true
 //  @State var numIncomingInvites = 0
@@ -59,7 +55,7 @@ struct InvitationsView: View {
                         
                         if (self.viewModel.pastEvents.filter({$0.key == personalInvites[index].eventKey}) == []){
                           
-                          PendingInviteCard(viewModel: self.viewModel, invite: personalInvites[index])
+                          PendingInviteCard(invite: personalInvites[index])
                             .swipeActions(edge: .trailing) {
                               Button(action: {
                                 print("accepted")
@@ -129,7 +125,7 @@ struct InvitationsView: View {
 
                 ForEach(0..<self.viewModel.indexGuestEvents().count, id: \.self) { index in
 
-                  InviteCard(viewModel: viewModel, event: viewModel.indexGuestEvents()[index])
+                  InviteCard(event: viewModel.indexGuestEvents()[index])
                      .offset(y: CGFloat(-100*index))
                      .frame(height: 200)
                      .onTapGesture {
@@ -190,7 +186,7 @@ struct InvitationsView: View {
                 
                 VStack(alignment: .leading) {
                   
-                  InviteCard(viewModel: viewModel, event: self.viewModel.indexGuestEvents()[cardID])
+                  InviteCard(event: self.viewModel.indexGuestEvents()[cardID])
                   .frame(width: 300)
                   .padding(.top, 50)
                   .onTapGesture {

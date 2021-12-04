@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
   
-  @ObservedObject var viewModel = ViewModel()
+  var viewModel = ViewModel()
   
   
   init() {
@@ -25,7 +25,8 @@ struct ContentView: View {
   
   var body: some View {
     VStack {
-      AppView(viewModel: viewModel)
+      AppView()
     }
+    .environmentObject(viewModel)
   }
 }

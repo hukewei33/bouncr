@@ -10,7 +10,7 @@ import SwiftUI
 struct InviteGuestsModal: View {
   
   @Binding var show: Bool
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   var event: Event
   
   @State private var searchText: String = ""
@@ -86,7 +86,7 @@ struct InviteGuestsModal: View {
                     //Can only show users if they exist in search results
                     if (searchResults.count>0) {
                       ForEach(0..<self.searchResults.count, id: \.self) { index in
-                        InviteGuestsModalRow(viewModel: self.viewModel, user: self.searchResults[index])
+                        InviteGuestsModalRow(user: self.searchResults[index])
                           .padding(10)
                       }
                     }

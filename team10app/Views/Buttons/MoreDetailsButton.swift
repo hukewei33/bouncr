@@ -10,20 +10,19 @@ import SwiftUI
 struct MoreDetailsButton: View {
   
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   //Add some fields here for event id, will determine action of button
   var event: Event
   var ongoing: Bool
   
-  init(viewModel: ViewModel, event: Event, ongoing: Bool){
-    self.viewModel = viewModel
+  init(event: Event, ongoing: Bool){
     self.event = event
     self.ongoing = ongoing
   }
   
   var body: some View {
     
-    NavigationLink("More Details", destination: HostEventDetailsView(viewModel: viewModel, event: event, ongoing: ongoing))
+    NavigationLink("More Details", destination: HostEventDetailsView(event: event, ongoing: ongoing))
       .font(.system(size: 15))
       .padding(10)
       .frame(width: 300)

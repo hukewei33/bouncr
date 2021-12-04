@@ -14,14 +14,11 @@ import Combine
 struct ProfileView: View {
   
   var user: User
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
 //  @State private var viewFriendRequests = true
   
-  init(viewModel: ViewModel, user: User){
-    self.viewModel = viewModel
+  init(user: User){
     self.user = user
-    print(viewModel.pendingFriends.filter{$0.userKey1 == self.viewModel.thisUser!.key})
-    print(viewModel.friends.filter{$0.userKey1 == self.viewModel.thisUser!.key})
   }
   
     var body: some View {
@@ -84,7 +81,7 @@ struct ProfileView: View {
             .padding([.leading, .trailing], 5)
             Spacer()
             
-            NavigationLink(destination: EditProfile(viewModel: viewModel)){
+            NavigationLink(destination: EditProfile()){
               
               ZStack {
                 Image(systemName: "square.and.pencil")
@@ -130,7 +127,7 @@ struct ProfileView: View {
   //
   //            })
               
-              NavigationLink(destination: AddFriends(viewModel: viewModel)) {
+              NavigationLink(destination: AddFriends()) {
                 Text("Make Friend Request")
                   .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
               }

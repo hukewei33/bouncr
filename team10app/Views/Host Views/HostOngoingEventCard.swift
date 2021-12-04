@@ -10,7 +10,7 @@ import CodeScanner
 
 struct HostOngoingEventCard: View {
   
-  @ObservedObject var viewModel : ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   @State private var isShowingScanner = false
   @State private var showPopUp: Bool = false
   @State private var showAlert = false
@@ -19,8 +19,7 @@ struct HostOngoingEventCard: View {
   let date: Date
   let dateStr: String
   
-  init(viewModel: ViewModel, event: Event) {
-    self.viewModel = viewModel
+  init(event: Event) {
     self.event = event
     let timeInterval = TimeInterval(event.startTime)
     date = Date(timeIntervalSince1970: timeInterval)
@@ -87,7 +86,7 @@ struct HostOngoingEventCard: View {
           .padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 15))
         
         //"More details" button
-        MoreDetailsButton(viewModel: viewModel, event: event, ongoing: true)
+        MoreDetailsButton(event: event, ongoing: true)
         
       }
       .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 0.05)))

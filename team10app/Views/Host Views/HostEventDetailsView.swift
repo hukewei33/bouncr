@@ -12,7 +12,7 @@ import CodeScanner
 
 struct HostEventDetailsView: View {
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   @State private var isShowingScanner = false
   @State private var showPopUp: Bool = false
   @State private var showAlert = false
@@ -26,8 +26,7 @@ struct HostEventDetailsView: View {
   let endDate: Date
   let endDateStr: String
   
-  init(viewModel: ViewModel, event: Event, ongoing: Bool) {
-    self.viewModel = viewModel
+  init(event: Event, ongoing: Bool) {
     self.event = event
     self.ongoing = ongoing
     let startTimeInterval = TimeInterval(event.startTime)
@@ -216,7 +215,7 @@ struct HostEventDetailsView: View {
               Spacer()
               
 //              NavigationLink(destination: EditEventView(viewModel: self.viewModel, event: self.event)){
-              NavigationLink(destination: EventForm(viewModel: self.viewModel, optionalEvent: self.event, navTitle: "Edit Event")){
+              NavigationLink(destination: EventForm(optionalEvent: self.event, navTitle: "Edit Event")){
                 Text("Edit")
                   .frame(width: 100, height: 30)
                   .background(Color.white)
@@ -293,7 +292,7 @@ struct HostEventDetailsView: View {
         .navigationViewStyle(StackNavigationViewStyle())
       }//end vstack
         
-      InviteGuestsModal(show: $showPopUp, viewModel: self.viewModel, event: self.event)
+      InviteGuestsModal(show: $showPopUp, event: self.event)
     }//end zstack
   }
   

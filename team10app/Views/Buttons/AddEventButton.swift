@@ -9,12 +9,7 @@ import SwiftUI
 
 struct AddEventButton: View {
   
-  
-  @ObservedObject var viewModel: ViewModel
-  
-  init(viewModel: ViewModel){
-    self.viewModel = viewModel
-  }
+  @EnvironmentObject var viewModel: ViewModel
   
   var body: some View {
   

@@ -16,7 +16,7 @@ struct EventForm: View {
                  "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC",
                  "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   var optionalEvent: Event? //if nil, you're creating an event; if not, you're editing one
   var navTitle: String
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>

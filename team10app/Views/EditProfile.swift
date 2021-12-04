@@ -8,7 +8,7 @@ import SwiftUI
 
 struct EditProfile: View {
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
   
   @State private var fName: String = ""
