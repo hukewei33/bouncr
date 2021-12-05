@@ -111,7 +111,7 @@ struct ProfileView: View {
               .navigationBarHidden(true)
               
               
-              if (friendRequests.count > 0){
+              if (friendRequests.count > 0 && self.viewModel.users.count > 0){
                 
                 Section(header: Text("Friend Requests")){
                   
@@ -159,7 +159,7 @@ struct ProfileView: View {
                 
               }
               
-              if (friends.count > 0){
+              if (friends.count > 0 && self.viewModel.users.count > 0){
                 
                   
                   // list of current friends the user has
@@ -185,7 +185,7 @@ struct ProfileView: View {
           }.padding(.top, -50)
             
             // if they have no friends and friend requests
-            if (friends.count == 0 && friendRequests.count == 0){
+            if (friends.count == 0 && friendRequests.count == 0 && self.viewModel.users.count > 0){
               
               Group {
                 Text("You have no friends :(")

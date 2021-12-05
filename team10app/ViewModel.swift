@@ -158,6 +158,7 @@ class ViewModel: ObservableObject {
 
       func getFriends(completionHandler: @escaping ([Friend],[Friend]) -> Void){
           self.friendReference.queryOrdered(byChild: "userKey1").observe(.value, with: { snapshot in
+            print("getFriends() ran")
             self.friends.removeAll()
             self.pendingFriends.removeAll()
               for child in snapshot.children {
