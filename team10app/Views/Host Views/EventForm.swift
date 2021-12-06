@@ -103,6 +103,12 @@ struct EventForm: View {
           )
           .labelsHidden()
           .padding(.bottom, 30)
+          //Make sure that when startdate changes to be later than enddate, enddate is automatically updated
+          .onChange (of: startTime) { date in
+            if (endTime<=startTime) {
+              endTime = startTime.addingTimeInterval(300)
+            }
+          }
           
           //End Time Field
           Text("End Date & Time *")
@@ -111,7 +117,7 @@ struct EventForm: View {
           DatePicker(
             "",
             selection: $endTime,
-            in: startTime.addingTimeInterval(500)...,
+            in: startTime.addingTimeInterval(300)...,
             displayedComponents: [.date, .hourAndMinute]
           )
           .labelsHidden()
