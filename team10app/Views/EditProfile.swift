@@ -8,7 +8,7 @@ import SwiftUI
 
 struct EditProfile: View {
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
   
   @State private var fName: String = ""
@@ -129,6 +129,7 @@ struct EditProfile: View {
         HStack {
           Spacer()
           Button(action: {
+              print("EDITING PROFILE...")
               self.viewModel.editProfile(updateVals: ["firstName": fName, "lastName": lName,"email": email, "username": username,"profilePicURL": profilePicURL, "passwordHash": password])
               self.mode.wrappedValue.dismiss()
           }, label: {

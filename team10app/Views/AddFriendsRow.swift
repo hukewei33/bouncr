@@ -6,10 +6,9 @@
 //
 import SwiftUI
 
-//CITATION: Incorporated code for checkbox from: https://makeapppie.com/2019/10/16/checkboxes-in-swiftui/
 struct AddFriendsRow: View {
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   var user: User
   
   init(viewModel : ViewModel, user: User){

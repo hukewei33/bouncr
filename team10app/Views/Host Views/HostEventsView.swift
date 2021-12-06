@@ -9,11 +9,11 @@ import SwiftUI
 
 struct HostEventsView: View {
   
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
   
   //CITATION: The following code for changing top nav bar color comes from here:
   //https://levelup.gitconnected.com/cracking-the-navigation-bar-secrets-with-swiftui-30e9b019502c
-    init(viewModel: ViewModel) {
+  init() {
     let coloredAppearance = UINavigationBarAppearance()
     coloredAppearance.configureWithOpaqueBackground()
     coloredAppearance.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)
@@ -25,8 +25,6 @@ struct HostEventsView: View {
     UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
     
     UINavigationBar.appearance().tintColor = .white
-    
-    self.viewModel = viewModel
   }
   
   var body: some View {
@@ -41,12 +39,9 @@ struct HostEventsView: View {
                 .bold()
                 .font(.system(size: 22))
                 .padding()
-  //            ForEach(0..<self.viewModel.currentEvents.count, id: \.self) { index in
-  //               HostOngoingEventCard(event: self.viewModel.currentEvents[index])
-  //            }
-                ForEach(self.viewModel.hostCurrentEvents, id: \.self) { event in
-                  HostOngoingEventCard(viewModel: viewModel, event: event)
-                }
+              ForEach(self.viewModel.hostCurrentEvents, id: \.self) { event in
+                HostOngoingEventCard(event: event)
+              }
             }
             
             //Upcoming events
@@ -55,12 +50,8 @@ struct HostEventsView: View {
                 .bold()
                 .font(.system(size: 22))
                 .padding()
-//              ForEach(0..<self.viewModel.events.count, id: \.self) { index in
-//                HostUpcomingEventCard(event: self.viewModel.events[index])
-//              }
-              //ForEach(colors, id: \.self) { color in
               ForEach(self.viewModel.hostEvents, id: \.self) { event in
-                HostUpcomingEventCard(viewModel: viewModel, event: event)
+                HostUpcomingEventCard(event: event)
               }
             }
             
@@ -81,9 +72,8 @@ struct HostEventsView: View {
           Spacer()
           HStack {
             Spacer()
-//            NavigationLink(destination: CreateEventView(viewModel: viewModel)) {
-            NavigationLink(destination: EventForm(viewModel: viewModel, navTitle: "New Event")) {
-              AddEventButton(viewModel: viewModel)
+            NavigationLink(destination: EventForm(navTitle: "New Event")) {
+              AddEventButton()
             }
           }
         }

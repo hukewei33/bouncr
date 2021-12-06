@@ -13,16 +13,9 @@ import Combine
 
 struct ProfileView: View {
   
-  var user: User
-  @ObservedObject var viewModel: ViewModel
+  @EnvironmentObject var viewModel: ViewModel
 //  @State private var viewFriendRequests = true
   
-  init(viewModel: ViewModel, user: User){
-    self.viewModel = viewModel
-    self.user = user
-    print(viewModel.pendingFriends.filter{$0.userKey1 == self.viewModel.thisUser!.key})
-    print(viewModel.friends.filter{$0.userKey1 == self.viewModel.thisUser!.key})
-  }
   
     var body: some View {
       
@@ -84,7 +77,7 @@ struct ProfileView: View {
             .padding([.leading, .trailing], 5)
             Spacer()
             
-            NavigationLink(destination: EditProfile(viewModel: viewModel)){
+            NavigationLink(destination: EditProfile()){
               
               ZStack {
                 Image(systemName: "square.and.pencil")
@@ -106,31 +99,11 @@ struct ProfileView: View {
           .background(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
           .edgesIgnoringSafeArea(.top)
           
-
-  //        // SEGMENTED CONTROL
-  //
-  //        Picker("List to View", selection: $viewFriendRequests){
-  //
-  //          Text("Friends").tag(true)
-  //          Text("Past Events").tag(false)
-  //
-  //        }.pickerStyle(SegmentedPickerStyle())
-  //        .frame(maxWidth: 300, alignment: .center)
-          
-          
           if (self.viewModel.thisUser != nil){
             
             List {
               
-  //            Button(action: {
-  //              print("make friend req")
-  //            }, label: {
-  //              Text("Make Friend Request")
-  //                .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-  //
-  //            })
-              
-              NavigationLink(destination: AddFriends(viewModel: viewModel)) {
+              NavigationLink(destination: AddFriends()) {
                 Text("Make Friend Request")
                   .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
               }
@@ -138,7 +111,7 @@ struct ProfileView: View {
               .navigationBarHidden(true)
               
               
-              if (friendRequests.count > 0){
+              if (friendRequests.count > 0 && self.viewModel.users.count > 0){
                 
                 Section(header: Text("Friend Requests")){
                   
@@ -152,9 +125,9 @@ struct ProfileView: View {
                     }
                         .swipeActions(edge: .trailing) {
                           Button(action: {
-                            print("friend req accepted")
+//                            print("friend req accepted")
                             self.viewModel.acceptFriendInvite(acceptedInvite: self.viewModel.pendingFriends[index])
-                            print(self.viewModel.pendingFriends)
+//                            print(self.viewModel.pendingFriends)
                           }){
                             HStack{
                               Text("Accept")
@@ -166,7 +139,7 @@ struct ProfileView: View {
                         }
                         .swipeActions(edge: .leading) {
                           Button(action: {
-                            print("friend req declined")
+//                            print("friend req declined")
                             self.viewModel.rejectFriend(rejectedInvite: self.viewModel.pendingFriends[index])
                           }){
                             HStack{
@@ -186,7 +159,7 @@ struct ProfileView: View {
                 
               }
               
-              if (friends.count > 0){
+              if (friends.count > 0 && self.viewModel.users.count > 0){
                 
                   
                   // list of current friends the user has
@@ -212,7 +185,7 @@ struct ProfileView: View {
           }.padding(.top, -50)
             
             // if they have no friends and friend requests
-            if (friends.count == 0 && friendRequests.count == 0){
+            if (friends.count == 0 && friendRequests.count == 0 && self.viewModel.users.count > 0){
               
               Group {
                 Text("You have no friends :(")
@@ -225,17 +198,11 @@ struct ProfileView: View {
             
             Spacer()
             
-            
           }
 
-          
           Spacer()
           
         }
-        
-        
-      }
-  
-        
+      } //End NavigationView
     }
 }
