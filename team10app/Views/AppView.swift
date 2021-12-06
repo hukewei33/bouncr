@@ -11,6 +11,10 @@ struct AppView: View {
 
     @EnvironmentObject var viewModel: ViewModel
   
+  init(viewModel: ViewModel){
+    self.viewModel = viewModel
+  }
+  
     var body: some View {
       
       if (self.viewModel.loggedin() == nil){

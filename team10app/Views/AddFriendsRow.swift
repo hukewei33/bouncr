@@ -11,6 +11,11 @@ struct AddFriendsRow: View {
   @EnvironmentObject var viewModel: ViewModel
   var user: User
   
+  init(viewModel : ViewModel, user: User){
+    self.viewModel = viewModel
+    self.user = user
+  }
+  
   var body: some View {
     HStack {
       VStack(alignment: .leading) {

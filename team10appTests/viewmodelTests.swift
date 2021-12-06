@@ -11,7 +11,7 @@ import Firebase
 
 class viewModelTests: XCTestCase {
     let testViewModel = ViewModel()
-
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         //set up context
@@ -53,14 +53,16 @@ class viewModelTests: XCTestCase {
         self.testViewModel.users.append(newUser2)
         self.testViewModel.users.append(newUser3)
         self.testViewModel.users.append(newUser4)
-        let curTime1 = Date()
-        let curTime2 = Date()
+        let curTime1 = Date() + (25 * 60)
+        let curTime2 = Date() + (35 * 60)
+        let curTime3 = Date() - (25 * 60)
+        let curTime4 = Date() + (25 * 60)
         let newEvent1 = Event(name: "event1", startTime: curTime1 , endTime: curTime2, street1: "teststreet1", street2: "teststreet2", city: "testcity", state: "pa", zip: "12345", description: "testdescription", key: "testeventId1",attendenceVisible:true,friendsAttendingVisible:false)
-        let newEvent2 = Event(name: "event2", startTime: curTime1 , endTime: curTime2, street1: "teststreet1", street2: "teststreet2", city: "testcity", state: "pa", zip: "12345", description: "testdescription", key: "testeventId2",attendenceVisible:true,friendsAttendingVisible:false)
+        let newEvent2 = Event(name: "event2", startTime: curTime3 , endTime: curTime4, street1: "teststreet1", street2: "teststreet2", city: "testcity", state: "pa", zip: "12345", description: "testdescription", key: "testeventId2",attendenceVisible:true,friendsAttendingVisible:false)
         self.testViewModel.events.removeAll()
         self.testViewModel.events.append(newEvent1)
-        self.testViewModel.events.append(newEvent2)
-
+        self.testViewModel.currentEvents.append(newEvent2)
+        
         let newInvite1 = Invite(userKey: "Dwight",
                                 eventKey: "testeventId1",
                                 key: "testinvite1")
@@ -97,93 +99,96 @@ class viewModelTests: XCTestCase {
         let newHost2 = Host(userKey: "Jim" ,
                             eventKey:"testeventId2",
                             key : "testhostId2")
+        let newHost3 = Host(userKey: "John" ,
+                            eventKey:"testeventId1",
+                            key : "testhostId3")
+        let newHost4 = Host(userKey: "John" ,
+                            eventKey:"testeventId2",
+                            key : "testhostId4")
+        
         self.testViewModel.hosts.removeAll()
         self.testViewModel.hosts.append(newHost1)
         self.testViewModel.hosts.append(newHost2)
+        self.testViewModel.hosts.append(newHost3)
+        self.testViewModel.hosts.append(newHost4)
         //}
         
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func test_login(){
         //let testViewModel = ViewModel()
         //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.testViewModel.login(username: "assistantregionalmanager", pword: "examplepw1"), false)
-            XCTAssertEqual(self.testViewModel.login(username: "assistantregionalmanager", pword: "examplepw"), true)
-            XCTAssertEqual(self.testViewModel.thisUser?.username, "assistantregionalmanager")
+        XCTAssertEqual(self.testViewModel.login(username: "assistantregionalmanager", pword: "examplepw1"), false)
+        XCTAssertEqual(self.testViewModel.login(username: "assistantregionalmanager", pword: "examplepw"), true)
+        XCTAssertEqual(self.testViewModel.thisUser?.username, "assistantregionalmanager")
         //}
     }
-
+    
     func test_loggedin(){
         //let testViewModel = ViewModel()
         XCTAssertEqual(self.testViewModel.loggedin(), nil)
         //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.testViewModel.login(username: "assistantregionalmanager", pword: "examplepw"), true)
-            XCTAssertEqual(self.testViewModel.loggedin() ,"Dwight")
+        XCTAssertEqual(self.testViewModel.login(username: "assistantregionalmanager", pword: "examplepw"), true)
+        XCTAssertEqual(self.testViewModel.loggedin() ,"Dwight")
         //}
     }
-
+    
     func test_logout(){
-
+        
         //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(self.testViewModel.login(username: "assistantregionalmanager", pword: "examplepw"), true)
-            self.testViewModel.logout()
-            XCTAssertEqual(self.testViewModel.loggedin(), nil)
+        XCTAssertEqual(self.testViewModel.login(username: "assistantregionalmanager", pword: "examplepw"), true)
+        self.testViewModel.logout()
+        XCTAssertEqual(self.testViewModel.loggedin(), nil)
         //}
     }
-
+    
     func test_indexEventGuests(){
-
-        //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-        XCTAssertEqual(self.testViewModel.invites.count,5)
-        XCTAssertEqual(self.testViewModel.events.count,2)
-//        let guestIDList = self.testViewModel.invites.filter {$0.eventKey == "testeventId1"}.map{$0.userKey}
-//        XCTAssertEqual(guestIDList.count, 3)
-//        let res = self.testViewModel.users.filter {guestIDList.contains($0.key)}
-//        XCTAssertEqual(self.testViewModel.users.count,1)
+        
         let res = self.testViewModel.indexEventGuests(eventKey: "testeventId1")
         XCTAssertEqual(self.testViewModel.indexEventGuests(eventKey: "testeventId1").count, 3)
         XCTAssertEqual(res.first?.key, "Dwight")
         XCTAssertEqual(res.last?.key, "John")
-        //            let res1 = self.testViewModel.indexEventGuests(eventKey: "testeventId2")
-        //            XCTAssertEqual(res1.first?.key, "Tom")
+        let res1 = self.testViewModel.indexEventGuests(eventKey: "testeventId2")
+        XCTAssertEqual(res1.first?.key, "Tom")
         //}
     }
-
+    
     func test_getEventAttendence(){
         //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let res = self.testViewModel.getEventAttendence(eventKey: "testeventId1")
-            XCTAssertEqual(res,[0,3])
-            self.testViewModel.invites[0].checkinStatus = true
-            let res1 = self.testViewModel.getEventAttendence(eventKey: "testeventId1")
-            XCTAssertEqual(res1,[1,3])
-            let res2 = self.testViewModel.getEventAttendence(eventKey: "testeventId2")
-            XCTAssertEqual(res2,[0,2])
-
+        let res = self.testViewModel.getEventAttendence(eventKey: "testeventId1")
+        XCTAssertEqual(res,[0,3])
+        self.testViewModel.invites[0].checkinStatus = true
+        let res1 = self.testViewModel.getEventAttendence(eventKey: "testeventId1")
+        XCTAssertEqual(res1,[1,3])
+        let res2 = self.testViewModel.getEventAttendence(eventKey: "testeventId2")
+        XCTAssertEqual(res2,[0,2])
+        
         //}
     }
-
+    
     func test_getAttendingFriends(){
         //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let res = self.testViewModel.getAttendingFriends(eventKey: "testeventId1")
-            XCTAssertEqual(res.first?.key, "Jim")
-            XCTAssertEqual(res.last?.key, "John")
-            let res1 = self.testViewModel.getAttendingFriends(eventKey: "testeventId2")
-            XCTAssertEqual(res1.first?.key, "John")
+        let res = self.testViewModel.getAttendingFriends(eventKey: "testeventId1")
+        XCTAssertEqual(res.first?.key, "Jim")
+        XCTAssertEqual(res.last?.key, "John")
+        let res1 = self.testViewModel.getAttendingFriends(eventKey: "testeventId2")
+        XCTAssertEqual(res1.first?.key, "John")
         //}
     }
-
+    
     func test_indexEventHosts(){
         //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let res = self.testViewModel.indexEventHosts(eventKey: "testeventId2")
-            XCTAssertEqual(res.first?.key, "Dwight")
-            XCTAssertEqual(res.last?.key, "Jim")
+        let res = self.testViewModel.indexEventHosts(eventKey: "testeventId2")
+        XCTAssertEqual(res.count, 3)
+        XCTAssertEqual(res.first?.key, "Dwight")
+        XCTAssertEqual(res.last?.key, "John")
         //}
     }
-
+    
     func test_addPotentialInvite(){
         XCTAssertEqual(self.testViewModel.toBeInvited.count, 0)
         let newUser = User(firstName: "testfirstName",
@@ -196,9 +201,9 @@ class viewModelTests: XCTestCase {
         )
         self.testViewModel.addPotentialInvite(user: newUser)
         XCTAssertEqual(self.testViewModel.toBeInvited.count, 1)
-
+        
     }
-
+    
     func test_removePotentialInvite(){
         let newUser = User(firstName: "testfirstName",
                            lastName: "testlastName",
@@ -212,7 +217,7 @@ class viewModelTests: XCTestCase {
         XCTAssertEqual(self.testViewModel.toBeInvited.count, 1)
         self.testViewModel.removePotentialInvite(user: newUser)
         XCTAssertEqual(self.testViewModel.toBeInvited.count, 0)
-
+        
     }
     func test_clearToBeInvited(){
         let newUser1 = User(firstName: "testfirstName",
@@ -236,31 +241,53 @@ class viewModelTests: XCTestCase {
         XCTAssertEqual(self.testViewModel.toBeInvited.count, 2)
         self.testViewModel.clearToBeInvited()
         XCTAssertEqual(self.testViewModel.toBeInvited.count, 0)
-
+        
     }
-
+    
     func test_indexGuestEvents(){
-//        let newUser1 = User(firstName: "testfirstName",
-//                            lastName: "testlastName",
-//                            email:"testemail",
-//                            username:  "testusername",
-//                            profilePicURL: nil ,
-//                            passwordHash: "1",
-//                            key: "John"
-//        )
-//        self.testViewModel.thisUser = newUser1
+        
         XCTAssertEqual(self.testViewModel.login(username: "john", pword: "123"), true)
-
+        
         //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let res = self.testViewModel.indexGuestEvents()
-            XCTAssertEqual(res.first?.key, "testeventId1")
-            XCTAssertEqual(res.last?.key, "testeventId2")
+        let res = self.testViewModel.indexGuestEvents()
+        XCTAssertEqual(res.first?.key, "testeventId1")
+        XCTAssertEqual(res.last?.key, "testeventId2")
         //}
     }
-
-    //need to write search
+    
+    func test_indexHostEvents(){
+        let curTime1 = Date() + (25 * 60)
+        let curTime2 = Date() + (35 * 60)
+        let curTime3 = Date() - (25 * 60)
+        let curTime4 = Date() - (15 * 60)
+        let newEvent3 = Event(name: "event3", startTime: curTime1 , endTime: curTime2, street1: "teststreet1", street2: "teststreet2", city: "testcity", state: "pa", zip: "12345", description: "testdescription", key: "testeventIda",attendenceVisible:true,friendsAttendingVisible:false)
+        let newEvent4 = Event(name: "event4", startTime: curTime3 , endTime: curTime4, street1: "teststreet1", street2: "teststreet2", city: "testcity", state: "pa", zip: "12345", description: "testdescription", key: "testeventIdb",attendenceVisible:true,friendsAttendingVisible:false)
+        self.testViewModel.events.append(newEvent3)
+        self.testViewModel.currentEvents.append(newEvent4)
+        let newHost5 = Host(userKey: "John" ,
+                            eventKey:"testeventIda",
+                            key : "testhostId5")
+        let newHost6 = Host(userKey: "John" ,
+                            eventKey:"testeventIdb",
+                            key : "testhostId6")
+        self.testViewModel.hosts.append(newHost5)
+        self.testViewModel.hosts.append(newHost6)
+        XCTAssertEqual(self.testViewModel.login(username: "john", pword: "123"), true)
+        let _ = self.testViewModel.indexHostEvents()
+        XCTAssertEqual(self.testViewModel.hostEvents.count,2)
+        XCTAssertEqual(self.testViewModel.hostEvents.first?.name,"event1")
+        XCTAssertEqual(self.testViewModel.hostEvents.last?.name,"event3")
+        XCTAssertEqual(self.testViewModel.hostCurrentEvents.count,1)
+        XCTAssertEqual(self.testViewModel.hostCurrentEvents.last?.name,"event2")
+        XCTAssertEqual(self.testViewModel.hostPastEvents.count,1)
+        XCTAssertEqual(self.testViewModel.hostPastEvents.last?.name,"event4")
+        
+        
+    }
+    
+    
     func test_searchUser(){
-
+        
         self.testViewModel.users.removeAll()
         let newUser1 = User(firstName: "ab",
                             lastName: "bc",
@@ -299,9 +326,9 @@ class viewModelTests: XCTestCase {
         XCTAssertEqual(self.testViewModel.searchResults.count, 2)
         self.testViewModel.searchUsers(query: "gh")
         XCTAssertEqual(self.testViewModel.searchResults.count, 1)
-
+        
     }
-
-
-
+    
+    
+    
 }

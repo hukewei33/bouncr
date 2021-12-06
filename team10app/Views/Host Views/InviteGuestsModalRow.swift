@@ -14,6 +14,11 @@ struct InviteGuestsModalRow: View {
   var user: User
   let width = UIScreen.main.bounds.width * 0.25
   @State var isChecked: Bool = false
+  
+  init(viewModel: ViewModel, user: User){
+    self.viewModel = viewModel
+    self.user = user
+  }
  
   func toggleCheckBox() {
     isChecked = !isChecked
