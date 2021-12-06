@@ -21,7 +21,7 @@ struct InviteGuestsModal: View {
     self.event = event
   }
   
-  //Copied & edited from SwiftRepos lab, for searh functionality
+  //Copied & edited from SwiftRepos lab, for search functionality
   func displayResults() {
     if searchText == "" {
       searchResults = viewModel.getNotInvitedUsers(eventKey: event.key)
