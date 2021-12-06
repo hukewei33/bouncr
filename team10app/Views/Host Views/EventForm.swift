@@ -21,8 +21,7 @@ struct EventForm: View {
   var navTitle: String
   @Environment(\.presentationMode) var mode: Binding<PresentationMode>
   
-  init(viewModel: ViewModel, optionalEvent: Event? = nil, navTitle: String){
-    self.viewModel = viewModel
+  init(optionalEvent: Event? = nil, navTitle: String){
     self.optionalEvent = optionalEvent
     self.navTitle = navTitle
   }

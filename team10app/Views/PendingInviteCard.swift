@@ -18,8 +18,7 @@ struct PendingInviteCard: View {
   @State var dateStr : String = ""
   
   
-  init(viewModel: ViewModel, invite: Invite){
-    self.viewModel = viewModel
+  init(invite: Invite){
     self.invite = invite
   }
   

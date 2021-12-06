@@ -18,10 +18,6 @@ struct EditProfile: View {
   @State private var password: String = ""
   @State private var profilePicURL: String = "" //optional, for now users can't edit this
   
-  init(viewModel : ViewModel){
-    self.viewModel = viewModel
-  }
-  
   func initView() {
     if let user = self.viewModel.thisUser {
       fName = user.firstName

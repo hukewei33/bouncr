@@ -10,10 +10,6 @@ struct AddFriends: View {
   
   @EnvironmentObject var viewModel: ViewModel
   
-  init(viewModel : ViewModel){
-    self.viewModel = viewModel
-  }
-  
   var body: some View {
     
     if (self.viewModel.getNonFriends().count > 0){

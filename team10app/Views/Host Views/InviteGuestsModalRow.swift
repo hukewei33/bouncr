@@ -15,8 +15,7 @@ struct InviteGuestsModalRow: View {
   let width = UIScreen.main.bounds.width * 0.25
   @State var isChecked: Bool = false
   
-  init(viewModel: ViewModel, user: User){
-    self.viewModel = viewModel
+  init(user: User){
     self.user = user
   }
  

@@ -11,8 +11,7 @@ struct AddFriendsRow: View {
   @EnvironmentObject var viewModel: ViewModel
   var user: User
   
-  init(viewModel : ViewModel, user: User){
-    self.viewModel = viewModel
+  init(user: User){
     self.user = user
   }
   

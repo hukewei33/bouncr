@@ -16,9 +16,8 @@ struct InviteGuestsModal: View {
   @State private var searchText: String = ""
   @State private var searchResults: [User] = []
   
-  init(show: Binding<Bool>, viewModel: ViewModel, event: Event){
+  init(show: Binding<Bool>, event: Event){
     self._show = show
-    self.viewModel = viewModel
     self.event = event
   }
   
