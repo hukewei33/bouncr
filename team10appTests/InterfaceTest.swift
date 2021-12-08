@@ -276,7 +276,7 @@ class RepoParsingTests: XCTestCase {
         // Given...
         let testViewModel = ViewModel()
         let interface = FriendInterface()
-        if let newID = interface.create(userKey1: "testUserKey1",userKey2: "testUserKey2")
+        if let newID = interface.create(userKey1: "testUserKey1",userKey2: "testUserKey2",originUserId: "testuserKey1")
         {
             
             // When...
@@ -302,7 +302,7 @@ class RepoParsingTests: XCTestCase {
         // Given...
         let testViewModel = ViewModel()
         let interface = FriendInterface()
-        if let newID = interface.create(userKey1: "testUserKey1",userKey2: "testUserKey2")
+        if let newID = interface.create(userKey1: "testUserKey1",userKey2: "testUserKey2", originUserId: "testuserKey1")
         {
             
             interface.update(key: newID,updateVals: ["userKey1": "testchanged"] )
@@ -504,7 +504,7 @@ class RepoParsingTests: XCTestCase {
         
         if let (id1,id2)=testViewModel.addFriend(userKey1: "testfriend1", userKey2: "testfriend2"){
             // When...
-            var newFriend = Friend(userKey1: "testfriend1", userKey2: "testfriend2", key: id1)
+            var newFriend = Friend(userKey1: "testfriend1", userKey2: "testfriend2", key: id1, originUserId: "testuserKey1")
             newFriend.twinKey = id2
             testViewModel.acceptFriendInvite(acceptedInvite: newFriend)
             testViewModel.getFriends{ (a,elems) in
@@ -529,7 +529,7 @@ class RepoParsingTests: XCTestCase {
         
         if let (id1,id2)=testViewModel.addFriend(userKey1: "testfriend1", userKey2: "testfriend2"){
             // When...
-            var newFriend = Friend(userKey1: "testfriend1", userKey2: "testfriend2", key: id1)
+            var newFriend = Friend(userKey1: "testfriend1", userKey2: "testfriend2", key: id1, originUserId: "testuserKey1")
             newFriend.twinKey = id2
             testViewModel.rejectFriend(rejectedInvite: newFriend)
             testViewModel.getFriends{ (a,elems) in
@@ -545,6 +545,10 @@ class RepoParsingTests: XCTestCase {
             
         }
         waitForExpectations(timeout: expired)
+        
+    }
+    
+    func test_editProfile(){
         
     }
     

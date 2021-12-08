@@ -19,12 +19,13 @@ class FriendInterface {
 //
 //    }
     
-    func create(userKey1: String, userKey2: String)-> String?{
+    func create(userKey1: String, userKey2: String,originUserId:String )-> String?{
         let keyResult :String? = self.friendReference.childByAutoId().key
         if let userId = keyResult{
-            let newFriend = Friend(userKey1: userKey1 ,
-                               userKey2:userKey2,
-                            key : userId)
+            let newFriend = Friend(userKey1: userKey1 ,userKey2:userKey2,
+                                   key: userId,
+                            originUserId:originUserId
+                            )
             self.friendReference.child(userId).setValue(newFriend.toAnyObject())
             return userId
         }

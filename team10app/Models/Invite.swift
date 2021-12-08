@@ -20,7 +20,7 @@ struct Invite {
     //time that user checked in, nil of user has not checked in
     let checkinTime: Double?
     //flag to indicate if user accepted invite
-    let inviteStatus: Bool
+    var inviteStatus: Bool
     //flag to indicate if user checked into event
     var checkinStatus: Bool
 

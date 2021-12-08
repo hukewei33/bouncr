@@ -15,16 +15,17 @@ struct Friend {
     let userKey2: String
     var twinKey : String
     let accepted : Bool
+    let originUserId: String?
 
 
-    init(userKey1: String,userKey2: String, key: String = "") {
+    init(userKey1: String,userKey2: String, key: String = "", originUserId: String ) {
         self.ref = nil
         self.key = key
         self.userKey1 = userKey1
         self.userKey2 = userKey2
         self.twinKey = "dummy"
         self.accepted = false
-        
+        self.originUserId = originUserId
 
     }
 
@@ -46,6 +47,7 @@ struct Friend {
         self.userKey2 = userKey2
         self.twinKey = twinKey
         self.accepted = accepted
+        self.originUserId = value["originUserId"] as? String
 
     }
 
@@ -54,7 +56,8 @@ struct Friend {
             "userKey1": userKey1,
             "userKey2": userKey2,
             "twinKey":twinKey,
-            "accepted":accepted
+            "accepted":accepted,
+            "originUserId":originUserId
         ]
     }
 }

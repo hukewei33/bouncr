@@ -72,12 +72,14 @@ class viewModelTests: XCTestCase {
         let newInvite3 = Invite(userKey: "Tom",
                                 eventKey: "testeventId2",
                                 key: "testinvite3")
-        let newInvite4 = Invite(userKey: "John",
+        var  newInvite4 = Invite(userKey: "John",
                                 eventKey: "testeventId1",
                                 key: "testinvite4")
-        let newInvite5 = Invite(userKey: "John",
+        newInvite4.inviteStatus = true
+        var  newInvite5 = Invite(userKey: "John",
                                 eventKey: "testeventId2",
                                 key: "testinvite5")
+        newInvite5.inviteStatus = true
         self.testViewModel.invites.removeAll()
         self.testViewModel.invites.append(newInvite1)
         self.testViewModel.invites.append(newInvite2)
@@ -86,10 +88,12 @@ class viewModelTests: XCTestCase {
         self.testViewModel.invites.append(newInvite5)
         let newFriend1 = Friend(userKey1: "testuserKey1" ,
                                 userKey2:"Jim",
-                                key : "testFriendId1")
+                                key: "testFriendId1",
+                                originUserId: "testuserKey1")
         let newFriend2 = Friend(userKey1: "testuserKey1" ,
                                 userKey2:"John",
-                                key : "testFriendId2")
+                                key: "testFriendId2",
+                                originUserId: "testuserKey1")
         self.testViewModel.friends.removeAll()
         self.testViewModel.friends.append(newFriend1)
         self.testViewModel.friends.append(newFriend2)
@@ -316,18 +320,31 @@ class viewModelTests: XCTestCase {
         self.testViewModel.users.append(newUser1)
         self.testViewModel.users.append(newUser2)
         self.testViewModel.users.append(newUser3)
-        self.testViewModel.searchUsers(query: "ab")
-        XCTAssertEqual(self.testViewModel.searchResults.count, 1)
-        self.testViewModel.searchUsers(query: "bc")
-        XCTAssertEqual(self.testViewModel.searchResults.count, 2)
-        self.testViewModel.searchUsers(query: "cd")
-        XCTAssertEqual(self.testViewModel.searchResults.count, 3)
-        self.testViewModel.searchUsers(query: "ef")
-        XCTAssertEqual(self.testViewModel.searchResults.count, 2)
-        self.testViewModel.searchUsers(query: "gh")
-        XCTAssertEqual(self.testViewModel.searchResults.count, 1)
+        var res1 = self.testViewModel.searchUsers(query: "ab", eventKey: "test")
+        XCTAssertEqual(res1.count, 1)
+        res1 = self.testViewModel.searchUsers(query: "bc", eventKey: "test")
+        XCTAssertEqual(res1.count, 2)
+        res1 = self.testViewModel.searchUsers(query: "cd", eventKey: "test")
+        XCTAssertEqual(res1.count, 3)
+        res1 = self.testViewModel.searchUsers(query: "ef", eventKey: "test")
+        XCTAssertEqual(res1.count, 2)
+        res1 = self.testViewModel.searchUsers(query: "gh", eventKey: "test")
+        XCTAssertEqual(res1.count, 1)
         
     }
+    
+    func test_getNon_friends(){
+        
+    }
+    
+    func test_getNotInvitedUsers(){
+        
+    }
+    
+    func test_indexPendingGuestEvents(){
+        
+    }
+    
     
     
     

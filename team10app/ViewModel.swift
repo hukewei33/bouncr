@@ -121,6 +121,7 @@ class ViewModel: ObservableObject {
                   }
               }
               self.users = self.users .sorted { $0.username < $1.username }
+              //test
               if let userKey = self.loggedin() {
                 self.getUser(userKey: userKey)
               }
@@ -352,6 +353,7 @@ class ViewModel: ObservableObject {
   }
   
   
+    //need to test
     // Get all the users who are not invited to an event, display in InviteGuestsModal
     func getNotInvitedUsers(eventKey: String) -> [User] {
       var guestIDList = self.invites.filter {$0.eventKey == eventKey}.map{$0.userKey}
@@ -409,9 +411,9 @@ class ViewModel: ObservableObject {
     
                                                                       
     func addFriend(userKey1: String, userKey2 : String)->(String,String)? {
-        if let friendRelation1 = self.friendInterface.create(userKey1: userKey1, userKey2: userKey2)
+        if let friendRelation1 = self.friendInterface.create(userKey1: userKey1, userKey2: userKey2, originUserId: userKey1)
         {
-            if let friendRelation2 = self.friendInterface.create(userKey1: userKey2, userKey2: userKey1){
+            if let friendRelation2 = self.friendInterface.create(userKey1: userKey2, userKey2: userKey1, originUserId: userKey1){
                 self.friendInterface.update(key: friendRelation1, updateVals: ["twinKey" : friendRelation2])
                 self.friendInterface.update(key: friendRelation2, updateVals: ["twinKey" : friendRelation1])
 //                // ADDED TO INDICATE WHO INITIATED FOR VIEW
@@ -443,6 +445,7 @@ class ViewModel: ObservableObject {
         
     }
   
+    //test
     //Returns an array of all Users the current user isn't friends with or has sent a friend request to
     func getNonFriends() -> [User] {
       let allFriends = self.pendingFriends + self.friends
@@ -450,12 +453,14 @@ class ViewModel: ObservableObject {
       return self.users.filter{!user2IDs.contains($0.key) && $0.key != self.thisUser!.key}
     }
   
+    //test
     func editProfile(updateVals: [String : Any]) -> (){
       if let userkey = self.loggedin(){
         userInterface.update(key: userkey ,updateVals: updateVals)
       }
     }
   
+    //new
     //After editing your own profile, is called after db is updated, sets thisuser to updated version of thisuser
     func getUser(userKey: String) {
       print("getUser() ran")
@@ -469,6 +474,7 @@ class ViewModel: ObservableObject {
       }
     }
                                                                   
+    //changed
     func searchUsers(query: String, eventKey: String) -> [User] {
         if query == "" {
             return []

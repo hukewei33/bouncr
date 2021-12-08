@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "06FEB1B2-B1D3-4F66-BAFF-B93745FFFEA1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "team10appTests/InterfaceTest.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "test_ParseFirstUser()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "91AA6C10-25A8-462A-BCB6-02C4B3F90C09"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -30,58 +14,501 @@
             filePath = "team10appTests/InterfaceTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
-            landmarkName = "test_ParseFirstHost()"
-            landmarkType = "7">
+            startingLineNumber = "692"
+            endingLineNumber = "692"
+            landmarkName = "RepoParsingTests"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "28F5E47C-EC90-43A9-8BB8-494B72608939"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10appTests/InterfaceTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "707"
+            endingLineNumber = "707"
+            landmarkName = "RepoParsingTests"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "99AC8B59-343E-485F-B215-B37500F84178"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10appTests/InterfaceTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
+            landmarkName = "RepoParsingTests"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD7B7A12-05D9-464A-BF44-EEEA08C3460A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "team10appTests/InterfaceTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "test_CreateHost()"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
+            landmarkName = "test_checkin()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "28F5E47C-EC90-43A9-8BB8-494B72608939 - be69e513ef77317"
+                  uuid = "BD7B7A12-05D9-464A-BF44-EEEA08C3460A - 5b101a442d2adc5b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;team10app.Host&gt;) -&gt; () in team10appTests.RepoParsingTests.test_CreateHost() -&gt; ()"
+                  symbolName = "team10appTests.RepoParsingTests.test_checkin() -&gt; ()"
                   moduleName = "team10appTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "237"
-                  endingLineNumber = "237"
-                  offsetFromSymbolStart = "128">
+                  startingLineNumber = "427"
+                  endingLineNumber = "427"
+                  offsetFromSymbolStart = "1488">
                </Location>
                <Location
-                  uuid = "28F5E47C-EC90-43A9-8BB8-494B72608939 - baa95013b31d4cfb"
+                  uuid = "BD7B7A12-05D9-464A-BF44-EEEA08C3460A - 5b101a442d2adc7c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (team10app.Host) -&gt; Swift.Bool in closure #1 (Swift.Array&lt;team10app.Host&gt;) -&gt; () in team10appTests.RepoParsingTests.test_CreateHost() -&gt; ()"
+                  symbolName = "team10appTests.RepoParsingTests.test_checkin() -&gt; ()"
                   moduleName = "team10appTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "237"
-                  endingLineNumber = "237"
-                  offsetFromSymbolStart = "36">
+                  startingLineNumber = "428"
+                  endingLineNumber = "428"
+                  offsetFromSymbolStart = "1132">
+               </Location>
+               <Location
+                  uuid = "BD7B7A12-05D9-464A-BF44-EEEA08C3460A - 5b101a442d2adac7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "team10appTests.RepoParsingTests.test_checkin() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "407"
+                  endingLineNumber = "407"
+                  offsetFromSymbolStart = "1596">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "346604E6-F7B0-469E-8D32-9574371D571C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
+            landmarkName = "getNotInvitedUsers(eventKey:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D4C4A6FA-9108-41BB-990E-1AE4DEB08E58"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
+            landmarkName = "getNotInvitedUsers(eventKey:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D978A2E-A129-43A1-8773-CD7104CE1F5D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
+            landmarkName = "getNotInvitedUsers(eventKey:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3FAF2FC5-560E-4E5B-8E69-29CF577A2816"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
+            landmarkName = "ViewModel"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "684833C5-A669-4ACF-A9E3-5229FC35B0A0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10appTests/InterfaceTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
+            landmarkName = "test_checkin()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "684833C5-A669-4ACF-A9E3-5229FC35B0A0 - 5b101a442d2adc5b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "team10appTests.RepoParsingTests.test_checkin() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "427"
+                  endingLineNumber = "427"
+                  offsetFromSymbolStart = "1488">
+               </Location>
+               <Location
+                  uuid = "684833C5-A669-4ACF-A9E3-5229FC35B0A0 - 5b101a442d2adcba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "team10appTests.RepoParsingTests.test_checkin() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "426"
+                  endingLineNumber = "426"
+                  offsetFromSymbolStart = "1016">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F3C72499-1983-4C2E-AB3D-1466CC1E556D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10appTests/InterfaceTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "512"
+            endingLineNumber = "512"
+            landmarkName = "test_acceptFriend()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9BFDF296-BD58-43B0-8FA6-81562B3719F8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10appTests/InterfaceTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
+            landmarkName = "test_cascadeDelete()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9BFDF296-BD58-43B0-8FA6-81562B3719F8 - 13b44f44c1b1efdf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;team10app.Invite&gt;, Swift.Array&lt;team10app.Invite&gt;) -&gt; () in team10appTests.RepoParsingTests.test_cascadeDelete() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "458"
+                  endingLineNumber = "458"
+                  offsetFromSymbolStart = "588">
+               </Location>
+               <Location
+                  uuid = "9BFDF296-BD58-43B0-8FA6-81562B3719F8 - 13b44f44c1b1efdf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;team10app.Invite&gt;, Swift.Array&lt;team10app.Invite&gt;) -&gt; () in team10appTests.RepoParsingTests.test_cascadeDelete() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "458"
+                  endingLineNumber = "458"
+                  offsetFromSymbolStart = "468">
+               </Location>
+               <Location
+                  uuid = "9BFDF296-BD58-43B0-8FA6-81562B3719F8 - 75ebabb5466d5599"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;team10app.Invite&gt;, Swift.Array&lt;team10app.Invite&gt;) -&gt; () in closure #1 () -&gt; () in team10appTests.RepoParsingTests.test_cascadeDelete() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "460"
+                  endingLineNumber = "460"
+                  offsetFromSymbolStart = "468">
+               </Location>
+               <Location
+                  uuid = "9BFDF296-BD58-43B0-8FA6-81562B3719F8 - 8d941d384cae2edf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;team10app.Invite&gt;, Swift.Array&lt;team10app.Invite&gt;) -&gt; () in closure #1 () -&gt; () in team10appTests.RepoParsingTests.test_cascadeDelete() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "453"
+                  endingLineNumber = "453"
+                  offsetFromSymbolStart = "464">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EB6983CB-D264-4863-8110-F83ADC139D9F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10appTests/InterfaceTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
+            landmarkName = "test_cascadeDelete()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EB6983CB-D264-4863-8110-F83ADC139D9F - d933b92c584cdd29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;team10app.Host&gt;) -&gt; () in team10appTests.RepoParsingTests.test_cascadeDelete() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "464"
+                  endingLineNumber = "464"
+                  offsetFromSymbolStart = "580">
+               </Location>
+               <Location
+                  uuid = "EB6983CB-D264-4863-8110-F83ADC139D9F - d933b92c584cdd29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;team10app.Host&gt;) -&gt; () in team10appTests.RepoParsingTests.test_cascadeDelete() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "464"
+                  endingLineNumber = "464"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  uuid = "EB6983CB-D264-4863-8110-F83ADC139D9F - d822a245a0689fe6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;team10app.Host&gt;) -&gt; () in closure #1 () -&gt; () in team10appTests.RepoParsingTests.test_cascadeDelete() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "466"
+                  endingLineNumber = "466"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  uuid = "EB6983CB-D264-4863-8110-F83ADC139D9F - 31c70b91cee86e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Array&lt;team10app.Host&gt;) -&gt; () in closure #1 () -&gt; () in team10appTests.RepoParsingTests.test_cascadeDelete() -&gt; ()"
+                  moduleName = "team10appTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kennyhu/Documents/school/67443/team10app/team10appTests/InterfaceTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "459"
+                  endingLineNumber = "459"
+                  offsetFromSymbolStart = "540">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FFC9F0C7-C42D-4FFA-B423-891BAEDBE811"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
+            landmarkName = "createEvent(name:startTime:endTime:street1:street2:city:zip:state:description:attendenceVisible:friendsAttendingVisible:testing:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "510785AE-90C9-49A3-9ABF-4097BF0F0A35"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
+            landmarkName = "createEvent(name:startTime:endTime:street1:street2:city:zip:state:description:attendenceVisible:friendsAttendingVisible:testing:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "392C90FB-2EBF-4827-AD60-990A47FC1D7F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "createEvent(name:startTime:endTime:street1:street2:city:zip:state:description:attendenceVisible:friendsAttendingVisible:testing:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CBB66656-4E35-40B2-806F-B4A36334006B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
+            landmarkName = "ViewModel"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BA9967F-A1ED-4A02-A8D2-139BA7CADDB3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
+            landmarkName = "checkin(inviteKey:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC7D5BA6-3F90-45D0-A963-4EAF74A57455"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
+            landmarkName = "checkin(inviteKey:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1CC12A46-B8FD-467C-AF8E-3C87D14EFDC4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "team10app/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "ViewModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
