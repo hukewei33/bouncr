@@ -59,6 +59,9 @@ struct EventForm: View {
       attendenceVisible = event.attendenceVisible
       friendsAttendingVisible = event.friendsAttendingVisible
     }
+    else {
+      endTime = startTime.addingTimeInterval(300)
+    }
   }
   
   //User can't create/edit event if any required fields are left blank
