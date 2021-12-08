@@ -381,6 +381,7 @@ class ViewModel: ObservableObject {
     func checkin(inviteKey:String)->Bool{
         print("checkin() ran")
         //use invitekey to get invite
+        let a = self.invites
         let thisInvite = self.invites.filter{$0.key == inviteKey}.map{$0.eventKey}
         //use eventid of invite to get hosts
         let hostIDs = self.hosts.filter{thisInvite.contains($0.eventKey)}.map{$0.userKey}
@@ -398,8 +399,6 @@ class ViewModel: ObservableObject {
     
     
     func cascadeEventDelete(eventKey:String) {
-        let a = self.hosts
-        let b = self.pendingInvites
         let relatedHostIDs = self.hosts.filter {$0.eventKey == eventKey} .map {$0.key }
         relatedHostIDs.forEach {x in self.hostInterface.delete(key: x)}
         let relatedInviteIDs = self.invites.filter {$0.eventKey == eventKey} .map {$0.key }

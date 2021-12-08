@@ -23,26 +23,6 @@ class RepoParsingTests: XCTestCase {
     //model tests
     
     
-    //interface tests
-    //    func testParseUser() {
-    //
-    //        // Given...
-    //        let testViewModel = ViewModel()
-    //
-    //        // When...
-    //        testViewModel.getUsers { (elems) in
-    //            XCTAssertEqual(elems.first?.firstName, "Dwight")
-    //            XCTAssertEqual(elems.first?.lastName, "Schrute")
-    //            XCTAssertEqual(elems.last?.firstName, "Michael")
-    //            XCTAssertEqual(elems.last?.lastName, "Scott")
-    //            XCTAssertEqual(elems.count, 6)
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    
     func testcreateUser() {
         
         // Given...
@@ -85,26 +65,6 @@ class RepoParsingTests: XCTestCase {
     }
     
     
-    
-    
-    //    func testParseEvent() {
-    //
-    //        // Given...
-    //        let testViewModel = ViewModel()
-    //
-    //        // When...
-    //        testViewModel.getEvents{ (elems) in
-    //            XCTAssertEqual(elems.first?.firstName, "Dwight")
-    //            XCTAssertEqual(elems.first?.lastName, "Schrute")
-    //            XCTAssertEqual(elems.last?.firstName, "Michael")
-    //            XCTAssertEqual(elems.last?.lastName, "Scott")
-    //            XCTAssertEqual(elems.count, 6)
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
     
     func testcreateEvent() {
         
@@ -154,24 +114,7 @@ class RepoParsingTests: XCTestCase {
         
     }
     
-//    func test_DeteteEvent() {
-//        let testViewModel = ViewModel()
-//        let interface = EventInterface()
-//        if let newID = interface.create(name: "testevent1", startTime: Date() + (25 * 60),endTime: Date() + (45 * 60), street1: "testval", city: "testval2", zip: "testval", state: "testval",attendenceVisible: true , friendsAttendingVisible: false){
-//
-//            interface.delete(key: newID)
-//            testViewModel.getEvents { (_,_,elems) in
-//                let newArray = elems.filter {$0.key == newID}
-//                XCTAssertEqual(newArray.count, 0)
-//                self.expectation.fulfill()
-//
-//            }
-//
-//        }
-//
-//        waitForExpectations(timeout: expired)
-//
-//    }
+
     
     func testcreateInvite() {
         
@@ -395,9 +338,9 @@ class RepoParsingTests: XCTestCase {
                             key: "Tom"
         )
         testViewModel.thisUser = newUser1
-        if let newID = interface.create(userKey: "checkinTest",eventKey: "TomParty"){
-            testViewModel.invites.append(Invite(userKey: "checkinTest",eventKey: "TomParty",key: newID))
-            testViewModel.hosts.append(Host(userKey: "Tom", eventKey: "TomParty"))
+        if let newID = interface.create(userKey: "checkinTest",eventKey: "checkinTestEvent"){
+            testViewModel.invites.append(Invite(userKey: "checkinTest",eventKey: "checkinTestEvent",key: newID))
+            testViewModel.hosts.append(Host(userKey: "Tom", eventKey: "checkinTestEvent"))
             
 //            let a = testViewModel.invites
 //            let b = testViewModel.hosts
@@ -549,200 +492,31 @@ class RepoParsingTests: XCTestCase {
     }
     
     func test_editProfile(){
+        let testViewModel = ViewModel()
+        let interface = UserInterface()
         
+        if let newID = interface.create(firstName: "testval1", lastName : "testval2", email: "testval", password: "testval" , username: "abcedfg"){
+            let newUser1 = User(firstName: "testval1",
+                                lastName: "testval2",
+                                email:"testval",
+                                username:  "abcedfg",
+                                profilePicURL: nil ,
+                                passwordHash: "1",
+                                key: newID
+            )
+            testViewModel.thisUser = newUser1
+            testViewModel.editProfile(updateVals: ["firstName": "testchanged"] )
+            // When...
+            testViewModel.getUsers { (elems) in
+                let newArray = elems.filter {$0.key == newID}
+                XCTAssertEqual(newArray.first?.firstName, "testchanged")
+                self.expectation.fulfill()
+                interface.delete(key: newID)
+            }
+        }
+        waitForExpectations(timeout: expired)
     }
-    
-    
-    
-    
-    
-    
-    
-    //
-    
-    //
-    //    func test_ParseFirstEvent() {
-    //
-    //        // Given...
-    //        let event = EventInterface()
-    //
-    //        // When...
-    //        event.fetch { (events) in
-    //            XCTAssertEqual(events.first?.name, "John's party changed")
-    //            XCTAssertEqual(events.first?.street1, "John's street")
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_CreateEvent() {
-    //        let event = EventInterface()
-    //        let newEventID = event.create(name: "testval", startTime: Date(), street1: "testval", city: "testval", zip: "testval", state: "testval")
-    //        event.fetch { (events) in
-    //                let onlyNewEvent = events.filter {$0.key == newEventID}
-    //                XCTAssertEqual(onlyNewEvent.first?.name, "testval")
-    //                XCTAssertEqual(onlyNewEvent.first?.street1, "testval")
-    //                self.expectation.fulfill()
-    //            }
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_UpdateEvent() {
-    //        let event = EventInterface()
-    //        event.update(key: "JohnParty",updateVals: ["name": "testchanged"] )
-    //        // When...
-    //        event.fetch { (events) in
-    //            let onlyUpdatedEvent = events.filter {$0.key == "JohnParty"}
-    //            XCTAssertEqual(onlyUpdatedEvent.first?.name, "testchanged")
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        // Wait how long...
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_DeleteEvent() {
-    //        let event = EventInterface()
-    //        event.delete(key: "JohnParty")
-    //
-    //        // When...
-    //        event.fetch { (events) in
-    //            let updated = events.filter {$0.key == "JohnParty"}
-    //            XCTAssertEqual(updated.count, 0)
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        // Wait how long...
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_ParseFirstInvite() {
-    //
-    //        // Given...
-    //        let interface = InviteInterface()
-    //
-    //        // When...
-    //        interface.fetch { (list) in
-    //            XCTAssertEqual(list.first?.eventKey, "JohnParty")
-    //            XCTAssertEqual(list.first?.userKey, "Dick")
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_CreateInvite() {
-    //        let interface = InviteInterface()
-    //        let newID = interface.create(userKey: "testval",eventKey: "testval")
-    //        interface.fetch { (list) in
-    //                let newList = list.filter {$0.key == newID}
-    //            XCTAssertEqual(newList.first?.eventKey, "testval")
-    //            XCTAssertEqual(newList.first?.userKey, "testval")
-    //                self.expectation.fulfill()
-    //            }
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_UpdateInvite() {
-    //        let interface = InviteInterface()
-    //        interface.update(key: "JohnPartyDick",updateVals: ["checkinStatus": true] )
-    //        // When...
-    //        interface.fetch { (list) in
-    //            let newList = list.filter {$0.key == "JohnPartyDick"}
-    //            XCTAssertEqual(newList.first?.checkinStatus, true)
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        // Wait how long...
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_DeleteInvite() {
-    //        let interface = InviteInterface()
-    //        interface.delete(key: "MnNunDKsZ1hiQO16MV1")
-    //
-    //        // When...
-    //        interface.fetch { (list) in
-    //            let newList = list.filter {$0.key == "MnNunDKsZ1hiQO16MV1"}
-    //            XCTAssertEqual(newList.count, 0)
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        // Wait how long...
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_ParseFirstHost() {
-    //
-    //        // Given...
-    //        let interface = HostInterface(userKey: "JohnPartyJohn")
-    //
-    //        // When...
-    //        interface.fetch(userKey: "Tom") { (list) in
-    //            //print(list)
-    //            XCTAssertEqual(list.first?.eventKey, "TomParty")
-    //            XCTAssertEqual(list.first?.userKey, "Tom")
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_CreateHost() {
-    //
-    //        let interface = HostInterface(userKey: "testval")
-    //        let newID = interface.create(userKey: "testval", eventKey: "testval" )
-    //        interface.fetch (userKey: "testval")  { (list) in
-    //            let newList = list.filter {$0.key == newID}
-    //            XCTAssertEqual(newList.first?.eventKey, "testval")
-    //            XCTAssertEqual(newList.first?.userKey, "testval")
-    //            self.expectation.fulfill()
-    //            }
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_UpdateHost() {
-    //        let interface = HostInterface(userKey: "testval")
-    //        interface.update(key: "key",updateVals: ["userKey": "testchanged"] )
-    //        // When...
-    //        interface.fetch (userKey: "testVal")  { (list) in
-    //            let newList = list.filter {$0.key == "key"}
-    //            XCTAssertEqual(newList.first?.userKey, "testchanged")
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        // Wait how long...
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    //
-    //    func test_DeleteHost() {
-    //        let interface = HostInterface(userKey: "testval")
-    //        interface.delete(key: "useKeyToDel")
-    //
-    //        // When...
-    //        interface.fetch (userKey: "testVal")  { (list) in
-    //            let newList = list.filter {$0.key == "useKeyToDel"}
-    //            XCTAssertEqual(newList.count, 0)
-    //            self.expectation.fulfill()
-    //        }
-    //
-    //        // Wait how long...
-    //        waitForExpectations(timeout: expired)
-    //
-    //    }
-    
+   
     
     
 }

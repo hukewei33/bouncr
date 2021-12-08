@@ -27,7 +27,7 @@ class viewModelTests: XCTestCase {
         let newUser2 = User(firstName: "testfirstName",
                             lastName: "testlastName",
                             email:"testemail",
-                            username:  "testusername",
+                            username:  "jim",
                             profilePicURL: nil ,
                             passwordHash: "1",
                             key: "Jim"
@@ -86,6 +86,10 @@ class viewModelTests: XCTestCase {
         self.testViewModel.invites.append(newInvite3)
         self.testViewModel.invites.append(newInvite4)
         self.testViewModel.invites.append(newInvite5)
+        self.testViewModel.pendingInvites.removeAll()
+        self.testViewModel.pendingInvites.append(newInvite1)
+        self.testViewModel.pendingInvites.append(newInvite2)
+        self.testViewModel.pendingInvites.append(newInvite3)
         let newFriend1 = Friend(userKey1: "testuserKey1" ,
                                 userKey2:"Jim",
                                 key: "testFriendId1",
@@ -164,12 +168,12 @@ class viewModelTests: XCTestCase {
     func test_getEventAttendence(){
         //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
         let res = self.testViewModel.getEventAttendence(eventKey: "testeventId1")
-        XCTAssertEqual(res,[0,3])
+        XCTAssertEqual(res,[0,5])
         self.testViewModel.invites[0].checkinStatus = true
         let res1 = self.testViewModel.getEventAttendence(eventKey: "testeventId1")
-        XCTAssertEqual(res1,[1,3])
+        XCTAssertEqual(res1,[1,5])
         let res2 = self.testViewModel.getEventAttendence(eventKey: "testeventId2")
-        XCTAssertEqual(res2,[0,2])
+        XCTAssertEqual(res2,[0,3])
         
         //}
     }
@@ -334,18 +338,61 @@ class viewModelTests: XCTestCase {
     }
     
     func test_getNon_friends(){
+        let newUser1 = User(firstName: "ab",
+                            lastName: "bc",
+                            email:"testemail",
+                            username:  "cd",
+                            profilePicURL: nil ,
+                            passwordHash: "1",
+                            key: "testuserKey1"
+        )
+        self.testViewModel.thisUser = newUser1
+        let res = self.testViewModel.getNonFriends()
+        XCTAssertEqual(res.count, 2)
+        XCTAssertEqual(res.first?.key, "Dwight")
+        XCTAssertEqual(res.last?.key, "Tom")
+        
         
     }
     
     func test_getNotInvitedUsers(){
+        let newUser1 = User(firstName: "ab",
+                            lastName: "bc",
+                            email:"testemail",
+                            username:  "cd",
+                            profilePicURL: nil ,
+                            passwordHash: "1",
+                            key: "testuserKey1"
+        )
+        self.testViewModel.thisUser = newUser1
+        let res1 = self.testViewModel.getNotInvitedUsers(eventKey: "testeventId1")
+        XCTAssertEqual(res1.count, 1)
+        XCTAssertEqual(res1.last?.key, "Tom")
+        let res2 = self.testViewModel.getNotInvitedUsers(eventKey: "testeventId2")
+        XCTAssertEqual(res2.count, 2)
+        XCTAssertEqual(res2.first?.key, "Dwight")
+        XCTAssertEqual(res2.last?.key, "Jim")
         
     }
     
     func test_indexPendingGuestEvents(){
+        XCTAssertEqual(self.testViewModel.login(username: "jim", pword: "1"), true)
+        let res = self.testViewModel.indexPendingGuestEvents()
+        XCTAssertEqual(res.count, 1)
+        XCTAssertEqual(res.first?.key, "testeventId1")
         
     }
     
-    
+    func test_indexPendingEventGuests(){
+        let res1 = self.testViewModel.indexPendingEventGuests(eventKey:"testeventId1")
+        XCTAssertEqual(res1.count, 2)
+        XCTAssertEqual(res1.first?.key, "Dwight")
+        XCTAssertEqual(res1.last?.key, "Jim")
+        let res2 = self.testViewModel.indexPendingEventGuests(eventKey:"testeventId2")
+        XCTAssertEqual(res2.count, 1)
+        XCTAssertEqual(res2.first?.key, "Tom")
+        
+    }
     
     
 }
