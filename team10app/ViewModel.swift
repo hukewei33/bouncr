@@ -409,9 +409,9 @@ class ViewModel: ObservableObject {
     
                                                                       
     func addFriend(userKey1: String, userKey2 : String)->(String,String)? {
-        if let friendRelation1 = self.friendInterface.create(userKey1: userKey1, userKey2: userKey2)
+        if let friendRelation1 = self.friendInterface.create(userKey1: userKey1, userKey2: userKey2, originUserId: userKey1)
         {
-            if let friendRelation2 = self.friendInterface.create(userKey1: userKey2, userKey2: userKey1){
+            if let friendRelation2 = self.friendInterface.create(userKey1: userKey2, userKey2: userKey1, originUserId: userKey1){
                 self.friendInterface.update(key: friendRelation1, updateVals: ["twinKey" : friendRelation2])
                 self.friendInterface.update(key: friendRelation2, updateVals: ["twinKey" : friendRelation1])
 //                // ADDED TO INDICATE WHO INITIATED FOR VIEW

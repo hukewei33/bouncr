@@ -21,7 +21,7 @@ struct ProfileView: View {
       
       NavigationView {
         
-        let friendRequests = self.viewModel.pendingFriends.filter{$0.userKey1 == self.viewModel.thisUser!.key}
+        let friendRequests = self.viewModel.pendingFriends.filter{$0.userKey1 == self.viewModel.thisUser!.key && $0.originUserId != self.viewModel.thisUser!.key}
         let friends = self.viewModel.friends.filter{$0.userKey1 == self.viewModel.thisUser!.key}
           
         

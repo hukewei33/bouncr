@@ -28,7 +28,7 @@ class UserInterface {
             self.usersReference.child(userId).setValue(newUser.toAnyObject())
             return userId
         }
-        else{
+        else {
             print("failed to add user")
             return nil
         }

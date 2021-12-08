@@ -39,16 +39,41 @@ struct EventDetailsView: View {
     
     let attendance = self.viewModel.getEventAttendence(eventKey: event.key)
     let attendingFriends = self.viewModel.getAttendingFriends(eventKey: event.key)
+    let hosts = self.viewModel.hosts.filter{$0.eventKey == event.key}[0].userKey
     
     VStack {
       
       VStack (alignment: .leading) {
+        
+        HStack {
+          Text(event.name)
+            .bold()
+            .font(.system(size: 32))
+            .foregroundColor(.white)
+
+            .padding(.top, 10)
+            .padding(.bottom, 5)
+            .lineLimit(1)
+          
+          if (viewModel.currentEvents.filter{$0.key == event.key}.count > 0){
+            Circle()
+              .fill(Color(#colorLiteral(red: 0.262745098, green: 0.8784313725, blue: 0, alpha: 1)))
+              .frame(width: 12, height: 12)
+          }
+          else {
+            Spacer()
+          }
+          
+        }
+
         
         Text(startDateStr)
           .foregroundColor(.white)
           .font(.system(size: 18))
         
         HStack {
+          
+          Spacer(minLength: 30)
 
           // number of attendees currently checked in
 
@@ -92,7 +117,8 @@ struct EventDetailsView: View {
         Text("Host: ")
           .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
         
-        Text("")
+        Text("@" + self.viewModel.users.filter{$0.key == hosts}[0].username)
+          .lineLimit(1)
         
         Text("Location: ")
           .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
@@ -119,7 +145,8 @@ struct EventDetailsView: View {
     }.padding(40)
     
     Spacer()
-      .navigationBarTitle(event.name, displayMode: .large)
+//      .navigationBarTitle(event.name, displayMode: .large)
+        .navigationBarTitleDisplayMode(.inline)
     }
     .navigationViewStyle(StackNavigationViewStyle())
    

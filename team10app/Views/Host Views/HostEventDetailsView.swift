@@ -78,6 +78,7 @@ struct HostEventDetailsView: View {
           if (ongoing){
             
             HStack {
+              
 
               // number of attendees currently checked in
               VStack (alignment: .center) {
@@ -95,6 +96,7 @@ struct HostEventDetailsView: View {
 
             }
             .padding([.vertical], 10)
+            
             
           }
           
@@ -133,6 +135,7 @@ struct HostEventDetailsView: View {
             LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
               
               VStack {
+                
 
                  //Below is code for the actual button
                  Button(action: {
@@ -151,28 +154,125 @@ struct HostEventDetailsView: View {
                          y: 3)
 
                  Text("Add Guests")
+//                   .lineLimit(2)
+                   .multilineTextAlignment(.center)
                    .font(.system(size: 10))
+                   .frame(height: 25)
+                   
 
                }
-               .frame(width: 60, height: 30, alignment: .center)
+               .padding(.top, 20)
+               .frame(width: 50, height: 55, alignment: .center)
+              
+              // add see more button
+              if (viewModel.indexPendingEventGuests(eventKey: event.key).count > 3){
+                
+                
+                // for the first two invited
+                ForEach(0..<2, id: \.self){ index in
 
-               // for each guest invited should show a small circle with the first name under it
-               ForEach(0..<viewModel.indexPendingEventGuests(eventKey: event.key).count, id: \.self){ index in
+                  VStack {
+                    
+                    if (viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL == nil || viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL == ""){
 
-                 VStack {
+                      Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(15)
 
-                   ZStack {
-                     Circle()
-                       .fill(Color("Primary - Indigo"))
-                   }
+                    }
+                    // display the non-nil profile pic
+                    else {
+                      
+                      Image(uiImage: viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL!.load())
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(15)
+                      
+                    }
 
-                   Text(viewModel.indexPendingEventGuests(eventKey: event.key)[index].firstName)
+
+                    Text(viewModel.indexPendingEventGuests(eventKey: event.key)[index].firstName)
+                      .font(.system(size: 10))
+                    
+                  }.frame(width: 50)
+                }
+                
+                // see more button!
+                VStack {
+                  
+
+                   //Below is code for the actual button
+                  NavigationLink(destination: InvitationsView()){
+                    Image(systemName: "ellipsis")
+                       .foregroundColor(Color.white)
+                       .frame(width: 30, height: 30)
+                  }
+                    .background(Color(.gray))
+                   .cornerRadius(38.5)
+  //                 .padding()
+                   .shadow(color: Color.black.opacity(0.3),
+                           radius: 3,
+                           x: 3,
+                           y: 3)
+
+                   Text("See More")
+  //                   .lineLimit(2)
+                     .multilineTextAlignment(.center)
                      .font(.system(size: 10))
+                     
+
                  }
-               }
+//                 .padding(.top, 5)
+                 .frame(width: 50, height: 50, alignment: .center)
+                
+                
+              }
+              
+              // show just the initial guest list
+              else {
+                
+                
+                // for each guest invited should show a small circle with the first name under it
+                ForEach(0..<viewModel.indexPendingEventGuests(eventKey: event.key).count, id: \.self){ index in
+
+                  VStack {
+                    
+                    if (viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL == nil || viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL == ""){
+
+                      Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(15)
+
+                    }
+                    // display the non-nil profile pic
+                    else {
+                      
+                      Image(uiImage: viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL!.load())
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(15)
+                      
+                    }
+
+
+                    Text(viewModel.indexPendingEventGuests(eventKey: event.key)[index].firstName)
+                      .font(.system(size: 10))
+                    
+                  }.frame(width: 50)
+                }
+              
+                
+              }
+
             
             }
-            .padding(.top, 30)
+            .padding(.top, 5)
             
             if (viewModel.indexEventGuests(eventKey: event.key).count > 0){
               
@@ -180,24 +280,112 @@ struct HostEventDetailsView: View {
                 .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
               
               LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
+                
+                
+                // add see more button
+                if (viewModel.indexEventGuests(eventKey: event.key).count > 4){
+                  
+                  // for each guest invited should show a small circle with the first name under it
+                  ForEach(0..<3, id: \.self){ index in
 
-                 // for each guest invited should show a small circle with the first name under it
-                 ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
+                    VStack {
+                      
+                      
+                      if (viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == nil || viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == ""){
 
-                   VStack {
+                        Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
+                          .resizable()
+                          .frame(width: 30, height: 30)
+                          .aspectRatio(contentMode: .fit)
+                          .cornerRadius(15)
 
-                     ZStack {
-                       Circle()
-                         .fill(Color("Primary - Indigo"))
-                     }
+                      }
+                      // display the non-nil profile pic
+                      else {
+                        
+                        Image(uiImage: viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL!.load())
+                          .resizable()
+                          .frame(width: 30, height: 30)
+                          .aspectRatio(contentMode: .fit)
+                          .cornerRadius(15)
+                        
+                      }
+                      
 
-                     Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
+                      Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
+                        .font(.system(size: 10))
+                      
+                    }.frame(width: 50)
+                  }
+                  
+                  // see more button!
+                  VStack {
+                    
+                    NavigationLink(destination: InvitationsView()){
+                      Image(systemName: "ellipsis")
+                         .foregroundColor(Color.white)
+                         .frame(width: 30, height: 30)
+                    }
+                      .background(Color(.gray))
+                     .cornerRadius(38.5)
+                     .shadow(color: Color.black.opacity(0.3),
+                             radius: 3,
+                             x: 3,
+                             y: 3)
+
+                     Text("See More")
                        .font(.system(size: 10))
+                       
+
                    }
-                 }
+                  .padding(.top, 2.5)
+                   .frame(width: 50, height: 50, alignment: .center)
+                  
+                  
+                }
+                // show all 4 guests
+                else {
+                  
+                  // for each guest invited should show a small circle with the first name under it
+                  ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
+
+                    VStack {
+                      
+                      
+                      if (viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == nil || viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == ""){
+
+                        Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
+                          .resizable()
+                          .frame(width: 30, height: 30)
+                          .aspectRatio(contentMode: .fit)
+                          .cornerRadius(15)
+
+                      }
+                      // display the non-nil profile pic
+                      else {
+                        
+                        Image(uiImage: viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL!.load())
+                          .resizable()
+                          .frame(width: 30, height: 30)
+                          .aspectRatio(contentMode: .fit)
+                          .cornerRadius(15)
+                        
+                      }
+                      
+
+                      Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
+                        .font(.system(size: 10))
+                      
+                    }.frame(width: 50)
+                  }
+                  
+                  
+                }
+
+               
               
               }
-              .padding(.top, 30)
+              .padding(.top, 5)
               
             }
             
@@ -303,14 +491,14 @@ struct HostEventDetailsView: View {
     switch result {
     case .success(let code):
       let details = code.components(separatedBy: "\n")
-//      print(details)
+      print(details)
       guard details.count == 2 else { return }
-//      print(self.viewModel.invites)
-//      print(self.viewModel.invites.filter{$0.userKey == details[1] && $0.eventKey == details[0]})
+      print(self.viewModel.invites)
+      print(self.viewModel.invites.filter{$0.userKey == details[1] && $0.eventKey == details[0]})
       let inviteKey = self.viewModel.invites.filter{$0.userKey == details[1] && $0.eventKey == details[0]}[0].key;
-//      print(inviteKey)
-//      print(self.viewModel.checkin(inviteKey: inviteKey))
-//      print("success" + code)
+      print(inviteKey)
+      print(self.viewModel.checkin(inviteKey: inviteKey))
+      print("success" + code)
     case .failure(let error):
       print("failure")
     }

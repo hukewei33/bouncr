@@ -62,6 +62,7 @@ struct InviteCard: View {
           Text(event.name)
             .font(.system(size: 28))
             .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+            .lineLimit(1)
           
           // address
           Text(event.street1)

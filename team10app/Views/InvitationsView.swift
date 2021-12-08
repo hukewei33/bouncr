@@ -59,6 +59,8 @@ struct InvitationsView: View {
                             .swipeActions(edge: .trailing) {
                               Button(action: {
                                 print("accepted")
+                                print(viewModel.self.thisUser)
+                                print(personalInvites[index])
                                 self.viewModel.acceptInvite(invite: personalInvites[index])
                               }){
                                 HStack{
@@ -127,7 +129,7 @@ struct InvitationsView: View {
 
                   InviteCard(event: viewModel.indexGuestEvents()[index])
                      .offset(y: CGFloat(-100*index))
-                     .frame(height: 200)
+                     .frame(width: 300, height: 200)
                      .onTapGesture {
                         self.move.toggle()
                         self.scroll.toggle()
@@ -145,27 +147,6 @@ struct InvitationsView: View {
 
               }.animation(.spring())
                 .padding(.top, 150)
-              
-              // scroll view reader
-              
-              
-//                .frame(height: CGFloat(viewModel.indexGuestEvents().count*400))
-              
-//              ZStack {
-//
-//                ForEach(0..<viewModel.indexGuestEvents().count, id: \.self) { index in
-//
-//                  NavigationLink(destination: InvitationsHorizontalView(cardIndex: index)){
-//                    InviteCard(event: viewModel.indexGuestEvents()[index])
-//                      .offset(y: CGFloat(index*100))
-////
-//                  }
-//
-//
-//                }
-//
-//              }.animation(.spring())
-//                .padding(.top, (self.viewModel.pendingInvites.filter{$0.userKey == "Tom"}.count > 0) ? 0 : 20)
             
             }
             else {
