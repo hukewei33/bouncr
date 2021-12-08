@@ -27,6 +27,8 @@
 		9D130167275A0EEC007A2C4B /* AddFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D130166275A0EEC007A2C4B /* AddFriends.swift */; };
 		9D130169275A0F06007A2C4B /* AddFriendsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D130168275A0F06007A2C4B /* AddFriendsRow.swift */; };
 		9D13016D275A14BA007A2C4B /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D13016C275A14BA007A2C4B /* EditProfile.swift */; };
+		9D2F818B2760A24100E845F4 /* GuestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F818A2760A24100E845F4 /* GuestList.swift */; };
+		9D2F818D2760A24F00E845F4 /* GuestListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F818C2760A24F00E845F4 /* GuestListRow.swift */; };
 		9D4D419D275A450000FF0DCA /* EventForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D419C275A450000FF0DCA /* EventForm.swift */; };
 		9D50390C2734C174001DF338 /* HostEventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D50390B2734C174001DF338 /* HostEventDetailsView.swift */; };
 		9D79D50C273351B200A771D9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79D50B273351B200A771D9 /* ProfileView.swift */; };
@@ -92,6 +94,8 @@
 		9D130166275A0EEC007A2C4B /* AddFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriends.swift; sourceTree = "<group>"; };
 		9D130168275A0F06007A2C4B /* AddFriendsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsRow.swift; sourceTree = "<group>"; };
 		9D13016C275A14BA007A2C4B /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		9D2F818A2760A24100E845F4 /* GuestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestList.swift; sourceTree = "<group>"; };
+		9D2F818C2760A24F00E845F4 /* GuestListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListRow.swift; sourceTree = "<group>"; };
 		9D4D419C275A450000FF0DCA /* EventForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventForm.swift; sourceTree = "<group>"; };
 		9D50390B2734C174001DF338 /* HostEventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventDetailsView.swift; sourceTree = "<group>"; };
 		9D79D50B273351B200A771D9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 				9D79D50D273351BA00A771D9 /* EventDetailsView.swift */,
 				9D79D513273351CB00A771D9 /* InvitationDetailView.swift */,
 				9D79D515273351F300A771D9 /* URLImage.swift */,
+				9D2F818A2760A24100E845F4 /* GuestList.swift */,
+				9D2F818C2760A24F00E845F4 /* GuestListRow.swift */,
 				9D79D50F273351C300A771D9 /* InvitationsView.swift */,
 				9D13015E27544F88007A2C4B /* PendingInviteCard.swift */,
 				9D79D510273351C300A771D9 /* InviteCard.swift */,
@@ -547,6 +553,7 @@
 				18DAF45F272D39CD0008B4A3 /* HostUpcomingEventCard.swift in Sources */,
 				18DAF468272EA3600008B4A3 /* AddEventButton.swift in Sources */,
 				18DAF466272E93BF0008B4A3 /* SquareScanQR.swift in Sources */,
+				9D2F818D2760A24F00E845F4 /* GuestListRow.swift in Sources */,
 				9D50390C2734C174001DF338 /* HostEventDetailsView.swift in Sources */,
 				9D79D512273351C300A771D9 /* InvitationsView.swift in Sources */,
 				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
@@ -554,6 +561,7 @@
 				1862DADD27349F290055E2F0 /* InviteGuestsModalRow.swift in Sources */,
 				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
 				9D073E7827519E840097DA25 /* FriendInterface.swift in Sources */,
+				9D2F818B2760A24100E845F4 /* GuestList.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
 				9D13015D2754061E007A2C4B /* LoginView.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,

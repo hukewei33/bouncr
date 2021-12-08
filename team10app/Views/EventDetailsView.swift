@@ -64,12 +64,13 @@ struct EventDetailsView: View {
             Spacer()
           }
           
-        }
+        } .padding(.leading, 20)
 
         
         Text(startDateStr)
           .foregroundColor(.white)
           .font(.system(size: 18))
+          .padding(.leading, 20)
         
         HStack {
           
@@ -86,7 +87,7 @@ struct EventDetailsView: View {
 
           }.foregroundColor(.white)
 
-          Spacer()
+          Spacer(minLength: 30)
 
           // number of friends invited
 
@@ -105,7 +106,7 @@ struct EventDetailsView: View {
         }.padding(.top, 10)
         
       }.frame(maxWidth: .infinity, minHeight: 120)
-      .padding(.leading, 20)
+     
       .background(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
       
 

@@ -26,7 +26,7 @@ struct AddFriends: View {
     } else {
       
       
-      Text("You are friends with all of the users on this app! Congratulations!")
+      Text("You are friends (or have requested to be friends) with all of the users on this app! Congratulations!")
       .foregroundColor(Color("Gray - 400"))
       .font(.system(size: 22))
       .padding()

@@ -69,17 +69,17 @@ struct HostEventDetailsView: View {
               Spacer()
             }
             
-          }
+          }.padding(.leading, 10)
           
           Text(startDateStr)
             .foregroundColor(.white)
             .font(.system(size: 18))
+            .padding(.leading, 10)
           
           if (ongoing){
             
             HStack {
               
-
               // number of attendees currently checked in
               VStack (alignment: .center) {
 
@@ -92,17 +92,16 @@ struct HostEventDetailsView: View {
               }
               .foregroundColor(.white)
 
-              Spacer()
 
             }
             .padding([.vertical], 10)
+            .padding(.leading, 20)
             
             
           }
           
         }
         .frame(maxWidth: .infinity, minHeight: 120)
-        .padding(.leading, 20)
         .background(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
         
 
@@ -205,7 +204,7 @@ struct HostEventDetailsView: View {
                   
 
                    //Below is code for the actual button
-                  NavigationLink(destination: InvitationsView()){
+                  NavigationLink(destination: GuestList(event: event)){
                     Image(systemName: "ellipsis")
                        .foregroundColor(Color.white)
                        .frame(width: 30, height: 30)
@@ -321,7 +320,7 @@ struct HostEventDetailsView: View {
                   // see more button!
                   VStack {
                     
-                    NavigationLink(destination: InvitationsView()){
+                    NavigationLink(destination: GuestList(event: event)){
                       Image(systemName: "ellipsis")
                          .foregroundColor(Color.white)
                          .frame(width: 30, height: 30)
