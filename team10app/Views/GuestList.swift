@@ -13,6 +13,7 @@ struct GuestList: View {
   
   @EnvironmentObject var viewModel: ViewModel
   var event: Event
+  var guestHost: String
 
   var body: some View {
     
@@ -20,14 +21,13 @@ struct GuestList: View {
     let checkedInGuests = self.viewModel.users.filter{checkedInInvites.contains($0.key)}
     let acceptedInvites = self.viewModel.invites.filter {$0.eventKey == event.key && !$0.checkinStatus && $0.inviteStatus}.map{$0.userKey}
     let acceptedGuests = self.viewModel.users.filter{acceptedInvites.contains($0.key)}
-    let pendingInvites = self.viewModel.invites.filter {$0.eventKey == event.key && !$0.checkinStatus && !$0.inviteStatus}.map{$0.userKey}
-    let pendingGuests = self.viewModel.users.filter{pendingInvites.contains($0.key)}
+    let pendingGuests = viewModel.indexPendingEventGuests(eventKey: event.key)
     
-    NavigationView {
+    
+    List {
       
-      List {
-        
-        Section(header: Text("Checked In Guests")) {
+      if (guestHost=="host") {
+        Section(header: Text("Checked In Guests").padding(.top, 20)) {
           
           // Checked in Guests
           ForEach(0..<checkedInGuests.count, id: \.self) { index in
@@ -53,17 +53,22 @@ struct GuestList: View {
           }
           
         }
-        
-        
-//        ForEach(0..<self.viewModel.indexEventGuests(eventKey: event.key).count, id: \.self) { index in
-//          GuestListRow(guest: self.viewModel.indexEventGuests(eventKey: event.key)[index])
-//        }
-        
       }
-//      .padding(.top, 20)
-      
-      .navigationTitle("Guest List")
+      else {
+        Section(header: Text("All Guests").padding(.top, 20)) {
+          
+          // Checked in Guests
+          ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self) { index in
+            GuestListRow(guest: viewModel.indexEventGuests(eventKey: event.key)[index])
+          }
+          
+        }
+      }
+    
     }
+    
+    .navigationTitle("Guest List")
+    .navigationViewStyle(StackNavigationViewStyle())
     
   }
 }
