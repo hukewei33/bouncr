@@ -85,7 +85,7 @@ struct InviteCard: View {
             .lineLimit(2)
             .font(.system(size: 14))
             .padding(.bottom, 10)
-            .frame(width: 200, height: 40)
+            .frame(width: 200, height: 40, alignment: .leading)
             
         }
       
