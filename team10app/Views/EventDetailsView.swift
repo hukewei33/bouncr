@@ -17,6 +17,7 @@ struct EventDetailsView: View {
 //  let dayTimePeriodFormatter = DateFormatter();
 //  dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a";
   
+  let rows = [GridItem(.fixed(30))]
   let columns = [GridItem(.fixed(100)), GridItem(.flexible())]
   let startDate: Date
   let startDateStr: String
@@ -140,14 +141,112 @@ struct EventDetailsView: View {
           
         }
         
+        if (event.attendenceVisible && viewModel.indexEventGuests(eventKey: event.key).count > 0){
+            
+          Text("Guests: ")
+            .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+          
+          LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
+            
+            // add see more button
+            if (viewModel.indexEventGuests(eventKey: event.key).count > 4){
+              
+              // for each guest invited should show a small circle with the first name under it
+              ForEach(0..<3, id: \.self){ index in
+
+                VStack {
+                  
+                  if (viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == nil || viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == ""){
+
+                    Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
+                      .resizable()
+                      .frame(width: 30, height: 30)
+                      .aspectRatio(contentMode: .fit)
+                      .cornerRadius(15)
+
+                  }
+                  // display the non-nil profile pic
+                  else {
+                    
+                    Image(uiImage: viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL!.load())
+                      .resizable()
+                      .frame(width: 30, height: 30)
+                      .aspectRatio(contentMode: .fit)
+                      .cornerRadius(15)
+                  }
+
+                  Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
+                    .font(.system(size: 10))
+                  
+                }.frame(width: 50)
+              }
+              
+              // see more button!
+              VStack {
+                
+                NavigationLink(destination: GuestList(event: event)){
+                  Image(systemName: "ellipsis")
+                     .foregroundColor(Color.white)
+                     .frame(width: 30, height: 30)
+                }
+                  .background(Color(.gray))
+                 .cornerRadius(38.5)
+                 .shadow(color: Color.black.opacity(0.3),
+                         radius: 3,
+                         x: 3,
+                         y: 3)
+
+                 Text("See More")
+                   .font(.system(size: 10))
+
+               }
+              .padding(.top, 2.5)
+               .frame(width: 50, height: 50, alignment: .center)
+
+            }
+            // show all 4 guests
+            else {
+              
+              // for each guest invited should show a small circle with the first name under it
+              ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
+
+                VStack {
+                  if (viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == nil || viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == ""){
+
+                    Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
+                      .resizable()
+                      .frame(width: 30, height: 30)
+                      .aspectRatio(contentMode: .fit)
+                      .cornerRadius(15)
+
+                  }
+                  // display the non-nil profile pic
+                  else {
+                    Image(uiImage: viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL!.load())
+                      .resizable()
+                      .frame(width: 30, height: 30)
+                      .aspectRatio(contentMode: .fit)
+                      .cornerRadius(15)
+                  }
+
+                  Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
+                    .font(.system(size: 10))
+                  
+                }.frame(width: 50)
+              } // End ForEach
+              
+            } //end else
+            
+          } //end lazyHGrid
+          
+        } //end if
         
-      }
+      } //end LazyVGrid
 
     }.padding(40)
     
     Spacer()
-//      .navigationBarTitle(event.name, displayMode: .large)
-        .navigationBarTitleDisplayMode(.inline)
+    .navigationBarTitleDisplayMode(.inline)
     }
     .navigationViewStyle(StackNavigationViewStyle())
    
