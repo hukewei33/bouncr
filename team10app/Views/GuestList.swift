@@ -13,6 +13,7 @@ struct GuestList: View {
   
   @EnvironmentObject var viewModel: ViewModel
   var event: Event
+  var guestHost: String
 
   var body: some View {
     
@@ -25,31 +26,43 @@ struct GuestList: View {
     
     List {
       
-      Section(header: Text("Checked In Guests").padding(.top, 20)) {
-        
-        // Checked in Guests
-        ForEach(0..<checkedInGuests.count, id: \.self) { index in
-          GuestListRow(guest: checkedInGuests[index])
+      if (guestHost=="host") {
+        Section(header: Text("Checked In Guests").padding(.top, 20)) {
+          
+          // Checked in Guests
+          ForEach(0..<checkedInGuests.count, id: \.self) { index in
+            GuestListRow(guest: checkedInGuests[index])
+          }
+          
         }
         
+        Section(header: Text("Accepted Guests")) {
+          
+          // Accepted Guests that haven't checked in
+          ForEach(0..<acceptedGuests.count, id: \.self) { index in
+            GuestListRow(guest: acceptedGuests[index])
+          }
+          
+        }
+        
+        Section(header: Text("Pending Guests")) {
+          
+          // Pending Guests
+          ForEach(0..<pendingGuests.count, id: \.self) { index in
+            GuestListRow(guest: pendingGuests[index])
+          }
+          
+        }
       }
-      
-      Section(header: Text("Accepted Guests")) {
-        
-        // Accepted Guests that haven't checked in
-        ForEach(0..<acceptedGuests.count, id: \.self) { index in
-          GuestListRow(guest: acceptedGuests[index])
+      else {
+        Section(header: Text("All Guests").padding(.top, 20)) {
+          
+          // Checked in Guests
+          ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self) { index in
+            GuestListRow(guest: viewModel.indexEventGuests(eventKey: event.key)[index])
+          }
+          
         }
-        
-      }
-      
-      Section(header: Text("Pending Guests")) {
-        
-        // Pending Guests
-        ForEach(0..<pendingGuests.count, id: \.self) { index in
-          GuestListRow(guest: pendingGuests[index])
-        }
-        
       }
     
     }

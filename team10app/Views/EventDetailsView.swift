@@ -184,7 +184,7 @@ struct EventDetailsView: View {
               // see more button!
               VStack {
                 
-                NavigationLink(destination: GuestList(event: event)){
+                NavigationLink(destination: GuestList(event: event, guestHost: "guest")){
                   Image(systemName: "ellipsis")
                      .foregroundColor(Color.white)
                      .frame(width: 30, height: 30)

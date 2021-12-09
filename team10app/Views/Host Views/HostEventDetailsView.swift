@@ -196,7 +196,7 @@ struct HostEventDetailsView: View {
                 // see more button!
                 VStack {
                   //Below is code for the actual button
-                  NavigationLink(destination: GuestList(event: event)){
+                  NavigationLink(destination: GuestList(event: event, guestHost: "host")){
                     Image(systemName: "ellipsis")
                        .foregroundColor(Color.white)
                        .frame(width: 30, height: 30)
@@ -293,7 +293,7 @@ struct HostEventDetailsView: View {
                   // see more button!
                   VStack {
                     
-                    NavigationLink(destination: GuestList(event: event)){
+                    NavigationLink(destination: GuestList(event: event, guestHost: "host")){
                       Image(systemName: "ellipsis")
                          .foregroundColor(Color.white)
                          .frame(width: 30, height: 30)
