@@ -8,36 +8,44 @@
 import Foundation
 import Firebase
 
-class InviteInterface{
+class InviteInterface {
+
     var Invites: [Invite] = []
     let invitesReference = Database.database().reference(withPath: "invites")
+    
+    init(){
+        self.fetch(){invites in return}
+    }
     
     
     func create(userKey: String, eventKey: String)-> String?{
         let keyResult :String? = self.invitesReference.childByAutoId().key
-        if let userId = keyResult{
-            let newInvite = Invite(userKey: "Sam",
-                            eventKey:  "TomParty")
+        if let userId = keyResult {
+            let newInvite = Invite(userKey: userKey,
+                                   eventKey: eventKey,
+                                   key: userId)
             self.invitesReference.child(userId).setValue(newInvite.toAnyObject())
+//          print("userid:" + userId)
             return userId
         }
-        else{
-            print("failed to add invite")
+        else {
+//            print("failed to add invite")
             return nil
         }
     }
     
-    func read(){
+    func fetch(completionHandler: @escaping ([Invite]) -> Void){
         self.invitesReference.queryOrdered(byChild: "userKey").observe(.value, with: { snapshot in
             var newInvites: [Invite] = []
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                    let invite = Invite(snapshot: snapshot) {
                     newInvites.append(invite)
-                    print(invite.userKey)
+                    //print(invite.userKey)
                 }
             }
             self.Invites = newInvites
+            completionHandler(self.Invites)
         })
     }
     
@@ -48,5 +56,6 @@ class InviteInterface{
     func delete(key:String ){
         self.invitesReference.child(key).removeValue()
     }
-  
 }
+    
+

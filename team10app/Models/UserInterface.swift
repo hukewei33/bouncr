@@ -8,52 +8,45 @@
 import Foundation
 import Firebase
 
-class UserInterface{
+class UserInterface {
+  
     var Users: [User] = []
-    var CurrentUser : User? = nil
-    
-    init(userKey:String){
-        self.populate(key:userKey)
-    }
     
     let usersReference = Database.database().reference(withPath: "users")
     
-    func create(firstName: String, lastName : String, email: String, passwordHash: String , username: String)-> String?{
+  func create(firstName: String, lastName : String, email: String, password: String , username: String)-> String?{
         let keyResult :String? = self.usersReference.childByAutoId().key
-        if let userId = keyResult{
+        if let userId = keyResult {
             let newUser = User(firstName: firstName,
                             lastName: lastName,
                             email:email,
                             username:  username,
                             profilePicURL: nil ,
-                            passwordHash: passwordHash,
+                            passwordHash: password,
                             key: userId
                             )
             self.usersReference.child(userId).setValue(newUser.toAnyObject())
             return userId
         }
-        else{
+        else {
             print("failed to add user")
             return nil
         }
     }
     
-
-    func populate(key:String){
-        self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
-            var newUsers: [User] = []
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let user = User(snapshot: snapshot) {
-                    //print(user.firstName)
-                    newUsers.append(user)
-                    if user.key == key{
-                        self.CurrentUser = user
+    func fetch(completionHandler: @escaping ([User]) -> Void){
+                self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
+                    var newUsers: [User] = []
+                    for child in snapshot.children {
+                        if let snapshot = child as? DataSnapshot,
+                           let user = User(snapshot: snapshot) {
+                            //print(user.firstName)
+                            newUsers.append(user)
+                        }
                     }
-                }
-            }
-            self.Users = newUsers
-        })
+                    self.Users = newUsers
+                    completionHandler(self.Users)
+                })
     }
     
     
@@ -64,6 +57,5 @@ class UserInterface{
     func delete(key:String ){
         self.usersReference.child(key).removeValue()
     }
-    
     
 }

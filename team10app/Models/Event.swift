@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-struct Event {
+struct Event: Hashable {
 
     let ref: DatabaseReference?
     let key: String
@@ -16,7 +16,7 @@ struct Event {
     //start time of event in Date type casted as double
     let startTime: Double
     //end time of event in Date type casted as double
-    let endTime: Double?
+    let endTime: Double
     //Address info
     let street1: String
     let street2: String?
@@ -24,20 +24,26 @@ struct Event {
     let state: String
     let zip: String
     let description: String?
+    //setting options
+    let attendenceVisible: Bool
+    let friendsAttendingVisible: Bool
+    
 
 
-    init(name: String, startTime: Date, street1: String, street2 : String? , city: String, state: String, zip: String, description: String?, key: String = "") {
+    init(name: String, startTime: Date, endTime: Date, street1: String, street2 : String? , city: String, state: String, zip: String, description: String?, key: String = "",attendenceVisible: Bool, friendsAttendingVisible: Bool) {
         self.ref = nil
         self.key = key
         self.name = name
         self.startTime = startTime.timeIntervalSinceReferenceDate
-        self.endTime = nil
+        self.endTime = endTime.timeIntervalSinceReferenceDate
         self.street1 = street1
         self.street2 = street2
         self.city = city
         self.state = state
         self.zip = zip
         self.description = description
+        self.attendenceVisible = attendenceVisible
+        self.friendsAttendingVisible = friendsAttendingVisible
     }
 
     init?(snapshot: DataSnapshot) {
@@ -45,10 +51,14 @@ struct Event {
             let value = snapshot.value as? [String: AnyObject],
             let name = value["name"]as? String,
             let startTime = value["startTime"]as? Double,
+            let endTime = value["endTime"]as? Double,
             let street1 = value["street1"]as? String,
             let city = value["city"]as? String,
             let state = value["state"]as? String,
-            let zip = value["zip"]as? String
+            let zip = value["zip"]as? String,
+            let attendenceVisible = value["attendenceVisible"] as? Bool,
+            let friendsAttendingVisible = value["friendsAttendingVisible"] as? Bool
+            
         else {
             return nil
         }
@@ -57,13 +67,15 @@ struct Event {
         self.key = snapshot.key
         self.name = name
         self.startTime = startTime
-        self.endTime = value["endTime"]as? Double
+        self.endTime = endTime
         self.street1 = street1
         self.street2 = value["street2"]as? String
         self.city = city
         self.state = state
         self.zip = zip
         self.description = value["description"]as? String
+        self.friendsAttendingVisible = friendsAttendingVisible
+        self.attendenceVisible = attendenceVisible
     }
 
 
@@ -78,8 +90,10 @@ struct Event {
             "city":city,
             "state":state,
             "zip":zip,
-            "description":description 
+            "description":description,
+            "attendenceVisible":attendenceVisible,
+            "friendsAttendingVisible":friendsAttendingVisible
+            ,
         ]
     }
 }
-
