@@ -39,6 +39,8 @@ struct EventDetailsView: View {
   var body: some View {
     
     let attendance = self.viewModel.getEventAttendence(eventKey: event.key)
+    let checkedInInvites = self.viewModel.invites.filter{$0.eventKey == event.key && $0.checkinStatus && $0.inviteStatus}.map{$0.userKey}
+    let checkedInFriends = self.viewModel.getAttendingFriends(eventKey: event.key).filter {checkedInInvites.contains($0.key)}
     let attendingFriends = self.viewModel.getAttendingFriends(eventKey: event.key)
     let hosts = self.viewModel.hosts.filter{$0.eventKey == event.key}[0].userKey
     
@@ -91,13 +93,19 @@ struct EventDetailsView: View {
           Spacer(minLength: 30)
 
           // number of friends invited
-
           VStack (alignment: .center) {
-
-            Text (String(attendingFriends.count)) // placeholder
-              .fontWeight(.bold)
-              .padding(.bottom, 4)
-            Text ("friends invited")
+            if (event.friendsAttendingVisible) {
+              Text (String(checkedInFriends.count) + " / " + String(attendingFriends.count))
+                .fontWeight(.bold)
+                .padding(.bottom, 4)
+              Text ("friends checked in")
+            }
+            else {
+              Text (String(attendingFriends.count)) // placeholder
+                .fontWeight(.bold)
+                .padding(.bottom, 4)
+              Text ("friends invited")
+            }
 
           }.foregroundColor(.white)
           .padding(10)
