@@ -37,6 +37,9 @@ struct InviteCard: View {
   
   var body: some View {
     
+    let currentInvite = self.viewModel.invites.filter{$0.eventKey == event.key && $0.userKey == self.viewModel.thisUser!.key}[0]
+    let checkedIn = currentInvite.checkinStatus
+    
     VStack(alignment: .leading) {
       
 //      NavigationLink(destination: InvitationsHorizontalView(cardIndex: cardIndex)){
@@ -107,7 +110,7 @@ struct InviteCard: View {
     }
     .padding()
     .accentColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-    .background(Color.white)
+    .background(checkedIn ? (LinearGradient(gradient: Gradient(colors: [Color(red: 230/255, green: 239/255, blue: 1.0, opacity: 1), Color(red: 236/255, green: 233/255, blue: 1.0, opacity: 1)]), startPoint: .leading, endPoint: .trailing)) : (LinearGradient(gradient: Gradient(colors: [.white]), startPoint: .leading, endPoint: .trailing)))
     .frame(height: 450, alignment: .leading)
     .cornerRadius(16)
     .overlay(

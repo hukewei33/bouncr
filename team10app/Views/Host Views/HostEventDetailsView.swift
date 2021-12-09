@@ -65,9 +65,11 @@ struct HostEventDetailsView: View {
                 .fill(Color(#colorLiteral(red: 0.262745098, green: 0.8784313725, blue: 0, alpha: 1)))
                 .frame(width: 12, height: 12)
             }
-            else {
-              Spacer()
-            }
+//            else {
+//              Spacer()
+//            }
+            
+            Spacer()
             
           }.padding(.leading, 10)
           
@@ -91,6 +93,8 @@ struct HostEventDetailsView: View {
 
               }
               .foregroundColor(.white)
+              
+              Spacer()
 
 
             }
@@ -101,8 +105,10 @@ struct HostEventDetailsView: View {
           }
           
         }
+        .padding(.leading, 10)
         .frame(maxWidth: .infinity, minHeight: 120)
         .background(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+        
         
 
         VStack(alignment: .leading) {

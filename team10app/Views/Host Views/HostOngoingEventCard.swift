@@ -89,7 +89,8 @@ struct HostOngoingEventCard: View {
         MoreDetailsButton(event: event, ongoing: true)
         
       }
-      .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 0.05)))
+      
+      .background(LinearGradient(gradient: Gradient(colors: [Color(red: 230/255, green: 239/255, blue: 1.0, opacity: 1), Color(red: 236/255, green: 233/255, blue: 1.0, opacity: 1)]), startPoint: .leading, endPoint: .trailing))
       .cornerRadius(10)
       .overlay(
           RoundedRectangle(cornerRadius: 10)
