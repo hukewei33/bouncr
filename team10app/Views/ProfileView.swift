@@ -105,15 +105,10 @@ struct ProfileView: View {
               
               List {
                 
-                
-               
-                
-                
                 if (friendRequests.count > 0 && self.viewModel.users.count > 0){
                   
-                  Section(header: Text("Friend Requests")){
-                    
-                    
+                  Section(header: Text("Friend Requests").padding(.top, 5)){
+
                     ForEach(0..<friendRequests.count, id: \.self) { index in
                       
                       Group {
@@ -121,63 +116,51 @@ struct ProfileView: View {
                         Text(" ") +
                         Text(self.viewModel.users.filter{$0.key == self.viewModel.pendingFriends[index].userKey2}[0].lastName)
                       }
-                          .swipeActions(edge: .trailing) {
-                            Button(action: {
-  //                            print("friend req accepted")
-                              self.viewModel.acceptFriendInvite(acceptedInvite: self.viewModel.pendingFriends[index])
-  //                            print(self.viewModel.pendingFriends)
-                            }){
-                              HStack{
-                                Text("Accept")
-                                Image(systemName: "checkmark.circle.fill")
-                                  .foregroundColor(.white)
-                              }
-                            }
-                            .tint(.green)
+                      .swipeActions(edge: .trailing) {
+                        Button(action: {
+//                            print("friend req accepted")
+                          self.viewModel.acceptFriendInvite(acceptedInvite: self.viewModel.pendingFriends[index])
+//                            print(self.viewModel.pendingFriends)
+                        }){
+                          HStack{
+                            Text("Accept")
+                            Image(systemName: "checkmark.circle.fill")
+                              .foregroundColor(.white)
                           }
-                          .swipeActions(edge: .leading) {
-                            Button(action: {
-  //                            print("friend req declined")
-                              self.viewModel.rejectFriend(rejectedInvite: self.viewModel.pendingFriends[index])
-                            }){
-                              HStack{
-                                Text("Decline")
-                                Image(systemName: "x.circle")
-                                  .foregroundColor(.white)
-                              }
-                            }
-                            .tint(.red)
+                        }
+                        .tint(.green)
+                      }
+                      .swipeActions(edge: .leading) {
+                        Button(action: {
+//                            print("friend req declined")
+                          self.viewModel.rejectFriend(rejectedInvite: self.viewModel.pendingFriends[index])
+                        }){
+                          HStack{
+                            Text("Decline")
+                            Image(systemName: "x.circle")
+                              .foregroundColor(.white)
                           }
-                      
-                    
+                        }
+                        .tint(.red)
+                      }
                     }
-                     
-                    
                   }
-                  
                 }
                 
                 if (friends.count > 0 && self.viewModel.users.count > 0){
                   
+                  // list of current friends the user has
+                  Section(header: Text("Friends").padding(.top, 5)){
                     
-                    // list of current friends the user has
-                    Section(header: Text("Friends")){
-                      
-                      
-                      ForEach(0..<friends.count, id: \.self) { index in
-                        
-                      
-                          
-                          Group {
-                            Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].firstName) +
-                            Text(" ") +
-                            Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].lastName)
-                        
-                          }
-                      
-                      
+                    ForEach(0..<friends.count, id: \.self) { index in
+                      Group {
+                        Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].firstName) +
+                        Text(" ") +
+                        Text(self.viewModel.users.filter{$0.key == self.viewModel.friends[index].userKey2}[0].lastName)
                       }
                     }
+                  }
+                  
                 }
                 
                 NavigationLink(destination: AddFriends()) {
@@ -188,9 +171,10 @@ struct ProfileView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarHidden(true)
                 
-            }.padding(.top, -50)
-              
-//            }.padding(.top, 50)
+            }
+              .padding(.top, -55)
+              .listStyle(InsetGroupedListStyle())
+
             
             
             
