@@ -146,7 +146,9 @@ class team10appTests: XCTestCase {
     func testFriendModel(){
         let newFriend = Friend(userKey1: "testuserKey1" ,
                                userKey2:"testuserKey2",
-                               key : "testFriendId")
+                               key: "testFriendId",
+                               originUserId:"testuserKey1"
+                                    )
         let converted = newFriend.toAnyObject() as? NSDictionary
         if let userKey1 = converted?["userKey1"] as? String{
             XCTAssertEqual(userKey1, "testuserKey1")
@@ -157,6 +159,9 @@ class team10appTests: XCTestCase {
         
         if let key = converted?["key"] as? String{
             XCTAssertEqual(key, "testFriendId")
+        }
+        if let originUserId = converted?["originUserId"] as? String{
+            XCTAssertEqual(originUserId, "testuserKey1")
         }
     }
 
