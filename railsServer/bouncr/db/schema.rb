@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_030038) do
+ActiveRecord::Schema.define(version: 2022_02_28_161637) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,20 @@ ActiveRecord::Schema.define(version: 2022_02_28_030038) do
     t.index ["user_id"], name: "index_hosts_on_user_id"
   end
 
+  create_table "invites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.datetime "checkinTime"
+    t.boolean "inviteStatus"
+    t.boolean "checkinStatus"
+    t.integer "phoneNumber"
+    t.integer "coverChargePaid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_invites_on_event_id"
+    t.index ["user_id"], name: "index_invites_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -54,4 +68,6 @@ ActiveRecord::Schema.define(version: 2022_02_28_030038) do
 
   add_foreign_key "hosts", "events"
   add_foreign_key "hosts", "users"
+  add_foreign_key "invites", "events"
+  add_foreign_key "invites", "users"
 end
