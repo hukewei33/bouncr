@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  startTime: 2022-02-27 22:00:38
+  endTime: 2022-02-27 22:00:38
+  street1: MyString
+  street2: MyString
+  city: MyString
+  zip: 1
+  description: MyText
+  attendenceVisible: false
+  friendsAttendingVisible: false
+  attendenceCap: 1
+  coverCharge: 
+  isOpenInvite: false
+  venueLatitude: 1.5
+  venueLongitude: 1.5
+
+two:
+  name: MyString
+  startTime: 2022-02-27 22:00:38
+  endTime: 2022-02-27 22:00:38
+  street1: MyString
+  street2: MyString
+  city: MyString
+  zip: 1
+  description: MyText
+  attendenceVisible: false
+  friendsAttendingVisible: false
+  attendenceCap: 1
+  coverCharge: 
+  isOpenInvite: false
+  venueLatitude: 1.5
+  venueLongitude: 1.5

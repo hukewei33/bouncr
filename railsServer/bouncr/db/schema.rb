@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_022132) do
+ActiveRecord::Schema.define(version: 2022_02_28_030038) do
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "startTime"
+    t.datetime "endTime"
+    t.string "street1"
+    t.string "street2"
+    t.string "city"
+    t.integer "zip"
+    t.text "description"
+    t.boolean "attendenceVisible"
+    t.boolean "friendsAttendingVisible"
+    t.integer "attendenceCap"
+    t.integer "coverCharge"
+    t.boolean "isOpenInvite"
+    t.float "venueLatitude"
+    t.float "venueLongitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hosts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_hosts_on_event_id"
+    t.index ["user_id"], name: "index_hosts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -23,4 +52,6 @@ ActiveRecord::Schema.define(version: 2022_02_28_022132) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "hosts", "events"
+  add_foreign_key "hosts", "users"
 end
