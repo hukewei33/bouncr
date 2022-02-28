@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :organization_users
+  resources :organization_events
+  resources :organizations
   resources :friends
   resources :invites
   resources :events
