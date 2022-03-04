@@ -1,5 +1,6 @@
 class OrganizationEventsController < ApplicationController
   before_action :set_organization_event, only: [:show, :update, :destroy]
+  before_action :authorized
 
   # GET /organization_events
   def index

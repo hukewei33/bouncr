@@ -1,5 +1,6 @@
 class OrganizationUsersController < ApplicationController
   before_action :set_organization_user, only: [:show, :update, :destroy]
+  before_action :authorized
 
   # GET /organization_users
   def index

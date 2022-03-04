@@ -1,5 +1,6 @@
 class HostsController < ApplicationController
   before_action :set_host, only: [:show, :update, :destroy]
+  before_action :authorized
 
   # GET /hosts
   def index

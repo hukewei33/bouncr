@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-    before_action :authorized, only: [:auto_login]
+    before_action :authorized, only: [:auto_login, :destroy,:update]
+    before_action :set_user, only: [:show, :update, :destroy]
 
   # REGISTER
   def create
@@ -10,6 +11,22 @@ class UsersController < ApplicationController
       render json: {user: @user, token: token}
     else
       render json: {error: "Invalid username or password"}
+    end
+  end
+
+  def update
+    if @user.update(user_params)
+        token = encode_token({user_id: @user.id})
+        render json: {user: @user, token: token}
+    else
+        render json: {error: "Invalid update"}
+    end
+  end
+
+  def destroy
+    @user.destroy
+    if !@user.destroyed?
+      render json: {error: "Invalid destroy"}
     end
   end
 
@@ -32,8 +49,12 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.permit(:username, :password, :age)
+  def set_user
+    @user = User.find(params[:id])
   end
-  
+
+  def user_params
+    params.permit(:username, :password, :email,:firstName,:lastName,:phoneNumber)
+  end
+
 end

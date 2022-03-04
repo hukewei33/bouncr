@@ -1,5 +1,6 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :update, :destroy]
+  before_action :authorized
 
   # GET /friends
   def index
