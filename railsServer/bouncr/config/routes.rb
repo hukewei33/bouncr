@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   #given eventID, get all hosting users
   get "/users_for_hosting", to: 'users#index_for_hosting'
   #given search term, get all similar users
+  get "/users_search", to: 'users#index_for_search'
   #given userID and userID, get all user's friends that are attending event
+  get "/users_friends", to: 'users#index_friends'
 end

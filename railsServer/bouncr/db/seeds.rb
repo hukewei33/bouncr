@@ -9,6 +9,8 @@
 user = User.create(username:"testUser",password:"testPassword",email:"test@test.com",firstName:"tester",lastName:"macTester",phoneNumber:"12345678")
 user1 = User.create(username:"testUser1",password:"testPassword",email:"test@test.com",firstName:"tester",lastName:"macTester",phoneNumber:"12345678")
 user2 = User.create(username:"testUser2",password:"testPassword",email:"test@test.com",firstName:"tester",lastName:"macTester",phoneNumber:"12345678")
+friend1 = Friend.create(user1_id:user.id, user2_id:user1.id,accpeted:true)
+friend1 = Friend.create(user1_id:user2.id, user2_id:user.id,accpeted:false)
 event1 = Event.create(name:"event1")
 event2 = Event.create(name:"event2")
 event3 = Event.create(name:"event3")

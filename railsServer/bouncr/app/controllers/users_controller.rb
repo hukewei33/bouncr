@@ -24,6 +24,16 @@ class UsersController < ApplicationController
     render json: UserSerializer.new(@users,{})
   end
 
+  def index_for_search
+    @users = User.search(params[:term])
+    render json: UserSerializer.new(@users,{})
+  end
+
+  def index_friends
+    @users = User.initiatedFriendship(params[:id])+(User.recievedFriendship(params[:id]))
+    render json: UserSerializer.new(@users,{})
+  end
+
   def update
     if @user.update(user_params)
         token = encode_token({user_id: @user.id})
@@ -54,7 +64,7 @@ class UsersController < ApplicationController
 
 
   def auto_login
-    render json: @user
+    render json: UserSerializer.new(@user,{}) 
   end
 
   private
