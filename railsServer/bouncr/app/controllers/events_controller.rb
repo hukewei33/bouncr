@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :update, :destroy]
-
+  before_action :authorized
   # GET /events
   def index
     @events = Event.all
@@ -8,9 +8,22 @@ class EventsController < ApplicationController
     render json: @events
   end
 
+  def index_for_host
+    @events = Event.forHost(params[:id]).alphabetical
+    options = {}
+    render json: EventSerializer.new(@events,options)
+  end
+
+  def index_for_guest
+    @events = Event.forGuest(params[:id]).alphabetical
+    options = {}
+    render json: EventSerializer.new(@events,options)
+  end
+
   # GET /events/1
   def show
-    render json: @event
+    options = {}
+    render json: EventSerializer.new(@event,options)
   end
 
   # POST /events
