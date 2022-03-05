@@ -14,6 +14,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def index_for_hosting
+    @users = User.for_hosting(params[:id])
+    render json: UserSerializer.new(@users,{})
+  end
+
+  def index_for_invited
+    @users = User.for_invited(params[:id])
+    render json: UserSerializer.new(@users,{})
+  end
+
   def update
     if @user.update(user_params)
         token = encode_token({user_id: @user.id})
