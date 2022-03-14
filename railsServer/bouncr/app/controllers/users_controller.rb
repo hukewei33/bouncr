@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    render json: @user
+  end
+
   def index_for_hosting
     @users = User.for_hosting(params[:id])
     render json: UserSerializer.new(@users,{})

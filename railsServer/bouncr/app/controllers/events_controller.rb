@@ -22,7 +22,7 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
-    options = {}
+    options = {include: [:organizations]}
     render json: EventSerializer.new(@event,options)
   end
 

@@ -4,7 +4,7 @@ class Friend < ApplicationRecord
 
   #Scope
   scope :accepted, ->{where(accepted,true)}
-  scope :by_user, -> (user_id){where('user1_id = ? OR user2_id',user_id,user_id)}
+  scope :by_user, -> (user_id){where('user1_id = ? OR user2_id = ?',user_id,user_id)}
   #Methods
   
 end
