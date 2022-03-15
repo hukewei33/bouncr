@@ -25,6 +25,5 @@ Rails.application.routes.draw do
   
   #given search term, get all similar users
   get "/users_search", to: 'users#index_for_search'
-  #given userID and userID, get all user's friends that are attending event
-  get "/users_friends", to: 'users#index_friends'
+  
 end
