@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   resources :organization_users
   resources :organization_events
   resources :organizations
