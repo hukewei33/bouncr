@@ -132,6 +132,7 @@
 		B2BB3CB627272DF100C6DB94 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterface.swift; sourceTree = "<group>"; };
 		B2BB3CB82727369D00C6DB94 /* EventInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInterface.swift; sourceTree = "<group>"; };
 		B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostInterface.swift; sourceTree = "<group>"; };
+		B2DDF3A42807510B00A43CC3 /* rubyapi.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = rubyapi.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E642DB0D526C07BC0BC1A3CD /* Pods-team10appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10appTests.debug.xcconfig"; path = "Target Support Files/Pods-team10appTests/Pods-team10appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAFC50A41E178446D88F6DCC /* Pods-team10app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10app.debug.xcconfig"; path = "Target Support Files/Pods-team10app/Pods-team10app.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -306,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				B28FB1B0271FA64A008D25ED /* sprint3.playground */,
+				B2DDF3A42807510B00A43CC3 /* rubyapi.playground */,
 			);
 			path = Playgrounds;
 			sourceTree = "<group>";
