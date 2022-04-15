@@ -8,16 +8,16 @@
 import Foundation
 import Firebase
 
-struct User :Hashable {
-    
-    let ref: DatabaseReference?
-    let key: String
+
+
+struct User :Hashable, Decodable {
+
+    let key: Int
     let firstName: String
     let lastName: String
     let email: String
     let username: String
-    let profilePicURL: String?
-    let passwordHash: String
+    let phoneNumber: Int
 
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.key == rhs.key
@@ -27,42 +27,35 @@ struct User :Hashable {
         hasher.combine(key)
     }
     
+    enum CodingKeys : String, CodingKey {
+        case key = "id"
+        case username = "username"
+        case firstName = "firstName"
+        case lastName = "lastName"
+        case phoneNumber = "phoneNumber"
+        case email = "email"
+        
+    }
     
-  init(firstName: String, lastName: String, email: String, username: String, profilePicURL : String?, passwordHash: String, key: String = "") {
-        self.ref = nil
+    
+    init(firstName: String, lastName: String, email: String, username: String, passwordHash: String, key: Int = -1, phoneNumber:Int) {
         self.key = key
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.username = username
-        self.profilePicURL = profilePicURL
-        self.passwordHash = passwordHash
+        self.phoneNumber = phoneNumber
     }
     
-    init?(snapshot: DataSnapshot) {
-//      print("snapshot")
-//        print(snapshot)
-        guard
-            let value = snapshot.value as? [String: AnyObject],
-            let firstName = value["firstName"] as? String,
-            let lastName = value["lastName"] as? String,
-            let email = value["email"] as? String,
-            let username = value["username"] as? String,
-            let passwordHash = value["passwordHash"] as? String
-        else {
-            print("bad read: USER")
-            return nil
-        }
-        
-        self.ref = snapshot.ref
-        self.key = snapshot.key
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
-        self.username = username
-        self.profilePicURL = value["profilePicURL"] as? String
-        self.passwordHash = passwordHash
+    init(key: String, at: UserAttributes){
+        self.key=Int(key) ?? 0
+        self.username = at.username
+        self.phoneNumber=at.phoneNumber
+        self.firstName=at.firstName
+        self.lastName=at.lastName
+        self.email=at.email
     }
+    
     
     
     
@@ -72,69 +65,9 @@ struct User :Hashable {
             "lastName": lastName,
             "email": email,
             "username": username,
-            "profilePicURL": profilePicURL,
-            "passwordHash":passwordHash
+            "phoneNumber":phoneNumber
         ]
     }
 }
 
-//struct User {
-//
-//    let ref: DatabaseReference?
-//    let key: String
-//    let firstName: String
-//    let lastName: String
-//    let email: String
-//    let username: String
-//    let profilePicURL: String?
-//    let passwordHash: String
-//
-//
-//    init(firstName: String, lastName: String, email: String, username: String, profilePicURL : String?, passwordHash: String = "", key: String = "") {
-//        self.ref = nil
-//        self.key = key
-//        self.firstName = firstName
-//        self.lastName = lastName
-//        self.email = email
-//        self.username = username
-//        self.profilePicURL = profilePicURL
-//        self.passwordHash = passwordHash
-//    }
-//
-//    init?(snapshot: DataSnapshot) {
-//        guard
-//            let value = snapshot.value as? [String: AnyObject],
-//            let firstName = value["firstName"] as? String,
-//            let lastName = value["lastName"] as? String,
-//            let email = value["email"] as? String,
-//            let username = value["username"] as? String,
-//            let passwordHash = value["passwordHash"] as? String
-//
-//        else {
-//            print("bad read")
-//            return nil
-//        }
-//
-//        self.ref = snapshot.ref
-//        self.key = snapshot.key
-//        self.firstName = firstName
-//        self.lastName = lastName
-//        self.email = email
-//        self.username = username
-//        self.profilePicURL = value["profilePicURL"] as? String
-//        self.passwordHash = passwordHash
-//    }
-//
-//
-//
-//    func toAnyObject() -> Any {
-//        return [
-//            "firstName": firstName,
-//            "lastName": lastName,
-//            "email": email,
-//            "username": username,
-//            "profilePicURL": profilePicURL,
-//            "passwordHash":passwordHash
-//        ]
-//    }
-//}
+

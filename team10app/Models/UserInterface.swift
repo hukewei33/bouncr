@@ -6,56 +6,66 @@
 //
 
 import Foundation
-import Firebase
+
+
+struct dataWrapper: Decodable{
+    let user: UserAttributes
+    let id:String
+    enum CodingKeys : String, CodingKey {
+        case id = "id"
+        case user = "attributes"
+    }
+    
+}
+
+struct IndexResult: Decodable {
+  let wrappers: [dataWrapper]
+
+  enum CodingKeys : String, CodingKey {
+    case wrappers = "data"
+  }
+}
+
+struct GetResult: Decodable {
+  let wrappers: dataWrapper
+
+  enum CodingKeys : String, CodingKey {
+    case wrappers = "data"
+  }
+}
+
+
 
 class UserInterface {
-  
-    var Users: [User] = []
     
-    let usersReference = Database.database().reference(withPath: "users")
-    
-  func create(firstName: String, lastName : String, email: String, password: String , username: String)-> String?{
-        let keyResult :String? = self.usersReference.childByAutoId().key
-        if let userId = keyResult {
-            let newUser = User(firstName: firstName,
-                            lastName: lastName,
-                            email:email,
-                            username:  username,
-                            profilePicURL: nil ,
-                            passwordHash: password,
-                            key: userId
-                            )
-            self.usersReference.child(userId).setValue(newUser.toAnyObject())
-            return userId
+    func indexUsers(url: String, token: String, network: Network) async throws-> [User] {
+        do{
+            let data = try await network.getAPICaller(urlString: url,token: token)
+            guard let result = try? JSONDecoder().decode(IndexResult.self, from: data!) else {
+                print("Error: Couldn't decode data into a result")
+                return []
+            }
+            return result.wrappers.map{$0.user.makeUser(key: $0.id)}
         }
-        else {
-            print("failed to add user")
+        catch{
+            return []
+        }
+    }
+    
+
+    func showUser(url: String, token: String, network: Network) async throws -> User? {
+        do{
+            let data = try await network.getAPICaller(urlString: url,token: token)
+            guard let result = try? JSONDecoder().decode(GetResult.self, from: data!) else {
+                print("Error: Couldn't decode data into a result")
+                return nil
+            }
+            return result.wrappers.user.makeUser(key: result.wrappers.id)
+        }
+        catch{
+            print("api failed")
             return nil
         }
     }
-    
-    func fetch(completionHandler: @escaping ([User]) -> Void){
-                self.usersReference.queryOrdered(byChild: "firstName").observe(.value, with: { snapshot in
-                    var newUsers: [User] = []
-                    for child in snapshot.children {
-                        if let snapshot = child as? DataSnapshot,
-                           let user = User(snapshot: snapshot) {
-                            //print(user.firstName)
-                            newUsers.append(user)
-                        }
-                    }
-                    self.Users = newUsers
-                    completionHandler(self.Users)
-                })
-    }
-    
-    
-    func update(key:String, updateVals:[String : Any]){
-        self.usersReference.child(key).updateChildValues(updateVals)
-    }
-    
-    func delete(key:String ){
-        self.usersReference.child(key).removeValue()
-    }
-    
+        
 }

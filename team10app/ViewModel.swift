@@ -17,6 +17,10 @@ class ViewModel: ObservableObject {
     let hostInterface: HostInterface
     let inviteInterface: InviteInterface
     let friendInterface: FriendInterface
+    let network: Network
+    
+    let baseURL:String = "http://127.0.0.1:3000/"
+    
     
     let hostsReference = Database.database().reference(withPath: "hosts")
     let eventsReference = Database.database().reference(withPath: "events")
@@ -35,6 +39,13 @@ class ViewModel: ObservableObject {
     @Published var pendingInvites: [Invite] = [Invite]()
     @Published var friends: [Friend] = [Friend]()
     @Published var pendingFriends: [Friend] = [Friend]()
+    
+    
+    @Published var indexEventGuestsArray: [User] = [User]()
+    @Published var indexPendingEventGuestsArray: [User] = [User]()
+    @Published var indexEventHostsArray: [User] = [User]()
+    @Published var userSearchResults: [User] = [User]()
+    
   
     //Separate variables for events on host index page
     @Published var hostEvents: [Event] = [Event]() //Upcoming events that just look like normal events on your Host index pg
@@ -48,6 +59,7 @@ class ViewModel: ObservableObject {
     @Published var searchResults: [User] = [User]()
     
     @Published var thisUser: User? = nil
+    var token: String
     
     init() {
         //lets keep the interfaces for CUD so we dont blow up this file :)
@@ -63,6 +75,8 @@ class ViewModel: ObservableObject {
         getEvents(){(a,b,c) in return }
         getUsers(){a in return }
         getInvites(){(a,b) in return }
+        
+        network = Network()
     }
   
   func getHosts(completionHandler: @escaping ([Host]) -> Void) {
@@ -180,36 +194,64 @@ class ViewModel: ObservableObject {
       }
 
     
-    func login(username: String, pword: String) -> Bool {
-        for user in self.users {
-            if (user.username == username && user.passwordHash == pword) {
-                self.thisUser = user
-                getFriends(){(friends,pendingFriends) in self.friends = friends.filter{$0.userKey1 == user.key}; self.pendingFriends = pendingFriends.filter{$0.userKey1 == user.key}}
-                return true // login was successful
+    func login(username: String, pword: String) {
+        let url = self.baseURL+"login?username="+username+"&password="+pword
+        Task.init {
+            do {
+                guard let data = try await network.getAPICaller(urlString: url, token: nil) else{
+                    print("bad Login connection")
+                    return
+                }
+                guard let loginInfo = try? JSONDecoder().decode(LoginDecode.self, from: data) else{
+                    print("bad Login decode")
+                    return
+                }
+                self.thisUser=loginInfo.user
+                self.token=loginInfo.token
+            } catch {
+                // .. handle error
+                print("bad Login")
             }
         }
-        return false // login failed
     }
     
     func logout() {
         self.thisUser = nil;
+        self.token = "";
     }
     
-    func loggedin()->String?{
+    func loggedin()->Int?{
         if let user = self.thisUser {
             return user.key
         }
         return nil
     }
     
-    func indexEventGuests(eventKey: String) -> [User] {
-        let guestIDList = self.invites.filter {$0.eventKey == eventKey}.map{$0.userKey}
-        return self.users.filter {guestIDList.contains($0.key)}
+    //
+    func indexEventGuests(eventKey: Int) {
+        let url = self.baseURL+"event_guests?id=" + String(eventKey) + "&inviteStatus=true"
+        self.indexEventGuestsArray = []
+        Task.init{
+            guard let data = try? await userInterface.indexUsers(url: url, token: self.token, network: self.network)else{
+                print("bad read")
+                return
+            }
+            self.indexEventGuestsArray = data
+        }
+        return
     }
   
-    func indexPendingEventGuests(eventKey: String) -> [User] {
-        let pendingGuestIDList = self.pendingInvites.filter {$0.eventKey == eventKey}.map{$0.userKey}
-        return self.users.filter {pendingGuestIDList.contains($0.key)}
+    func indexPendingEventGuests(eventKey: String){
+        self.indexPendingEventGuestsArray = []
+        let url = self.baseURL+"event_guests?id=" + String(eventKey) + "&inviteStatus=false"
+        Task.init{
+            guard let data = try? await userInterface.indexUsers(url: url, token: self.token, network: self.network)else{
+                print("bad read")
+                return
+            }
+            self.indexPendingEventGuestsArray = data
+        }
+        return
     }
   
     
@@ -236,9 +278,18 @@ class ViewModel: ObservableObject {
     }
     
   //Get a list of all the hosts hosting an event (should prob just be one host)
-    func indexEventHosts(eventKey:String) -> [User] {
-        let hostIDList = self.hosts.filter {$0.eventKey == eventKey}.map{$0.userKey}
-        return self.users.filter {hostIDList.contains($0.key)}
+    func indexEventHosts(eventKey:String) {
+        
+        self.indexEventHostsArray = []
+        let url = self.baseURL+"event_hosts?id=" + String(eventKey)
+        Task.init{
+            guard let data = try? await userInterface.indexUsers(url: url, token: self.token, network: self.network)else{
+                print("bad read")
+                return
+            }
+            self.indexEventHostsArray = data
+        }
+        return
     }
     
     //For use in the inviteGuestsModal; add someone to the potential list
@@ -458,47 +509,33 @@ class ViewModel: ObservableObject {
   
     //After editing your own profile, is called after db is updated, sets thisuser to updated version of thisuser
     func getUser(userKey: String) {
-      print("getUser() ran")
-      if let currUser = self.thisUser {
-        for user in self.users {
-            if (user.key == userKey) {
-                self.thisUser = user
-                getFriends(){(friends,pendingFriends) in self.friends = friends.filter{$0.userKey1 == user.key}; self.pendingFriends = pendingFriends.filter{$0.userKey1 == user.key}}
+        let url = self.baseURL+"users/" + String(userKey)
+        Task.init{
+            guard let data = try await userInterface.showUser(url: url, token: self.token, network: self.network) else{
+                print("bad read")
+                return
             }
+            self.thisUser = data
         }
-      }
     }
+                                                       
                                                                   
-    func searchUsers(query: String, eventKey: String) -> [User] {
+    func searchUsers(query: String, eventKey: String, filter: (([User])->())) {
         if query == "" {
-            return []
+            self.userSearchResults = []
         }
-        //add additional logic to prevent adding yourself or guests already added?
-        let first_name_matches: [User] = self.users.filter{$0.firstName.lowercased().contains(query.lowercased())}
-        let last_name_matches:  [User] = self.users.filter{$0.lastName.lowercased().contains(query.lowercased())}
-        let userName_matches:  [User] = self.users.filter{$0.username.lowercased().contains(query.lowercased())}
-        var result = Array(Set(first_name_matches).union(Set(last_name_matches)).union(Set(userName_matches)))
-        result.sort {
-            if $0.lastName != $1.lastName { // first, compare by last names
-                return $0.lastName < $1.lastName
-            }
-            else { // All other fields are tied, break ties by first name
-                return $0.firstName < $1.firstName
-            }
-        }
-      
-        //Get users who are already invited to this event
-        let guestIDList = self.invites.filter {$0.eventKey == eventKey}.map{$0.userKey}
-        //Filter out users who are already invited to the event, don't include in search results
-        result = result.filter {!guestIDList.contains($0.key)}
+        let url = self.baseURL+"users_search?term=" + query
+        self.userSearchResults = []
 
-        //needs to be added back in after login is implemented
-        //      if let usr = self.currentUser {
-        //        return result.filter{$0.id != usr.id}
-        //      }
-      
-        self.searchResults =  result
-        return result
+        Task.init{
+            guard let data = try? await userInterface.indexUsers(url: url, token: self.token, network: self.network)else{
+                print("bad read")
+                return
+            }
+            //filter should populate the userSearchResults array
+            filter(data)
+        }
+        return
     }
     
 }

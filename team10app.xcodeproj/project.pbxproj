@@ -57,6 +57,9 @@
 		B2BB3CB727272DF100C6DB94 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CB627272DF100C6DB94 /* UserInterface.swift */; };
 		B2BB3CB92727369E00C6DB94 /* EventInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CB82727369D00C6DB94 /* EventInterface.swift */; };
 		B2BB3CBB27273BDC00C6DB94 /* HostInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */; };
+		B2DDF3A62808887D00A43CC3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDF3A52808887D00A43CC3 /* Network.swift */; };
+		B2DDF3A928088EAA00A43CC3 /* LoginDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDF3A828088EAA00A43CC3 /* LoginDecode.swift */; };
+		B2DDF3AB2809AA6500A43CC3 /* UserAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDF3AA2809AA6500A43CC3 /* UserAttributes.swift */; };
 		FE7A63F6D79ACB4EC26D3BA4 /* Pods_team10appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C4B4DE11EE047B19FC3257 /* Pods_team10appTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +136,9 @@
 		B2BB3CB82727369D00C6DB94 /* EventInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInterface.swift; sourceTree = "<group>"; };
 		B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostInterface.swift; sourceTree = "<group>"; };
 		B2DDF3A42807510B00A43CC3 /* rubyapi.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = rubyapi.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B2DDF3A52808887D00A43CC3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		B2DDF3A828088EAA00A43CC3 /* LoginDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDecode.swift; sourceTree = "<group>"; };
+		B2DDF3AA2809AA6500A43CC3 /* UserAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAttributes.swift; sourceTree = "<group>"; };
 		E642DB0D526C07BC0BC1A3CD /* Pods-team10appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10appTests.debug.xcconfig"; path = "Target Support Files/Pods-team10appTests/Pods-team10appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAFC50A41E178446D88F6DCC /* Pods-team10app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-team10app.debug.xcconfig"; path = "Target Support Files/Pods-team10app/Pods-team10app.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -280,6 +286,7 @@
 				B250866127278E5000FD9D9C /* Controller.swift */,
 				18F98527272900D00077B7FE /* GoogleService-Info.plist */,
 				18DAF455272A6B680008B4A3 /* ViewModel.swift */,
+				B2DDF3A728088E3400A43CC3 /* NetWork */,
 			);
 			path = team10app;
 			sourceTree = "<group>";
@@ -316,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				B2BB3CAE272729A000C6DB94 /* User.swift */,
+				B2DDF3AA2809AA6500A43CC3 /* UserAttributes.swift */,
 				9D073E7527519E6B0097DA25 /* Friend.swift */,
 				9D073E7727519E840097DA25 /* FriendInterface.swift */,
 				B2BB3CB027272A7800C6DB94 /* Event.swift */,
@@ -327,6 +335,15 @@
 				B2BB3CBA27273BDC00C6DB94 /* HostInterface.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B2DDF3A728088E3400A43CC3 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				B2DDF3A52808887D00A43CC3 /* Network.swift */,
+				B2DDF3A828088EAA00A43CC3 /* LoginDecode.swift */,
+			);
+			path = NetWork;
 			sourceTree = "<group>";
 		};
 		DBACACAA5C12F5DAA3F92D74 /* Pods */ = {
@@ -558,12 +575,15 @@
 				9D2F818D2760A24F00E845F4 /* GuestListRow.swift in Sources */,
 				9D50390C2734C174001DF338 /* HostEventDetailsView.swift in Sources */,
 				9D79D512273351C300A771D9 /* InvitationsView.swift in Sources */,
+				B2DDF3A62808887D00A43CC3 /* Network.swift in Sources */,
 				B2BB3CAF272729A000C6DB94 /* User.swift in Sources */,
 				1862DADB27346EA50055E2F0 /* InviteGuestsModal.swift in Sources */,
+				B2DDF3AB2809AA6500A43CC3 /* UserAttributes.swift in Sources */,
 				1862DADD27349F290055E2F0 /* InviteGuestsModalRow.swift in Sources */,
 				18DAF45B272B71890008B4A3 /* HostEventsView.swift in Sources */,
 				9D073E7827519E840097DA25 /* FriendInterface.swift in Sources */,
 				9D2F818B2760A24100E845F4 /* GuestList.swift in Sources */,
+				B2DDF3A928088EAA00A43CC3 /* LoginDecode.swift in Sources */,
 				B2BB3CB127272A7800C6DB94 /* Event.swift in Sources */,
 				9D13015D2754061E007A2C4B /* LoginView.swift in Sources */,
 				B20E9ECF271FA2BC002BA590 /* team10app.xcdatamodeld in Sources */,
