@@ -88,6 +88,19 @@ class UserTest: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
+    func testCreateServer() throws {
+        let controller = MainController()
+
+        let expectation = expectation(description: "login to service after creation")
+        let testUser = User(id: 1, firstName: "tester", lastName: "macTest", email: "test", username: "testingUser", phoneNumber: 1, birthday: Date(), orgUser: nil, password: "secret")
+
+        controller.createUser(newUser: testUser){
+            expectation.fulfill()
+            XCTAssertEqual(controller.thisUser!.username, "testingUser")
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
     func testUpdate() throws {
         let controller = MainController(service: UserServiceMock())
         

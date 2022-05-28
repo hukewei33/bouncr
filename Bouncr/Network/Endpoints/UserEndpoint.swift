@@ -24,8 +24,6 @@ extension UserEndpoint: Endpoint {
         case .update(let id,_,_):
             return "upsers/\(id)"
         }
-    
-        
     }
 
     var method: RequestMethod {
@@ -37,7 +35,6 @@ extension UserEndpoint: Endpoint {
         case .update:
             return .patch
         }
-    
     }
 
     var header: [String: String]? {

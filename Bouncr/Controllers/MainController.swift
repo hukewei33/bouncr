@@ -55,7 +55,6 @@ class MainController: ObservableObject {
     func logout(){
         thisUser=nil
         token=""
-        setParent()
     }
     
     //we create a user object with a password, the passed in user object must have a password field, the id field is ignored so it can be anything
@@ -89,8 +88,5 @@ class MainController: ObservableObject {
             }
         }
     }
-    
-    
-    
-    
+  
 }
