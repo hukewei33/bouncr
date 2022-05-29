@@ -76,7 +76,7 @@ class MainController: ObservableObject {
     func updateUser(updatedUser: User, completion: (() -> Void)? = nil){
         let updatedUserDict = updatedUser.toDict()
         Task.init{
-            let result = await userService.updateUser(id: updatedUser.id, updateUser: updatedUserDict, token: token)
+            let result = await userService.updateUser(id: thisUser!.id, updateUser: updatedUserDict, token: token)
             switch result {
             case .success(let updatedUser):
                 thisUser=updatedUser
@@ -87,6 +87,11 @@ class MainController: ObservableObject {
                 completion?()
             }
         }
+    }
+    
+    func manualLoginForTesting(){
+        thisUser = User(id: 2, firstName: "Kenny", lastName: "Hu", email: "kenny@andrew.cmu.edu", username: "khu", phoneNumber: 123456789, birthday: Date(), orgUser: nil, password: nil)
+        token = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.4aV9sPAQmgK4hTBPihEXF3CVkzLDz3jsmWShy2TtQfU"
     }
   
 }

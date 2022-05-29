@@ -19,10 +19,10 @@ extension UserEndpoint: Endpoint {
         switch self {
         case .login(let username, let password):
             return "login?username=\(username)&password=\(password)"
-        case .create:
-            return "users"
-        case .update(let id,_,_):
-            return "upsers/\(id)"
+        case .create(let dic):
+            return "users"+DictToParamString().toParam(input: dic)
+        case .update(let id,let dic,_):
+            return "users/\(id)"+DictToParamString().toParam(input: dic)
         }
     }
 
