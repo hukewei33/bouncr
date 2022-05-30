@@ -14,10 +14,13 @@ struct DictToParamString {
         if let input = input {
             builder.append("?")
             for (k,v) in input{
-                builder.append(k)
-                builder.append("=")
-                builder.append(v)
-                builder.append("&")
+                if k != "id"{
+                    builder.append(k)
+                    builder.append("=")
+                    builder.append(v)
+                    builder.append("&")
+                }
+                
             }
             return builder
         }

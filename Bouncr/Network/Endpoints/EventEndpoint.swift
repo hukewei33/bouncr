@@ -20,10 +20,10 @@ extension EventEndpoint: Endpoint {
         switch self {
         case .getHostEvents(let id, _):
             return "host_events?id=\(id)"
-        case.createEventWithHost(let id, _,_):
-            return "createEventWithHost?id=\(id)"
+        case.createEventWithHost(let id, let newEvent,_):
+            return "create_event_with_host"+DictToParamString().toParam(input: newEvent)+"id=\(id)"
         case.updateEvent(let id, _,_),.deleteEvent(let id, _):
-            return "events/\(id)"
+            return "events/\(id)+DictToParamString().toParam(input: newEvent)"
 
         }
     }

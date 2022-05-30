@@ -20,7 +20,7 @@ extension HTTPClient {
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.header
-
+        
         if let body = endpoint.body {
             request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         }
@@ -35,16 +35,21 @@ extension HTTPClient {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
                 guard let decodedResponse = try? decoder.decode(responseModel, from: data) else {
-                    return .failure(.decode)
+                    guard let decodedGenericResponse = try? decoder.decode(GenericResponse.self, from: data)else {
+                        return .failure(.decode)
+                    }
+                    return .failure(.serverSideError)
                 }
                 return .success(decodedResponse)
-            case 401:
-                return .failure(.unauthorized)
-            default:
-                return .failure(.unexpectedStatusCode)
-            }
-        } catch {
-            return .failure(.unknown)
+            
+            
+        case 401:
+            return .failure(.unauthorized)
+        default:
+            return .failure(.unexpectedStatusCode)
         }
+    } catch {
+        return .failure(.unknown)
     }
+}
 }

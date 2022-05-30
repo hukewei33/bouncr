@@ -87,6 +87,54 @@ class OtherUserController: HelperController,ObservableObject {
     
     //TODO: create end points for creating and modifying freind relationships
     
+    func sendFriendRequest(recieverID:Int,completion: (() -> Void)? = nil){
+        Task.init{
+            let result = await otherUserService.createFriends(senderID: getUserID(), recieverID: recieverID, token: getToken())
+            switch result {
+            case .success(let res): break
+                //need to define feedback
+            case .failure(let error):
+                print(error.customMessage)
+                setErrorMessage(message: error.customMessage)
+            }
+            completion?()
+        }
+    }
+    
+    func processFriendRequest(recieverID:Int,accept:Bool,completion: (() -> Void)? = nil){
+        if accept{
+            Task.init{
+                let result = await otherUserService.createFriends(senderID: getUserID(), recieverID: recieverID, token: getToken())
+                switch result {
+                case .success(let res): break
+                    //need to define feedback
+                case .failure(let error):
+                    print(error.customMessage)
+                    setErrorMessage(message: error.customMessage)
+                }
+                completion?()
+            }
+        }
+        else{
+            deleteFriendRequest(recieverID: recieverID,completion: completion)
+        }
+        
+    }
+    
+    func deleteFriendRequest(recieverID:Int,completion: (() -> Void)? = nil){
+        Task.init{
+            let result = await otherUserService.deleteFriends(senderID: getUserID(), recieverID: recieverID, token: getToken())
+            switch result {
+            case .success(let res): break
+                //need to define feedback
+            case .failure(let error):
+                print(error.customMessage)
+                setErrorMessage(message: error.customMessage)
+            }
+            completion?()
+        }
+    }
+    
     
     
 }

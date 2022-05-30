@@ -13,9 +13,25 @@ protocol OtherUserServiceable {
     func getEventHosts(id:Int,token:String) async -> Result<[OtherUser], RequestError>
     func getSearchResults(term:String,token:String) async -> Result<[OtherUser], RequestError>
     //TODO: create end points for creating and modifying freind relationships
+    func createFriends(senderID:Int,recieverID:Int ,token:String) async -> Result<GenericResponse, RequestError>
+    func accpetFriends(senderID:Int,recieverID:Int ,token:String) async -> Result<GenericResponse, RequestError>
+    func deleteFriends(senderID:Int,recieverID:Int ,token:String) async -> Result<GenericResponse, RequestError>
 }
 
 struct OtherUserService: HTTPClient, OtherUserServiceable {
+    func accpetFriends(senderID: Int, recieverID: Int, token: String) async -> Result<GenericResponse, RequestError> {
+        return await sendRequest(endpoint: OtherUserEndpoint.acceptFriendRequest(senderID: senderID, reccieverID: recieverID, token: token), responseModel: GenericResponse.self)
+    }
+    
+    func deleteFriends(senderID: Int, recieverID: Int, token: String) async -> Result<GenericResponse, RequestError> {
+        return await sendRequest(endpoint: OtherUserEndpoint.deleteFriendRequest(senderID: senderID, reccieverID: recieverID, token: token), responseModel: GenericResponse.self)
+    }
+    
+    
+    func createFriends(senderID:Int,recieverID:Int ,token:String) async -> Result<GenericResponse, RequestError>{
+        return await sendRequest(endpoint: OtherUserEndpoint.createFriendRequest(senderID: senderID, reccieverID: recieverID, token: token), responseModel: GenericResponse.self)
+    }
+    
     
     func getFriendRequests(id: Int, isSent: Bool, token: String) async -> Result<[OtherUser], RequestError> {
         return await sendRequest(endpoint: OtherUserEndpoint.getPendingFriendRequests(id: id, isSent:isSent, token: token), responseModel: [OtherUser].self)

@@ -19,11 +19,13 @@ extension InviteEndpoint: Endpoint {
     var path: String {
         switch self {
         case .getInvites(let id, _):
-            return "guest_Invites?id=\(id)"
-        case.createInvite( _,_):
-            return "Invites"
-        case.updateInvite(let id, _,_),.deleteInvite(let id, _):
-            return "Invites/\(id)"
+            return "guest_invites?id=\(id)"
+        case.createInvite(let newInvite,_):
+            return "invites"+DictToParamString().toParam(input: newInvite)
+        case.updateInvite(let id, let newInvite,_):
+            return "invites/\(id)"+DictToParamString().toParam(input: newInvite)
+        case .deleteInvite(let id, _):
+            return "invites/\(id)"
 
         }
     }

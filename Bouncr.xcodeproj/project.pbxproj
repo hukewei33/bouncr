@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B2001903284424B600B3C899 /* DictToParamString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001902284424B600B3C899 /* DictToParamString.swift */; };
+		B2001905284434B900B3C899 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001904284434B800B3C899 /* GenericResponse.swift */; };
 		B2559287281F14A1002C5CEA /* BouncrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2559286281F14A1002C5CEA /* BouncrApp.swift */; };
 		B2559289281F14A1002C5CEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2559288281F14A1002C5CEA /* ContentView.swift */; };
 		B255928B281F14A2002C5CEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B255928A281F14A2002C5CEA /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		B2001902284424B600B3C899 /* DictToParamString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictToParamString.swift; sourceTree = "<group>"; };
+		B2001904284434B800B3C899 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		B2559283281F14A1002C5CEA /* Bouncr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bouncr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2559286281F14A1002C5CEA /* BouncrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncrApp.swift; sourceTree = "<group>"; };
 		B2559288281F14A1002C5CEA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				B25592EA2821DDF6002C5CEA /* Organization.swift */,
 				B25592EC2821DEF5002C5CEA /* OrgUser.swift */,
 				B25592FC28246468002C5CEA /* JSONCreatable.swift */,
+				B2001904284434B800B3C899 /* GenericResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				B255930328247312002C5CEA /* InviteEndpoint.swift in Sources */,
 				B2559287281F14A1002C5CEA /* BouncrApp.swift in Sources */,
 				B25592BF281F1597002C5CEA /* Endpoint.swift in Sources */,
+				B2001905284434B900B3C899 /* GenericResponse.swift in Sources */,
 				B2001903284424B600B3C899 /* DictToParamString.swift in Sources */,
 				B25592EB2821DDF6002C5CEA /* Organization.swift in Sources */,
 				B25592DF281F2C9C002C5CEA /* MainController.swift in Sources */,
