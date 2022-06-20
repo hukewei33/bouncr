@@ -38,8 +38,8 @@ struct Event: Codable,JSONCreatable {
     func toDict() -> [String:String]? {
         var newEvent:[String:String] = [
                 "name":name,
-                "startTime":DateFormatter.iso8601Full.string(from:startTime),
-                "endTime":DateFormatter.iso8601Full.string(from:endTime),
+                "startTime":DateFormatter.iso8601FullOutgoing.string(from:startTime),
+                "endTime":DateFormatter.iso8601FullOutgoing.string(from:endTime),
                 "street1":street1,
                 "street2":"",
                 "city":city,

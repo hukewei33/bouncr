@@ -8,5 +8,5 @@
 import Foundation
 struct GenericResponse: Codable {
     let returnValue:Int
-    let returnString:String
+    let returnString:String?
 }

@@ -1,0 +1,18 @@
+[
+    {
+        "id": 4,
+        "checkinTime": "2022-04-15 10:05:00 UTC",
+        "coverChargePaid": 0.0,
+        "event_id": 2,
+        "inviteStatus": false,
+        "user_id": 1
+    },
+    {
+        "id": 13,
+        "checkinTime": null,
+        "coverChargePaid": 0.0,
+        "event_id": 5,
+        "inviteStatus": false,
+        "user_id": 1
+    }
+]

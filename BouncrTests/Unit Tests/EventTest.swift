@@ -69,8 +69,8 @@ class EventTest: XCTestCase {
         
         switch res {
         case .success(let event):
-            XCTAssertEqual(event.id,1)
-            XCTAssertEqual(event.name,"event1")
+            XCTAssertEqual(event.id,2)
+            XCTAssertEqual(event.name,"Art Night")
             
         case .failure:
             XCTFail("The request should not fail")

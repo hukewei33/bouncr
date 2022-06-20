@@ -30,7 +30,7 @@ class HostedEventController: HelperController,ObservableObject {
                 eventArray=events
             case .failure(let error):
                 print(error.customMessage)
-                setErrorMessage(message: error.customMessage)
+                setStatusMessage(message: error.customMessage)
             }
             completion?()
         }
@@ -47,7 +47,7 @@ class HostedEventController: HelperController,ObservableObject {
                 eventShowed=event
             case .failure(let error):
                 print(error.customMessage)
-                setErrorMessage(message: error.customMessage)
+                setStatusMessage(message: error.customMessage)
             }
             completion?()
         }
@@ -64,7 +64,7 @@ class HostedEventController: HelperController,ObservableObject {
                 eventShowed=event
             case .failure(let error):
                 print(error.customMessage)
-                setErrorMessage(message: error.customMessage)
+                setStatusMessage(message: error.customMessage)
             }
             completion?()
         }

@@ -11,6 +11,27 @@ import Foundation
 
 
 final class OtherUserServiceMock: Mockable, OtherUserServiceable {
+    func createFriends(senderID: Int, recieverID: Int, token: String) async -> Result<GenericResponse, RequestError> {
+        if (senderID == -1){
+            return .success(loadJSON(filename: "BadGenericResponse", type: GenericResponse.self))
+        }
+        return .success(loadJSON(filename: "GoodGenericResponse", type: GenericResponse.self))
+    }
+    
+    func accpetFriends(senderID: Int, recieverID: Int, token: String) async -> Result<GenericResponse, RequestError> {
+        if (senderID == -1){
+            return .success(loadJSON(filename: "BadGenericResponse", type: GenericResponse.self))
+        }
+        return .success(loadJSON(filename: "GoodGenericResponse", type: GenericResponse.self))
+    }
+    
+    func deleteFriends(senderID: Int, recieverID: Int, token: String) async -> Result<GenericResponse, RequestError> {
+        if (senderID == -1){
+            return .success(loadJSON(filename: "BadGenericResponse", type: GenericResponse.self))
+        }
+        return .success(loadJSON(filename: "GoodGenericResponse", type: GenericResponse.self))
+    }
+    
     func getFriendRequests(id: Int, isSent: Bool, token: String) async -> Result<[OtherUser], RequestError> {
         return .success(loadJSON(filename: "ReturnOtherUserArray", type: [OtherUser].self))
     }

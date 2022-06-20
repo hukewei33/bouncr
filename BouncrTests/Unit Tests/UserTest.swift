@@ -33,6 +33,8 @@ class UserTest: XCTestCase {
         }
     }
     
+    //mock tests
+    
     func testUserServiceMockLogin() async {
         let mock = UserServiceMock()
         let res = try await mock.userLogin(username: "", password: "")
@@ -40,7 +42,7 @@ class UserTest: XCTestCase {
         switch res {
         case .success(let login):
             XCTAssertEqual(login.token, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.4aV9sPAQmgK4hTBPihEXF3CVkzLDz3jsmWShy2TtQfU")
-            XCTAssertEqual(login.user.username, "khu")
+            XCTAssertEqual(login.username, "khu")
         case .failure:
             XCTFail("The request should not fail")
         }
@@ -48,18 +50,19 @@ class UserTest: XCTestCase {
     
     func testUserServiceMockCreate() async {
         let mock = UserServiceMock()
-        let testUser = User(id: 1, firstName: "test", lastName: "test", email: "test", username: "test", phoneNumber: 1, birthday: Date(), orgUser: nil, password: nil)
+        let testUser = User(id: 1, firstName: "test", lastName: "test", email: "test", username: "test", phoneNumber: 1, birthday: Date(), orgUser: nil, password: nil,token:  nil)
         let res = try await mock.createUser(newUser: testUser.toDict())
         
         switch res {
         case .success(let login):
             XCTAssertEqual(login.token, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.4aV9sPAQmgK4hTBPihEXF3CVkzLDz3jsmWShy2TtQfU")
-            XCTAssertEqual(login.user.username, "khu")
+            XCTAssertEqual(login.username, "khu")
         case .failure:
             XCTFail("The request should not fail")
         }
     }
     
+    // controller tests
     func testLogin() throws {
         let controller = MainController(service: UserServiceMock())
         
@@ -73,24 +76,11 @@ class UserTest: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
-    func testLoginServer() throws {
-        let controller = MainController()
-        
-        let expectation = expectation(description: "login to service")
-        
-        controller.login(username: "testingUser", password: "secret") {
-            expectation.fulfill()
-            //XCTAssertEqual(controller.token, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.4aV9sPAQmgK4hTBPihEXF3CVkzLDz3jsmWShy2TtQfU")
-            XCTAssertEqual(controller.thisUser!.username, "testingUser")
-        }
-        waitForExpectations(timeout: 3.0, handler: nil)
-    }
-    
     func testCreate() throws {
         let controller = MainController(service: UserServiceMock())
         
         let expectation = expectation(description: "login to service after creation")
-        let testUser = User(id: 1, firstName: "test", lastName: "test", email: "test", username: "test", phoneNumber: 1, birthday: Date(), orgUser: nil, password: "secret")
+        let testUser = User(id: 1, firstName: "test", lastName: "test", email: "test", username: "test", phoneNumber: 1, birthday: Date(), orgUser: nil, password: "secret", token: nil)
         
         
         controller.createUser(newUser: testUser){
@@ -101,24 +91,11 @@ class UserTest: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
-    func testCreateServer() throws {
-        let controller = MainController()
-
-        let expectation = expectation(description: "login to service after creation")
-        let testUser = User(id: 1, firstName: "tester", lastName: "macTest", email: "test", username: "tu", phoneNumber: 1, birthday: Date(), orgUser: nil, password: "secret")
-
-        controller.createUser(newUser: testUser){
-            expectation.fulfill()
-            XCTAssertEqual(controller.thisUser!.username, "testingUser")
-        }
-        waitForExpectations(timeout: 3.0, handler: nil)
-    }
-    
     func testUpdate() throws {
         let controller = MainController(service: UserServiceMock())
-        
+        controller.manualLoginForTesting()
         let expectation = expectation(description: "login to service after creation")
-        let testUser = User(id: 1, firstName: "test", lastName: "test", email: "test", username: "test", phoneNumber: 1, birthday: Date(), orgUser: nil, password: "secret")
+        let testUser = User(id: 1, firstName: "test", lastName: "test", email: "test", username: "test", phoneNumber: 1, birthday: Date(), orgUser: nil, password: "secret", token: nil)
         
         controller.updateUser(updatedUser: testUser){
             expectation.fulfill()
@@ -127,18 +104,6 @@ class UserTest: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
-    func testUpdateServer() throws {
-        let controller = MainController()
-        controller.manualLoginForTesting()
-        
-        let expectation = expectation(description: "login to service after creation")
-        let testUser = User(id: 1, firstName: "test", lastName: "test", email: "testChangedTothis", username: "khu", phoneNumber: 1, birthday: Date(), orgUser: nil, password: "secret")
-        
-        controller.updateUser(updatedUser: testUser){
-            expectation.fulfill()
-            XCTAssertEqual(controller.thisUser!.email, "testChangedTothis")
-        }
-        waitForExpectations(timeout: 3.0, handler: nil)
-    }
+    
     
 }

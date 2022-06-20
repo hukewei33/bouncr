@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+//TODO: define interface for the girls
+
 class MainController: ObservableObject {
     @Published var thisUser: User?
     @Published var errorMessage: String?
@@ -32,8 +34,8 @@ class MainController: ObservableObject {
             let result = await userService.userLogin(username: username, password: password)
             switch result {
             case .success(let loginResponse):
-                thisUser=loginResponse.user
-                token = loginResponse.token
+                thisUser=loginResponse
+                token = loginResponse.token!
                 completion?()
             case .failure(let error):
                 errorMessage=error.customMessage
@@ -44,9 +46,9 @@ class MainController: ObservableObject {
     }
     
     func setParent(){
-        otherUserController.setUser(newParent: self)
-        hostedEventController.setUser(newParent: self)
-        inviteController.setUser(newParent: self)
+        otherUserController.setParent(newParent: self)
+        hostedEventController.setParent(newParent: self)
+        inviteController.setParent(newParent: self)
     }
     
     
@@ -63,8 +65,10 @@ class MainController: ObservableObject {
         Task.init{
             let result = await userService.createUser(newUser: newUserDict)
             switch result {
-            case .success(_):
-                login(username: newUser.username, password: newUser.password!,completion: completion)
+            case .success(let loginResponse):
+                thisUser=loginResponse
+                token = loginResponse.token!
+                completion?()
             case .failure(let error):
                 errorMessage=error.customMessage
                 print(errorMessage)
@@ -78,8 +82,9 @@ class MainController: ObservableObject {
         Task.init{
             let result = await userService.updateUser(id: thisUser!.id, updateUser: updatedUserDict, token: token)
             switch result {
-            case .success(let updatedUser):
-                thisUser=updatedUser
+            case .success(let loginResponse):
+                thisUser=loginResponse
+                token = loginResponse.token!
                 completion?()
             case .failure(let error):
                 errorMessage=error.customMessage
@@ -90,7 +95,7 @@ class MainController: ObservableObject {
     }
     
     func manualLoginForTesting(){
-        thisUser = User(id: 2, firstName: "Kenny", lastName: "Hu", email: "kenny@andrew.cmu.edu", username: "khu", phoneNumber: 123456789, birthday: Date(), orgUser: nil, password: nil)
+        thisUser = User(id: 4, firstName: "Kenny", lastName: "Hu", email: "kenny@andrew.cmu.edu", username: "khu", phoneNumber: 123456789, birthday: Date(), orgUser: nil, password: nil,token: nil)
         token = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.4aV9sPAQmgK4hTBPihEXF3CVkzLDz3jsmWShy2TtQfU"
     }
   

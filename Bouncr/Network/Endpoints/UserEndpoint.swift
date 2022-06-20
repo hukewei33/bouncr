@@ -20,6 +20,7 @@ extension UserEndpoint: Endpoint {
         case .login(let username, let password):
             return "login?username=\(username)&password=\(password)"
         case .create(let dic):
+            print("users"+DictToParamString().toParam(input: dic))
             return "users"+DictToParamString().toParam(input: dic)
         case .update(let id,let dic,_):
             return "users/\(id)"+DictToParamString().toParam(input: dic)

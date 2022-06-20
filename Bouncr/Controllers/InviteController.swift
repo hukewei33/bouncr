@@ -33,11 +33,12 @@ class InviteController: HelperController,ObservableObject {
                 InviteArray=Invites
             case .failure(let error):
                 print(error.customMessage)
-                setErrorMessage(message: error.customMessage)
+                setStatusMessage(message: error.customMessage)
             }
             completion?()
         }
     }
+    
     //the id is ignored and can be anything
     func createInvite(newInvite:Invite,completion: (() -> Void)? = nil){
         let newInviteDict = newInvite.toDict()
@@ -50,7 +51,7 @@ class InviteController: HelperController,ObservableObject {
                 InviteShowed=Invite
             case .failure(let error):
                 print(error.customMessage)
-                setErrorMessage(message: error.customMessage)
+                setStatusMessage(message: error.customMessage)
             }
             completion?()
         }
@@ -67,24 +68,29 @@ class InviteController: HelperController,ObservableObject {
                 InviteShowed=Invite
             case .failure(let error):
                 print(error.customMessage)
-                setErrorMessage(message: error.customMessage)
+                setStatusMessage(message: error.customMessage)
             }
             completion?()
         }
     }
     
-    func deleteInvite(deletedInvite:Invite,completion: (() -> Void)? = nil){
+    func deleteInvite(deletedInviteID:Int,completion: (() -> Void)? = nil){
         Task.init{
             setLoading(status: true)
-            let result = await inviteService.deleteInvite(id: deletedInvite.id, token: getToken())
+            let result = await inviteService.deleteInvite(id: deletedInviteID, token: getToken())
             setLoading(status:false)
             //TODO: change return type
-//            switch result {
-//            case .success(let Invite):
-//                InviteShowed=Invite
-//            case .failure(let error):
-//                print(error.customMessage)
-//            }
+            switch result {
+            case .success(let res):
+                if let message = res.returnString{
+                    setStatusMessage(message: message)
+                }
+                if(res.returnValue != 0){
+                  //what to do in fail?
+                }
+            case .failure(let error):
+                print(error.customMessage)
+            }
             completion?()
         }
     }

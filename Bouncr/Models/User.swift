@@ -19,6 +19,7 @@ struct User : Codable,JSONCreatable {
     let birthday: Date
     let orgUser: [OrgUser]?
     let password: String?
+    let token: String?
     
     func toDict() -> [String:String]? {
         var newUser=[
@@ -27,7 +28,7 @@ struct User : Codable,JSONCreatable {
             "email": email,
             "username": username,
             "phoneNumber":String(phoneNumber),
-            "birthday":DateFormatter.iso8601Full.string(from:birthday)
+            "birthday":DateFormatter.iso8601FullOutgoing.string(from:birthday)
         ]
         if let pw = password{
             newUser.updateValue(pw, forKey: "password")

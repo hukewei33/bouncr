@@ -29,7 +29,7 @@ struct Invite: Codable,JSONCreatable {
                 "coverChargePaid": String(coverChargePaid)
             ]
         if let checkinTime = checkinTime {
-            newInvite?.updateValue(DateFormatter.iso8601Full.string(from:checkinTime), forKey: "checkinTime")
+            newInvite?.updateValue(DateFormatter.iso8601FullOutgoing.string(from:checkinTime), forKey: "checkinTime")
         }
         return newInvite
     }

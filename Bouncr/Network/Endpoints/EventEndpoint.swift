@@ -21,9 +21,13 @@ extension EventEndpoint: Endpoint {
         case .getHostEvents(let id, _):
             return "host_events?id=\(id)"
         case.createEventWithHost(let id, let newEvent,_):
+            print("create_event_with_host"+DictToParamString().toParam(input: newEvent)+"id=\(id)")
             return "create_event_with_host"+DictToParamString().toParam(input: newEvent)+"id=\(id)"
-        case.updateEvent(let id, _,_),.deleteEvent(let id, _):
-            return "events/\(id)+DictToParamString().toParam(input: newEvent)"
+        case.updateEvent(let id, let newEvent,_):
+            print("events/\(id)"+DictToParamString().toParam(input: newEvent))
+            return "events/\(id)"+DictToParamString().toParam(input: newEvent)
+        case .deleteEvent(let id, _):
+            return "events/\(id)"
 
         }
     }

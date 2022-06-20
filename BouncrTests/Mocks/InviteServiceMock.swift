@@ -21,8 +21,11 @@ final class InviteServiceMock: Mockable, InviteServiceable {
         return .success(loadJSON(filename: "ReturnInvite", type: Invite.self))
     }
     
-    func deleteInvite(id: Int, token: String) async -> Result<[Invite], RequestError> {
-        return .success(loadJSON(filename: "ReturnInviteArray", type: [Invite].self))
+    func deleteInvite(id: Int, token: String) async -> Result<GenericResponse, RequestError> {
+        if (id == -1){
+            return .success(loadJSON(filename: "BadGenericResponse", type: GenericResponse.self))
+        }
+        return .success(loadJSON(filename: "GoodGenericResponse", type: GenericResponse.self))
     }
     
     

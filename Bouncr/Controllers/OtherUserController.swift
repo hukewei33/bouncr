@@ -26,7 +26,7 @@ class OtherUserController: HelperController,ObservableObject {
             target=res
         case .failure(let error):
             print(error.customMessage)
-            setErrorMessage(message: error.customMessage)
+            setStatusMessage(message: error.customMessage)
         }
     }
 
@@ -95,7 +95,7 @@ class OtherUserController: HelperController,ObservableObject {
                 //need to define feedback
             case .failure(let error):
                 print(error.customMessage)
-                setErrorMessage(message: error.customMessage)
+                setStatusMessage(message: error.customMessage)
             }
             completion?()
         }
@@ -110,7 +110,7 @@ class OtherUserController: HelperController,ObservableObject {
                     //need to define feedback
                 case .failure(let error):
                     print(error.customMessage)
-                    setErrorMessage(message: error.customMessage)
+                    setStatusMessage(message: error.customMessage)
                 }
                 completion?()
             }
@@ -129,7 +129,7 @@ class OtherUserController: HelperController,ObservableObject {
                 //need to define feedback
             case .failure(let error):
                 print(error.customMessage)
-                setErrorMessage(message: error.customMessage)
+                setStatusMessage(message: error.customMessage)
             }
             completion?()
         }
