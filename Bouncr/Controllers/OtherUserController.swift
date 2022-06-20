@@ -17,7 +17,9 @@ class OtherUserController: HelperController,ObservableObject {
     }
     
     //add as required
+    //@Published var friendsArray:[OtherUser]=[]
     @Published var otherUserArray:[OtherUser]=[]
+    
     
     //if new target is required, change target param in call
     func setOtherUserArray(result:Result<[OtherUser], RequestError>, target: inout [OtherUser] ){
@@ -36,7 +38,16 @@ class OtherUserController: HelperController,ObservableObject {
             setLoading(status: true)
             let result = await otherUserService.getFriends(id: getUserID(), token: getToken())
             setLoading(status: false)
-            setOtherUserArray(result: result, target: &otherUserArray)
+            //friendsArray = result
+            switch result {
+            case .success(let res):
+                otherUserArray=res
+            case .failure(let error):
+                print(error.customMessage)
+                setStatusMessage(message: error.customMessage)
+            }
+            
+            //setOtherUserArray(result: result, target: &otherUserArray)
             completion?()
         }
     }

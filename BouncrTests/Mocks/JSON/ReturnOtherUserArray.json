@@ -1,2 +1,14 @@
-[{"id":1,"username":"u1"},{"id":11,"username":"u11"},{"id":12,"username":"u12"},{"id":4,"username":"u4"},{"id":5,"username":"u5"}
+[
+    {
+        "id": 5,
+        "firstName": "Shane",
+        "lastName": "Aung",
+        "username": "saung"
+    },
+    {
+        "id": 3,
+        "firstName": "Grace",
+        "lastName": "Joseph",
+        "username": "gjoseph"
+    }
 ]

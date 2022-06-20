@@ -1,14 +1,13 @@
 //
-//  OtherUserTest.swift
+//  InviteIntergrationTest.swift
 //  BouncrTests
 //
-//  Created by Kenny Hu on 5/10/22.
+//  Created by Kenny Hu on 6/20/22.
 //
 
 import XCTest
-@testable import Bouncr
 
-class OtherUserTest: XCTestCase {
+class InviteIntergrationTest: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -31,34 +30,6 @@ class OtherUserTest: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
-    }
-    
-    func testOtherUserServiceMock() async {
-        let mock = OtherUserServiceMock()
-        let res = try await mock.getFriends(id: 1, token: "")
-            
-        switch res {
-        case .success(let resArray):
-            XCTAssertEqual(resArray.count,2)
-            XCTAssertEqual(resArray[0].id,5)
-
-        case .failure:
-            XCTFail("The request should not fail")
-        }
-    }
-    
-    func testGetFriends() throws {
-        let controller = OtherUserController(service: OtherUserServiceMock())
-        
-        let expectation = expectation(description: "get all friends")
-             
-        
-        controller.getFriends(){
-            expectation.fulfill()
-            XCTAssertEqual(controller.otherUserArray.count,2)
-            XCTAssertEqual(controller.otherUserArray[0].id,5)
-        }
-        waitForExpectations(timeout: 3.0, handler: nil)
     }
 
 }
