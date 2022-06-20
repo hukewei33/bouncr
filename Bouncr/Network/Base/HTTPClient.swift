@@ -13,6 +13,8 @@ protocol HTTPClient {
 
 extension HTTPClient {
     func sendRequest<T: Decodable>(endpoint: Endpoint,responseModel: T.Type) async -> Result<T, RequestError> {
+        //print(endpoint.path)
+        //print(endpoint.baseURL + endpoint.path)
         guard let url = URL(string: endpoint.baseURL + endpoint.path) else {
             return .failure(.invalidURL)
         }
@@ -28,6 +30,7 @@ extension HTTPClient {
         do {
             let (data, response) = try await URLSession.shared.data(for: request, delegate: nil)
             guard let response = response as? HTTPURLResponse else {
+                print("i got no response?")
                 return .failure(.noResponse)
             }
             switch response.statusCode {
@@ -45,10 +48,14 @@ extension HTTPClient {
             
         case 401:
             return .failure(.unauthorized)
+        case 400:
+            return.failure(.serverSideError)
         default:
+            print("i got unexpected code?")
             return .failure(.unexpectedStatusCode)
         }
     } catch {
+        print("i was here?")
         return .failure(.unknown)
     }
 }

@@ -15,7 +15,6 @@ protocol EventServiceable {
 
 struct EventService: HTTPClient, EventServiceable {
     
-    
     func getHostEvents(id:Int,token: String)async -> Result<[Event], RequestError> {
         return await sendRequest(endpoint: EventEndpoint.getHostEvents(id:id,token: token), responseModel: [Event].self)
     }

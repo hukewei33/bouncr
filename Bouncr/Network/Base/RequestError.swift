@@ -23,7 +23,7 @@ enum RequestError: Error {
         case .unauthorized:
             return "Session expired"
         case .serverSideError:
-            return "Pperation not allowed by service"
+            return "Operation not allowed by service"
         default:
             return "Unknown error"
         }

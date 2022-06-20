@@ -9,6 +9,8 @@ import Foundation
 
 struct OtherUser: Codable {
     let id: Int
-    let username: String
+    let userName: String
+    let lastName:String
+    let firstName:String
     
 }
