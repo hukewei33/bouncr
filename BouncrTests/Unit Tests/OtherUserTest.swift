@@ -60,5 +60,19 @@ class OtherUserTest: XCTestCase {
         }
         waitForExpectations(timeout: 3.0, handler: nil)
     }
+    
+    func testGetFriendSentRequests() throws {
+        let controller = OtherUserController(service: OtherUserServiceMock())
+        
+        let expectation = expectation(description: "get all sent friends request")
+             
+        
+        controller.getPendingSentFriends(){
+            expectation.fulfill()
+            XCTAssertEqual(controller.otherUserArray.count,2)
+            XCTAssertEqual(controller.otherUserArray[0].id,5)
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
 
 }

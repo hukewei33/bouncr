@@ -42,8 +42,8 @@ class InviteTest: XCTestCase {
         switch res {
         case .success(let resArray):
             XCTAssertEqual(resArray.count,2)
-            XCTAssertEqual(resArray[0].id,3)
-            XCTAssertEqual(resArray[1].id,2)
+            XCTAssertEqual(resArray[0].id,9)
+            XCTAssertEqual(resArray[1].id,17)
             
         case .failure:
             XCTFail("The request should not fail")
@@ -112,9 +112,9 @@ class InviteTest: XCTestCase {
         controller.getInvites(){
             
             XCTAssertEqual(controller.InviteArray.count,2)
-            XCTAssertEqual(controller.InviteArray[0].id,3)
+            XCTAssertEqual(controller.InviteArray[0].id,9)
             //XCTAssertEqual(controller.InviteArray[0].event?.id,1)
-            XCTAssertEqual(controller.InviteArray[1].id,2)
+            XCTAssertEqual(controller.InviteArray[1].id,17)
             //XCTAssertEqual(controller.InviteArray[1].user?.id,2)
             expectation.fulfill()
         }
@@ -151,86 +151,32 @@ class InviteTest: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
-    func testDeleteInvite() throws {
+    func testDeleteInviteOK() throws {
         let controller = InviteController(service: InviteServiceMock())
         
         let expectation = expectation(description: "delete invites")
         
         controller.deleteInvite(deletedInviteID: 1){
-            //expectation.fulfill()
+            
             XCTAssertEqual(controller.statusMessage,"ok")
+            expectation.fulfill()
         }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    func testDeleteInviteFail() throws {
+        let controller = InviteController(service: InviteServiceMock())
+        
+        let expectation = expectation(description: "delete invites")
+        
+        
         controller.deleteInvite(deletedInviteID: -1){
             expectation.fulfill()
             XCTAssertEqual(controller.statusMessage,"fail")
         }
         waitForExpectations(timeout: 3.0, handler: nil)
     }
-    
-    //server tests
-    
-    func testGetInvitesServer() throws {
-        let controller = InviteController()
-        
-        let expectation = expectation(description: "get all invites")
-        
-        controller.getInvites(){
-            XCTAssertEqual(controller.InviteArray.count,2)
-            //XCTAssertEqual(controller.InviteArray[0].id,4)
-            //XCTAssertEqual(controller.InviteArray[0].event?.id,2)
-            //XCTAssertEqual(controller.InviteArray[1].id,13)
-            //XCTAssertEqual(controller.InviteArray[1].user?.id,5)
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 3.0, handler: nil)
-    }
-    
-    func testCreateInviteServer() throws {
-        let controller = InviteController()
-        
-        let expectation = expectation(description: "create invite")
-        
-        let newInvite = Invite(id: 1, user_id: 2, event_id: 2, checkinTime: nil, inviteStatus: false, coverChargePaid: 0.0, event: nil, user: nil)
-        controller.createInvite(newInvite: newInvite){
-            expectation.fulfill()
-            XCTAssertEqual(controller.InviteShowed?.user_id,2)
-            XCTAssertEqual(controller.InviteShowed?.event_id,2)
-            XCTAssertEqual(controller.InviteShowed?.inviteStatus,false)
-        }
-        waitForExpectations(timeout: 3.0, handler: nil)
-    }
-    
-    func testUpdateInviteServer() throws {
-        let controller = InviteController()
-        
-        let expectation = expectation(description: "update invites")
-        
-        let newInvite = Invite(id: 2, user_id: 2, event_id: 2, checkinTime: nil, inviteStatus: true, coverChargePaid: 69.69, event: nil, user: nil)
-        controller.updateInvite(updatedInvite: newInvite){
-            expectation.fulfill()
-            XCTAssertEqual(controller.InviteShowed?.user_id,2)
-            XCTAssertEqual(controller.InviteShowed?.event_id,2)
-            XCTAssertEqual(controller.InviteShowed?.inviteStatus,true)
-            XCTAssertEqual(controller.InviteShowed?.coverChargePaid,69.69)
-        }
-        waitForExpectations(timeout: 3.0, handler: nil)
-    }
-    
-    func testDeleteInviteServer() throws {
-        let controller = InviteController()
-        
-        let expectation = expectation(description: "delete invites")
-        
-        controller.deleteInvite(deletedInviteID: 1){
-            expectation.fulfill()
-            XCTAssertEqual(controller.statusMessage,"ok")
-        }
-//        controller.deleteInvite(deletedInviteID: -1){
-//            expectation.fulfill()
-//            XCTAssertEqual(controller.statusMessage,"fail")
-//        }
-        waitForExpectations(timeout: 3.0, handler: nil)
-    }
+   
     
     
     

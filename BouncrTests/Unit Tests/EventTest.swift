@@ -105,6 +105,32 @@ class EventTest: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
+    func testDeleteEventOK() throws {
+        let controller = HostedEventController(service: EventServiceMock())
+        
+        let expectation = expectation(description: "delete Events")
+        
+        controller.deleteEvent(deletedEventID: 1){
+            
+            XCTAssertEqual(controller.statusMessage,"ok")
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    func testDeleteEventFail() throws {
+        let controller = HostedEventController(service: EventServiceMock())
+        
+        let expectation = expectation(description: "delete Events")
+        
+        
+        controller.deleteEvent(deletedEventID: -1){
+            expectation.fulfill()
+            XCTAssertEqual(controller.statusMessage,"fail")
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
     
     
     

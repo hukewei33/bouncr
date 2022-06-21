@@ -79,10 +79,9 @@ class InviteController: HelperController,ObservableObject {
             setLoading(status: true)
             let result = await inviteService.deleteInvite(id: deletedInviteID, token: getToken())
             setLoading(status:false)
-            //TODO: change return type
             switch result {
             case .success(let res):
-                if let message = res.returnString{
+                if let message = res.returnString {
                     setStatusMessage(message: message)
                 }
                 if(res.returnValue != 0){

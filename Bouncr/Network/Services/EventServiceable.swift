@@ -10,7 +10,7 @@ protocol EventServiceable {
     func getHostEvents(id:Int,token: String)async -> Result<[Event], RequestError>
     func createEventWithHost(id:Int,newEvent: [String:String]?,token: String)async -> Result<Event, RequestError>
     func updateEvent(id:Int,newEvent: [String:String]?,token: String)async -> Result<Event, RequestError>
-    func deleteEvent(id:Int,token: String)async -> Result<[Event], RequestError>
+    func deleteEvent(id:Int,token: String)async -> Result<GenericResponse, RequestError>
 }
 
 struct EventService: HTTPClient, EventServiceable {
@@ -25,7 +25,7 @@ struct EventService: HTTPClient, EventServiceable {
         return await sendRequest(endpoint: EventEndpoint.updateEvent(id: id, newEvent: newEvent, token: token), responseModel: Event.self)
     }
     //TODO: change return type
-    func deleteEvent(id:Int,token: String)async -> Result<[Event], RequestError> {
-        return await sendRequest(endpoint: EventEndpoint.deleteEvent(id:id,token: token), responseModel: [Event].self)
+    func deleteEvent(id:Int,token: String)async -> Result<GenericResponse, RequestError> {
+        return await sendRequest(endpoint: EventEndpoint.deleteEvent(id:id,token: token), responseModel: GenericResponse.self)
     }
 }

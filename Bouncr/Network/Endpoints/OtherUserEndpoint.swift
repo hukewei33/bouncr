@@ -9,7 +9,7 @@ import Foundation
 enum OtherUserEndpoint {
     case getFriends(id:Int,token: String)
     case getPendingFriendRequests(id:Int,isSent:Bool,token: String)
-    case getEventGuests(id:Int,checkedin: Bool,inviteStatus: Bool,isFriend:Bool,token: String)
+    case getEventGuests(user_id:Int,id:Int,checkedin: Bool,inviteStatus: Bool,isFriend:Bool,token: String)
     case getEventHosts(id:Int,token: String)
     case getSearchResults(term:String,token: String)
     case createFriendRequest(senderID:Int,reccieverID:Int,token: String)
@@ -26,10 +26,10 @@ extension OtherUserEndpoint: Endpoint {
         case .getFriends(let id, _):
             return "user_friends?id=\(id)"
         case.getPendingFriendRequests(let id,let isSent , _):
-            return "user_friend_requests?id=\(id)&isSend=\(isSent)"
+            return "user_friend_requests?id=\(id)&sentByMe=\(isSent)"
        
-        case .getEventGuests(let id,let checkedin, let inviteStatus,let isFriend,_):
-            return "event_guests?id=\(id)&inviteStatus=\(inviteStatus)&checkedin=\(checkedin)&isFriend=\(isFriend)"
+        case .getEventGuests(let user_id,let id,let checkedin, let inviteStatus,let isFriend,_):
+            return "event_guests?id=\(id)&invite_status=\(inviteStatus)&checked_in=\(checkedin)&is_friend=\(isFriend)&user_id=\(user_id)"
         case.getEventHosts(let id,  _):
             return "event_hosts?id=\(id)"
         case.getSearchResults(let term,  _):
@@ -63,7 +63,7 @@ extension OtherUserEndpoint: Endpoint {
         //let accessToken = "Your TMDB Access Token here!!!!!!!"
         switch self {
 
-        case .getFriends(_,let accessToken),.getPendingFriendRequests(_,_,let accessToken),.getSearchResults(_,let accessToken),.getEventHosts(_,let accessToken),.getEventGuests(_,_,_,_,let accessToken),.createFriendRequest(_,_,let accessToken),.acceptFriendRequest(_,_,let accessToken),.deleteFriendRequest(_,_,let accessToken):
+        case .getFriends(_,let accessToken),.getPendingFriendRequests(_,_,let accessToken),.getSearchResults(_,let accessToken),.getEventHosts(_,let accessToken),.getEventGuests(_,_,_,_,_,let accessToken),.createFriendRequest(_,_,let accessToken),.acceptFriendRequest(_,_,let accessToken),.deleteFriendRequest(_,_,let accessToken):
             return [
                 "Authorization": "Bearer \(accessToken)",
                 "Content-Type": "application/json;charset=utf-8"

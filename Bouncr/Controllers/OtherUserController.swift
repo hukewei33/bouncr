@@ -17,7 +17,6 @@ class OtherUserController: HelperController,ObservableObject {
     }
     
     //add as required
-    //@Published var friendsArray:[OtherUser]=[]
     @Published var otherUserArray:[OtherUser]=[]
     
     
@@ -25,7 +24,9 @@ class OtherUserController: HelperController,ObservableObject {
     func setOtherUserArray(result:Result<[OtherUser], RequestError>, target: inout [OtherUser] ){
         switch result {
         case .success(let res):
-            target=res
+            target.removeAll()
+            target.append(contentsOf: res)
+            //target=res
         case .failure(let error):
             print(error.customMessage)
             setStatusMessage(message: error.customMessage)
@@ -38,16 +39,7 @@ class OtherUserController: HelperController,ObservableObject {
             setLoading(status: true)
             let result = await otherUserService.getFriends(id: getUserID(), token: getToken())
             setLoading(status: false)
-            //friendsArray = result
-            switch result {
-            case .success(let res):
-                otherUserArray=res
-            case .failure(let error):
-                print(error.customMessage)
-                setStatusMessage(message: error.customMessage)
-            }
-            
-            //setOtherUserArray(result: result, target: &otherUserArray)
+            setOtherUserArray(result: result, target: &otherUserArray)
             completion?()
         }
     }
@@ -86,10 +78,21 @@ class OtherUserController: HelperController,ObservableObject {
     }
     
     //get all attending guests
-    func getGuest(eventID:Int,checkedin: Bool, inviteStatus: Bool,isFriend: Bool, completion: (() -> Void)? = nil){
+    func getGuests(eventID:Int,checkedin: Bool, inviteStatus: Bool,isFriend: Bool, completion: (() -> Void)? = nil){
         Task.init{
             setLoading(status: true)
-            let result = await otherUserService.getEventGuests(id: eventID, checkedin: checkedin, inviteStatus: inviteStatus,isFriend: isFriend,token: getToken())
+            let result = await otherUserService.getEventGuests(id: eventID, user_id: getUserID(), checkedin: checkedin, inviteStatus: inviteStatus,isFriend: isFriend,token: getToken())
+            setLoading(status: false)
+            setOtherUserArray(result: result, target: &otherUserArray)
+            completion?()
+        }
+    }
+    
+    //get all attending hosts
+    func getHosts(eventID:Int, completion: (() -> Void)? = nil){
+        Task.init{
+            setLoading(status: true)
+            let result = await otherUserService.getEventHosts(id: eventID, token: getToken())
             setLoading(status: false)
             setOtherUserArray(result: result, target: &otherUserArray)
             completion?()

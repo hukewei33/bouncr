@@ -39,8 +39,8 @@ class OtherUserIntergrationTest: XCTestCase {
         let expectation = expectation(description: "get friends")
         
         controller.otherUserController.getFriends(){
-           XCTAssertEqual(controller.hostedEventController.eventArray.first?.name ,"Shane")
-            XCTAssertEqual(controller.hostedEventController.eventArray.last?.name ,"Grace")
+            XCTAssertEqual(controller.otherUserController.otherUserArray.first?.firstName ,"Shane")
+            XCTAssertEqual(controller.otherUserController.otherUserArray.last?.firstName ,"Grace")
             expectation.fulfill()
         }
         waitForExpectations(timeout: 3.0, handler: nil)
@@ -49,11 +49,12 @@ class OtherUserIntergrationTest: XCTestCase {
     func testGetFriendRequestsSent() throws{
         let controller = MainController()
         controller.manualLoginForTesting()
-        let expectation = expectation(description: "get friends")
+        let expectation = expectation(description: "get sent friend request")
         
         controller.otherUserController.getPendingSentFriends(){
-           XCTAssertEqual(controller.hostedEventController.eventArray.first?.name ,"Shane")
-            XCTAssertEqual(controller.hostedEventController.eventArray.last?.name ,"Grace")
+            XCTAssertEqual(controller.otherUserController.otherUserArray.count,1)
+            XCTAssertEqual(controller.otherUserController.otherUserArray.first?.username ,"profh")
+            
             expectation.fulfill()
         }
         waitForExpectations(timeout: 3.0, handler: nil)
@@ -62,11 +63,68 @@ class OtherUserIntergrationTest: XCTestCase {
     func testGetFriendRequestsRecieved() throws{
         let controller = MainController()
         controller.manualLoginForTesting()
-        let expectation = expectation(description: "get friends")
+        let expectation = expectation(description: "get recieved friend request")
         
         controller.otherUserController.getPendingRecievedFriends(){
-           XCTAssertEqual(controller.hostedEventController.eventArray.first?.name ,"Shane")
-            XCTAssertEqual(controller.hostedEventController.eventArray.last?.name ,"Grace")
+            XCTAssertEqual(controller.otherUserController.otherUserArray.count,3)
+            XCTAssertEqual(controller.otherUserController.otherUserArray.first?.firstName ,"Kenny")
+            XCTAssertEqual(controller.otherUserController.otherUserArray.last?.firstName ,"Max")
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    func testGetSearch() throws{
+        let controller = MainController()
+        controller.manualLoginForTesting()
+        let expectation = expectation(description: "get recieved friend request")
+        
+        controller.otherUserController.getSearch(term: "g"){
+            XCTAssertEqual(controller.otherUserController.otherUserArray.count,7)
+            XCTAssertEqual(controller.otherUserController.otherUserArray.first?.firstName ,"Grace")
+            XCTAssertEqual(controller.otherUserController.otherUserArray.last?.firstName ,"Max")
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    func testGetEventHost() throws{
+        let controller = MainController()
+        controller.manualLoginForTesting()
+        let expectation = expectation(description: "get recieved friend request")
+        
+        controller.otherUserController.getHosts(eventID: 1){
+            XCTAssertEqual(controller.otherUserController.otherUserArray.count,1)
+            XCTAssertEqual(controller.otherUserController.otherUserArray.first?.firstName ,"Prof")
+            
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    func testGeteventGuests1() throws{
+        let controller = MainController()
+        controller.manualLoginForTesting()
+        let expectation = expectation(description: "get recieved friend request")
+        
+        controller.otherUserController.getGuests(eventID: 5, checkedin: false, inviteStatus: false, isFriend: false){
+            XCTAssertEqual(controller.otherUserController.otherUserArray.count,3)
+            XCTAssertEqual(controller.otherUserController.otherUserArray.first?.firstName ,"John")
+            XCTAssertEqual(controller.otherUserController.otherUserArray.last?.firstName ,"Prof")
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    func testGeteventGuests2() throws{
+        let controller = MainController()
+        controller.manualLoginForTesting()
+        let expectation = expectation(description: "get recieved friend request")
+        
+        controller.otherUserController.getGuests(eventID: 5, checkedin: false, inviteStatus: false, isFriend: false){
+            XCTAssertEqual(controller.otherUserController.otherUserArray.count,2)
+            XCTAssertEqual(controller.otherUserController.otherUserArray.first?.firstName ,"Kenny")
+            XCTAssertEqual(controller.otherUserController.otherUserArray.last?.firstName ,"Prof")
             expectation.fulfill()
         }
         waitForExpectations(timeout: 3.0, handler: nil)

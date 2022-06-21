@@ -72,5 +72,18 @@ class EventIntergrationTest: XCTestCase {
         }
         waitForExpectations(timeout: 3.0, handler: nil)
     }
+    
+    func testDeleteEvent() throws {
+        let controller = MainController()
+        controller.manualLoginForTesting()
+        
+        let expectation = expectation(description: "delete invites")
+        
+        controller.hostedEventController.deleteEvent(deletedEventID: 1){
+            expectation.fulfill()
+            XCTAssertEqual(controller.hostedEventController.statusMessage,"success")
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
 
 }

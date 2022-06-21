@@ -70,18 +70,22 @@ class HostedEventController: HelperController,ObservableObject {
         }
     }
     
-    func deleteEvent(deletedEvent:Event,completion: (() -> Void)? = nil){
+    func deleteEvent(deletedEventID:Int,completion: (() -> Void)? = nil){
         Task.init{
             setLoading(status: true)
-            let result = await eventService.deleteEvent(id: deletedEvent.id, token: getToken())
+            let result = await eventService.deleteEvent(id: deletedEventID, token: getToken())
             setLoading(status: false)
-            //TODO: change return type
-//            switch result {
-//            case .success(let event):
-//                eventShowed=event
-//            case .failure(let error):
-//                print(error.customMessage)
-//            }
+            switch result {
+            case .success(let res):
+                if let message = res.returnString {
+                    setStatusMessage(message: message)
+                }
+                if(res.returnValue != 0){
+                  //what to do in fail?
+                }
+            case .failure(let error):
+                print(error.customMessage)
+            }
             completion?()
         }
     }
