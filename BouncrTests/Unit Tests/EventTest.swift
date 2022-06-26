@@ -85,8 +85,8 @@ class EventTest: XCTestCase {
         let newEvent = Event(id: 1, name: "", startTime: Date(), endTime: Date(), street1: "", street2: nil, city: "", state: "", zip: 1, description: nil, attendenceVisible: true, friendsAttendingVisible: true, attendenceCap: 1, coverCharge: 0.0, isOpenInvite: true, venueLatitude: 0.0, venueLongitude: 0.0, organizations: nil)
         controller.createEvent(newEvent: newEvent){
             expectation.fulfill()
-            XCTAssertEqual(controller.eventShowed?.name,"event1")
-            XCTAssertEqual(controller.eventShowed?.id,1)
+            XCTAssertEqual(controller.eventShowed?.name,"Art Night")
+            XCTAssertEqual(controller.eventShowed?.id,2)
         }
         waitForExpectations(timeout: 3.0, handler: nil)
     }
@@ -99,8 +99,8 @@ class EventTest: XCTestCase {
         let newEvent = Event(id: 1, name: "", startTime: Date(), endTime: Date(), street1: "", street2: nil, city: "", state: "", zip: 1, description: nil, attendenceVisible: true, friendsAttendingVisible: true, attendenceCap: 1, coverCharge: 0.0, isOpenInvite: true, venueLatitude: 0.0, venueLongitude: 0.0, organizations: nil)
         controller.updateEvent(updatedEvent: newEvent){
             expectation.fulfill()
-            XCTAssertEqual(controller.eventShowed?.name,"event1")
-            XCTAssertEqual(controller.eventShowed?.id,1)
+            XCTAssertEqual(controller.eventShowed?.name,"Art Night")
+            XCTAssertEqual(controller.eventShowed?.id,2)
         }
         waitForExpectations(timeout: 3.0, handler: nil)
     }

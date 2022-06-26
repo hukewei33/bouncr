@@ -43,7 +43,7 @@ class InviteIntergrationTest: XCTestCase {
         controller.inviteController.getInvites(){
             XCTAssertEqual(controller.inviteController.InviteArray.count,2)
             XCTAssertEqual(controller.inviteController.InviteArray[0].id,9)
-            XCTAssertEqual(controller.inviteController.InviteArray[0].event?.id,4)
+            XCTAssertEqual(controller.inviteController.InviteArray[0].event_id,4)
             XCTAssertEqual(controller.inviteController.InviteArray[1].id,17)
             XCTAssertEqual(controller.inviteController.InviteArray[1].user_id,4)
             expectation.fulfill()

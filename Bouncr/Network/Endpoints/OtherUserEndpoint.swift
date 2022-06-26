@@ -26,7 +26,7 @@ extension OtherUserEndpoint: Endpoint {
         case .getFriends(let id, _):
             return "user_friends?id=\(id)"
         case.getPendingFriendRequests(let id,let isSent , _):
-            return "user_friend_requests?id=\(id)&sentByMe=\(isSent)"
+            return "user_friend_requests?id=\(id)&sent_by_me=\(isSent)"
        
         case .getEventGuests(let user_id,let id,let checkedin, let inviteStatus,let isFriend,_):
             return "event_guests?id=\(id)&invite_status=\(inviteStatus)&checked_in=\(checkedin)&is_friend=\(isFriend)&user_id=\(user_id)"

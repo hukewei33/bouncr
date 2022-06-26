@@ -105,8 +105,9 @@ class OtherUserController: HelperController,ObservableObject {
         Task.init{
             let result = await otherUserService.createFriends(senderID: getUserID(), recieverID: recieverID, token: getToken())
             switch result {
-            case .success(let res): break
+            case .success(let res):
                 //need to define feedback
+                statusMessage = res.returnString!
             case .failure(let error):
                 print(error.customMessage)
                 setStatusMessage(message: error.customMessage)
@@ -115,13 +116,14 @@ class OtherUserController: HelperController,ObservableObject {
         }
     }
     
-    func processFriendRequest(recieverID:Int,accept:Bool,completion: (() -> Void)? = nil){
+    func processFriendRequest(senderID:Int,accept:Bool,completion: (() -> Void)? = nil){
         if accept{
             Task.init{
-                let result = await otherUserService.createFriends(senderID: getUserID(), recieverID: recieverID, token: getToken())
+                let result = await otherUserService.accpetFriends(senderID: senderID, recieverID: getUserID(), token: getToken())
                 switch result {
-                case .success(let res): break
-                    //need to define feedback
+                case .success(let res):
+                    statusMessage = res.returnString!
+                    
                 case .failure(let error):
                     print(error.customMessage)
                     setStatusMessage(message: error.customMessage)
@@ -130,17 +132,17 @@ class OtherUserController: HelperController,ObservableObject {
             }
         }
         else{
-            deleteFriendRequest(recieverID: recieverID,completion: completion)
+            deleteFriendRequest(senderID: senderID, recieverID: getUserID(),completion: completion)
         }
         
     }
     
-    func deleteFriendRequest(recieverID:Int,completion: (() -> Void)? = nil){
+    func deleteFriendRequest(senderID:Int,recieverID:Int,completion: (() -> Void)? = nil){
         Task.init{
-            let result = await otherUserService.deleteFriends(senderID: getUserID(), recieverID: recieverID, token: getToken())
+            let result = await otherUserService.deleteFriends(senderID: senderID, recieverID: recieverID, token: getToken())
             switch result {
-            case .success(let res): break
-                //need to define feedback
+            case .success(let res):
+                statusMessage = res.returnString!
             case .failure(let error):
                 print(error.customMessage)
                 setStatusMessage(message: error.customMessage)
