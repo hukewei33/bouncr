@@ -1,0 +1,13 @@
+{
+    "user": {
+        "id": 2,
+        "username": "khu",
+        "email": "kenny@andrew.cmu.edu",
+        "firstName": "Kenny",
+        "lastName": "Hu",
+        "phoneNumber": 1231231234,
+        "birthday": "1999-06-07T00:00:00.000Z"
+
+    },
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.4aV9sPAQmgK4hTBPihEXF3CVkzLDz3jsmWShy2TtQfU"
+}

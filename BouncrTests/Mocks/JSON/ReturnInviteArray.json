@@ -1,0 +1,56 @@
+[
+    {
+        "id": 9,
+        "checkinTime": null,
+        "coverChargePaid": 0.0,
+        "event": {
+            "id": 4,
+            "attendenceCap": 25,
+            "attendenceVisible": false,
+            "city": "Pittsburgh",
+            "coverCharge": 30.0,
+            "description": "Lots of drinks, come have a good time!",
+            "endTime": "2022-01-21 03:00:00 UTC",
+            "friendsAttendingVisible": true,
+            "isOpenInvite": false,
+            "name": "Sigma Nu Party",
+            "startTime": "2022-01-20 22:00:00 UTC",
+            "state": "PA",
+            "street1": "104 Margaret Morrison Street",
+            "street2": null,
+            "venueLatitude": 40.442134416284475,
+            "venueLongitude": -79.93884754468831,
+            "zip": 15213
+        },
+        "event_id": 4,
+        "inviteStatus": false,
+        "user_id": 4
+    },
+    {
+        "id": 17,
+        "checkinTime": null,
+        "coverChargePaid": 0.0,
+        "event": {
+            "id": 6,
+            "attendenceCap": 10,
+            "attendenceVisible": true,
+            "city": "Pittsburgh",
+            "coverCharge": 0.0,
+            "description": "Sign up to chat with some IS professors during Carnival!",
+            "endTime": "2022-04-07 09:00:00 UTC",
+            "friendsAttendingVisible": false,
+            "isOpenInvite": true,
+            "name": "Coffee Chat with IS Profs",
+            "startTime": "2022-04-07 08:00:00 UTC",
+            "state": "PA",
+            "street1": "4800 Forbes Ave",
+            "street2": "Rm 1002",
+            "venueLatitude": 40.4445165337803,
+            "venueLongitude": -79.94553821758295,
+            "zip": 15213
+        },
+        "event_id": 6,
+        "inviteStatus": false,
+        "user_id": 4
+    }
+]
