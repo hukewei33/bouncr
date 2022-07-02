@@ -9,24 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
   
-//  var viewModel = ViewModel()
-  
+  var mainController = MainController()
   
   init() {
     
     // Customizations for the Top Navigation Bar
     UINavigationBar.appearance().backgroundColor = UIColor(red: 66/255, green: 0, blue: 255/255, alpha: 1.0);
-    UINavigationBar.appearance().largeTitleTextAttributes =
-      [ .foregroundColor: UIColor.white ]
-    
+    UINavigationBar.appearance().largeTitleTextAttributes = [ .foregroundColor: UIColor.white ]
     
   }
-  
   
   var body: some View {
     VStack {
       AppView()
     }
-//    .environmentObject(viewModel)
+    .environmentObject(mainController)
   }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		188A6825286FED4900ADF7A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A6824286FED4900ADF7A3 /* LoginView.swift */; };
 		18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFEAC1286E887F00B04FDC /* AppView.swift */; };
 		B2001903284424B600B3C899 /* DictToParamString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001902284424B600B3C899 /* DictToParamString.swift */; };
 		B2001905284434B900B3C899 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001904284434B800B3C899 /* GenericResponse.swift */; };
@@ -89,6 +90,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		188A6824286FED4900ADF7A3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		18BFEAC1286E887F00B04FDC /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B2001902284424B600B3C899 /* DictToParamString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictToParamString.swift; sourceTree = "<group>"; };
 		B2001904284434B800B3C899 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				18BFEAC1286E887F00B04FDC /* AppView.swift */,
+				188A6824286FED4900ADF7A3 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				B25592F128230D5F002C5CEA /* OtherUserServiceable.swift in Sources */,
 				B25592C5281F1703002C5CEA /* HTTPClient.swift in Sources */,
 				B25592EF28230BF9002C5CEA /* OtherUserController.swift in Sources */,
+				188A6825286FED4900ADF7A3 /* LoginView.swift in Sources */,
 				B25592F7282310F8002C5CEA /* EventServiceable.swift in Sources */,
 				B25592CF281F23E1002C5CEA /* DateFormatter.swift in Sources */,
 				B25592FB2823141B002C5CEA /* InviteController.swift in Sources */,
