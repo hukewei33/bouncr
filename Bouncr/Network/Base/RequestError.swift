@@ -15,6 +15,7 @@ enum RequestError: Error {
     case unexpectedStatusCode
     case unknown
     case serverSideError
+    case invalidLogin
     
     var customMessage: String {
         switch self {
@@ -24,8 +25,12 @@ enum RequestError: Error {
             return "Session expired"
         case .serverSideError:
             return "Operation not allowed by service"
+        case .invalidLogin:
+            return "Invalid login"
         default:
             return "Unknown error"
         }
     }
 }
+
+

@@ -20,6 +20,9 @@ final class UserServiceMock: Mockable, UserServiceable {
     
     
     func userLogin(username: String, password: String) async -> Result<User, RequestError> {
+        if(password == "wrongPassword"){
+            return .failure(.invalidLogin)
+        }
         return .success(loadJSON(filename: "ReturnUser", type: User.self))
     }
     

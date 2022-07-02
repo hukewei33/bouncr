@@ -49,6 +49,20 @@ class UserIntergrationTest: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
+    func testLoginServerFail() throws {
+        let controller = MainController()
+        
+        let expectation = expectation(description: "login to service")
+        
+        controller.login(username: "khu", password: "secret12345") {
+            
+            XCTAssertEqual(controller.token, "")
+            XCTAssertEqual(controller.errorMessage, "Invalid login")
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
     
     
     func testCreateServer() throws {
