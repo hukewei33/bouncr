@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFEAC1286E887F00B04FDC /* AppView.swift */; };
 		B2001903284424B600B3C899 /* DictToParamString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001902284424B600B3C899 /* DictToParamString.swift */; };
 		B2001905284434B900B3C899 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001904284434B800B3C899 /* GenericResponse.swift */; };
 		B2001907284528EB00B3C899 /* GoodGenericResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B2001906284528EB00B3C899 /* GoodGenericResponse.json */; };
@@ -88,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18BFEAC1286E887F00B04FDC /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B2001902284424B600B3C899 /* DictToParamString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictToParamString.swift; sourceTree = "<group>"; };
 		B2001904284434B800B3C899 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		B2001906284528EB00B3C899 /* GoodGenericResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoodGenericResponse.json; sourceTree = "<group>"; };
@@ -179,6 +181,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18BFEAC0286E886B00B04FDC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18BFEAC1286E887F00B04FDC /* AppView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B255927A281F14A1002C5CEA = {
 			isa = PBXGroup;
 			children = (
@@ -202,8 +212,8 @@
 		B2559285281F14A1002C5CEA /* Bouncr */ = {
 			isa = PBXGroup;
 			children = (
+				18BFEAC0286E886B00B04FDC /* Views */,
 				B25592DD281F2C73002C5CEA /* Controllers */,
-				B25592DC281F2C55002C5CEA /* Views */,
 				B25592BA281F1516002C5CEA /* Models */,
 				B25592B9281F1501002C5CEA /* Network */,
 				B2559286281F14A1002C5CEA /* BouncrApp.swift */,
@@ -321,13 +331,6 @@
 				B20019082845295000B3C899 /* BadGenericResponse.json */,
 			);
 			path = JSON;
-			sourceTree = "<group>";
-		};
-		B25592DC281F2C55002C5CEA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		B25592DD281F2C73002C5CEA /* Controllers */ = {
@@ -543,6 +546,7 @@
 				B25592CB281F1D72002C5CEA /* UserEndpoint.swift in Sources */,
 				B25592E72821D724002C5CEA /* Invite.swift in Sources */,
 				B255930328247312002C5CEA /* InviteEndpoint.swift in Sources */,
+				18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */,
 				B2559287281F14A1002C5CEA /* BouncrApp.swift in Sources */,
 				B25592BF281F1597002C5CEA /* Endpoint.swift in Sources */,
 				B2001905284434B900B3C899 /* GenericResponse.swift in Sources */,
@@ -649,7 +653,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -703,7 +707,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -721,12 +725,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bouncr/Preview Content\"";
-				DEVELOPMENT_TEAM = 9J56NDXZ35;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -738,7 +743,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -750,12 +755,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bouncr/Preview Content\"";
-				DEVELOPMENT_TEAM = 9J56NDXZ35;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -767,7 +773,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
