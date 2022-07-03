@@ -74,17 +74,10 @@ struct LoginView: View {
             .foregroundColor(Color.red)
         }
 
-          //Login button
-          Button(action: {
-            //FIX VISUAL BUG HERE 
-            mainController.login(username: username, password: password)
-            if !mainController.loggedin() {
-//          if (mainController.login(username: username, pword: password) ==  false) {
-              print("Invalid Login")
-              validLogin = false
-            }
-           
-         },
+        //Login button
+        Button(action: {
+          mainController.login(username: username, password: password, completion: {() in validLogin=false})
+        },
          label: {
             Text("Log in")
             .bold()
