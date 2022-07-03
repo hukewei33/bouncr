@@ -9,4 +9,13 @@ import Foundation
 struct GenericResponse: Codable {
     let returnValue:Int
     let returnString:String?
+    func getErrorEnum() -> RequestError? {
+        if returnValue>0{
+            return nil
+        }
+        switch returnValue{
+        case -2: return .invalidLogin
+        default:return .serverSideError
+        }
+    }
 }

@@ -41,7 +41,10 @@ extension HTTPClient {
                     guard let decodedGenericResponse = try? decoder.decode(GenericResponse.self, from: data)else {
                         return .failure(.decode)
                     }
-                    return .failure(.serverSideError)
+                    guard let decodedError =  decodedGenericResponse.getErrorEnum()  else {
+                        return.failure(.serverSideError)
+                    }
+                    return .failure(decodedError)
                 }
                 return .success(decodedResponse)
             
