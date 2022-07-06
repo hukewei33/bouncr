@@ -69,8 +69,8 @@ struct LoginView: View {
         }
 
 
-        if (validLogin == false) {
-          Text("Invalid login information")
+        if let error = mainController.errorMessage {
+          Text(error)
             .foregroundColor(Color.red)
         }
 
