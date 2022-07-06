@@ -48,6 +48,21 @@ class UserTest: XCTestCase {
         }
     }
     
+    
+    
+    func testUserServiceMockBadLogin() async {
+        let mock = UserServiceMock()
+        let res = try await mock.userLogin(username: "", password: "wrongPassword")
+        
+        switch res {
+        case .success(_):
+            XCTFail("The request should not fail")
+            
+        case .failure:
+            XCTAssertEqual(true,true)
+        }
+    }
+    
     func testUserServiceMockCreate() async {
         let mock = UserServiceMock()
         let testUser = User(id: 1, firstName: "test", lastName: "test", email: "test", username: "test", phoneNumber: 1, birthday: Date(), orgUser: nil, password: nil,token:  nil)
@@ -63,7 +78,20 @@ class UserTest: XCTestCase {
     }
     
     // controller tests
-    func testLogin() throws {
+    func testLoginBad() throws {
+        let controller = MainController(service: UserServiceMock())
+        
+        let expectation = expectation(description: "login to service")
+        
+        controller.login(username: "khu", password: "wrongPassword") {
+            expectation.fulfill()
+            XCTAssertEqual(controller.token, "")
+            XCTAssertEqual(controller.errorMessage!,"Invalid login")
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    func testLoginGood() throws {
         let controller = MainController(service: UserServiceMock())
         
         let expectation = expectation(description: "login to service")
