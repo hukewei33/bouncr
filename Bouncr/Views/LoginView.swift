@@ -12,15 +12,13 @@ struct LoginView: View {
     @EnvironmentObject var mainController: MainController
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var validLogin: Bool = true
-
 
     var buttonDisabled: Bool {
       return username.isEmpty || password.isEmpty
     }
 
     var buttonColor: Color {
-          return buttonDisabled ? Color("Disabled Button") : Color("Primary - Indigo")
+      return buttonDisabled ? Color("Disabled Button") : Color("Primary - Indigo")
     }
 
     var body: some View {
@@ -69,14 +67,14 @@ struct LoginView: View {
         }
 
 
-        if let error = mainController.errorMessage {
-          Text(error)
+        if (mainController.thisUser==nil && !(mainController.errorMessage==nil)) {
+          Text(mainController.errorMessage!)
             .foregroundColor(Color.red)
         }
 
         //Login button
         Button(action: {
-          mainController.login(username: username, password: password, completion: {() in validLogin=false})
+          mainController.login(username: username, password: password)
         },
          label: {
             Text("Log in")
