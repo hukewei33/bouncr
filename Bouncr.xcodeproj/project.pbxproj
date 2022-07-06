@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		188A6825286FED4900ADF7A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A6824286FED4900ADF7A3 /* LoginView.swift */; };
+		188A682928754C4F00ADF7A3 /* HostEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682828754C4F00ADF7A3 /* HostEventsView.swift */; };
+		188A682C28754C9B00ADF7A3 /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682B28754C9B00ADF7A3 /* AddEventButton.swift */; };
 		18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFEAC1286E887F00B04FDC /* AppView.swift */; };
 		B2001903284424B600B3C899 /* DictToParamString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001902284424B600B3C899 /* DictToParamString.swift */; };
 		B2001905284434B900B3C899 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001904284434B800B3C899 /* GenericResponse.swift */; };
@@ -91,6 +93,8 @@
 
 /* Begin PBXFileReference section */
 		188A6824286FED4900ADF7A3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		188A682828754C4F00ADF7A3 /* HostEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventsView.swift; sourceTree = "<group>"; };
+		188A682B28754C9B00ADF7A3 /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
 		18BFEAC1286E887F00B04FDC /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B2001902284424B600B3C899 /* DictToParamString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictToParamString.swift; sourceTree = "<group>"; };
 		B2001904284434B800B3C899 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
@@ -183,9 +187,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		188A682728754C1D00ADF7A3 /* Host Views */ = {
+			isa = PBXGroup;
+			children = (
+				188A682828754C4F00ADF7A3 /* HostEventsView.swift */,
+			);
+			path = "Host Views";
+			sourceTree = "<group>";
+		};
+		188A682A28754C8100ADF7A3 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				188A682B28754C9B00ADF7A3 /* AddEventButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		18BFEAC0286E886B00B04FDC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				188A682A28754C8100ADF7A3 /* Buttons */,
+				188A682728754C1D00ADF7A3 /* Host Views */,
 				18BFEAC1286E887F00B04FDC /* AppView.swift */,
 				188A6824286FED4900ADF7A3 /* LoginView.swift */,
 			);
@@ -525,6 +547,7 @@
 			files = (
 				B2559301282472F0002C5CEA /* EventEndpoint.swift in Sources */,
 				B25592F528231090002C5CEA /* HostedEventController.swift in Sources */,
+				188A682C28754C9B00ADF7A3 /* AddEventButton.swift in Sources */,
 				B25592FD28246468002C5CEA /* JSONCreatable.swift in Sources */,
 				B2559293281F14A2002C5CEA /* Bouncr.xcdatamodeld in Sources */,
 				B25592C9281F1C06002C5CEA /* Login.swift in Sources */,
@@ -547,6 +570,7 @@
 				B25592F328230E3C002C5CEA /* HelperController.swift in Sources */,
 				B25592FF2824654F002C5CEA /* OtherUserEndpoint.swift in Sources */,
 				B25592C3281F16DC002C5CEA /* RequestMethod.swift in Sources */,
+				188A682928754C4F00ADF7A3 /* HostEventsView.swift in Sources */,
 				B25592CB281F1D72002C5CEA /* UserEndpoint.swift in Sources */,
 				B25592E72821D724002C5CEA /* Invite.swift in Sources */,
 				B255930328247312002C5CEA /* InviteEndpoint.swift in Sources */,
