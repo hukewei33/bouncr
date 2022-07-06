@@ -33,9 +33,9 @@ struct HostEventsView: View {
         ScrollView {
           VStack(alignment: .leading) {
             
-            //Ongoing events
             /*
-            if (viewModel.hostCurrentEvents.count>0) {
+            //Ongoing events
+            if (mainController.hostCurrentEvents.count>0) {
               Text("Ongoing Events")
                 .bold()
                 .font(.system(size: 22))
