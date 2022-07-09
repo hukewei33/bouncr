@@ -10,10 +10,11 @@ import SwiftUI
 struct HostEventsView: View {
   
   @EnvironmentObject var mainController: MainController
+  @ObservedObject var eventController: HostedEventController
   
   //CITATION: The following code for changing top nav bar color comes from here:
   //https://levelup.gitconnected.com/cracking-the-navigation-bar-secrets-with-swiftui-30e9b019502c
-  init() {
+  init(eventController: HostedEventController) {
     let coloredAppearance = UINavigationBarAppearance()
     coloredAppearance.configureWithOpaqueBackground()
     coloredAppearance.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)
@@ -25,6 +26,8 @@ struct HostEventsView: View {
     UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
     
     UINavigationBar.appearance().tintColor = .white
+    
+    self.eventController = eventController
   }
   
   var body: some View {
@@ -32,20 +35,17 @@ struct HostEventsView: View {
       ZStack {
         ScrollView {
           VStack(alignment: .leading) {
-            
-            /*
-            //Ongoing events
-            if (mainController.hostCurrentEvents.count>0) {
+            if (eventController.eventArray.count>0) { //WILL NEED A NEW ARRAY IN EVENT CONTROLLER FOR ONGOING EVENTS
               Text("Ongoing Events")
                 .bold()
                 .font(.system(size: 22))
                 .padding()
-              ForEach(self.viewModel.hostCurrentEvents, id: \.self) { event in
-                HostOngoingEventCard(event: event)
+              ForEach(0..<eventController.eventArray.count) { index in
+                HostOngoingEventCard(event: eventController.eventArray[index])
               }
             }
-             
             
+            /*
             //Upcoming events
             if (viewModel.hostEvents.count>0) {
               Text("Upcoming Events")
@@ -85,10 +85,8 @@ struct HostEventsView: View {
       .navigationTitle("Your Events")
       .navigationViewStyle(StackNavigationViewStyle())
     }
-    /*
     .onAppear() {
-          viewModel.indexHostEvents()
+      mainController.hostedEventController.getHostedEvents()
     }
-     */
   }
 }

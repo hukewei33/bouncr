@@ -24,7 +24,7 @@ struct AppView: View {
           TabView {
             
             //My Events page
-            HostEventsView()
+            HostEventsView(eventController: mainController.hostedEventController)
             .tabItem {
               Image(systemName: "calendar")
               Text("Your Events")

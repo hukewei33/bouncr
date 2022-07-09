@@ -13,6 +13,7 @@
 		188A682E28754E7E00ADF7A3 /* MoreDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682D28754E7E00ADF7A3 /* MoreDetailsButton.swift */; };
 		188A683028754EC100ADF7A3 /* SquareScanQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682F28754EC100ADF7A3 /* SquareScanQR.swift */; };
 		188A68322875504200ADF7A3 /* HostEventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A68312875504200ADF7A3 /* HostEventDetailsView.swift */; };
+		188A6834287935D500ADF7A3 /* HostOngoingEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A6833287935D500ADF7A3 /* HostOngoingEventCard.swift */; };
 		18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFEAC1286E887F00B04FDC /* AppView.swift */; };
 		B2001903284424B600B3C899 /* DictToParamString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001902284424B600B3C899 /* DictToParamString.swift */; };
 		B2001905284434B900B3C899 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001904284434B800B3C899 /* GenericResponse.swift */; };
@@ -101,6 +102,7 @@
 		188A682D28754E7E00ADF7A3 /* MoreDetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDetailsButton.swift; sourceTree = "<group>"; };
 		188A682F28754EC100ADF7A3 /* SquareScanQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareScanQR.swift; sourceTree = "<group>"; };
 		188A68312875504200ADF7A3 /* HostEventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventDetailsView.swift; sourceTree = "<group>"; };
+		188A6833287935D500ADF7A3 /* HostOngoingEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostOngoingEventCard.swift; sourceTree = "<group>"; };
 		18BFEAC1286E887F00B04FDC /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B2001902284424B600B3C899 /* DictToParamString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictToParamString.swift; sourceTree = "<group>"; };
 		B2001904284434B800B3C899 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				188A682828754C4F00ADF7A3 /* HostEventsView.swift */,
 				188A68312875504200ADF7A3 /* HostEventDetailsView.swift */,
+				188A6833287935D500ADF7A3 /* HostOngoingEventCard.swift */,
 			);
 			path = "Host Views";
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188A6834287935D500ADF7A3 /* HostOngoingEventCard.swift in Sources */,
 				B2559301282472F0002C5CEA /* EventEndpoint.swift in Sources */,
 				B25592F528231090002C5CEA /* HostedEventController.swift in Sources */,
 				188A682C28754C9B00ADF7A3 /* AddEventButton.swift in Sources */,
