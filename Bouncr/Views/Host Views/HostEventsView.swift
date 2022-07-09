@@ -45,18 +45,17 @@ struct HostEventsView: View {
               }
             }
             
-            /*
             //Upcoming events
-            if (viewModel.hostEvents.count>0) {
+            if (eventController.eventArray.filter{$0.startTime>Date()}.count>0) {
               Text("Upcoming Events")
                 .bold()
                 .font(.system(size: 22))
                 .padding()
-              ForEach(self.viewModel.hostEvents, id: \.self) { event in
-                HostUpcomingEventCard(event: event)
+              ForEach(0..<eventController.eventArray.filter{$0.startTime>Date()}.count) { index in
+                HostUpcomingEventCard(event: eventController.eventArray.filter{$0.startTime>Date()}[index])
               }
             }
-            
+            /*
             //Display placeholder text if no events at all
             if (viewModel.hostEvents.count==0 && viewModel.hostCurrentEvents.count==0) {
               Spacer()
