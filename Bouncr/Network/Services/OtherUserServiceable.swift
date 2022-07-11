@@ -9,10 +9,9 @@ import Foundation
 protocol OtherUserServiceable {
     func getFriends(id:Int,token:String) async -> Result<[OtherUser], RequestError>
     func getFriendRequests(id:Int,isSent:Bool,token:String) async -> Result<[OtherUser], RequestError>
-    func getEventGuests(id:Int,user_id:Int,checkedin:Bool, inviteStatus:Bool,isFriend:Bool,token:String) async -> Result<[OtherUser], RequestError>
+    func getEventGuests(id:Int,user_id:Int,checkedin:Bool?, inviteStatus:Bool?,isFriend:Bool?,token:String) async -> Result<[OtherUser], RequestError>
     func getEventHosts(id:Int,token:String) async -> Result<[OtherUser], RequestError>
     func getSearchResults(term:String,token:String) async -> Result<[OtherUser], RequestError>
-    //TODO: create end points for creating and modifying freind relationships
     func createFriends(senderID:Int,recieverID:Int ,token:String) async -> Result<GenericResponse, RequestError>
     func accpetFriends(senderID:Int,recieverID:Int ,token:String) async -> Result<GenericResponse, RequestError>
     func deleteFriends(senderID:Int,recieverID:Int ,token:String) async -> Result<GenericResponse, RequestError>
@@ -42,7 +41,7 @@ struct OtherUserService: HTTPClient, OtherUserServiceable {
     }
   
     
-    func getEventGuests(id:Int,user_id:Int,checkedin:Bool, inviteStatus:Bool,isFriend:Bool,token:String) async -> Result<[OtherUser], RequestError>{
+    func getEventGuests(id:Int,user_id:Int,checkedin:Bool?, inviteStatus:Bool?,isFriend:Bool?,token:String) async -> Result<[OtherUser], RequestError>{
         return await sendRequest(endpoint: OtherUserEndpoint.getEventGuests(user_id: user_id, id: id,checkedin: checkedin,inviteStatus: inviteStatus,isFriend:isFriend, token: token), responseModel: [OtherUser].self)
     }
     

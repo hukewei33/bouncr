@@ -36,7 +36,7 @@ final class OtherUserServiceMock: Mockable, OtherUserServiceable {
         return .success(loadJSON(filename: "ReturnOtherUserArray", type: [OtherUser].self))
     }
     
-    func getEventGuests(id: Int, user_id:Int,checkedin: Bool, inviteStatus: Bool, isFriend: Bool, token: String) async -> Result<[OtherUser], RequestError> {
+    func getEventGuests(id: Int, user_id:Int,checkedin: Bool?, inviteStatus: Bool?, isFriend: Bool?, token: String) async -> Result<[OtherUser], RequestError> {
         return .success(loadJSON(filename: "ReturnOtherUserArray", type: [OtherUser].self))
     }
     

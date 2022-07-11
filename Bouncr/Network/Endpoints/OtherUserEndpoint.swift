@@ -9,7 +9,7 @@ import Foundation
 enum OtherUserEndpoint {
     case getFriends(id:Int,token: String)
     case getPendingFriendRequests(id:Int,isSent:Bool,token: String)
-    case getEventGuests(user_id:Int,id:Int,checkedin: Bool,inviteStatus: Bool,isFriend:Bool,token: String)
+    case getEventGuests(user_id:Int,id:Int,checkedin: Bool?,inviteStatus: Bool?,isFriend:Bool?,token: String)
     case getEventHosts(id:Int,token: String)
     case getSearchResults(term:String,token: String)
     case createFriendRequest(senderID:Int,reccieverID:Int,token: String)
@@ -29,7 +29,7 @@ extension OtherUserEndpoint: Endpoint {
             return "user_friend_requests?id=\(id)&sent_by_me=\(isSent)"
        
         case .getEventGuests(let user_id,let id,let checkedin, let inviteStatus,let isFriend,_):
-            return "event_guests?id=\(id)&invite_status=\(inviteStatus)&checked_in=\(checkedin)&is_friend=\(isFriend)&user_id=\(user_id)"
+            return "event_guests?id=\(id)&invite_status=\(inviteStatus==nil ? "":String(describing: inviteStatus!) )&checked_in=\(checkedin==nil ? "":String(describing: checkedin!) )&is_friend=\(isFriend==nil ? "":String(describing: isFriend!) )&user_id=\(user_id)"
         case.getEventHosts(let id,  _):
             return "event_hosts?id=\(id)"
         case.getSearchResults(let term,  _):

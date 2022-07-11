@@ -27,6 +27,8 @@ enum RequestError: Error {
             return "Operation not allowed by service"
         case .invalidLogin:
             return "Invalid login"
+        case .invalidURL:
+            return "invalid url"
         default:
             return "Unknown error"
         }
