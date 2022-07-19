@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18394379288623B600A0D0FF /* EventDetailsGuestBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18394378288623B600A0D0FF /* EventDetailsGuestBubbles.swift */; };
+		1839437B288748C000A0D0FF /* GuestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839437A288748BF00A0D0FF /* GuestList.swift */; };
+		1839437D2887499C00A0D0FF /* EventForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839437C2887499C00A0D0FF /* EventForm.swift */; };
 		188A6825286FED4900ADF7A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A6824286FED4900ADF7A3 /* LoginView.swift */; };
 		188A682928754C4F00ADF7A3 /* HostEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682828754C4F00ADF7A3 /* HostEventsView.swift */; };
 		188A682C28754C9B00ADF7A3 /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682B28754C9B00ADF7A3 /* AddEventButton.swift */; };
@@ -97,6 +100,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18394378288623B600A0D0FF /* EventDetailsGuestBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsGuestBubbles.swift; sourceTree = "<group>"; };
+		1839437A288748BF00A0D0FF /* GuestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestList.swift; sourceTree = "<group>"; };
+		1839437C2887499C00A0D0FF /* EventForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventForm.swift; sourceTree = "<group>"; };
 		188A6824286FED4900ADF7A3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		188A682828754C4F00ADF7A3 /* HostEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventsView.swift; sourceTree = "<group>"; };
 		188A682B28754C9B00ADF7A3 /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
@@ -204,6 +210,8 @@
 				188A68312875504200ADF7A3 /* HostEventDetailsView.swift */,
 				188A6833287935D500ADF7A3 /* HostOngoingEventCard.swift */,
 				188A683528795D3400ADF7A3 /* HostUpcomingEventCard.swift */,
+				18394378288623B600A0D0FF /* EventDetailsGuestBubbles.swift */,
+				1839437C2887499C00A0D0FF /* EventForm.swift */,
 			);
 			path = "Host Views";
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 				188A682728754C1D00ADF7A3 /* Host Views */,
 				18BFEAC1286E887F00B04FDC /* AppView.swift */,
 				188A6824286FED4900ADF7A3 /* LoginView.swift */,
+				1839437A288748BF00A0D0FF /* GuestList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -568,6 +577,7 @@
 				B2559293281F14A2002C5CEA /* Bouncr.xcdatamodeld in Sources */,
 				B25592C9281F1C06002C5CEA /* Login.swift in Sources */,
 				B25592ED2821DEF5002C5CEA /* OrgUser.swift in Sources */,
+				18394379288623B600A0D0FF /* EventDetailsGuestBubbles.swift in Sources */,
 				B2559290281F14A2002C5CEA /* Persistence.swift in Sources */,
 				B25592F128230D5F002C5CEA /* OtherUserServiceable.swift in Sources */,
 				188A682E28754E7E00ADF7A3 /* MoreDetailsButton.swift in Sources */,
@@ -575,6 +585,7 @@
 				B25592EF28230BF9002C5CEA /* OtherUserController.swift in Sources */,
 				188A6825286FED4900ADF7A3 /* LoginView.swift in Sources */,
 				B25592F7282310F8002C5CEA /* EventServiceable.swift in Sources */,
+				1839437B288748C000A0D0FF /* GuestList.swift in Sources */,
 				B25592CF281F23E1002C5CEA /* DateFormatter.swift in Sources */,
 				B25592FB2823141B002C5CEA /* InviteController.swift in Sources */,
 				188A683628795D3500ADF7A3 /* HostUpcomingEventCard.swift in Sources */,
@@ -594,6 +605,7 @@
 				B25592CB281F1D72002C5CEA /* UserEndpoint.swift in Sources */,
 				B25592E72821D724002C5CEA /* Invite.swift in Sources */,
 				B255930328247312002C5CEA /* InviteEndpoint.swift in Sources */,
+				1839437D2887499C00A0D0FF /* EventForm.swift in Sources */,
 				18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */,
 				B2559287281F14A1002C5CEA /* BouncrApp.swift in Sources */,
 				B25592BF281F1597002C5CEA /* Endpoint.swift in Sources */,

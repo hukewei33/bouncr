@@ -123,6 +123,10 @@ struct HostEventDetailsView: View {
               
             }
             
+            EventDetailsGuestBubbles(event: event, rowCount: 3, showInviteModal: $showPopUp)
+            
+            
+            /*
           //////////////////////////////////////////////////  PENDING GUESTS /////////////////////////////////////////////////////
             Text("Pending Guests: ")
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
@@ -343,11 +347,14 @@ struct HostEventDetailsView: View {
               .padding(.top, 5)
               
             }
+             */
           }
           .padding([.leading, .trailing, .bottom], 30)
           .padding(.top, 10)
           
           //////////////////////////////////////////////////  END OF GUEST BUBBLES /////////////////////////////////////////////////////
+        
+             
           
           VStack {
             
