@@ -74,9 +74,9 @@ struct HostEventsView: View {
           Spacer()
           HStack {
             Spacer()
-            //NavigationLink(destination: EventForm(navTitle: "New Event")) {
+            NavigationLink(destination: EventForm(navTitle: "New Event")) {
               AddEventButton()
-            //}
+            }
           }
         }
         
