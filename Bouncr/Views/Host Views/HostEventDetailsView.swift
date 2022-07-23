@@ -37,8 +37,6 @@ struct HostEventDetailsView: View {
   
   var body: some View {
     
-//    let attendance = self.viewModel.getEventAttendence(eventKey: event.key)
-    
     ZStack {
       
       VStack {
@@ -123,248 +121,22 @@ struct HostEventDetailsView: View {
               
             }
             
+            //Guest Attendance Bubbles
             PendingGuestsBubbles(otherUserController: mainController.otherUserController, event: event, showInviteModal: $showPopUp)
             
-            //EventDetailsGuestBubbles(otherUserController: mainController.otherUserController, event: event, rowCount: 4, showInviteModal: $showPopUp)
+            AttendingGuestsBubbles(otherUserController: mainController.otherUserController, event: event)
             
-            
-            /*
-          //////////////////////////////////////////////////  PENDING GUESTS /////////////////////////////////////////////////////
-            Text("Pending Guests: ")
-              .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-            
-            LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
-              
-              VStack {
-
-                 Button(action: {
-                   withAnimation(.linear(duration: 0.3)) {showPopUp.toggle()}
-                 }, label: {
-                   Image(systemName: "plus")
-                     .foregroundColor(Color.white)
-                     .frame(width: 30, height: 30)
-                 })
-                 .background(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)))
-                 .cornerRadius(38.5)
-                 .shadow(color: Color.black.opacity(0.3),
-                         radius: 3,
-                         x: 3,
-                         y: 3)
-
-                 Text("Add Guests")
-                   .multilineTextAlignment(.center)
-                   .font(.system(size: 10))
-                   .frame(height: 25)
-                   
-               }
-               .padding(.top, 20)
-               .frame(width: 50, height: 55, alignment: .center)
-              
-              // add see more button
-              if (viewModel.indexPendingEventGuests(eventKey: event.key).count > 3){
-                
-                // for the first two invited
-                ForEach(0..<2, id: \.self){ index in
-
-                  VStack {
-                    
-                    if (viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL == nil || viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL == ""){
-
-                      Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(15)
-
-                    }
-                    // display the non-nil profile pic
-                    else {
-                      Image(uiImage: viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL!.load())
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(15)
-                    }
-
-                    Text(viewModel.indexPendingEventGuests(eventKey: event.key)[index].firstName)
-                      .font(.system(size: 10))
-                    
-                  }.frame(width: 50)
-                }
-                
-                // see more button!
-                VStack {
-                  //Below is code for the actual button
-                  NavigationLink(destination: GuestList(event: event, guestHost: "host")){
-                    Image(systemName: "ellipsis")
-                       .foregroundColor(Color.white)
-                       .frame(width: 30, height: 30)
-                  }
-                   .background(Color(.gray))
-                   .cornerRadius(38.5)
-                   .shadow(color: Color.black.opacity(0.3),
-                           radius: 3,
-                           x: 3,
-                           y: 3)
-
-                   Text("See More")
-                     .multilineTextAlignment(.center)
-                     .font(.system(size: 10))
-                 }
-                 .frame(width: 50, height: 50, alignment: .center)
-              }
-              
-              // show just the initial guest list
-              else {
-
-                // for each guest invited should show a small circle with the first name under it
-                ForEach(0..<viewModel.indexPendingEventGuests(eventKey: event.key).count, id: \.self){ index in
-
-                  VStack {
-                    
-                    if (viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL == nil || viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL == ""){
-
-                      Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(15)
-
-                    }
-                    // display the non-nil profile pic
-                    else {
-                      Image(uiImage: viewModel.indexPendingEventGuests(eventKey: event.key)[index].profilePicURL!.load())
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(15)
-                    }
-
-                    Text(viewModel.indexPendingEventGuests(eventKey: event.key)[index].firstName)
-                      .font(.system(size: 10))
-                    
-                  }.frame(width: 50)
-                }
-              }
-            }
-            .padding(.top, 5)
-            
-            //////////////////////////////////////////////////  ACCEPTED GUESTS /////////////////////////////////////////////////////
-            
-            if (viewModel.indexEventGuests(eventKey: event.key).count > 0){
-              
-              Text("Accepted Guests: ")
-                .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-              
-              LazyHGrid(rows: rows, alignment: .lastTextBaseline) {
-                
-                // add see more button
-                if (viewModel.indexEventGuests(eventKey: event.key).count > 4){
-                  
-                  // for each guest invited should show a small circle with the first name under it
-                  ForEach(0..<3, id: \.self){ index in
-
-                    VStack {
-                      
-                      if (viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == nil || viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == ""){
-
-                        Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
-                          .resizable()
-                          .frame(width: 30, height: 30)
-                          .aspectRatio(contentMode: .fit)
-                          .cornerRadius(15)
-
-                      }
-                      // display the non-nil profile pic
-                      else {
-                        
-                        Image(uiImage: viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL!.load())
-                          .resizable()
-                          .frame(width: 30, height: 30)
-                          .aspectRatio(contentMode: .fit)
-                          .cornerRadius(15)
-                      }
-
-                      Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
-                        .font(.system(size: 10))
-                      
-                    }.frame(width: 50)
-                  }
-                  
-                  // see more button!
-                  VStack {
-                    
-                    NavigationLink(destination: GuestList(event: event, guestHost: "host")){
-                      Image(systemName: "ellipsis")
-                         .foregroundColor(Color.white)
-                         .frame(width: 30, height: 30)
-                    }
-                      .background(Color(.gray))
-                     .cornerRadius(38.5)
-                     .shadow(color: Color.black.opacity(0.3),
-                             radius: 3,
-                             x: 3,
-                             y: 3)
-
-                     Text("See More")
-                       .font(.system(size: 10))
-
-                   }
-                  .padding(.top, 2.5)
-                   .frame(width: 50, height: 50, alignment: .center)
-
-                }
-                // show all 4 guests
-                else {
-                  
-                  // for each guest invited should show a small circle with the first name under it
-                  ForEach(0..<viewModel.indexEventGuests(eventKey: event.key).count, id: \.self){ index in
-
-                    VStack {
-                      if (viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == nil || viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL == ""){
-
-                        Image(uiImage: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png".load())
-                          .resizable()
-                          .frame(width: 30, height: 30)
-                          .aspectRatio(contentMode: .fit)
-                          .cornerRadius(15)
-
-                      }
-                      // display the non-nil profile pic
-                      else {
-                        Image(uiImage: viewModel.indexEventGuests(eventKey: event.key)[index].profilePicURL!.load())
-                          .resizable()
-                          .frame(width: 30, height: 30)
-                          .aspectRatio(contentMode: .fit)
-                          .cornerRadius(15)
-                      }
-
-                      Text(viewModel.indexEventGuests(eventKey: event.key)[index].firstName)
-                        .font(.system(size: 10))
-                      
-                    }.frame(width: 50)
-                  }
-                }
-              }
-              .padding(.top, 5)
-              
-            }
-             */
-          }
+          }//End LazyVGrid
           .padding([.leading, .trailing, .bottom], 30)
           .padding(.top, 10)
-          
-          //////////////////////////////////////////////////  END OF GUEST BUBBLES /////////////////////////////////////////////////////
-        
-             
-          
+
           VStack {
             
             HStack (alignment: .center){
               
-              
               Spacer()
               
+              //Edit event button
               NavigationLink(destination: EventForm(optionalEvent: self.event, navTitle: "Edit Event")){
                 Text("Edit")
                   .frame(width: 100, height: 30)
@@ -375,9 +147,9 @@ struct HostEventDetailsView: View {
                           .stroke(Color(#colorLiteral(red: 0.2588235294, green: 0, blue: 1, alpha: 1)), lineWidth: 1)
                   )
                   .padding(.bottom)
-              }
+              }//End NavigationLink
               
-              //New delete button, shows alert for confirmation before deleting an event
+              //Delete button, shows alert for confirmation before deleting an event
               Button(action: {showAlert = true}, label: {
                 Text("Delete")
                   .frame(width: 100, height: 30)
@@ -417,19 +189,19 @@ struct HostEventDetailsView: View {
                 //CodeScannerView(codeTypes: [.qr], completion: self.handleScan)//UNCOMMENT ONCE QR IMPLEMENTED AGAIN
                 Text("PUT SCANNER VIEW BACK HERE LATER!!!")
               }
-            }
-          }
+            }//End HStack
+          }//End VStack
 
           Spacer()
             .navigationBarTitleDisplayMode(.inline)
 
-        }
+        }//End VStack
         .navigationViewStyle(StackNavigationViewStyle())
-      }//end vstack
+      }//End VStack
         
       //InviteGuestsModal(show: $showPopUp, event: self.event) PUT BACK ONCE VIEW IS ADDED
-    }//end zstack
-  }
+    }//End ZStack
+  }//End var body: some View
   
   
   /*

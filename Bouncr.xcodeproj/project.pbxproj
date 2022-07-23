@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18394379288623B600A0D0FF /* EventDetailsGuestBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18394378288623B600A0D0FF /* EventDetailsGuestBubbles.swift */; };
 		1839437B288748C000A0D0FF /* GuestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839437A288748BF00A0D0FF /* GuestList.swift */; };
 		1839437D2887499C00A0D0FF /* EventForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839437C2887499C00A0D0FF /* EventForm.swift */; };
 		1839437F28877D2D00A0D0FF /* PendingGuestsBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839437E28877D2D00A0D0FF /* PendingGuestsBubbles.swift */; };
@@ -104,7 +103,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		18394378288623B600A0D0FF /* EventDetailsGuestBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsGuestBubbles.swift; sourceTree = "<group>"; };
 		1839437A288748BF00A0D0FF /* GuestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestList.swift; sourceTree = "<group>"; };
 		1839437C2887499C00A0D0FF /* EventForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventForm.swift; sourceTree = "<group>"; };
 		1839437E28877D2D00A0D0FF /* PendingGuestsBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingGuestsBubbles.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 				188A68312875504200ADF7A3 /* HostEventDetailsView.swift */,
 				188A6833287935D500ADF7A3 /* HostOngoingEventCard.swift */,
 				188A683528795D3400ADF7A3 /* HostUpcomingEventCard.swift */,
-				18394378288623B600A0D0FF /* EventDetailsGuestBubbles.swift */,
 				1839437C2887499C00A0D0FF /* EventForm.swift */,
 				1839437E28877D2D00A0D0FF /* PendingGuestsBubbles.swift */,
 				1839438028877D4000A0D0FF /* AttendingGuestsBubbles.swift */,
@@ -589,7 +586,6 @@
 				B2559293281F14A2002C5CEA /* Bouncr.xcdatamodeld in Sources */,
 				B25592C9281F1C06002C5CEA /* Login.swift in Sources */,
 				B25592ED2821DEF5002C5CEA /* OrgUser.swift in Sources */,
-				18394379288623B600A0D0FF /* EventDetailsGuestBubbles.swift in Sources */,
 				B2559290281F14A2002C5CEA /* Persistence.swift in Sources */,
 				B25592F128230D5F002C5CEA /* OtherUserServiceable.swift in Sources */,
 				188A682E28754E7E00ADF7A3 /* MoreDetailsButton.swift in Sources */,
