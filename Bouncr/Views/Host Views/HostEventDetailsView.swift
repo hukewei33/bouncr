@@ -107,7 +107,7 @@ struct HostEventDetailsView: View {
             Text("Location: ")
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
             
-            Text("\(event.street1), \n\(event.city), \(event.state), \(event.zip)")
+            Text("\(event.street1), \n\(event.city), \(event.state), \(String(event.zip))")
             
             Text("Date/Time: ")
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
@@ -123,7 +123,9 @@ struct HostEventDetailsView: View {
               
             }
             
-            EventDetailsGuestBubbles(event: event, rowCount: 3, showInviteModal: $showPopUp)
+            PendingGuestsBubbles(otherUserController: mainController.otherUserController, event: event, showInviteModal: $showPopUp)
+            
+            //EventDetailsGuestBubbles(otherUserController: mainController.otherUserController, event: event, rowCount: 4, showInviteModal: $showPopUp)
             
             
             /*

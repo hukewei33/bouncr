@@ -10,6 +10,7 @@ import SwiftUI
 struct EventDetailsGuestBubbles: View {
   
   @EnvironmentObject var mainController: MainController
+  @ObservedObject var otherUserController: OtherUserController
   var event: Event
   //If this row shows pending guests, rowCount=3
   //If it shows accepted guests instead, rowCount=4
@@ -95,35 +96,38 @@ struct EventDetailsGuestBubbles: View {
           }// End VStack
           .frame(width: 50)
           
-          //See More button
-          VStack {
-            NavigationLink(destination: GuestList(event: event, guestHost: "host")){
-              Image(systemName: "ellipsis")
-                 .foregroundColor(Color.white)
-                 .frame(width: 30, height: 30)
-            } //End NavigationLink
-             .background(Color(.gray))
-             .cornerRadius(38.5)
-             .shadow(color: Color.black.opacity(0.3),
-                     radius: 3,
-                     x: 3,
-                     y: 3)
+        }//End ForEach
+        
+        //See More button
+        VStack {
+          NavigationLink(destination: GuestList(event: event, guestHost: "host")){
+            Image(systemName: "ellipsis")
+               .foregroundColor(Color.white)
+               .frame(width: 30, height: 30)
+          } //End NavigationLink
+           .background(Color(.gray))
+           .cornerRadius(38.5)
+           .shadow(color: Color.black.opacity(0.3),
+                   radius: 3,
+                   x: 3,
+                   y: 3)
 
-             Text("See More")
-               .multilineTextAlignment(.center)
-               .font(.system(size: 10))
-           }
-           .frame(width: 50, height: 50, alignment: .center)
-        }
-      }
+           Text("See More")
+             .multilineTextAlignment(.center)
+             .font(.system(size: 10))
+        }//End VStack
+       .frame(width: 50, height: 50, alignment: .center)
+      }//End if guestArray.count>rowCount
       
     } //End LazyHGrid
     .onAppear() {
       if rowCount==pendingCount {
-        guestArray = mainController.otherUserController.pendingInvitesOtherUserArray
+        otherUserController.getPendingInviteGuests(eventID: event.id)
+        guestArray = otherUserController.pendingInvitesOtherUserArray
       }
       else if rowCount==acceptedCount {
-        guestArray = mainController.otherUserController.acceptedInvitesOtherUserArray
+        otherUserController.getAcceptedInvitesGuests(eventID: event.id)
+        guestArray = otherUserController.acceptedInvitesOtherUserArray
       }
     }
 
