@@ -98,7 +98,7 @@ struct InviteGuestsModal: View {
                     //Can only show users if they exist in search results
                     if (searchResults.count>0) {
                       ForEach(0..<self.searchResults.count, id: \.self) { index in
-                        InviteGuestsModalRow(user: self.searchResults[index])
+                        InviteGuestsModalRow(user: self.searchResults[index], checkedUsers: $checkedUsers)
                           .padding(10)
                       }
                     }

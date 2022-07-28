@@ -199,7 +199,7 @@ struct HostEventDetailsView: View {
         .navigationViewStyle(StackNavigationViewStyle())
       }//End VStack
         
-//      InviteGuestsModal(show: $showPopUp, event: self.event) PUT BACK ONCE IMPLEMENTEDD
+      InviteGuestsModal(show: $showPopUp, event: self.event, otherUserController: mainController.otherUserController)
     }//End ZStack
   }//End var body: some View
   

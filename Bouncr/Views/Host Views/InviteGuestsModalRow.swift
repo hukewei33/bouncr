@@ -12,19 +12,20 @@ struct InviteGuestsModalRow: View {
   var user: OtherUser
   let width = UIScreen.main.bounds.width * 0.25
   @State var isChecked: Bool = false
+  @Binding var checkedUsers: [OtherUser]
   
-  init(user: OtherUser){
+  init(user: OtherUser, checkedUsers: Binding<[OtherUser]>){
     self.user = user
+    self._checkedUsers = checkedUsers
   }
  
   func toggleCheckBox() {
     isChecked = !isChecked
     if (isChecked) {
-      //PUT BACK CODE ONCE YOU FIGURE OUT HOW TO IMPLEMENT THIS
-//      self.viewModel.addPotentialInvite(user: self.user)
+      self.checkedUsers.append(user)
     }
     else {
-//      self.viewModel.removePotentialInvite(user: self.user)
+      self.checkedUsers = self.checkedUsers.filter { $0.id != user.id }
     }
   }
   
