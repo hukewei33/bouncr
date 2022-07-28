@@ -16,11 +16,13 @@ struct InviteGuestsModal: View {
   
   @State private var searchText: String = ""
   @State private var searchResults: [OtherUser] = []
-  // Could implement arrays in front
+  @State private var checkedUsers: [OtherUser] = []
   
-  init(show: Binding<Bool>, event: Event){
+  init(show: Binding<Bool>, event: Event, otherUserController: OtherUserController){
     self._show = show
     self.event = event
+    self.otherUserController = otherUserController
+    print("InviteGuestsModal init() ran!!!")
   }
   
   //Copied & edited from SwiftRepos lab, for search functionality
@@ -54,8 +56,7 @@ struct InviteGuestsModal: View {
           HStack {
             //Close popup button
             Button(action: {
-//              PUT BACK ONCE IMPLEMENTED
-//               self.viewModel.clearToBeInvited()
+              self.checkedUsers = []
               
                // Dismiss the PopUp
                withAnimation(.linear(duration: 0.3)) {
@@ -123,7 +124,10 @@ struct InviteGuestsModal: View {
           HStack {
             Spacer()
             Button(action: {
-              self.viewModel.sendInvites(event: self.event)
+              for user in self.checkedUsers {
+                let newInvite = Invite(id: 42, user_id: user.id, event_id: event.id, checkinTime: nil, inviteStatus: false, coverChargePaid: 0, event: nil, user: nil)
+                mainController.inviteController.createInvite(newInvite: newInvite)
+              }
               withAnimation(.linear(duration: 0.3)) {
                   show = false
               }
@@ -147,8 +151,8 @@ struct InviteGuestsModal: View {
       }
     }
     .onAppear() {
-        self.viewModel.clearToBeInvited()
-        searchResults = viewModel.getNotInvitedUsers(eventKey: event.key)
+//        self.viewModel.clearToBeInvited()
+//        searchResults = viewModel.getNotInvitedUsers(eventKey: event.key)
     }
     
   }
