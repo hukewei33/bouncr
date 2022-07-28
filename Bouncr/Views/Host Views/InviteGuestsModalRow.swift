@@ -9,11 +9,11 @@ import SwiftUI
 
 struct InviteGuestsModalRow: View {
   @EnvironmentObject var mainController: MainController
-  var user: User
+  var user: OtherUser
   let width = UIScreen.main.bounds.width * 0.25
   @State var isChecked: Bool = false
   
-  init(user: User){
+  init(user: OtherUser){
     self.user = user
   }
  
