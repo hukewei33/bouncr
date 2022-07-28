@@ -262,26 +262,16 @@ struct EventForm: View {
             //Editing event, update existing event
             if let event=self.optionalEvent {
               print("EDITING EVENT...")
-//              viewModel.eventInterface.update(key: event.key,
-//                                              updateVals: ["name": name, "startTime": startTime.timeIntervalSinceReferenceDate,
-//                                                           "endTime": endTime.timeIntervalSinceReferenceDate, "street1": street1,
-//                                                           "street2": street2, "city": city, "zip": zip, "state": state, "description": descr,
-//                                                           "attendenceVisible": attendenceVisible, "friendsAttendingVisible": friendsAttendingVisible])
               let newEvent=Event(id: event.id, name: name, startTime: startTime, endTime: endTime, street1: street1, street2: street2, city: city, state: state, zip: Int(zip)!, description: descr, attendenceVisible: attendenceVisible, friendsAttendingVisible: friendsAttendingVisible, attendenceCap: event.attendenceCap, coverCharge: event.coverCharge, isOpenInvite: event.isOpenInvite, venueLatitude: event.venueLatitude, venueLongitude: event.venueLongitude, organizations: event.organizations, acceptedInvitesCount: event.acceptedInvitesCount, checkedInInvitescount: event.checkedInInvitescount)
-              mainController.hostedEventController.updateEvent(updatedEvent: newEvent)
+              mainController.hostedEventController.updateEvent(updatedEvent: newEvent){mainController.hostedEventController.getHostedEvents()}
             }
             //Creating event, create new event
             else {
               print("CREATING EVENT...")
-//              viewModel.createEvent(name: name, startTime: startTime,
-//                                    endTime: endTime, street1: street1,
-//                                    street2: street2, city: city,
-//                                    zip: zip, state: state, description: descr,
-//                                    attendenceVisible: attendenceVisible,
-//                                    friendsAttendingVisible: friendsAttendingVisible)
-              
-              print("ADD CODE HERE!!! CAN'T CREATE EVENTS RN!!!")
-//              mainController.hostedEventController.createEvent(newEvent: newEvent)
+              //Note: id doesn't matter, so set it to random hardcoded value
+              //NEED TO CHANGE OTHER HARDCODED VALUES LATER!!!!!
+              let newEvent=Event(id: 42, name: name, startTime: startTime, endTime: endTime, street1: street1, street2: street2, city: city, state: state, zip: Int(zip)!, description: descr, attendenceVisible: attendenceVisible, friendsAttendingVisible: friendsAttendingVisible, attendenceCap: 1000, coverCharge: 10, isOpenInvite: false, venueLatitude: 0, venueLongitude: 0, organizations: [], acceptedInvitesCount: 0, checkedInInvitescount: 0)
+              mainController.hostedEventController.createEvent(newEvent: newEvent){mainController.hostedEventController.getHostedEvents()}
               self.mode.wrappedValue.dismiss()
             }
           }, label: {

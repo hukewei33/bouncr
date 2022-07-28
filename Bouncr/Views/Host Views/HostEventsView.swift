@@ -40,7 +40,7 @@ struct HostEventsView: View {
                 .bold()
                 .font(.system(size: 22))
                 .padding()
-              ForEach(0..<eventController.eventArray.count) { index in
+              ForEach(0..<eventController.eventArray.count, id: \.self) { index in
                 HostOngoingEventCard(event: eventController.eventArray[index])
               }
             }
@@ -51,7 +51,7 @@ struct HostEventsView: View {
                 .bold()
                 .font(.system(size: 22))
                 .padding()
-              ForEach(0..<eventController.eventArray.filter{$0.startTime>Date()}.count) { index in
+              ForEach(0..<eventController.eventArray.filter{$0.startTime>Date()}.count, id: \.self) { index in
                 HostUpcomingEventCard(event: eventController.eventArray.filter{$0.startTime>Date()}[index])
               }
             }

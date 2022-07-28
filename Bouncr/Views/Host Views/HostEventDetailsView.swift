@@ -168,7 +168,7 @@ struct HostEventDetailsView: View {
                     secondaryButton: .destructive(
                       Text("Delete"),
                       action: {
-                        self.mainController.hostedEventController.deleteEvent(deletedEventID: event.id)
+                        self.mainController.hostedEventController.deleteEvent(deletedEventID: event.id){mainController.hostedEventController.getHostedEvents()}
                         //navigate back to host events index page?
                       }
                     )
@@ -199,7 +199,7 @@ struct HostEventDetailsView: View {
         .navigationViewStyle(StackNavigationViewStyle())
       }//End VStack
         
-      //InviteGuestsModal(show: $showPopUp, event: self.event) PUT BACK ONCE VIEW IS ADDED
+//      InviteGuestsModal(show: $showPopUp, event: self.event) PUT BACK ONCE IMPLEMENTEDD
     }//End ZStack
   }//End var body: some View
   

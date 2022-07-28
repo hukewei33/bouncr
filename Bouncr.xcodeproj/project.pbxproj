@@ -13,6 +13,8 @@
 		1839438128877D4000A0D0FF /* AttendingGuestsBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839438028877D4000A0D0FF /* AttendingGuestsBubbles.swift */; };
 		183943832887843000A0D0FF /* GuestBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183943822887842F00A0D0FF /* GuestBubble.swift */; };
 		183943852887851000A0D0FF /* SeeMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183943842887851000A0D0FF /* SeeMoreButton.swift */; };
+		18394387288CBF5000A0D0FF /* InviteGuestsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18394386288CBF4F00A0D0FF /* InviteGuestsModal.swift */; };
+		18394389288CBF6F00A0D0FF /* InviteGuestsModalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18394388288CBF6F00A0D0FF /* InviteGuestsModalRow.swift */; };
 		188A6825286FED4900ADF7A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A6824286FED4900ADF7A3 /* LoginView.swift */; };
 		188A682928754C4F00ADF7A3 /* HostEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682828754C4F00ADF7A3 /* HostEventsView.swift */; };
 		188A682C28754C9B00ADF7A3 /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682B28754C9B00ADF7A3 /* AddEventButton.swift */; };
@@ -109,6 +111,8 @@
 		1839438028877D4000A0D0FF /* AttendingGuestsBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingGuestsBubbles.swift; sourceTree = "<group>"; };
 		183943822887842F00A0D0FF /* GuestBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestBubble.swift; sourceTree = "<group>"; };
 		183943842887851000A0D0FF /* SeeMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreButton.swift; sourceTree = "<group>"; };
+		18394386288CBF4F00A0D0FF /* InviteGuestsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModal.swift; sourceTree = "<group>"; };
+		18394388288CBF6F00A0D0FF /* InviteGuestsModalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModalRow.swift; sourceTree = "<group>"; };
 		188A6824286FED4900ADF7A3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		188A682828754C4F00ADF7A3 /* HostEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventsView.swift; sourceTree = "<group>"; };
 		188A682B28754C9B00ADF7A3 /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 				1839437E28877D2D00A0D0FF /* PendingGuestsBubbles.swift */,
 				1839438028877D4000A0D0FF /* AttendingGuestsBubbles.swift */,
 				183943822887842F00A0D0FF /* GuestBubble.swift */,
+				18394386288CBF4F00A0D0FF /* InviteGuestsModal.swift */,
+				18394388288CBF6F00A0D0FF /* InviteGuestsModalRow.swift */,
 			);
 			path = "Host Views";
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 				188A6834287935D500ADF7A3 /* HostOngoingEventCard.swift in Sources */,
 				B2559301282472F0002C5CEA /* EventEndpoint.swift in Sources */,
 				B25592F528231090002C5CEA /* HostedEventController.swift in Sources */,
+				18394389288CBF6F00A0D0FF /* InviteGuestsModalRow.swift in Sources */,
 				188A682C28754C9B00ADF7A3 /* AddEventButton.swift in Sources */,
 				B25592FD28246468002C5CEA /* JSONCreatable.swift in Sources */,
 				B2559293281F14A2002C5CEA /* Bouncr.xcdatamodeld in Sources */,
@@ -619,6 +626,7 @@
 				18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */,
 				B2559287281F14A1002C5CEA /* BouncrApp.swift in Sources */,
 				B25592BF281F1597002C5CEA /* Endpoint.swift in Sources */,
+				18394387288CBF5000A0D0FF /* InviteGuestsModal.swift in Sources */,
 				183943852887851000A0D0FF /* SeeMoreButton.swift in Sources */,
 				B2001905284434B900B3C899 /* GenericResponse.swift in Sources */,
 				B2001903284424B600B3C899 /* DictToParamString.swift in Sources */,
