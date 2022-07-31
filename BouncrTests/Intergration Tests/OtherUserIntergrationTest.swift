@@ -159,6 +159,48 @@ class OtherUserIntergrationTest: XCTestCase {
         waitForExpectations(timeout: 3.0, handler: nil)
     }
     
+    func testGetPendingInivteGuests() throws{
+        let controller = MainController()
+        controller.manualLoginForTesting()
+        let expectation = expectation(description: "get pending guests for an event")
+        
+        controller.otherUserController.getPendingInviteGuests(eventID: 2){
+            XCTAssertEqual(controller.otherUserController.pendingInvitesOtherUserArray.count,1)
+            XCTAssertEqual(controller.otherUserController.pendingInvitesOtherUserArray.first?.firstName ,"John")
+            
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    func testGetAcceptedInivteGuests() throws{
+        let controller = MainController()
+        controller.manualLoginForTesting()
+        let expectation = expectation(description: "get accepted guests for an event")
+        
+        controller.otherUserController.getAcceptedInvitesGuests(eventID: 2){
+            XCTAssertEqual(controller.otherUserController.acceptedInvitesOtherUserArray.count,2)
+            XCTAssertEqual(controller.otherUserController.acceptedInvitesOtherUserArray.first?.firstName ,"Shane")
+            
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    func testGetAllGuests() throws{
+        let controller = MainController()
+        controller.manualLoginForTesting()
+        let expectation = expectation(description: "get pending invites for an event")
+        
+        controller.otherUserController.getAllGuests(eventID: 2){
+            XCTAssertEqual(controller.otherUserController.allGuestsOtherUserArray.count,3)
+            XCTAssertEqual(controller.otherUserController.allGuestsOtherUserArray.first?.firstName ,"Shane")
+            XCTAssertEqual(controller.otherUserController.allGuestsOtherUserArray.last?.firstName ,"Max")
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 3.0, handler: nil)
+    }
+    
+    
+    
     func testMakeFriend() throws {
         let controller = MainController()
         controller.manualLoginForTesting()

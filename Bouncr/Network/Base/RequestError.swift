@@ -22,12 +22,14 @@ enum RequestError: Error {
         case .decode:
             return "Decode error"
         case .unauthorized:
-            return "Session expired"
+            return "Session expired or you do not have permission"
         case .serverSideError:
             return "Operation not allowed by service"
         case .invalidLogin:
             return "Invalid login"
-        
+        case .invalidURL:
+            return "invalid url"
+
         default:
             return "Unknown error"
         }
