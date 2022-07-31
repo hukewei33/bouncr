@@ -94,8 +94,9 @@ class OtherUserIntergrationTest: XCTestCase {
         let expectation = expectation(description: "get recieved friend request")
         
         controller.otherUserController.getHosts(eventID: 1){
-            XCTAssertEqual(controller.otherUserController.otherUserArray.count,1)
+            XCTAssertEqual(controller.otherUserController.otherUserArray.count,2)
             XCTAssertEqual(controller.otherUserController.otherUserArray.first?.firstName ,"Prof")
+            XCTAssertEqual(controller.otherUserController.otherUserArray.last?.firstName ,"Sara")
             
             expectation.fulfill()
         }
@@ -184,9 +185,12 @@ class OtherUserIntergrationTest: XCTestCase {
         let controller = MainController()
         controller.manualLoginForTesting()
         let expectation = expectation(description: "delete friend")
-        controller.otherUserController.deleteFriendRequest(senderID: 4, recieverID: 1){
+        controller.otherUserController.sendFriendRequest(recieverID: 1){
             XCTAssertEqual(controller.otherUserController.statusMessage,"success")
-            expectation.fulfill()
+            controller.otherUserController.deleteFriendRequest(senderID: 4, recieverID: 1){
+                XCTAssertEqual(controller.otherUserController.statusMessage,"success")
+                expectation.fulfill()
+            }
         }
         waitForExpectations(timeout: 3.0, handler: nil)
     }
