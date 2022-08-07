@@ -85,6 +85,12 @@
 		B2B2945228601C9800EB5858 /* EventIntergrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B2945128601C9800EB5858 /* EventIntergrationTest.swift */; };
 		B2B294542860CB8C00EB5858 /* OtherUserIntergrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B294532860CB8C00EB5858 /* OtherUserIntergrationTest.swift */; };
 		B2B294562860DDEB00EB5858 /* InviteIntergrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B294552860DDEB00EB5858 /* InviteIntergrationTest.swift */; };
+		B2B7A4AA289F4C3C0064437E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B7A4A9289F4C3C0064437E /* ProfileView.swift */; };
+		B2B7A4AC289F6F680064437E /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B7A4AB289F6F680064437E /* EditProfile.swift */; };
+		B2B7A4AF289F78FB0064437E /* FriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B7A4AE289F78FB0064437E /* FriendRequest.swift */; };
+		B2B7A4B1289F790C0064437E /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B7A4B0289F790C0064437E /* Friends.swift */; };
+		B2B7A4B3289F7C0A0064437E /* ProfileTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B7A4B2289F7C0A0064437E /* ProfileTopBar.swift */; };
+		B2B7A4B5289F800D0064437E /* AddFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B7A4B4289F800D0064437E /* AddFriends.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +192,12 @@
 		B2B2945128601C9800EB5858 /* EventIntergrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntergrationTest.swift; sourceTree = "<group>"; };
 		B2B294532860CB8C00EB5858 /* OtherUserIntergrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserIntergrationTest.swift; sourceTree = "<group>"; };
 		B2B294552860DDEB00EB5858 /* InviteIntergrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteIntergrationTest.swift; sourceTree = "<group>"; };
+		B2B7A4A9289F4C3C0064437E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B2B7A4AB289F6F680064437E /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		B2B7A4AE289F78FB0064437E /* FriendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequest.swift; sourceTree = "<group>"; };
+		B2B7A4B0289F790C0064437E /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
+		B2B7A4B2289F7C0A0064437E /* ProfileTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTopBar.swift; sourceTree = "<group>"; };
+		B2B7A4B4289F800D0064437E /* AddFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriends.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +256,8 @@
 		18BFEAC0286E886B00B04FDC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B2B7A4AD289F78C50064437E /* Friend Views */,
+				B2B7A4A8289F4C170064437E /* Profile Views */,
 				188A682A28754C8100ADF7A3 /* Buttons */,
 				188A682728754C1D00ADF7A3 /* Host Views */,
 				18BFEAC1286E887F00B04FDC /* AppView.swift */,
@@ -444,6 +458,26 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		B2B7A4A8289F4C170064437E /* Profile Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2B7A4A9289F4C3C0064437E /* ProfileView.swift */,
+				B2B7A4AB289F6F680064437E /* EditProfile.swift */,
+				B2B7A4B2289F7C0A0064437E /* ProfileTopBar.swift */,
+			);
+			path = "Profile Views";
+			sourceTree = "<group>";
+		};
+		B2B7A4AD289F78C50064437E /* Friend Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2B7A4AE289F78FB0064437E /* FriendRequest.swift */,
+				B2B7A4B0289F790C0064437E /* Friends.swift */,
+				B2B7A4B4289F800D0064437E /* AddFriends.swift */,
+			);
+			path = "Friend Views";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -591,6 +625,7 @@
 				188A682C28754C9B00ADF7A3 /* AddEventButton.swift in Sources */,
 				B25592FD28246468002C5CEA /* JSONCreatable.swift in Sources */,
 				B2559293281F14A2002C5CEA /* Bouncr.xcdatamodeld in Sources */,
+				B2B7A4B1289F790C0064437E /* Friends.swift in Sources */,
 				B25592C9281F1C06002C5CEA /* Login.swift in Sources */,
 				B25592ED2821DEF5002C5CEA /* OrgUser.swift in Sources */,
 				B2559290281F14A2002C5CEA /* Persistence.swift in Sources */,
@@ -604,18 +639,23 @@
 				B25592CF281F23E1002C5CEA /* DateFormatter.swift in Sources */,
 				B25592FB2823141B002C5CEA /* InviteController.swift in Sources */,
 				188A683628795D3500ADF7A3 /* HostUpcomingEventCard.swift in Sources */,
+				B2B7A4AC289F6F680064437E /* EditProfile.swift in Sources */,
 				B25592E92821DC60002C5CEA /* OtherUser.swift in Sources */,
+				B2B7A4B3289F7C0A0064437E /* ProfileTopBar.swift in Sources */,
 				B25592CD281F2171002C5CEA /* UserServices.swift in Sources */,
 				188A68322875504200ADF7A3 /* HostEventDetailsView.swift in Sources */,
 				B25592F928231266002C5CEA /* InviteServiceable.swift in Sources */,
 				B25592C1281F1690002C5CEA /* RequestError.swift in Sources */,
 				1839437F28877D2D00A0D0FF /* PendingGuestsBubbles.swift in Sources */,
+				B2B7A4AF289F78FB0064437E /* FriendRequest.swift in Sources */,
 				188A683028754EC100ADF7A3 /* SquareScanQR.swift in Sources */,
 				B25592E32821D5D8002C5CEA /* Event.swift in Sources */,
 				B2559289281F14A1002C5CEA /* ContentView.swift in Sources */,
 				B25592C7281F18BB002C5CEA /* User.swift in Sources */,
 				B25592F328230E3C002C5CEA /* HelperController.swift in Sources */,
 				B25592FF2824654F002C5CEA /* OtherUserEndpoint.swift in Sources */,
+				B2B7A4B5289F800D0064437E /* AddFriends.swift in Sources */,
+				B2B7A4AA289F4C3C0064437E /* ProfileView.swift in Sources */,
 				B25592C3281F16DC002C5CEA /* RequestMethod.swift in Sources */,
 				188A682928754C4F00ADF7A3 /* HostEventsView.swift in Sources */,
 				B25592CB281F1D72002C5CEA /* UserEndpoint.swift in Sources */,
@@ -805,7 +845,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bouncr/Preview Content\"";
-				DEVELOPMENT_TEAM = V9LGP2662T;
+				DEVELOPMENT_TEAM = 9J56NDXZ35;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -819,7 +859,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-7443.Bouncr";
+				PRODUCT_BUNDLE_IDENTIFIER = Bouncr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -835,7 +875,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bouncr/Preview Content\"";
-				DEVELOPMENT_TEAM = V9LGP2662T;
+				DEVELOPMENT_TEAM = 9J56NDXZ35;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -849,7 +889,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-7443.Bouncr";
+				PRODUCT_BUNDLE_IDENTIFIER = Bouncr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
