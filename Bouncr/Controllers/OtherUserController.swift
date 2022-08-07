@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class OtherUserController: HelperController,ObservableObject {
+class OtherUserController: HelperController{
     
     let otherUserService:OtherUserServiceable
     
@@ -21,6 +21,8 @@ class OtherUserController: HelperController,ObservableObject {
     @Published var acceptedInvitesOtherUserArray:[OtherUser]=[]
     @Published var pendingInvitesOtherUserArray:[OtherUser]=[]
     @Published var allGuestsOtherUserArray:[OtherUser]=[]
+    @Published var friendRequestArray:[OtherUser]=[]
+    @Published var friendArray:[OtherUser]=[]
 
     
     
@@ -43,7 +45,9 @@ class OtherUserController: HelperController,ObservableObject {
             setLoading(status: true)
             let result = await otherUserService.getFriends(id: getUserID(), token: getToken())
             setLoading(status: false)
+            // this line to be deleted after intergration test updated
             setOtherUserArray(result: result, target: &otherUserArray)
+            setOtherUserArray(result: result, target: &friendArray)
             completion?()
         }
     }
@@ -65,7 +69,9 @@ class OtherUserController: HelperController,ObservableObject {
             setLoading(status: true)
             let result = await otherUserService.getFriendRequests(id: getUserID(),isSent: false, token: getToken())
             setLoading(status: false)
+            // this line to be deleted after intergration test updated
             setOtherUserArray(result: result, target: &otherUserArray)
+            setOtherUserArray(result: result, target: &friendRequestArray)
             completion?()
         }
     }

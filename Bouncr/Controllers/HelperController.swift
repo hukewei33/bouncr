@@ -6,7 +6,8 @@
 //
 
 import Foundation
-class HelperController {
+@MainActor
+class HelperController: ObservableObject {
 
 
     var parent:MainController?

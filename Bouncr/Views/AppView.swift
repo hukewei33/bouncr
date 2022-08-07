@@ -42,7 +42,7 @@ struct AppView: View {
             
             // Profile Page
 //            ProfileView()
-            Text("ProfileView")
+              ProfileView(otherUserController: mainController.otherUserController)
             .tabItem {
               Image(systemName: "person.crop.circle")
               Text("Profile")

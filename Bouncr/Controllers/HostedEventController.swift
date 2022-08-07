@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-class HostedEventController: HelperController,ObservableObject {
+class HostedEventController: HelperController {
     
     @Published var eventArray:[Event]=[]
     @Published var eventShowed:Event?=nil
@@ -27,7 +27,10 @@ class HostedEventController: HelperController,ObservableObject {
             setLoading(status: false)
             switch result {
             case .success(let events):
-                eventArray=events
+                await MainActor.run {
+                    eventArray=events
+                }
+                //eventArray=events
             case .failure(let error):
                 print(error.customMessage)
                 setStatusMessage(message: error.customMessage)

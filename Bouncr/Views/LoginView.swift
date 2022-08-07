@@ -48,6 +48,8 @@ struct LoginView: View {
             .background(Color("Form Field Background"))
             .cornerRadius(10)
             .padding(.bottom, 30)
+            .autocapitalization(.none)
+            .disableAutocorrection(true)
         }
 
 
@@ -56,7 +58,7 @@ struct LoginView: View {
           Text("Password")
             .bold()
             .font(.system(size: 17))
-          TextField(
+            SecureField(
             "Password",
             text: $password
           )
@@ -64,6 +66,7 @@ struct LoginView: View {
             .background(Color("Form Field Background"))
             .cornerRadius(10)
             .padding(.bottom, 30)
+            .autocapitalization(.none)
         }
 
 

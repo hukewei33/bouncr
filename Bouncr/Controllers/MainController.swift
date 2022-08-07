@@ -10,6 +10,7 @@ import SwiftUI
 
 //TODO: define interface for the girls
 
+@MainActor
 class MainController: ObservableObject {
     @Published var thisUser: User?
     @Published var errorMessage: String?
@@ -34,8 +35,10 @@ class MainController: ObservableObject {
             let result = await userService.userLogin(username: username, password: password)
             switch result {
             case .success(let loginResponse):
-                thisUser=loginResponse
-                token = loginResponse.token!
+                await MainActor.run {
+                    thisUser=loginResponse
+                    token = loginResponse.token!
+                }
                 completion?()
             case .failure(let error):
                 errorMessage=error.customMessage
@@ -66,8 +69,10 @@ class MainController: ObservableObject {
             let result = await userService.createUser(newUser: newUserDict)
             switch result {
             case .success(let loginResponse):
-                thisUser=loginResponse
-                token = loginResponse.token!
+                await MainActor.run {
+                    thisUser=loginResponse
+                    token = loginResponse.token!
+                }
                 completion?()
             case .failure(let error):
                 errorMessage=error.customMessage
@@ -83,8 +88,10 @@ class MainController: ObservableObject {
             let result = await userService.updateUser(id: thisUser!.id, updateUser: updatedUserDict, token: token)
             switch result {
             case .success(let loginResponse):
-                thisUser=loginResponse
-                token = loginResponse.token!
+                await MainActor.run {
+                    thisUser=loginResponse
+                    token = loginResponse.token!
+                }
                 completion?()
             case .failure(let error):
                 errorMessage=error.customMessage
