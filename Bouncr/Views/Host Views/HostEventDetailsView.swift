@@ -201,6 +201,9 @@ struct HostEventDetailsView: View {
         
       InviteGuestsModal(show: $showPopUp, event: self.event, otherUserController: mainController.otherUserController)
     }//End ZStack
+    .onAppear() {
+      mainController.otherUserController.getAllGuests(eventID: event.id)
+    }
   }//End var body: some View
   
   
