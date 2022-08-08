@@ -24,6 +24,7 @@ struct HostEventDetailsView: View {
   let rows = [GridItem(.fixed(30))]
   let startDateStr: String
   let endDateStr: String
+  var zipStr: String
   
   init(event: Event, ongoing: Bool) {
     self.event = event
@@ -32,6 +33,14 @@ struct HostEventDetailsView: View {
     dateFormatter.dateFormat = "MMM. d, h:mm a z"
     startDateStr = dateFormatter.string(from: event.startTime)
     endDateStr = dateFormatter.string(from: event.endTime)
+    
+    zipStr = String(event.zip)
+    //if zip had 0's at front, 0's wouldn't be there since zip is int in DB...put back 0's here
+    if zipStr.count<5 {
+      for _ in 1...(5-zipStr.count) {
+        zipStr = "0" + zipStr
+      }
+    }
     
   }
   
@@ -105,7 +114,7 @@ struct HostEventDetailsView: View {
             Text("Location: ")
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
             
-            Text("\(event.street1), \n\(event.city), \(event.state), \(String(event.zip))")
+            Text("\(event.street1), \n\(event.city), \(event.state), \(zipStr)")
             
             Text("Date/Time: ")
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))

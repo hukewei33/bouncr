@@ -53,6 +53,12 @@ struct EventForm: View {
       city = event.city
       state = event.state
       zip = String(event.zip)
+      //if zip had 0 at front, 0's wouldn't be there since zip is int in DB...put back 0's here
+      if zip.count<5 {
+        for _ in 1...(5-zip.count) {
+          zip = "0" + zip
+        }
+      }
       if let eDescr = event.description {
         descr = eDescr //optional
       }
