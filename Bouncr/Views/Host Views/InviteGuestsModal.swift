@@ -35,7 +35,6 @@ struct InviteGuestsModal: View {
   }
 
   
-
   var body: some View {
     
     //Copied & edited from SwiftRepos lab, for searh functionality
@@ -148,6 +147,10 @@ struct InviteGuestsModal: View {
         .frame(maxWidth: 300)
         .background(Color.white)
         .cornerRadius(10)
+        //Make search field empty when modal first pops up
+        .onAppear(){
+          self.searchText=""
+        }
 
       }
     }
