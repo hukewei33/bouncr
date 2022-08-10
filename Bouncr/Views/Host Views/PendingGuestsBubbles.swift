@@ -56,8 +56,8 @@ struct PendingGuestsBubbles: View {
         SeeMoreButton(event: event)
       }//End if
       else {
-        ForEach(0..<otherUserController.pendingInvitesOtherUserArray.count, id: \.self){ index in
-          GuestBubble(user: otherUserController.pendingInvitesOtherUserArray[index])
+        ForEach(otherUserController.pendingInvitesOtherUserArray) { user in
+          GuestBubble(user: user)
         }//End ForEach
       }//End else
       
