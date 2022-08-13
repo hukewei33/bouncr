@@ -35,13 +35,13 @@ struct HostEventsView: View {
       ZStack {
         ScrollView {
           VStack(alignment: .leading) {
-            if (eventController.eventArray.count>0) { //WILL NEED A NEW ARRAY IN EVENT CONTROLLER FOR ONGOING EVENTS
+            if (eventController.eventArray.filter{$0.startTime<=Date() && $0.endTime>=Date()}.count>0) {
               Text("Ongoing Events")
                 .bold()
                 .font(.system(size: 22))
                 .padding()
-              ForEach(0..<eventController.eventArray.count, id: \.self) { index in
-                HostOngoingEventCard(event: eventController.eventArray[index])
+              ForEach(0..<eventController.eventArray.filter{$0.startTime<=Date() && $0.endTime>=Date()}.count, id: \.self) { index in
+                HostOngoingEventCard(event: eventController.eventArray.filter{$0.startTime<=Date() && $0.endTime>=Date()}[index])
               }
             }
             
@@ -55,9 +55,9 @@ struct HostEventsView: View {
                 HostUpcomingEventCard(event: eventController.eventArray.filter{$0.startTime>Date()}[index])
               }
             }
-            /*
+            
             //Display placeholder text if no events at all
-            if (viewModel.hostEvents.count==0 && viewModel.hostCurrentEvents.count==0) {
+            if (eventController.eventArray.filter{$0.endTime>=Date()}.count==0) {
               Spacer()
               Text("You are not hosting any events")
                 .foregroundColor(Color("Gray - 400"))
@@ -65,7 +65,6 @@ struct HostEventsView: View {
                 .padding()
               Spacer()
             }
-             */
           }
         }
         
