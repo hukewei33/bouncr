@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Event: Codable,JSONCreatable {
+struct Event: Codable, JSONCreatable, Identifiable {
     
     let id: Int
     let name: String
