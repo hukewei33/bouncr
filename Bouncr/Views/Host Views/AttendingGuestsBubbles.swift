@@ -37,9 +37,6 @@ struct AttendingGuestsBubbles: View {
       }//End else
       
     } //End LazyHGrid
-    .onAppear() {
-      mainController.otherUserController.getAcceptedInvitesGuests(eventID: event.id)
-    }
 
   } //End var body: some View
 }

@@ -99,6 +99,7 @@ class OtherUserController: HelperController,ObservableObject {
             let result = await otherUserService.getEventGuests(id: eventID, user_id: getUserID(), checkedin: nil, inviteStatus: false,isFriend: nil,token: getToken())
             setLoading(status: false)
             setOtherUserArray(result: result, target: &pendingInvitesOtherUserArray)
+            objectWillChange.send()
             completion?()
         }
     }
@@ -109,6 +110,7 @@ class OtherUserController: HelperController,ObservableObject {
             let result = await otherUserService.getEventGuests(id: eventID, user_id: getUserID(), checkedin: nil, inviteStatus: true,isFriend: nil,token: getToken())
             setLoading(status: false)
             setOtherUserArray(result: result, target: &acceptedInvitesOtherUserArray)
+            objectWillChange.send()
             completion?()
         }
     }

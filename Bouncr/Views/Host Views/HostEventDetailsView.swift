@@ -212,6 +212,8 @@ struct HostEventDetailsView: View {
     }//End ZStack
     .onAppear() {
       mainController.otherUserController.getAllGuests(eventID: event.id)
+      mainController.otherUserController.getAcceptedInvitesGuests(eventID: event.id)
+      mainController.otherUserController.getPendingInviteGuests(eventID: event.id)
     }
   }//End var body: some View
   
