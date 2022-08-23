@@ -112,6 +112,7 @@ struct EventForm: View {
             displayedComponents: [.date, .hourAndMinute]
           )
           .labelsHidden()
+          .id(startTime) //Fixes bug where format keeps changing
           .padding(.bottom, 30)
           //Make sure that when startdate changes to be later than enddate, enddate is automatically updated
           .onChange (of: startTime) { date in
@@ -131,6 +132,7 @@ struct EventForm: View {
             displayedComponents: [.date, .hourAndMinute]
           )
           .labelsHidden()
+          .id(endTime) //Fixes bug where format keeps changing
           .padding(.bottom, 30)
         }
         
