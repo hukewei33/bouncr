@@ -30,7 +30,7 @@ struct HostEventDetailsView: View {
     self.event = event
     self.ongoing = ongoing
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMM. d, h:mm a z"
+    dateFormatter.dateFormat = "MMM. d, h:mm a"
     startDateStr = dateFormatter.string(from: event.startTime)
     endDateStr = dateFormatter.string(from: event.endTime)
     
@@ -115,12 +115,17 @@ struct HostEventDetailsView: View {
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
             
             Text("\(event.street1), \n\(event.city), \(event.state), \(zipStr)")
-            
-            Text("Date/Time: ")
+
+            Text("Start Time: ")
               .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
             
-            Text(startDateStr) + Text(" to ") + Text(endDateStr)
-            
+            Text(startDateStr)
+              
+            Text("End Time: ")
+              .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
+          
+            Text(endDateStr)
+
             if !(event.description ?? "").isEmpty {
                 
               Text("About: ")
