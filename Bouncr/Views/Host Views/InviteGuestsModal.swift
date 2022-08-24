@@ -54,7 +54,7 @@ struct InviteGuestsModal: View {
           HStack {
             //Close popup button
             Button(action: {
-              self.checkedUsers = []
+               self.checkedUsers = []
               
                // Dismiss the PopUp
                withAnimation(.linear(duration: 0.3)) {
@@ -102,8 +102,16 @@ struct InviteGuestsModal: View {
                     }
                     //Display appropriate message if there are no relevant search results
                     else {
-                      Text("No search results")
-                        .foregroundColor(Color("Gray - 400"))
+                      if (checkedUsers.count>0 && searchText=="") {
+                        ForEach(self.checkedUsers) { user in
+                          InviteGuestsModalRow(user: user, checkedUsers: $checkedUsers)
+                            .padding(10)
+                        }
+                      }
+                      else {
+                        Text("No search results")
+                          .foregroundColor(Color("Gray - 400"))
+                      }
                     }
                   }
                   .padding()
