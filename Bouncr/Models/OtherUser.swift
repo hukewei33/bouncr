@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct OtherUser: Codable {
-    //change 
+struct OtherUser: Codable, Identifiable, Hashable {
+
     let id: Int
     let username: String
     let lastName:String

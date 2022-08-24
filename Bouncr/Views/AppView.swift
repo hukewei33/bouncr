@@ -1,0 +1,93 @@
+//
+//  AppView.swift
+//  Bouncr
+//
+//  Created by Sara Song on 6/30/22.
+//
+
+
+import SwiftUI
+
+struct AppView: View {
+  
+    @EnvironmentObject var mainController: MainController
+  
+    var body: some View {
+      
+      if (!self.mainController.loggedin()){
+        
+        //LoginView()
+          TabView {
+            
+            //My Events page
+            LoginView()
+            .tabItem {
+              Image(systemName: "lock.open")
+              Text("Login")
+            }
+            
+            
+            // Profile Page
+              CreateProfileView()
+            .tabItem {
+              Image(systemName: "person.crop.circle")
+              Text("Sign Up")
+            }
+      
+          }
+          .padding(.top)
+          .onAppear() {
+              //Fixes bug where tab bar was turning transparent on InvitationsView
+              if #available(iOS 15.0, *) {
+                  let appearance = UITabBarAppearance()
+                  UITabBar.appearance().scrollEdgeAppearance = appearance
+              }
+              UITabBar.appearance().barTintColor = .white
+          }
+          .edgesIgnoringSafeArea(.top) //Makes top nav bar stretch all the way to top of device
+        
+      }
+      else {
+        
+          TabView {
+            
+            //My Events page
+            HostEventsView(eventController: mainController.hostedEventController)
+            .tabItem {
+              Image(systemName: "calendar")
+              Text("Your Events")
+            }
+            
+            
+            //Invitations Page
+//            InvitationsView()
+            Text("InvitationsView")
+            .tabItem {
+              Image(systemName: "envelope")
+              Text("Invitations")
+            }
+            
+            
+            // Profile Page
+//            ProfileView()
+              ProfileView(otherUserController: mainController.otherUserController)
+            .tabItem {
+              Image(systemName: "person.crop.circle")
+              Text("Profile")
+            }
+      
+          }
+          .padding(.top)
+          .onAppear() {
+              //Fixes bug where tab bar was turning transparent on InvitationsView
+              if #available(iOS 15.0, *) {
+                  let appearance = UITabBarAppearance()
+                  UITabBar.appearance().scrollEdgeAppearance = appearance
+              }
+              UITabBar.appearance().barTintColor = .white
+          }
+          .edgesIgnoringSafeArea(.top) //Makes top nav bar stretch all the way to top of device
+        }
+      
+      }
+}

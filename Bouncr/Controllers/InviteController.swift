@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-class InviteController: HelperController,ObservableObject {
+class InviteController: HelperController {
 
     
     let inviteService:InviteServiceable 
