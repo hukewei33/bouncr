@@ -39,10 +39,11 @@ class EventIntergrationTest: XCTestCase {
         let expectation = expectation(description: "get hosted events")
         
         controller.hostedEventController.getHostedEvents(){
-           XCTAssertEqual(controller.hostedEventController.eventArray.first?.name ,"Art Night")
+            XCTAssertEqual(controller.hostedEventController.eventArray.count,4)
+            XCTAssertEqual(controller.hostedEventController.eventArray.first?.name ,"Art Night")
             XCTAssertEqual(controller.hostedEventController.eventArray.first?.acceptedInvitesCount ,2)
-            XCTAssertEqual(controller.hostedEventController.eventArray.first?.checkedInInvitescount ,1)
-            XCTAssertEqual(controller.hostedEventController.eventArray.last?.name ,"Charity Dinner")
+            XCTAssertEqual(controller.hostedEventController.eventArray.first?.checkedInInvitesCount ,1)
+            XCTAssertEqual(controller.hostedEventController.eventArray.last?.name ,"Kappa Sigma Partay")
             expectation.fulfill()
         }
         waitForExpectations(timeout: 3.0, handler: nil)
@@ -53,7 +54,7 @@ class EventIntergrationTest: XCTestCase {
         let controller = MainController()
         controller.manualLoginForTesting()
         let expectation = expectation(description: "create hosted events")
-        let newEvent = Event(id: -1, name: "newEvent", startTime: Date(), endTime: Date(), street1: "here", street2: "there", city: "happytown", state: "PA", zip: 15213, description: "have fun", attendenceVisible: true, friendsAttendingVisible: true, attendenceCap: 3, coverCharge: 2.2, isOpenInvite: true, venueLatitude: 0.0, venueLongitude: 0.0, organizations: nil, acceptedInvitesCount: nil, checkedInInvitescount: nil)
+        let newEvent = Event(id: -1, name: "newEvent", startTime: Date(), endTime: Date(), street1: "here", street2: "there", city: "happytown", state: "PA", zip: 15213, description: "have fun", attendenceVisible: true, friendsAttendingVisible: true, attendenceCap: 3, coverCharge: 2.2, isOpenInvite: true, venueLatitude: 0.0, venueLongitude: 0.0, organizations: nil, acceptedInvitesCount: nil, checkedInInvitesCount: nil)
         
         controller.hostedEventController.createEvent(newEvent: newEvent){
            XCTAssertEqual(controller.hostedEventController.eventShowed?.name ,"newEvent")
@@ -66,7 +67,7 @@ class EventIntergrationTest: XCTestCase {
         let controller = MainController()
         controller.manualLoginForTesting()
         let expectation = expectation(description: "updated hosted events")
-        let newEvent = Event(id: 1, name: "newUpdatedEvent", startTime: Date(), endTime: Date(), street1: "here", street2: "there", city: "happytown", state: "PA", zip: 15213, description: "have fun", attendenceVisible: true, friendsAttendingVisible: true, attendenceCap: 3, coverCharge: 2.2, isOpenInvite: true, venueLatitude: 0.0, venueLongitude: 0.0, organizations: nil, acceptedInvitesCount: nil, checkedInInvitescount: nil)
+        let newEvent = Event(id: 1, name: "newUpdatedEvent", startTime: Date(), endTime: Date(), street1: "here", street2: "there", city: "happytown", state: "PA", zip: 15213, description: "have fun", attendenceVisible: true, friendsAttendingVisible: true, attendenceCap: 3, coverCharge: 2.2, isOpenInvite: true, venueLatitude: 0.0, venueLongitude: 0.0, organizations: nil, acceptedInvitesCount: nil, checkedInInvitesCount: nil)
         
         controller.hostedEventController.updateEvent(updatedEvent: newEvent){
            XCTAssertEqual(controller.hostedEventController.eventShowed?.name ,"newUpdatedEvent")

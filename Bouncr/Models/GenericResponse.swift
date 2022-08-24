@@ -15,6 +15,7 @@ struct GenericResponse: Codable {
         }
         switch returnValue{
         case -2: return .invalidLogin
+        case -5: return .unauthorized
         default:return .serverSideError
         }
     }

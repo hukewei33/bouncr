@@ -8,6 +8,7 @@
 import Foundation
 
 struct OtherUser: Codable {
+    //change 
     let id: Int
     let username: String
     let lastName:String

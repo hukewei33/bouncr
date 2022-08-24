@@ -82,7 +82,7 @@ class EventTest: XCTestCase {
         
         let expectation = expectation(description: "get all friends")
         
-        let newEvent = Event(id: 1, name: "", startTime: Date(), endTime: Date(), street1: "", street2: nil, city: "", state: "", zip: 1, description: nil, attendenceVisible: true, friendsAttendingVisible: false, attendenceCap: 32, coverCharge: 42.2, isOpenInvite: false, venueLatitude: 1.1, venueLongitude: 2.2, organizations: nil, acceptedInvitesCount: nil, checkedInInvitescount: nil)
+        let newEvent = Event(id: 1, name: "", startTime: Date(), endTime: Date(), street1: "", street2: nil, city: "", state: "", zip: 1, description: nil, attendenceVisible: true, friendsAttendingVisible: false, attendenceCap: 32, coverCharge: 42.2, isOpenInvite: false, venueLatitude: 1.1, venueLongitude: 2.2, organizations: nil, acceptedInvitesCount: nil, checkedInInvitesCount: nil)
         controller.createEvent(newEvent: newEvent){
             expectation.fulfill()
             XCTAssertEqual(controller.eventShowed?.name,"Art Night")
@@ -96,7 +96,7 @@ class EventTest: XCTestCase {
         
         let expectation = expectation(description: "get all friends")
         
-        let newEvent = Event(id: 1, name: "", startTime: Date(), endTime: Date(), street1: "", street2: nil, city: "", state: "", zip: 1, description: nil, attendenceVisible: true, friendsAttendingVisible: false, attendenceCap: 32, coverCharge: 42.2, isOpenInvite: false, venueLatitude: 1.1, venueLongitude: 2.2, organizations: nil, acceptedInvitesCount: nil, checkedInInvitescount: nil)
+        let newEvent = Event(id: 1, name: "", startTime: Date(), endTime: Date(), street1: "", street2: nil, city: "", state: "", zip: 1, description: nil, attendenceVisible: true, friendsAttendingVisible: false, attendenceCap: 32, coverCharge: 42.2, isOpenInvite: false, venueLatitude: 1.1, venueLongitude: 2.2, organizations: nil, acceptedInvitesCount: nil, checkedInInvitesCount: nil)
         
         
         controller.updateEvent(updatedEvent: newEvent){
