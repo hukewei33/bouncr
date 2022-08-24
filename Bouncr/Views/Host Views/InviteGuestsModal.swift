@@ -95,16 +95,23 @@ struct InviteGuestsModal: View {
                   VStack(alignment: .leading) {
                     //Can only show users if they exist in search results
                     if (searchResults.count>0) {
-                      ForEach(0..<self.searchResults.count, id: \.self) { index in
-                        InviteGuestsModalRow(user: self.searchResults[index], checkedUsers: $checkedUsers)
-                          .padding(10)
+                      ForEach(self.searchResults) { user in
+                        //Check if user has been selected already, display checkmark if so
+                        if (self.checkedUsers.contains(user)) {
+                          InviteGuestsModalRow(user: user, checkedUsers: $checkedUsers, isChecked: true)
+                            .padding(10)
+                        }
+                        else {
+                          InviteGuestsModalRow(user: user, checkedUsers: $checkedUsers, isChecked: false)
+                            .padding(10)
+                        }
                       }
                     }
                     //Display appropriate message if there are no relevant search results
                     else {
                       if (checkedUsers.count>0 && searchText=="") {
                         ForEach(self.checkedUsers) { user in
-                          InviteGuestsModalRow(user: user, checkedUsers: $checkedUsers)
+                          InviteGuestsModalRow(user: user, checkedUsers: $checkedUsers, isChecked: true)
                             .padding(10)
                         }
                       }

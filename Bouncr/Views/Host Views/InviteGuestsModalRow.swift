@@ -11,12 +11,13 @@ struct InviteGuestsModalRow: View {
   @EnvironmentObject var mainController: MainController
   var user: OtherUser
   let width = UIScreen.main.bounds.width * 0.25
-  @State var isChecked: Bool = false
+  @State var isChecked: Bool
   @Binding var checkedUsers: [OtherUser]
   
-  init(user: OtherUser, checkedUsers: Binding<[OtherUser]>){
+  init(user: OtherUser, checkedUsers: Binding<[OtherUser]>, isChecked: Bool){
     self.user = user
     self._checkedUsers = checkedUsers
+    self.isChecked = isChecked
   }
  
   func toggleCheckBox() {
