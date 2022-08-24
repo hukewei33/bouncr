@@ -34,7 +34,7 @@ struct Event: Codable,JSONCreatable {
     let venueLongitude: Double
     let organizations: [Organization]?
     let acceptedInvitesCount: Int?
-    let checkedInInvitescount: Int?
+    let checkedInInvitesCount: Int?
     
     func toDict() -> [String:String]? {
         var newEvent:[String:String] = [
