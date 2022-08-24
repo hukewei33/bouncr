@@ -30,7 +30,11 @@ struct InviteGuestsModal: View {
       searchResults = []
     } else {
       mainController.otherUserController.getSearch(term: searchText)
-      searchResults = otherUserController.otherUserArray
+      //Filter out the currently logged in user & ppl who've already been invited
+      searchResults = otherUserController.otherUserArray.filter{
+        $0.id != mainController.thisUser!.id &&
+        !mainController.otherUserController.allGuestsOtherUserArray.contains($0)
+      }
     }
   }
 
