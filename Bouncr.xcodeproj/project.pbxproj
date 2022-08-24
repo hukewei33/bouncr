@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1839437B288748C000A0D0FF /* GuestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839437A288748BF00A0D0FF /* GuestList.swift */; };
+		1839437D2887499C00A0D0FF /* EventForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839437C2887499C00A0D0FF /* EventForm.swift */; };
+		1839437F28877D2D00A0D0FF /* PendingGuestsBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839437E28877D2D00A0D0FF /* PendingGuestsBubbles.swift */; };
+		1839438128877D4000A0D0FF /* AttendingGuestsBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839438028877D4000A0D0FF /* AttendingGuestsBubbles.swift */; };
+		183943832887843000A0D0FF /* GuestBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183943822887842F00A0D0FF /* GuestBubble.swift */; };
+		183943852887851000A0D0FF /* SeeMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183943842887851000A0D0FF /* SeeMoreButton.swift */; };
+		18394387288CBF5000A0D0FF /* InviteGuestsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18394386288CBF4F00A0D0FF /* InviteGuestsModal.swift */; };
+		18394389288CBF6F00A0D0FF /* InviteGuestsModalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18394388288CBF6F00A0D0FF /* InviteGuestsModalRow.swift */; };
+		188A6825286FED4900ADF7A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A6824286FED4900ADF7A3 /* LoginView.swift */; };
+		188A682928754C4F00ADF7A3 /* HostEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682828754C4F00ADF7A3 /* HostEventsView.swift */; };
+		188A682C28754C9B00ADF7A3 /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682B28754C9B00ADF7A3 /* AddEventButton.swift */; };
+		188A682E28754E7E00ADF7A3 /* MoreDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682D28754E7E00ADF7A3 /* MoreDetailsButton.swift */; };
+		188A683028754EC100ADF7A3 /* SquareScanQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A682F28754EC100ADF7A3 /* SquareScanQR.swift */; };
+		188A68322875504200ADF7A3 /* HostEventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A68312875504200ADF7A3 /* HostEventDetailsView.swift */; };
+		188A6834287935D500ADF7A3 /* HostOngoingEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A6833287935D500ADF7A3 /* HostOngoingEventCard.swift */; };
+		188A683628795D3500ADF7A3 /* HostUpcomingEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A683528795D3400ADF7A3 /* HostUpcomingEventCard.swift */; };
+		18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFEAC1286E887F00B04FDC /* AppView.swift */; };
 		B2001903284424B600B3C899 /* DictToParamString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001902284424B600B3C899 /* DictToParamString.swift */; };
 		B2001905284434B900B3C899 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001904284434B800B3C899 /* GenericResponse.swift */; };
 		B2001907284528EB00B3C899 /* GoodGenericResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B2001906284528EB00B3C899 /* GoodGenericResponse.json */; };
@@ -88,6 +105,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1839437A288748BF00A0D0FF /* GuestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestList.swift; sourceTree = "<group>"; };
+		1839437C2887499C00A0D0FF /* EventForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventForm.swift; sourceTree = "<group>"; };
+		1839437E28877D2D00A0D0FF /* PendingGuestsBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingGuestsBubbles.swift; sourceTree = "<group>"; };
+		1839438028877D4000A0D0FF /* AttendingGuestsBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendingGuestsBubbles.swift; sourceTree = "<group>"; };
+		183943822887842F00A0D0FF /* GuestBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestBubble.swift; sourceTree = "<group>"; };
+		183943842887851000A0D0FF /* SeeMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreButton.swift; sourceTree = "<group>"; };
+		18394386288CBF4F00A0D0FF /* InviteGuestsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModal.swift; sourceTree = "<group>"; };
+		18394388288CBF6F00A0D0FF /* InviteGuestsModalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteGuestsModalRow.swift; sourceTree = "<group>"; };
+		188A6824286FED4900ADF7A3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		188A682828754C4F00ADF7A3 /* HostEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventsView.swift; sourceTree = "<group>"; };
+		188A682B28754C9B00ADF7A3 /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
+		188A682D28754E7E00ADF7A3 /* MoreDetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDetailsButton.swift; sourceTree = "<group>"; };
+		188A682F28754EC100ADF7A3 /* SquareScanQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareScanQR.swift; sourceTree = "<group>"; };
+		188A68312875504200ADF7A3 /* HostEventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventDetailsView.swift; sourceTree = "<group>"; };
+		188A6833287935D500ADF7A3 /* HostOngoingEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostOngoingEventCard.swift; sourceTree = "<group>"; };
+		188A683528795D3400ADF7A3 /* HostUpcomingEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostUpcomingEventCard.swift; sourceTree = "<group>"; };
+		18BFEAC1286E887F00B04FDC /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B2001902284424B600B3C899 /* DictToParamString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictToParamString.swift; sourceTree = "<group>"; };
 		B2001904284434B800B3C899 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		B2001906284528EB00B3C899 /* GoodGenericResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoodGenericResponse.json; sourceTree = "<group>"; };
@@ -179,6 +213,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		188A682728754C1D00ADF7A3 /* Host Views */ = {
+			isa = PBXGroup;
+			children = (
+				188A682828754C4F00ADF7A3 /* HostEventsView.swift */,
+				188A68312875504200ADF7A3 /* HostEventDetailsView.swift */,
+				188A6833287935D500ADF7A3 /* HostOngoingEventCard.swift */,
+				188A683528795D3400ADF7A3 /* HostUpcomingEventCard.swift */,
+				1839437C2887499C00A0D0FF /* EventForm.swift */,
+				1839437E28877D2D00A0D0FF /* PendingGuestsBubbles.swift */,
+				1839438028877D4000A0D0FF /* AttendingGuestsBubbles.swift */,
+				183943822887842F00A0D0FF /* GuestBubble.swift */,
+				18394386288CBF4F00A0D0FF /* InviteGuestsModal.swift */,
+				18394388288CBF6F00A0D0FF /* InviteGuestsModalRow.swift */,
+			);
+			path = "Host Views";
+			sourceTree = "<group>";
+		};
+		188A682A28754C8100ADF7A3 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				188A682B28754C9B00ADF7A3 /* AddEventButton.swift */,
+				188A682D28754E7E00ADF7A3 /* MoreDetailsButton.swift */,
+				188A682F28754EC100ADF7A3 /* SquareScanQR.swift */,
+				183943842887851000A0D0FF /* SeeMoreButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		18BFEAC0286E886B00B04FDC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				188A682A28754C8100ADF7A3 /* Buttons */,
+				188A682728754C1D00ADF7A3 /* Host Views */,
+				18BFEAC1286E887F00B04FDC /* AppView.swift */,
+				188A6824286FED4900ADF7A3 /* LoginView.swift */,
+				1839437A288748BF00A0D0FF /* GuestList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B255927A281F14A1002C5CEA = {
 			isa = PBXGroup;
 			children = (
@@ -202,8 +276,8 @@
 		B2559285281F14A1002C5CEA /* Bouncr */ = {
 			isa = PBXGroup;
 			children = (
+				18BFEAC0286E886B00B04FDC /* Views */,
 				B25592DD281F2C73002C5CEA /* Controllers */,
-				B25592DC281F2C55002C5CEA /* Views */,
 				B25592BA281F1516002C5CEA /* Models */,
 				B25592B9281F1501002C5CEA /* Network */,
 				B2559286281F14A1002C5CEA /* BouncrApp.swift */,
@@ -321,13 +395,6 @@
 				B20019082845295000B3C899 /* BadGenericResponse.json */,
 			);
 			path = JSON;
-			sourceTree = "<group>";
-		};
-		B25592DC281F2C55002C5CEA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		B25592DD281F2C73002C5CEA /* Controllers */ = {
@@ -517,38 +584,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188A6834287935D500ADF7A3 /* HostOngoingEventCard.swift in Sources */,
 				B2559301282472F0002C5CEA /* EventEndpoint.swift in Sources */,
 				B25592F528231090002C5CEA /* HostedEventController.swift in Sources */,
+				18394389288CBF6F00A0D0FF /* InviteGuestsModalRow.swift in Sources */,
+				188A682C28754C9B00ADF7A3 /* AddEventButton.swift in Sources */,
 				B25592FD28246468002C5CEA /* JSONCreatable.swift in Sources */,
 				B2559293281F14A2002C5CEA /* Bouncr.xcdatamodeld in Sources */,
 				B25592C9281F1C06002C5CEA /* Login.swift in Sources */,
 				B25592ED2821DEF5002C5CEA /* OrgUser.swift in Sources */,
 				B2559290281F14A2002C5CEA /* Persistence.swift in Sources */,
 				B25592F128230D5F002C5CEA /* OtherUserServiceable.swift in Sources */,
+				188A682E28754E7E00ADF7A3 /* MoreDetailsButton.swift in Sources */,
 				B25592C5281F1703002C5CEA /* HTTPClient.swift in Sources */,
 				B25592EF28230BF9002C5CEA /* OtherUserController.swift in Sources */,
+				188A6825286FED4900ADF7A3 /* LoginView.swift in Sources */,
 				B25592F7282310F8002C5CEA /* EventServiceable.swift in Sources */,
+				1839437B288748C000A0D0FF /* GuestList.swift in Sources */,
 				B25592CF281F23E1002C5CEA /* DateFormatter.swift in Sources */,
 				B25592FB2823141B002C5CEA /* InviteController.swift in Sources */,
+				188A683628795D3500ADF7A3 /* HostUpcomingEventCard.swift in Sources */,
 				B25592E92821DC60002C5CEA /* OtherUser.swift in Sources */,
 				B25592CD281F2171002C5CEA /* UserServices.swift in Sources */,
+				188A68322875504200ADF7A3 /* HostEventDetailsView.swift in Sources */,
 				B25592F928231266002C5CEA /* InviteServiceable.swift in Sources */,
 				B25592C1281F1690002C5CEA /* RequestError.swift in Sources */,
+				1839437F28877D2D00A0D0FF /* PendingGuestsBubbles.swift in Sources */,
+				188A683028754EC100ADF7A3 /* SquareScanQR.swift in Sources */,
 				B25592E32821D5D8002C5CEA /* Event.swift in Sources */,
 				B2559289281F14A1002C5CEA /* ContentView.swift in Sources */,
 				B25592C7281F18BB002C5CEA /* User.swift in Sources */,
 				B25592F328230E3C002C5CEA /* HelperController.swift in Sources */,
 				B25592FF2824654F002C5CEA /* OtherUserEndpoint.swift in Sources */,
 				B25592C3281F16DC002C5CEA /* RequestMethod.swift in Sources */,
+				188A682928754C4F00ADF7A3 /* HostEventsView.swift in Sources */,
 				B25592CB281F1D72002C5CEA /* UserEndpoint.swift in Sources */,
 				B25592E72821D724002C5CEA /* Invite.swift in Sources */,
+				183943832887843000A0D0FF /* GuestBubble.swift in Sources */,
 				B255930328247312002C5CEA /* InviteEndpoint.swift in Sources */,
+				1839437D2887499C00A0D0FF /* EventForm.swift in Sources */,
+				18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */,
 				B2559287281F14A1002C5CEA /* BouncrApp.swift in Sources */,
 				B25592BF281F1597002C5CEA /* Endpoint.swift in Sources */,
+				18394387288CBF5000A0D0FF /* InviteGuestsModal.swift in Sources */,
+				183943852887851000A0D0FF /* SeeMoreButton.swift in Sources */,
 				B2001905284434B900B3C899 /* GenericResponse.swift in Sources */,
 				B2001903284424B600B3C899 /* DictToParamString.swift in Sources */,
 				B25592EB2821DDF6002C5CEA /* Organization.swift in Sources */,
 				B25592DF281F2C9C002C5CEA /* MainController.swift in Sources */,
+				1839438128877D4000A0D0FF /* AttendingGuestsBubbles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,7 +733,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -703,7 +787,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -721,12 +805,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bouncr/Preview Content\"";
-				DEVELOPMENT_TEAM = 9J56NDXZ35;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -738,7 +823,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -750,12 +835,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Bouncr/Preview Content\"";
-				DEVELOPMENT_TEAM = 9J56NDXZ35;
+				DEVELOPMENT_TEAM = V9LGP2662T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -767,7 +853,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
