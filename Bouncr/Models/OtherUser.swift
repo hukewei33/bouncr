@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct OtherUser: Codable, Identifiable {
     let id: Int
     let username: String
