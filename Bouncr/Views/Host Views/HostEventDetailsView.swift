@@ -183,7 +183,6 @@ struct HostEventDetailsView: View {
                       Text("Delete"),
                       action: {
                         self.mainController.hostedEventController.deleteEvent(deletedEventID: event.id){mainController.hostedEventController.getHostedEvents()}
-                        //navigate back to host events index page?
                       }
                     )
                   )
