@@ -29,6 +29,7 @@
 		B2001907284528EB00B3C899 /* GoodGenericResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B2001906284528EB00B3C899 /* GoodGenericResponse.json */; };
 		B20019092845295000B3C899 /* BadGenericResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B20019082845295000B3C899 /* BadGenericResponse.json */; };
 		B200190B28453BCF00B3C899 /* ReturnInviteArrayRaw.json in Resources */ = {isa = PBXBuildFile; fileRef = B200190A28453BCF00B3C899 /* ReturnInviteArrayRaw.json */; };
+		B20EA1AF28A6AE300012E1A2 /* AddFriendRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20EA1AE28A6AE300012E1A2 /* AddFriendRow.swift */; };
 		B2559287281F14A1002C5CEA /* BouncrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2559286281F14A1002C5CEA /* BouncrApp.swift */; };
 		B2559289281F14A1002C5CEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2559288281F14A1002C5CEA /* ContentView.swift */; };
 		B255928B281F14A2002C5CEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B255928A281F14A2002C5CEA /* Assets.xcassets */; };
@@ -91,6 +92,9 @@
 		B2B7A4B1289F790C0064437E /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B7A4B0289F790C0064437E /* Friends.swift */; };
 		B2B7A4B3289F7C0A0064437E /* ProfileTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B7A4B2289F7C0A0064437E /* ProfileTopBar.swift */; };
 		B2B7A4B5289F800D0064437E /* AddFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B7A4B4289F800D0064437E /* AddFriends.swift */; };
+		B2D33B5D28A55E1B00368313 /* ProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D33B5C28A55E1B00368313 /* ProfileInfo.swift */; };
+		B2D33B5F28A5620B00368313 /* FriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D33B5E28A5620B00368313 /* FriendView.swift */; };
+		B2D33B6128A56D7100368313 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D33B6028A56D7100368313 /* CreateProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +137,7 @@
 		B2001906284528EB00B3C899 /* GoodGenericResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoodGenericResponse.json; sourceTree = "<group>"; };
 		B20019082845295000B3C899 /* BadGenericResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BadGenericResponse.json; sourceTree = "<group>"; };
 		B200190A28453BCF00B3C899 /* ReturnInviteArrayRaw.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ReturnInviteArrayRaw.json; sourceTree = "<group>"; };
+		B20EA1AE28A6AE300012E1A2 /* AddFriendRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendRow.swift; sourceTree = "<group>"; };
 		B2559283281F14A1002C5CEA /* Bouncr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bouncr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2559286281F14A1002C5CEA /* BouncrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncrApp.swift; sourceTree = "<group>"; };
 		B2559288281F14A1002C5CEA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -198,6 +203,9 @@
 		B2B7A4B0289F790C0064437E /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		B2B7A4B2289F7C0A0064437E /* ProfileTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTopBar.swift; sourceTree = "<group>"; };
 		B2B7A4B4289F800D0064437E /* AddFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriends.swift; sourceTree = "<group>"; };
+		B2D33B5C28A55E1B00368313 /* ProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo.swift; sourceTree = "<group>"; };
+		B2D33B5E28A5620B00368313 /* FriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendView.swift; sourceTree = "<group>"; };
+		B2D33B6028A56D7100368313 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,12 +264,12 @@
 		18BFEAC0286E886B00B04FDC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B2D33B6328A5740A00368313 /* Landing Views */,
 				B2B7A4AD289F78C50064437E /* Friend Views */,
 				B2B7A4A8289F4C170064437E /* Profile Views */,
 				188A682A28754C8100ADF7A3 /* Buttons */,
 				188A682728754C1D00ADF7A3 /* Host Views */,
 				18BFEAC1286E887F00B04FDC /* AppView.swift */,
-				188A6824286FED4900ADF7A3 /* LoginView.swift */,
 				1839437A288748BF00A0D0FF /* GuestList.swift */,
 			);
 			path = Views;
@@ -464,6 +472,7 @@
 				B2B7A4A9289F4C3C0064437E /* ProfileView.swift */,
 				B2B7A4AB289F6F680064437E /* EditProfile.swift */,
 				B2B7A4B2289F7C0A0064437E /* ProfileTopBar.swift */,
+				B2D33B5C28A55E1B00368313 /* ProfileInfo.swift */,
 			);
 			path = "Profile Views";
 			sourceTree = "<group>";
@@ -474,8 +483,19 @@
 				B2B7A4AE289F78FB0064437E /* FriendRequest.swift */,
 				B2B7A4B0289F790C0064437E /* Friends.swift */,
 				B2B7A4B4289F800D0064437E /* AddFriends.swift */,
+				B2D33B5E28A5620B00368313 /* FriendView.swift */,
+				B20EA1AE28A6AE300012E1A2 /* AddFriendRow.swift */,
 			);
 			path = "Friend Views";
+			sourceTree = "<group>";
+		};
+		B2D33B6328A5740A00368313 /* Landing Views */ = {
+			isa = PBXGroup;
+			children = (
+				188A6824286FED4900ADF7A3 /* LoginView.swift */,
+				B2D33B6028A56D7100368313 /* CreateProfileView.swift */,
+			);
+			path = "Landing Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -652,12 +672,14 @@
 				B25592E32821D5D8002C5CEA /* Event.swift in Sources */,
 				B2559289281F14A1002C5CEA /* ContentView.swift in Sources */,
 				B25592C7281F18BB002C5CEA /* User.swift in Sources */,
+				B20EA1AF28A6AE300012E1A2 /* AddFriendRow.swift in Sources */,
 				B25592F328230E3C002C5CEA /* HelperController.swift in Sources */,
 				B25592FF2824654F002C5CEA /* OtherUserEndpoint.swift in Sources */,
 				B2B7A4B5289F800D0064437E /* AddFriends.swift in Sources */,
 				B2B7A4AA289F4C3C0064437E /* ProfileView.swift in Sources */,
 				B25592C3281F16DC002C5CEA /* RequestMethod.swift in Sources */,
 				188A682928754C4F00ADF7A3 /* HostEventsView.swift in Sources */,
+				B2D33B6128A56D7100368313 /* CreateProfileView.swift in Sources */,
 				B25592CB281F1D72002C5CEA /* UserEndpoint.swift in Sources */,
 				B25592E72821D724002C5CEA /* Invite.swift in Sources */,
 				183943832887843000A0D0FF /* GuestBubble.swift in Sources */,
@@ -667,11 +689,13 @@
 				B2559287281F14A1002C5CEA /* BouncrApp.swift in Sources */,
 				B25592BF281F1597002C5CEA /* Endpoint.swift in Sources */,
 				18394387288CBF5000A0D0FF /* InviteGuestsModal.swift in Sources */,
+				B2D33B5D28A55E1B00368313 /* ProfileInfo.swift in Sources */,
 				183943852887851000A0D0FF /* SeeMoreButton.swift in Sources */,
 				B2001905284434B900B3C899 /* GenericResponse.swift in Sources */,
 				B2001903284424B600B3C899 /* DictToParamString.swift in Sources */,
 				B25592EB2821DDF6002C5CEA /* Organization.swift in Sources */,
 				B25592DF281F2C9C002C5CEA /* MainController.swift in Sources */,
+				B2D33B5F28A5620B00368313 /* FriendView.swift in Sources */,
 				1839438128877D4000A0D0FF /* AttendingGuestsBubbles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

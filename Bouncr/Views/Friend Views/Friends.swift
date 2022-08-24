@@ -34,14 +34,6 @@ struct Friends: View {
                 
             }
             
-            //                        NavigationLink(destination: AddFriends()) {
-            //                          Text("Make Friend Request")
-            //                            .foregroundColor(Color(red: 66/255, green: 0, blue: 1.0, opacity: 1.0))
-            //                        }
-            //          //              .listRowInsets(EdgeInsets())
-            //                        .navigationBarTitleDisplayMode(.inline)
-            //                        .navigationBarHidden(true)
-            
         }
         .padding(.top, -55)
         .listStyle(InsetGroupedListStyle())

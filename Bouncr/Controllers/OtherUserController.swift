@@ -23,6 +23,7 @@ class OtherUserController: HelperController{
     @Published var allGuestsOtherUserArray:[OtherUser]=[]
     @Published var friendRequestArray:[OtherUser]=[]
     @Published var friendArray:[OtherUser]=[]
+    @Published var sentFriendRequestArray:[OtherUser]=[]
 
     
     
@@ -58,7 +59,9 @@ class OtherUserController: HelperController{
             setLoading(status: true)
             let result = await otherUserService.getFriendRequests(id: getUserID(),isSent: true, token: getToken())
             setLoading(status: false)
+            // this line to be deleted after intergration test updated
             setOtherUserArray(result: result, target: &otherUserArray)
+            setOtherUserArray(result: result, target: &sentFriendRequestArray)
             completion?()
         }
     }

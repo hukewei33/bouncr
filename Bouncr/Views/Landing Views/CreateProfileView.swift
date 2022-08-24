@@ -1,13 +1,14 @@
 //
-//  EditProfile.swift
+//  CreateProfileView.swift
 //  Bouncr
 //
-//  Created by Kenny Hu on 8/6/22.
+//  Created by Kenny Hu on 8/11/22.
 //
 
 import SwiftUI
 
-struct EditProfile: View {
+struct CreateProfileView: View {
+    
     @EnvironmentObject var mainController: MainController
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State private var fName: String = ""
@@ -15,33 +16,23 @@ struct EditProfile: View {
     @State private var username: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var confirmPassword: String = ""
     @State private var phonenumber: Int = 0
     @State private var birthday: Date = Date()
-    @State private var profilePicURL: String = "" //optional, for now users can't edit this
-    
-    func initView() {
-        if let user = mainController.thisUser {
-            fName = user.firstName
-            lName = user.lastName
-            username = user.username
-            email = user.email
-            phonenumber = user.phoneNumber
-            birthday = user.birthday
-        }
-    }
     
     
     //TODO: fields can be blank but other rules need to be enforced
-     var buttonDisabled: Bool {
-         return false
-       //return (fName.isEmpty || lName.isEmpty || username.isEmpty || email.isEmpty || password.isEmpty)
-     }
-
-     //Submit button is a faded color if disabled
-     var buttonColor: Color {
-       return buttonDisabled ? Color("Disabled Button") : Color("Primary - Indigo")
-     }
+    var buttonDisabled: Bool {
+        return (fName.isEmpty || lName.isEmpty || username.isEmpty || email.isEmpty || password.isEmpty || password != confirmPassword || birthday == Date())
+    }
+    
+    //Submit button is a faded color if disabled
+    var buttonColor: Color {
+        return buttonDisabled ? Color("Disabled Button") : Color("Primary - Indigo")
+    }
+    
     var body: some View {
+        //TODO: refactor with profile edit
         ScrollView {
             VStack(alignment: .leading) {
                 //User Name field
@@ -49,8 +40,9 @@ struct EditProfile: View {
                     Text("User Name")
                         .bold()
                         .font(.system(size: 17))
-                    Text(
-                        username
+                    TextField(
+                        "User Name",
+                        text: $username
                     )
                     .padding()
                     .background(Color("Form Field Background"))
@@ -125,10 +117,12 @@ struct EditProfile: View {
                     Text("Birthday")
                         .bold()
                         .font(.system(size: 17))
-                    Text(birthday, style: .date)
-                    .padding()
-                    .background(Color("Form Field Background"))
-                    .cornerRadius(10)
+                    DatePicker(
+                        "",
+                        selection: $birthday,
+                        displayedComponents: [.date]
+                    )
+                    .labelsHidden()
                     .padding(.bottom, 30)
                 }
                 
@@ -147,18 +141,33 @@ struct EditProfile: View {
                     .padding(.bottom, 30)
                 }
                 
+                //Password field
+                Group {
+                    Text("Confirm Password")
+                        .bold()
+                        .font(.system(size: 17))
+                    SecureField(
+                        "Confirm Password",
+                        text: $confirmPassword
+                    )
+                    .padding()
+                    .background(Color("Form Field Background"))
+                    .cornerRadius(10)
+                    .padding(.bottom, 30)
+                }
+                
                 Spacer()
                 
                 //Submit button; Creates new user using viewModel
                 HStack {
                     Spacer()
                     Button(action: {
-                        print("EDITING PROFILE...")
+                        print("CREATING PROFILE...")
                         let newUserInfo = User(id: -1, firstName: fName, lastName: lName, email: email, username: username, phoneNumber: phonenumber, birthday: birthday, orgUser: nil, password: password == "" ? nil : password, token: nil)
-                        mainController.updateUser(updatedUser: newUserInfo)
+                        mainController.createUser(newUser: newUserInfo)
                         self.mode.wrappedValue.dismiss()
                     }, label: {
-                        Text("Save changes")
+                        Text("Create Account")
                             .bold()
                             .foregroundColor(Color.white)
                             .font(.system(size: 15))
@@ -166,13 +175,13 @@ struct EditProfile: View {
                     })
                     .background(buttonColor)
                     .cornerRadius(10)
+                    .disabled(buttonDisabled)
                     
                 }
             } //End VStack
             .padding(30)
-            .onAppear{ initView() }
         } //End ScrollView
-        .navigationTitle("Edit Profile")
+        .navigationTitle("Create Profile")
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }

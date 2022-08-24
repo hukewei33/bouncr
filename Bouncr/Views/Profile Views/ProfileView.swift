@@ -32,23 +32,10 @@ struct ProfileView: View {
             
             VStack {
                 
-                ProfileTopBar()
+                ProfileTopBar(otherUserController: otherUserController)
                 
-                FriendRequest(otherUserController: otherUserController)
-                    
-                Friends(otherUserController: otherUserController)
+                ProfileInfo()
                 
-                // if they have no friends and friend requests
-                if (otherUserController.friendArray.count == 0 && otherUserController.friendRequestArray.count == 0 ){
-                    
-                    Group {
-                        Text("You have no friends :(")
-                        Text("maybe send a friend request ;)")
-                    }
-                    .foregroundColor(Color("Gray - 400"))
-                    .font(.system(size: 22))
-                }
-                Spacer()
             }
             Spacer()
             

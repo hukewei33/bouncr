@@ -9,6 +9,11 @@ import SwiftUI
 
 struct ProfileTopBar: View {
     @EnvironmentObject var mainController: MainController
+    @ObservedObject var otherUserController: OtherUserController
+    
+    init(otherUserController: OtherUserController){
+        self.otherUserController=otherUserController
+    }
     
     var body: some View {
         HStack {
@@ -49,15 +54,27 @@ struct ProfileTopBar: View {
             NavigationLink(destination: EditProfile()){
                 
                 ZStack {
-                    Image(systemName: "square.and.pencil")
+                    Image(systemName: "person.crop.circle")
                         .font(.system(.title))
                         .frame(width: 20, height: 20)
                         .foregroundColor(.white)
                     
                 }
                 .padding([.leading, .trailing], 5)
-                
             }
+            
+            NavigationLink(destination: FriendView(otherUserController: otherUserController)){
+                
+                ZStack {
+                    Image(systemName: "person.2.fill")
+                        .font(.system(.title))
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.white)
+                    
+                }
+                .padding([.leading, .trailing], 5)
+            }
+            
         }
         .frame(maxWidth: .infinity, minHeight: 180)
         .padding(.top, 50)
