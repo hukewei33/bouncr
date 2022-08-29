@@ -9,12 +9,14 @@ import SwiftUI
 
 struct SeeMoreButton: View {
   
+  @EnvironmentObject var mainController: MainController
+  
   var event: Event
   
   var body: some View {
     //See More button
     VStack {
-      NavigationLink(destination: GuestList(event: event, guestHost: "host")){
+      NavigationLink(destination: GuestList(otherUserController: mainController.otherUserController, event: event, guestHost: "host")){
         Image(systemName: "ellipsis")
            .foregroundColor(Color.white)
            .frame(width: 30, height: 30)

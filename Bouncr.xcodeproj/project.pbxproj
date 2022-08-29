@@ -23,6 +23,7 @@
 		188A68322875504200ADF7A3 /* HostEventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A68312875504200ADF7A3 /* HostEventDetailsView.swift */; };
 		188A6834287935D500ADF7A3 /* HostOngoingEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A6833287935D500ADF7A3 /* HostOngoingEventCard.swift */; };
 		188A683628795D3500ADF7A3 /* HostUpcomingEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A683528795D3400ADF7A3 /* HostUpcomingEventCard.swift */; };
+		188D99C528BAAC420004E54D /* GuestListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D99C428BAAC420004E54D /* GuestListRow.swift */; };
 		18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFEAC1286E887F00B04FDC /* AppView.swift */; };
 		B2001903284424B600B3C899 /* DictToParamString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001902284424B600B3C899 /* DictToParamString.swift */; };
 		B2001905284434B900B3C899 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2001904284434B800B3C899 /* GenericResponse.swift */; };
@@ -121,6 +122,7 @@
 		188A68312875504200ADF7A3 /* HostEventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEventDetailsView.swift; sourceTree = "<group>"; };
 		188A6833287935D500ADF7A3 /* HostOngoingEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostOngoingEventCard.swift; sourceTree = "<group>"; };
 		188A683528795D3400ADF7A3 /* HostUpcomingEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostUpcomingEventCard.swift; sourceTree = "<group>"; };
+		188D99C428BAAC420004E54D /* GuestListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListRow.swift; sourceTree = "<group>"; };
 		18BFEAC1286E887F00B04FDC /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B2001902284424B600B3C899 /* DictToParamString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictToParamString.swift; sourceTree = "<group>"; };
 		B2001904284434B800B3C899 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				18BFEAC1286E887F00B04FDC /* AppView.swift */,
 				188A6824286FED4900ADF7A3 /* LoginView.swift */,
 				1839437A288748BF00A0D0FF /* GuestList.swift */,
+				188D99C428BAAC420004E54D /* GuestListRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				183943832887843000A0D0FF /* GuestBubble.swift in Sources */,
 				B255930328247312002C5CEA /* InviteEndpoint.swift in Sources */,
 				1839437D2887499C00A0D0FF /* EventForm.swift in Sources */,
+				188D99C528BAAC420004E54D /* GuestListRow.swift in Sources */,
 				18BFEAC2286E887F00B04FDC /* AppView.swift in Sources */,
 				B2559287281F14A1002C5CEA /* BouncrApp.swift in Sources */,
 				B25592BF281F1597002C5CEA /* Endpoint.swift in Sources */,

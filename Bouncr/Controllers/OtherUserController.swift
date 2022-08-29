@@ -82,7 +82,7 @@ class OtherUserController: HelperController,ObservableObject {
     }
     
     //generic guest indexing func that populates otherUserArray
-    func getGuests(eventID:Int,checkedin: Bool, inviteStatus: Bool,isFriend: Bool, completion: (() -> Void)? = nil){
+    func getGuests(eventID:Int,checkedin: Bool, inviteStatus: Bool, isFriend: Bool?, completion: (() -> Void)? = nil){
         Task.init{
             setLoading(status: true)
             let result = await otherUserService.getEventGuests(id: eventID, user_id: getUserID(), checkedin: checkedin, inviteStatus: inviteStatus,isFriend: isFriend,token: getToken())
